@@ -1,0 +1,30 @@
+#!/usr/bin/env sh
+
+set -eu
+
+ARGVUS_CONFIG_HOME=${ARGVUS_CONFIG_HOME:-${XDG_CONFIG_HOME:-$HOME/.config}}
+ARGVUS_SYSTEM_CONFIG=${ARGVUS_SYSTEM_CONFIG:-/usr/share/argvus}
+
+for ROFI_CONFIG in \
+  "$ARGVUS_CONFIG_HOME/rofi/config.rasi" \
+  "$ARGVUS_CONFIG_HOME/argvus/rofi/config.rasi" \
+  "$ARGVUS_CONFIG_HOME/argvus/generated/rofi/config.rasi" \
+  "$ARGVUS_SYSTEM_CONFIG/rofi/config.rasi"; do
+  [ -e "$ROFI_CONFIG" ] && break
+done
+
+if [ "${1:-}" = "--config" ]; then
+  [ "$#" -ge 2 ] || {
+    printf 'argvus-launcher: --config requires a value\n' >&2
+    exit 1
+  }
+  ROFI_CONFIG="$2"
+  shift 2
+fi
+
+case "${LC_ALL:-${LC_MESSAGES:-${LANG:-}}}" in
+  pt_*) PROMPT="Pesquisar aplicação" ;;
+  *) PROMPT="Search application" ;;
+esac
+
+exec rofi -config "$ROFI_CONFIG" -show drun -display-drun "$PROMPT" "$@"

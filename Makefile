@@ -13,6 +13,7 @@ help:
 	@echo "  make validate"
 
 install:
+	install -Dm755 src/bin/argvus-launcher "$(DESTDIR)$(PREFIX)/bin/argvus-launcher"
 	install -dm755 "$(DESTDIR)$(PREFIX)/share/argvus"
 	cp -R --no-preserve=ownership config/. "$(DESTDIR)$(PREFIX)/share/argvus/"
 	install -dm755 "$(DESTDIR)$(PREFIX)/share/argvus/scripts/argvus-launcher"
@@ -21,11 +22,13 @@ install:
 	install -Dm644 LICENSE "$(DESTDIR)$(PREFIX)/share/licenses/argvus-launcher/LICENSE"
 
 uninstall:
+	rm -f "$(DESTDIR)$(PREFIX)/bin/argvus-launcher"
 	rm -rf "$(DESTDIR)$(PREFIX)/share/argvus/rofi"
 	rm -rf "$(DESTDIR)$(PREFIX)/share/argvus/scripts/argvus-launcher"
 	rm -f "$(DESTDIR)$(PREFIX)/share/licenses/argvus-launcher/LICENSE"
 
 validate:
+	@test -x src/bin/argvus-launcher
 	@test -f config/rofi/config.rasi
 	@test -f config/rofi/theme.rasi
 	@for script in $$(find src -name '*.sh'); do sh -n "$$script"; done
