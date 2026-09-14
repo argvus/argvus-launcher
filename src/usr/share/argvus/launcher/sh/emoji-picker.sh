@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # shellcheck disable=SC1090,SC1091
-ARGVUS_BOOTSTRAP="${ARGVUS_BOOTSTRAP:-${ARGVUS_SYSTEM_CONFIG:-/usr/share/argvus}/scripts/argvus/bootstrap.sh}"
+ARGVUS_BOOTSTRAP="${ARGVUS_BOOTSTRAP:-${ARGVUS_SYSTEM_CONFIG:-/usr/share/argvus}/session/sh/bootstrap.sh}"
 . "$ARGVUS_BOOTSTRAP"
 
 SUPPRESS_FILE="$(paths_cache hypr)/keyboard-layout-notify.suppress"
@@ -18,4 +18,4 @@ rofimoji \
   --action clipboard \
   --clipboarder wl-copy \
   --typer wtype \
-  --selector-args "-config $(paths_config rofi/config.rasi)"
+  --selector-args "-config $(paths_config launcher/config/config.rasi)"

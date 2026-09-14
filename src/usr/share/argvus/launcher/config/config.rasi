@@ -1,4 +1,4 @@
-@theme "/usr/share/argvus/rofi/theme.rasi"
+@theme "/usr/share/argvus/launcher/config/theme.rasi"
 
 configuration {
     font: "IBM Plex Mono 12";

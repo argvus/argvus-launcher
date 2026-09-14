@@ -9,7 +9,7 @@ for ROFI_CONFIG in \
   "$ARGVUS_CONFIG_HOME/rofi/config.rasi" \
   "$ARGVUS_CONFIG_HOME/argvus/rofi/config.rasi" \
   "$ARGVUS_CONFIG_HOME/argvus/generated/rofi/config.rasi" \
-  "$ARGVUS_SYSTEM_CONFIG/rofi/config.rasi"; do
+  "$ARGVUS_SYSTEM_CONFIG/launcher/config/config.rasi"; do
   [ -e "$ROFI_CONFIG" ] && break
 done
 
