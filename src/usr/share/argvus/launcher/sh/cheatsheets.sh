@@ -11,11 +11,10 @@ APP="${1:-hypr}"
 
 if locale_is_pt; then
   _language=pt
-  PROMPT="Procurar"
 else
   _language=en
-  PROMPT="Search"
 fi
+PROMPT="$(argvus_tr launcher search.cheatsheet)"
 
 case "$APP" in
   hypr)

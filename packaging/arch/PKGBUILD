@@ -9,6 +9,7 @@ license=('GPL-3.0-only')
 depends=(
   'argvus-session'
   'argvus-appearance'
+  'argvus-i18n'
   'bash'
   'libnotify'
   'rofi'
