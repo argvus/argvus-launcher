@@ -3,7 +3,7 @@
 # Show the cheatsheet for an app through Rofi.
 # Usage: cheatsheets.sh [hypr|kitty|rofi]
 
-# shellcheck disable=SC1091
+# shellcheck disable=SC1090,SC1091
 ARGVUS_BOOTSTRAP="${ARGVUS_BOOTSTRAP:-${ARGVUS_SYSTEM_CONFIG:-/usr/share/argvus}/session/sh/bootstrap.sh}"
 . "$ARGVUS_BOOTSTRAP"
 
