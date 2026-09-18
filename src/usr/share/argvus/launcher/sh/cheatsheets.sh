@@ -18,7 +18,12 @@ PROMPT="$(argvus_tr launcher search.cheatsheet)"
 
 case "$APP" in
   hypr)
-    CHEAT_FILE="$(paths_config hyprland/docs/cheatsheets/${_language}.txt)"
+    _generated_cheat="${ARGVUS_CONFIG_HOME:-${XDG_CONFIG_HOME:-$HOME/.config}/argvus}/generated/hypr/keybindings.txt"
+    if [ -r "$_generated_cheat" ]; then
+      CHEAT_FILE="$_generated_cheat"
+    else
+      CHEAT_FILE="$(paths_config hyprland/docs/cheatsheets/${_language}.txt)"
+    fi
     ;;
   kitty)
     CHEAT_FILE="$(paths_config terminal/docs/${_language}.txt)"
