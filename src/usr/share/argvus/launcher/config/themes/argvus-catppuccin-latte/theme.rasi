@@ -1,0 +1,10 @@
+/* theme: argvus-catppuccin-latte */
+* {
+    th-bg:            rgba(239, 241, 245, 96%);
+    th-fg:            rgb(76, 79, 105);
+    th-fg-selected:   rgba(30, 102, 245, 100%);
+    th-row-alt:       rgba(204, 208, 218, 35%);
+    th-row-selected:  rgba(220, 224, 232, 0.96);
+    th-border-color:  rgba(172, 176, 190, 0.80);
+    th-separator:     rgba(188, 192, 204, 0.70);
+}

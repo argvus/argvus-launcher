@@ -1,0 +1,10 @@
+/* theme: argvus-onedark-float */
+* {
+    th-bg:            rgba(33, 37, 43, 95%);
+    th-fg:            rgb(97, 175, 239);
+    th-fg-selected:   rgba(255, 255, 255, 100%);
+    th-row-alt:       rgba(97, 175, 239, 7%);
+    th-row-selected:  rgba(44, 49, 58, 0.88);
+    th-border-color:  rgba(97, 175, 239, 0.36);
+    th-separator:     rgba(62, 68, 81, 0.70);
+}

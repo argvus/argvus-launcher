@@ -1,0 +1,10 @@
+/* theme: argvus-dracula */
+* {
+    th-bg:            rgba(40, 42, 54, 88%);
+    th-fg:            rgb(189, 147, 249);
+    th-fg-selected:   rgba(248, 248, 242, 100%);
+    th-row-alt:       rgba(189, 147, 249, 7%);
+    th-row-selected:  rgba(52, 55, 70, 0.88);
+    th-border-color:  rgba(189, 147, 249, 0.36);
+    th-separator:     rgba(98, 114, 164, 0.52);
+}

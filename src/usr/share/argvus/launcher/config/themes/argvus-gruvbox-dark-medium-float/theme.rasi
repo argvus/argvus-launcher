@@ -1,0 +1,10 @@
+/* theme: argvus-gruvbox-dark-medium-float */
+* {
+    th-bg:            rgba(40, 40, 40, 88%);
+    th-fg:            rgb(53, 144, 189);
+    th-fg-selected:   rgba(223, 229, 234, 100%);
+    th-row-alt:       rgba(215, 153, 33, 7%);
+    th-row-selected:  rgba(80, 73, 69, 0.88);
+    th-border-color:  rgba(215, 153, 33, 0.36);
+    th-separator:     rgba(215, 153, 33, 0.52);
+}
