@@ -1,4 +1,4 @@
-/* theme: argvus-rosepine */
+/* theme: argvus-dark-rosepine */
 * {
     th-bg:            rgba(25, 23, 36, 88%);
     th-fg:            rgb(196, 167, 231);

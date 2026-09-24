@@ -1,4 +1,4 @@
-/* theme: argvus-tokyo-night */
+/* theme: argvus-dark-tokio-night-float */
 * {
     th-bg:            rgba(26, 27, 38, 88%);
     th-fg:            rgb(122, 162, 247);

@@ -1,0 +1,10 @@
+/* theme: argvus-light-solarized-float */
+* {
+    th-bg: rgba(247, 240, 221, 96%);
+    th-fg: rgb(101, 123, 131);
+    th-fg-selected: rgba(101, 123, 131, 100%);
+    th-row-alt: rgba(216, 210, 190, 35%);
+    th-row-selected: rgba(238, 232, 213, 96%);
+    th-border-color: rgba(216, 210, 190, 0.85);
+    th-separator: rgba(216, 210, 190, 0.65);
+}

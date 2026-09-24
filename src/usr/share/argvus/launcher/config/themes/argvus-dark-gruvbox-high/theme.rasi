@@ -1,4 +1,4 @@
-/* theme: argvus-gruvbox-dark-medium-float */
+/* theme: argvus-dark-gruvbox-high */
 * {
     th-bg:            rgba(40, 40, 40, 88%);
     th-fg:            rgb(53, 144, 189);

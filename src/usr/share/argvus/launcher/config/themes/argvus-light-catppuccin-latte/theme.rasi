@@ -1,4 +1,4 @@
-/* theme: argvus-catppuccin-latte */
+/* theme: argvus-light-catppuccin-latte */
 * {
     th-bg:            rgba(239, 241, 245, 96%);
     th-fg:            rgb(76, 79, 105);

@@ -1,4 +1,4 @@
-/* theme: argvus-catppuccin-latte-float */
+/* theme: argvus-github-light-float */
 * {
     th-bg:            rgba(247, 247, 247, 96%);
     th-fg:            rgb(24, 24, 24);
@@ -8,4 +8,3 @@
     th-border-color:  rgba(24, 24, 24, 0.24);
     th-separator:     rgba(24, 24, 24, 0.14);
 }
-

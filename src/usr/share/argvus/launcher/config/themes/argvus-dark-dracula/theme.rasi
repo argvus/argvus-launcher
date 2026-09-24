@@ -1,4 +1,4 @@
-/* theme: argvus-dracula */
+/* theme: argvus-dark-dracula */
 * {
     th-bg:            rgba(40, 42, 54, 88%);
     th-fg:            rgb(189, 147, 249);
