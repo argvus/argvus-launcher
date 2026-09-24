@@ -1,0 +1,10 @@
+/* theme: argvus-dark-monokai-float */
+* {
+    th-bg: rgba(34, 31, 34, 88%);
+    th-fg: #78DCE8;
+    th-fg-selected: #FCFCFA;
+    th-row-alt: rgba(64, 62, 65, 7%);
+    th-row-selected: #403E41;
+    th-border-color: #5B595C;
+    th-separator: #FF6188;
+}
