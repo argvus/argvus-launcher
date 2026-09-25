@@ -1,0 +1,10 @@
+/* theme: everforest-light-float */
+* {
+    th-bg:            rgba(253, 246, 227, 96%);
+    th-fg:            rgb(92, 106, 114);
+    th-fg-selected:   rgba(92, 106, 114, 100%);
+    th-row-alt:       rgba(244, 240, 217, 70%);
+    th-row-selected:  rgba(232, 241, 244, 0.96);
+    th-border-color:  rgba(189, 195, 175, 0.90);
+    th-separator:     rgba(189, 195, 175, 0.70);
+}

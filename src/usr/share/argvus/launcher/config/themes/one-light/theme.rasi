@@ -1,0 +1,10 @@
+/* theme: one-light */
+* {
+    th-bg:            rgba(255, 255, 255, 96%);
+    th-fg:            rgb(56, 58, 66);
+    th-fg-selected:   rgba(56, 58, 66, 100%);
+    th-row-alt:       rgba(240, 240, 241, 70%);
+    th-row-selected:  rgba(232, 238, 253, 0.96);
+    th-border-color:  rgba(215, 218, 224, 0.90);
+    th-separator:     rgba(215, 218, 224, 0.70);
+}
