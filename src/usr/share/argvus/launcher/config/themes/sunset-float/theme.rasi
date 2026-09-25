@@ -1,0 +1,10 @@
+/* theme: sunset-float */
+* {
+    th-bg:            rgba(15, 15, 15, 88%);
+    th-fg:            rgb(53, 144, 189);
+    th-fg-selected:   rgba(234, 220, 204, 100%);
+    th-row-alt:       rgba(226, 190, 138, 7%);
+    th-row-selected:  rgba(26, 24, 22, 0.88);
+    th-border-color:  rgba(226, 190, 138, 0.36);
+    th-separator:     rgba(244, 187, 84, 0.52);
+}

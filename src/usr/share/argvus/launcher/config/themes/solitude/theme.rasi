@@ -1,0 +1,10 @@
+/* theme: solitude */
+* {
+    th-bg:            rgba(16, 19, 21, 88%);
+    th-fg:            rgb(53, 144, 189);
+    th-fg-selected:   rgba(223, 229, 234, 100%);
+    th-row-alt:       rgba(121, 129, 134, 7%);
+    th-row-selected:  rgba(26, 30, 32, 0.88);
+    th-border-color:  rgba(121, 129, 134, 0.36);
+    th-separator:     rgba(201, 194, 180, 0.52);
+}
