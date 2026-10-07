@@ -1,0 +1,277 @@
+#!/usr/bin/env sh
+# Project switcher: pick a project from the configured roots and paths, open a
+# dedicated Hyprland workspace with an ARGVUS terminal in its directory.
+#
+# Usage:
+#   argvus-projects                    pick a project (SUPER + O)
+#   argvus-projects add [--root] DIR   add a project, or a root holding projects
+#   argvus-projects remove DIR         remove a project or root
+#   argvus-projects list               print configured roots and paths
+
+set -eu
+
+ARGVUS_CONFIG_BIN=${ARGVUS_CONFIG_BIN:-argvus-config}
+ARGVUS_SYSTEM_CONFIG=${ARGVUS_SYSTEM_CONFIG:-/usr/share/argvus}
+ARGVUS_BOOTSTRAP="${ARGVUS_BOOTSTRAP:-$ARGVUS_SYSTEM_CONFIG/session/sh/bootstrap.sh}"
+
+if [ -r "$ARGVUS_BOOTSTRAP" ]; then
+  # shellcheck disable=SC1090,SC1091
+  . "$ARGVUS_BOOTSTRAP"
+  ROFI_CONFIG="$(paths_config launcher/config/config.rasi)"
+else
+  if [ -r "$ARGVUS_SYSTEM_CONFIG/lib/i18n.sh" ]; then
+    # shellcheck disable=SC1090,SC1091
+    . "$ARGVUS_SYSTEM_CONFIG/lib/i18n.sh"
+  fi
+  ROFI_CONFIG="$ARGVUS_SYSTEM_CONFIG/launcher/config/config.rasi"
+fi
+
+# Reads the effective value of an argvus-config pointer. Missing values print
+# "null", so callers can stop iterating on it.
+config_get() {
+  "$ARGVUS_CONFIG_BIN" get "$1" --effective --raw 2>/dev/null || printf 'null\n'
+}
+
+# Prints every entry of a configured string array, one per line.
+config_list() {
+  index=0
+  while :; do
+    item=$(config_get "$1/$index")
+    if [ -z "$item" ] || [ "$item" = "null" ]; then
+      break
+    fi
+    printf '%s\n' "$item"
+    index=$((index + 1))
+  done
+}
+
+expand_home() {
+  case "$1" in
+    "~") printf '%s\n' "$HOME" ;;
+    \~/*) printf '%s/%s\n' "$HOME" "${1#\~/}" ;;
+    *) printf '%s\n' "$1" ;;
+  esac
+}
+
+# Prints the absolute form of a directory, or fails when it does not exist.
+normalize_dir() {
+  dir=$(expand_home "$1")
+  if [ ! -d "$dir" ]; then
+    argvus_tr launcher error.not_directory path="$1" >&2
+    exit 1
+  fi
+  (cd -- "$dir" && pwd)
+}
+
+# Lists projects: the immediate subdirectories of every root, plus each
+# explicit path. Duplicates are removed, keeping the first occurrence.
+collect_projects() {
+  {
+    config_list /projects/roots | while IFS= read -r root; do
+      root=$(expand_home "$root")
+      if [ -d "$root" ]; then
+        for directory in "$root"/*/; do
+          if [ -d "$directory" ]; then
+            printf '%s\n' "${directory%/}"
+          fi
+        done
+      fi
+    done
+    config_list /projects/paths | while IFS= read -r path; do
+      path=$(expand_home "$path")
+      if [ -d "$path" ]; then
+        printf '%s\n' "${path%/}"
+      fi
+    done
+  } | awk '!seen[$0]++'
+}
+
+# Applies a jq filter to a configured array and writes the result back.
+# Usage: config_array_update POINTER FILTER [jq --arg options...]
+config_array_update() {
+  pointer=$1
+  filter=$2
+  shift 2
+  current=$("$ARGVUS_CONFIG_BIN" get "$pointer" --effective 2>/dev/null) || current=null
+  if [ -z "$current" ]; then
+    current=null
+  fi
+  updated=$(printf '%s' "$current" | jq -c "$@" "$filter")
+  "$ARGVUS_CONFIG_BIN" set "$pointer" "$updated" >/dev/null
+}
+
+add_project() {
+  pointer=/projects/paths
+  if [ "${1:-}" = "--root" ]; then
+    pointer=/projects/roots
+    shift
+  fi
+  [ "$#" -eq 1 ] || {
+    argvus_tr launcher error.usage >&2
+    exit 1
+  }
+  dir=$(normalize_dir "$1")
+  # shellcheck disable=SC2016 # $p is a jq variable, bound by --arg.
+  config_array_update "$pointer" '(. // []) + [$p] | unique' --arg p "$dir"
+  argvus_tr launcher message.added path="$dir"
+}
+
+remove_project() {
+  [ "$#" -eq 1 ] || {
+    argvus_tr launcher error.usage >&2
+    exit 1
+  }
+  dir=$(expand_home "$1")
+  if [ -d "$dir" ]; then
+    dir=$(cd -- "$dir" && pwd)
+  fi
+  for pointer in /projects/roots /projects/paths; do
+    # shellcheck disable=SC2016 # $p and $raw are jq variables, bound by --arg.
+    config_array_update "$pointer" \
+      '(. // []) | map(select(. != $p and . != $raw))' --arg p "$dir" --arg raw "$1"
+  done
+  argvus_tr launcher message.removed path="$1"
+}
+
+list_projects() {
+  config_list /projects/roots | while IFS= read -r root; do
+    printf 'root\t%s\n' "$root"
+  done
+  config_list /projects/paths | while IFS= read -r path; do
+    printf 'path\t%s\n' "$path"
+  done
+}
+
+# Workspace names are derived from the directory name, so they stay stable
+# across launches and let a second launch switch instead of duplicating. The
+# name is shown as the taskbar label, so it stays short.
+workspace_name() {
+  name=$(basename "$1")
+  slug=$(printf '%s' "$name" | tr -c 'A-Za-z0-9._-' '-')
+  printf 'proj-%s\n' "$slug"
+}
+
+# Single-quotes a path for the shell that Hyprland uses to run exec commands.
+shell_quote() {
+  printf "'%s'" "$(printf '%s' "$1" | sed "s/'/'\\\\''/g")"
+}
+
+workspace_exists() {
+  hyprctl -j workspaces | grep -q "\"name\": \"$1\""
+}
+
+# Quotes a value as a Lua string literal.
+lua_string() {
+  printf '"%s"' "$(printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g')"
+}
+
+# Hyprland 0.56 evaluates dispatch arguments as Lua. A rejected dispatch exits
+# non-zero and prints the reason, so the reason is surfaced instead of dropped.
+dispatch() {
+  if ! output=$(hyprctl dispatch "$1" 2>&1); then
+    report_error "$output"
+    exit 1
+  fi
+}
+
+open_project() {
+  path=$1
+  workspace=$(workspace_name "$path")
+  selector=$(lua_string "name:$workspace")
+  created=0
+
+  if ! workspace_exists "$workspace"; then
+    created=1
+  fi
+
+  dispatch "hl.dsp.focus({ workspace = $selector })"
+
+  if [ "$created" -eq 0 ]; then
+    return 0
+  fi
+
+  dispatch "hl.dsp.exec_cmd($(lua_string "argvus-terminal --directory $(shell_quote "$path")"))"
+
+  editor=$(config_get /projects/editor)
+  if [ -n "$editor" ] && [ "$editor" != "null" ]; then
+    dispatch "hl.dsp.exec_cmd($(lua_string "$editor $(shell_quote "$path")"))"
+  fi
+}
+
+# Shows an error for a shortcut run, where stderr is not visible.
+report_error() {
+  message=$1
+  printf 'argvus-projects: %s\n' "$message" >&2
+  if command -v notify-send >/dev/null 2>&1; then
+    notify-send -a argvus-projects "$message" || true
+  fi
+}
+
+# Resolves a project by its 1-based position in the list or by its directory
+# name, and prints its path. Numbers always mean the position.
+resolve_project() {
+  case "$1" in
+    '') return 1 ;;
+    *[!0-9]*)
+      printf '%s\n' "$projects" | awk -v name="$1" '{ n = split($0, parts, "/"); if (parts[n] == name) { print; exit } }'
+      ;;
+    *)
+      printf '%s\n' "$projects" | sed -n "${1}p"
+      ;;
+  esac
+}
+
+case "${1:-}" in
+  open)
+    shift
+    projects=$(collect_projects)
+    path=$(resolve_project "${1:-}") || path=
+    if [ -z "$projects" ]; then
+      report_error "$(argvus_tr launcher error.no_projects)"
+      exit 1
+    fi
+    if [ -z "$path" ]; then
+      report_error "$(argvus_tr launcher error.project_not_found name="${1:-}")"
+      exit 1
+    fi
+    open_project "$path"
+    exit 0
+    ;;
+  add)
+    shift
+    add_project "$@"
+    exit 0
+    ;;
+  remove)
+    shift
+    remove_project "$@"
+    exit 0
+    ;;
+  list)
+    list_projects
+    exit 0
+    ;;
+esac
+
+projects=$(collect_projects)
+
+if [ -z "$projects" ]; then
+  argvus_tr launcher error.no_projects >&2
+  exit 1
+fi
+
+# Each label starts with its position, which is the number SUPER + ALT + N uses.
+labels=$(printf '%s\n' "$projects" | awk '{ print NR "  " $0 }' | while IFS= read -r line; do
+  number=${line%%  *}
+  path=${line#*  }
+  printf '%s  %s  —  %s\n' "$number" "$(basename "$path")" "$path"
+done)
+
+PROMPT="$(argvus_tr launcher search.project)"
+
+selected=$(printf '%s\n' "$labels" | rofi -config "$ROFI_CONFIG" -dmenu -i -format i -p "$PROMPT") || exit 0
+
+path=$(printf '%s\n' "$projects" | sed -n "$((selected + 1))p")
+[ -n "$path" ] || exit 0
+
+open_project "$path"
