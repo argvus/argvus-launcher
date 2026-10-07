@@ -29,4 +29,6 @@ If no root or path exists, `SUPER + O` reports that no projects were found. An o
 
 The entries are read from the effective configuration; the launcher keeps no copy of them.
 
+Opening a project also records its path as the active project for the session, which the Dev Dashboard telemetry block (`argvus-widget-telemetry`) reads to report that project's git, listening ports and containers.
+
 The launcher configuration is packaged separately from the shell. `argvus-config` projects the Rofi themes, mode and configuration into `data/generated/rofi/`, so every theme change keeps the menus visually consistent; the launcher itself owns no theme output.

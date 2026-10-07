@@ -174,6 +174,16 @@ dispatch() {
   fi
 }
 
+# Records the most recently opened project so the Dev Dashboard telemetry
+# block (argvus-widget-telemetry) knows which project's git/ports/containers
+# to report. Session-scoped state, not configuration: it lives under
+# XDG_RUNTIME_DIR, not ARGVUS_STATE_HOME.
+write_active_project() {
+  active_project_file="${XDG_RUNTIME_DIR:-/tmp}/argvus/active-project"
+  mkdir -p "${active_project_file%/*}"
+  printf '%s\n' "$1" > "$active_project_file"
+}
+
 open_project() {
   path=$1
   workspace=$(workspace_name "$path")
@@ -185,6 +195,7 @@ open_project() {
   fi
 
   dispatch "hl.dsp.focus({ workspace = $selector })"
+  write_active_project "$path"
 
   if [ "$created" -eq 0 ]; then
     return 0

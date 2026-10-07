@@ -28,4 +28,6 @@ Se nenhuma raiz ou caminho existir, `SUPER + O` informa que nenhum projeto foi e
 
 As entradas são lidas da configuração efetiva; o launcher não mantém cópia delas.
 
+Abrir um projeto também registra o caminho dele como o projeto ativo da sessão, que o bloco de telemetria Dev Dashboard (`argvus-widget-telemetry`) lê para relatar o git, as portas em escuta e os containers desse projeto.
+
 `argvus-launcher` fornece a configuração Rofi e menus utilitários do ARGVUS. O `argvus-config` projeta os temas, o modo e a configuração do Rofi em `data/generated/rofi/`, então toda troca de tema mantém os menus visualmente consistentes; o launcher não é dono de nenhuma saída de tema.
