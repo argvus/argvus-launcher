@@ -111,7 +111,7 @@ Opening a project also records its path as the active project for the session, w
 
 Add a `Host` entry for each server to `~/.ssh/config`:
 
-```sshconfig
+```ini
 Host myhost
     HostName myhost.local
     User boss

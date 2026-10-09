@@ -112,7 +112,7 @@ Abrir um projeto também registra o caminho dele como o projeto ativo da sessão
 
 Adicione uma entrada `Host` para cada servidor em `~/.ssh/config`:
 
-```sshconfig
+```ini
 Host myhost
     HostName myhost.local
     User boss
