@@ -11,10 +11,14 @@ description: Launch applications and ARGVUS utility menus.
 
 For keyboard-only access, `SUPER + ALT + 1` to `SUPER + ALT + 9` open the project in that position of the list, without the menu. The positions are the numbers shown in the menu. They follow the list order, so adding or removing a project can change them. `argvus-projects open <number or directory name>` does the same from a terminal, and failures are shown as a notification.
 
+The effective project list is capped at 9, since that is all `SUPER + ALT + 1..9` can address. `argvus-projects add` (and the Control Center's Projects page, which calls it) refuses to add a project or root that would push the total past 9, and reports the error instead.
+
 A project comes from two places in the `projects` section of `argvus-config`:
 
 - `paths`: individual project directories.
-- `roots`: directories whose immediate subdirectories are projects. The default is `~/Projects`. A root that does not exist is ignored.
+- `roots`: directories whose immediate subdirectories are projects. A root that does not exist is ignored.
+
+No root or path is configured by default; add at least one before `SUPER + O` has anything to list.
 
 Manage them from a terminal:
 

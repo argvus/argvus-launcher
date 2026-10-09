@@ -10,6 +10,10 @@
 
 set -eu
 
+# SUPER + ALT + 1..9 only cover 9 slots, so the effective project list is
+# capped at this size.
+MAX_PROJECTS=9
+
 ARGVUS_CONFIG_BIN=${ARGVUS_CONFIG_BIN:-argvus-config}
 ARGVUS_SYSTEM_CONFIG=${ARGVUS_SYSTEM_CONFIG:-/usr/share/argvus}
 ARGVUS_BOOTSTRAP="${ARGVUS_BOOTSTRAP:-$ARGVUS_SYSTEM_CONFIG/session/sh/bootstrap.sh}"
@@ -86,6 +90,24 @@ collect_projects() {
   } | awk '!seen[$0]++'
 }
 
+# Counts the effective project total as if the given root were added too,
+# without writing any configuration. Used to enforce MAX_PROJECTS up front.
+count_with_extra_root() {
+  {
+    collect_projects
+    for directory in "$1"/*/; do
+      if [ -d "$directory" ]; then
+        printf '%s\n' "${directory%/}"
+      fi
+    done
+  } | awk '!seen[$0]++' | wc -l
+}
+
+# Counts the effective project total as if the given path were added too.
+count_with_extra_path() {
+  { collect_projects; printf '%s\n' "$1"; } | awk '!seen[$0]++' | wc -l
+}
+
 # Applies a jq filter to a configured array and writes the result back.
 # Usage: config_array_update POINTER FILTER [jq --arg options...]
 config_array_update() {
@@ -111,6 +133,15 @@ add_project() {
     exit 1
   }
   dir=$(normalize_dir "$1")
+  if [ "$pointer" = "/projects/roots" ]; then
+    new_total=$(count_with_extra_root "$dir")
+  else
+    new_total=$(count_with_extra_path "$dir")
+  fi
+  if [ "$new_total" -gt "$MAX_PROJECTS" ]; then
+    argvus_tr launcher error.project_limit_reached limit="$MAX_PROJECTS" >&2
+    exit 1
+  fi
   # shellcheck disable=SC2016 # $p is a jq variable, bound by --arg.
   config_array_update "$pointer" '(. // []) + [$p] | unique' --arg p "$dir"
   argvus_tr launcher message.added path="$dir"

@@ -10,10 +10,14 @@ slug: pt/0.4.0/docs/user-guide/applications/launcher
 
 Para acesso só pelo teclado, `SUPER + ALT + 1` a `SUPER + ALT + 9` abrem o projeto dessa posição da lista, sem o menu. As posições são os números mostrados no menu. Elas seguem a ordem da lista, então incluir ou remover um projeto pode mudá-las. `argvus-projects open <número ou nome do diretório>` faz o mesmo pelo terminal, e as falhas aparecem como notificação.
 
+A lista efetiva de projetos é limitada a 9, já que é só isso que `SUPER + ALT + 1..9` conseguem endereçar. `argvus-projects add` (e a página Projects do Control Center, que o chama) recusa adicionar um projeto ou raiz que levaria o total além de 9, e mostra o erro correspondente.
+
 Um projeto vem de dois lugares da seção `projects` do `argvus-config`:
 
 - `paths`: diretórios de projeto individuais.
-- `roots`: diretórios cujos subdiretórios imediatos são projetos. O padrão é `~/Projects`. Uma raiz que não existe é ignorada.
+- `roots`: diretórios cujos subdiretórios imediatos são projetos. Uma raiz que não existe é ignorada.
+
+Nenhuma raiz ou caminho vem configurado por padrão; adicione pelo menos um antes de o `SUPER + O` ter algo para listar.
 
 Gerencie a lista pelo terminal:
 
