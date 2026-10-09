@@ -46,14 +46,14 @@ The launcher configuration is packaged separately from the shell. `argvus-config
 Add a `Host` entry for each server to `~/.ssh/config`:
 
 ```sshconfig
-Host gitea
-    HostName gitea.local
+Host myhost
+    HostName myhost.local
     User boss
-    IdentityFile ~/.ssh/gitea_williamcanin
+    IdentityFile ~/.ssh/myhost
     IdentitiesOnly yes
 ```
 
-Confirm that `ssh gitea` works in a normal terminal first. The launcher only runs `ssh`; authentication, keys and host verification are handled by OpenSSH.
+Confirm that `ssh myhost` works in a normal terminal first. The launcher only runs `ssh`; authentication, keys and host verification are handled by OpenSSH.
 
 ### Use
 
@@ -76,7 +76,7 @@ When the session ends, the window stays open and shows the exit status, for exam
 
 ```sh
 argvus-ssh list          # prints the configured hosts, one per line
-argvus-ssh open gitea    # opens a specific host without the picker
+argvus-ssh open myhost    # opens a specific host without the picker
 ```
 
 ### Troubleshooting
