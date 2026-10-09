@@ -1,0 +1,165 @@
+#!/usr/bin/env sh
+# Snippet picker: insert a stored piece of text into the focused window.
+# Unlike the clipboard, the content is typed directly via wtype, so it lands
+# wherever the cursor is without an extra paste step.
+#
+# Usage:
+#   argvus-snippets                      pick a snippet (SUPER + ALT + N)
+#   argvus-snippets add "NAME" "CONTENT" add a snippet, or replace one with the same name
+#   argvus-snippets remove NAME          remove a snippet
+#   argvus-snippets list                 print index and name, one per line
+#   argvus-snippets open NAME|INDEX      type a specific snippet
+
+set -eu
+
+ARGVUS_CONFIG_BIN=${ARGVUS_CONFIG_BIN:-argvus-config}
+ARGVUS_SYSTEM_CONFIG=${ARGVUS_SYSTEM_CONFIG:-/usr/share/argvus}
+ARGVUS_BOOTSTRAP="${ARGVUS_BOOTSTRAP:-$ARGVUS_SYSTEM_CONFIG/session/sh/bootstrap.sh}"
+
+if [ -r "$ARGVUS_BOOTSTRAP" ]; then
+  # shellcheck disable=SC1090,SC1091
+  . "$ARGVUS_BOOTSTRAP"
+  ROFI_CONFIG="$(paths_config launcher/config/config.rasi)"
+else
+  if [ -r "$ARGVUS_SYSTEM_CONFIG/lib/i18n.sh" ]; then
+    # shellcheck disable=SC1090,SC1091
+    . "$ARGVUS_SYSTEM_CONFIG/lib/i18n.sh"
+  fi
+  ROFI_CONFIG="$ARGVUS_SYSTEM_CONFIG/launcher/config/config.rasi"
+fi
+
+# Reads the effective /snippets/items array, defaulting to an empty array.
+read_items() {
+  current=$("$ARGVUS_CONFIG_BIN" get /snippets/items --effective 2>/dev/null) || current=null
+  if [ -z "$current" ] || [ "$current" = "null" ]; then
+    current='[]'
+  fi
+  printf '%s' "$current"
+}
+
+write_items() {
+  "$ARGVUS_CONFIG_BIN" set /snippets/items "$1" >/dev/null
+}
+
+# Shows an error for a shortcut run, where stderr is not visible.
+report_error() {
+  message=$1
+  printf 'argvus-snippets: %s\n' "$message" >&2
+  if command -v notify-send >/dev/null 2>&1; then
+    notify-send -a argvus-snippets "$message" || true
+  fi
+}
+
+add_snippet() {
+  [ "$#" -eq 2 ] || {
+    argvus_tr launcher error.usage >&2
+    exit 1
+  }
+  name=$1
+  content=$2
+  # shellcheck disable=SC2016 # $n and $c are jq variables, bound by --arg.
+  updated=$(read_items | jq -c \
+    '(map(select(.name != $n))) + [{name: $n, content: $c}]' \
+    --arg n "$name" --arg c "$content")
+  write_items "$updated"
+  argvus_tr launcher message.snippet_added name="$name"
+}
+
+remove_snippet() {
+  [ "$#" -eq 1 ] || {
+    argvus_tr launcher error.usage >&2
+    exit 1
+  }
+  name=$1
+  # shellcheck disable=SC2016 # $n is a jq variable, bound by --arg.
+  updated=$(read_items | jq -c 'map(select(.name != $n))' --arg n "$name")
+  write_items "$updated"
+  argvus_tr launcher message.snippet_removed name="$name"
+}
+
+list_snippets() {
+  read_items | jq -r '.[] | .name' | awk '{ print NR "\t" $0 }'
+}
+
+# wtype creates a virtual keyboard, which Hyprland reports as a layout change.
+# Writing the suppression stamp keeps argvus-keyboard-layout (session) quiet
+# during the typing, the same way emoji-picker does.
+type_content() {
+  suppress_dir="${ARGVUS_CACHE_HOME:-${XDG_CACHE_HOME:-$HOME/.cache}/argvus}/hypr"
+  suppress_file="$suppress_dir/keyboard-layout-notify.suppress"
+  mkdir -p "$suppress_dir"
+  date +%s > "$suppress_file"
+  trap 'rm -f "$suppress_file"' EXIT HUP INT TERM
+  wtype -- "$1"
+  sleep 1
+}
+
+# Resolves a snippet by its 1-based position in the list or by its exact
+# name, and prints its content. Numbers always mean the position.
+resolve_content() {
+  items=$1
+  case "$2" in
+    '') return 1 ;;
+    *[!0-9]*)
+      printf '%s' "$items" | jq -r --arg n "$2" '.[] | select(.name == $n) | .content'
+      ;;
+    *)
+      printf '%s' "$items" | jq -r --argjson i "$2" '.[$i - 1].content // ""'
+      ;;
+  esac
+}
+
+case "${1:-}" in
+  open)
+    shift
+    [ "$#" -eq 1 ] || {
+      argvus_tr launcher error.usage >&2
+      exit 1
+    }
+    items=$(read_items)
+    if [ "$(printf '%s' "$items" | jq 'length')" -eq 0 ]; then
+      report_error "$(argvus_tr launcher error.no_snippets)"
+      exit 1
+    fi
+    content=$(resolve_content "$items" "$1")
+    if [ -z "$content" ]; then
+      report_error "$(argvus_tr launcher error.snippet_not_found name="$1")"
+      exit 1
+    fi
+    type_content "$content"
+    exit 0
+    ;;
+  add)
+    shift
+    add_snippet "$@"
+    exit 0
+    ;;
+  remove)
+    shift
+    remove_snippet "$@"
+    exit 0
+    ;;
+  list)
+    list_snippets
+    exit 0
+    ;;
+esac
+
+items=$(read_items)
+
+if [ "$(printf '%s' "$items" | jq 'length')" -eq 0 ]; then
+  report_error "$(argvus_tr launcher error.no_snippets)"
+  exit 1
+fi
+
+labels=$(printf '%s' "$items" | jq -r '.[] | .name')
+
+PROMPT="$(argvus_tr launcher search.snippet)"
+
+selected=$(printf '%s\n' "$labels" | rofi -config "$ROFI_CONFIG" -dmenu -i -p "$PROMPT") || exit 0
+[ -n "$selected" ] || exit 0
+
+content=$(resolve_content "$items" "$selected")
+[ -n "$content" ] || exit 0
+
+type_content "$content"

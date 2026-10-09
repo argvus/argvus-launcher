@@ -1,0 +1,154 @@
+#!/usr/bin/env sh
+# SSH picker: list the hosts configured in ~/.ssh/config and open one in an
+# ARGVUS terminal running ssh. Unlike argvus-projects, a session is short and
+# disposable, so it opens in the current workspace instead of a dedicated one.
+#
+# Usage:
+#   argvus-ssh            pick a host (SUPER + ALT + S)
+#   argvus-ssh open HOST  open a specific host
+#   argvus-ssh list       print the configured hosts
+
+set -eu
+
+ARGVUS_SYSTEM_CONFIG=${ARGVUS_SYSTEM_CONFIG:-/usr/share/argvus}
+ARGVUS_BOOTSTRAP="${ARGVUS_BOOTSTRAP:-$ARGVUS_SYSTEM_CONFIG/session/sh/bootstrap.sh}"
+
+if [ -r "$ARGVUS_BOOTSTRAP" ]; then
+  # shellcheck disable=SC1090,SC1091
+  . "$ARGVUS_BOOTSTRAP"
+  ROFI_CONFIG="$(paths_config launcher/config/config.rasi)"
+else
+  if [ -r "$ARGVUS_SYSTEM_CONFIG/lib/i18n.sh" ]; then
+    # shellcheck disable=SC1090,SC1091
+    . "$ARGVUS_SYSTEM_CONFIG/lib/i18n.sh"
+  fi
+  ROFI_CONFIG="$ARGVUS_SYSTEM_CONFIG/launcher/config/config.rasi"
+fi
+
+SSH_CONFIG="${ARGVUS_SSH_CONFIG:-$HOME/.ssh/config}"
+
+# Host aliases in ~/.ssh/config are plain shell-safe identifiers by
+# convention (letters, digits, dots, hyphens, underscores); list_hosts()
+# already excludes wildcard entries, which could contain "*"/"?". Rejecting
+# anything outside this set means the host never needs to be quoted at all
+# when building the dispatch command below, which sidesteps a real Hyprland
+# 0.56 quirk: embedding a literal single-quoted value inside the outer
+# double-quoted Lua string (the usual shell_quote + lua_string pairing used
+# elsewhere, such as argvus-projects) makes hyprctl report "unfinished
+# string", even though the Lua itself is well-formed.
+host_is_safe() {
+  case "$1" in
+    '') return 1 ;;
+    *[!A-Za-z0-9._-]*) return 1 ;;
+    *) return 0 ;;
+  esac
+}
+
+# Quotes a value as a Lua string literal.
+lua_string() {
+  printf '"%s"' "$(printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g')"
+}
+
+# Hyprland 0.56 evaluates dispatch arguments as Lua. A rejected dispatch exits
+# non-zero and prints the reason, so the reason is surfaced instead of dropped.
+dispatch() {
+  if ! output=$(hyprctl dispatch "$1" 2>&1); then
+    report_error "$output"
+    exit 1
+  fi
+}
+
+# Shows an error for a shortcut run, where stderr is not visible.
+report_error() {
+  message=$1
+  printf 'argvus-ssh: %s\n' "$message" >&2
+  if command -v notify-send >/dev/null 2>&1; then
+    notify-send -a argvus-ssh "$message" || true
+  fi
+}
+
+# Lists every Host entry in ~/.ssh/config, skipping wildcard patterns
+# (Host *, Host *.internal, ...), which are match blocks, not real targets.
+# Strips a trailing \r first: a CRLF config file would otherwise leave it
+# stuck to the last host on the line, breaking the exact-match lookup in
+# "open" below even though the printed name looks identical.
+list_hosts() {
+  [ -r "$SSH_CONFIG" ] || return 0
+  awk '
+    { sub(/\r$/, "") }
+    tolower($1) == "host" {
+      for (i = 2; i <= NF; i++) {
+        if ($i !~ /[*?]/) print $i
+      }
+    }
+  ' "$SSH_CONFIG" | awk '!seen[$0]++'
+}
+
+open_host() {
+  host=$1
+  if ! host_is_safe "$host"; then
+    report_error "$(argvus_tr launcher error.ssh_host_not_found name="$host")"
+    exit 1
+  fi
+  # No shell_quote() around $host: see host_is_safe() above for why. No "--"
+  # separator either: argvus-terminal's own flag loop already stops at the
+  # first argument it does not recognize ("ssh"), so the rest of "$@" reaches
+  # kitty unchanged without needing one.
+  dispatch "hl.dsp.exec_cmd($(lua_string "argvus-terminal --class argvus-ssh argvus-ssh run $host"))"
+}
+
+# Runs ssh inside the terminal and keeps the window open afterwards, so the
+# message of hosts without a shell (GitHub, GitLab, Gitea) stays readable.
+run_session() {
+  host=$1
+  host_is_safe "$host" || exit 1
+  status=0
+  ssh "$host" || status=$?
+  printf '\n%s\n' "$(argvus_tr launcher message.ssh_session_ended status="$status")"
+  read -r _ || true
+  exit "$status"
+}
+
+case "${1:-}" in
+  run)
+    shift
+    [ "$#" -eq 1 ] || exit 1
+    run_session "$1"
+    ;;
+  open)
+    shift
+    [ "$#" -eq 1 ] || {
+      argvus_tr launcher error.usage >&2
+      exit 1
+    }
+    hosts=$(list_hosts)
+    if [ -z "$hosts" ]; then
+      report_error "$(argvus_tr launcher error.no_ssh_hosts)"
+      exit 1
+    fi
+    if ! printf '%s\n' "$hosts" | grep -Fxq "$1"; then
+      report_error "$(argvus_tr launcher error.ssh_host_not_found name="$1")"
+      exit 1
+    fi
+    open_host "$1"
+    exit 0
+    ;;
+  list)
+    list_hosts
+    exit 0
+    ;;
+esac
+
+hosts=$(list_hosts)
+
+if [ -z "$hosts" ]; then
+  report_error "$(argvus_tr launcher error.no_ssh_hosts)"
+  exit 1
+fi
+
+PROMPT="$(argvus_tr launcher search.ssh)"
+
+selected=$(printf '%s\n' "$hosts" | rofi -config "$ROFI_CONFIG" -dmenu -i -p "$PROMPT") || exit 0
+[ -n "$selected" ] || exit 0
+
+open_host "$selected"
