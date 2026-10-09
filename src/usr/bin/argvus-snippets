@@ -110,6 +110,10 @@ resolve_content() {
 }
 
 case "${1:-}" in
+  -h|--help|help)
+    argvus_tr launcher help.snippets
+    exit 0
+    ;;
   open)
     shift
     [ "$#" -eq 1 ] || {

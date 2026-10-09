@@ -125,6 +125,7 @@ argvus-snippets list                   # prints index and name, one per line
 argvus-snippets open NAME              # types a snippet by name
 argvus-snippets open 2                 # types the snippet at position 2 of `list`
 argvus-snippets                        # opens the picker (same as the shortcut)
+argvus-snippets --help                 # shows the options and an example
 ```
 
 ### Rules

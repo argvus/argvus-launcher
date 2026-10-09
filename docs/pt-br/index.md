@@ -124,6 +124,7 @@ argvus-snippets list                   # mostra índice e nome, um por linha
 argvus-snippets open NOME              # digita um snippet pelo nome
 argvus-snippets open 2                 # digita o snippet na posição 2 de `list`
 argvus-snippets                        # abre o seletor (igual ao atalho)
+argvus-snippets --help                 # mostra as opções e um exemplo
 ```
 
 ### Regras
