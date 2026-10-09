@@ -182,9 +182,16 @@ workspace_name() {
   printf 'proj-%s\n' "$slug"
 }
 
-# Single-quotes a path for the shell that Hyprland uses to run exec commands.
+# Double-quotes a path for the shell that Hyprland uses to run exec commands.
+# Not single quotes: Hyprland 0.56 evaluates the exec_cmd() argument as Lua,
+# and a single-quoted value embedded inside that outer double-quoted Lua
+# string makes hyprctl report "unfinished string", even though the Lua
+# itself is well-formed (diagnosed in argvus-ssh, which hits the same
+# dispatch layer). Double quotes, escaped for the Lua layer by lua_string()
+# below, avoid that.
+# shellcheck disable=SC2016 # single-quoted sed expression, no shell expansion intended
 shell_quote() {
-  printf "'%s'" "$(printf '%s' "$1" | sed "s/'/'\\\\''/g")"
+  printf '"%s"' "$(printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g; s/\$/\\$/g; s/`/\\`/g')"
 }
 
 workspace_exists() {
