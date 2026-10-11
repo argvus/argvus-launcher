@@ -1,4 +1,4 @@
-/* theme: hackerman-float */
+/* theme: matrix-float */
 * {
     th-bg:            rgba(15, 15, 15, 88%);
     th-fg:            rgb(53, 144, 189);
