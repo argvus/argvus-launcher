@@ -9,6 +9,7 @@ slug: de/argvus-launcher/docs/pt-br/index.md
 - o lançador de aplicativos (`SUPER + D`);
 - a configuração e os temas do Rofi, compartilhados por todos os menus Rofi do ARGVUS;
 - o seletor de projetos, o seletor de hosts SSH e o seletor de snippets (`argvus projects`, `argvus ssh`, `argvus snippets`);
+- o gerenciador de chaves SSH (`argvus keys`), que cria, lista, carrega e apaga pares de chaves;
 - o seletor de emojis, o visualizador de cheatsheets e o menu da calculadora.
 
 Os atalhos são declarados pelo `argvus-hyprland`. Este pacote fornece os comandos e os menus por trás deles.
@@ -160,6 +161,44 @@ argvus ssh open myhost   # abre um host específico sem o seletor
 
 Requer `openssh` e `argvus-terminal`.
 
+## Chaves SSH (`argvus keys`)
+
+`argvus keys` gerencia os pares de chaves em `~/.ssh` e as chaves carregadas no ssh-agent. Não tem atalho. A página **Chaves SSH** do Control Center (Aplicativos) usa os mesmos comandos.
+
+```sh
+argvus keys                              # mostra as opções e um exemplo
+argvus keys list                         # um par por linha: nome, tipo, impressão digital, comentário, senha, carregada
+argvus keys generate NOME                # cria ~/.ssh/NOME em ed25519, sem senha
+argvus keys generate NOME --type rsa     # RSA de 4096 bits
+argvus keys generate NOME --comment C    # comentário: letras, dígitos e . _ @ + -
+argvus keys generate NOME --passphrase   # o ssh-keygen pede a senha em um terminal ARGVUS
+argvus keys load NOME                    # adiciona a chave ao agente; abre um terminal ARGVUS só se ela tiver senha
+argvus keys unload NOME                  # remove a chave do agente
+argvus keys unload-all                   # remove todas as chaves do agente
+argvus keys delete NOME                  # apaga os dois arquivos; recusado enquanto a chave estiver carregada
+```
+
+Regras que valem para todos os comandos:
+
+- O nome da chave vira nome de arquivo em `~/.ssh`, então só pode ter letras, dígitos, ponto, hífen e sublinhado. Não pode começar com ponto nem terminar em `.pub`. Um par existente nunca é sobrescrito.
+- Só são listados, carregados, descarregados ou apagados os pares que têm arquivo de chave pública (`NOME.pub`).
+- A senha nunca é passada como argumento de comando, gravada em log nem exibida no Control Center. `load` e `generate --passphrase` abrem um terminal ARGVUS, e o OpenSSH lê o segredo desse terminal.
+- `list` mostra `unknown` na coluna `carregada` quando o agente não pode ser alcançado. Ele nunca adivinha.
+- `delete` remove a chave privada de forma definitiva. Guarde uma cópia de qualquer chave que ainda seja necessária.
+- `ARGVUS_SSH_DIR` substitui `~/.ssh`, o que é útil para testes.
+
+O agente é o serviço de usuário `argvus-ssh-agent.service`, iniciado pelo `argvus-session`. Na sessão, `SSH_AUTH_SOCK` aponta para ele.
+
+Requer `openssh` (`ssh-keygen` e `ssh-add`) e `argvus-terminal`.
+
+| Sintoma | Causa e correção |
+| --- | --- |
+| `load` abre um terminal, mas a chave não é carregada | Digite a senha nesse terminal. Se ela não foi pedida, rode `ssh-add -l` para ver o que o agente tem. |
+| O terminal mostra `Could not open a connection to your authentication agent` | O Hyprland foi iniciado antes do agente, então os terminais dele não têm `SSH_AUTH_SOCK`. O launcher usa `$XDG_RUNTIME_DIR/ssh-agent.socket` como alternativa; atualize o `argvus-launcher` e abra um terminal novo. |
+| `list` mostra `unknown` na coluna `carregada` | O agente não está acessível. Verifique `systemctl --user status argvus-ssh-agent.service` e a variável `SSH_AUTH_SOCK`. |
+| `delete` informa que a chave está carregada | Rode antes `argvus keys unload NOME` e depois apague de novo. |
+| `generate` informa que o nome já existe | Escolha outro nome. Pares existentes nunca são substituídos. |
+
 ## Snippets (`SUPER + ALT + N`)
 
 `SUPER + ALT + N` abre um seletor com seus snippets. O snippet escolhido é digitado na janela em foco, na posição do cursor, em vez de passar pela área de transferência.
@@ -301,11 +340,11 @@ A configuração do launcher é compartilhada com componentes de outros pacotes:
 
 O pacote `argvus-launcher` é independente de arquitetura e instala:
 
-- `/usr/lib/argvus/commands/argvus-launcher`, `argvus-projects`, `argvus-snippets`, `argvus-ssh` e `argvus-git`, no mesmo diretório;
+- `/usr/lib/argvus/commands/argvus-launcher`, `argvus-projects`, `argvus-snippets`, `argvus-ssh`, `argvus-keys` e `argvus-git`, no mesmo diretório;
 - `/usr/share/argvus/launcher/config/`, com a configuração e os temas do Rofi;
 - `/usr/share/argvus/launcher/sh/`, com `cheatsheets.sh` e `emoji-picker.sh`.
 
-Dependências obrigatórias: `argvus-session`, `argvus-appearance`, `argvus-config`, `argvus-i18n`, `argvus-terminal`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard` e `wtype`. Dependências opcionais: `openssh`, para o seletor SSH; `lazygit` e `gitui`, para a TUI de git.
+Dependências obrigatórias: `argvus-session`, `argvus-appearance`, `argvus-config`, `argvus-i18n`, `argvus-terminal`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard` e `wtype`. Dependências opcionais: `openssh`, para o seletor SSH e o gerenciador de chaves; `lazygit` e `gitui`, para a TUI de git.
 
 A instalação do pacote não grava nada em `$HOME`. A configuração do usuário é criada no início da sessão, como descrito em [Configuração e temas do Rofi](#onde-fica-a-configuração-ativa).
 
@@ -330,7 +369,7 @@ A instalação do pacote não grava nada em `$HOME`. A configuração do usuári
 | `argvus-appearance` | Troca o tema, o accent e o layout ativos, e reescreve as referências de tema do Rofi. |
 | `argvus-config` | Guarda os projetos, os snippets e a preferência de lançador padrão. |
 | `argvus-session` | Copia a configuração inicial do Rofi e define a fonte no início da sessão. |
-| `argvus-terminal` | Abre as sessões SSH e os terminais dos projetos. |
+| `argvus-terminal` | Abre as sessões SSH, os terminais dos projetos e os pedidos de senha do `argvus keys`. |
 | `argvus-widget-telemetry` | Lê o projeto ativo gravado pelo `argvus projects`. |
 | `argvus-i18n` | Fornece as mensagens traduzidas usadas pelos scripts do launcher. |
 | `argvus-control-center` | Edita a lista de projetos por meio do `argvus projects`. |
