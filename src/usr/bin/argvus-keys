@@ -1,0 +1,357 @@
+#!/usr/bin/env sh
+# SSH key manager: generate, list, load and remove key pairs in ~/.ssh and
+# the ssh-agent. Passphrases never reach this script or any process argument:
+# when a step needs one, ssh-add or ssh-keygen runs interactively in an ARGVUS
+# terminal and reads it from the TTY.
+#
+# Usage:
+#   argvus-keys list                                  print keys as TSV
+#   argvus-keys generate NAME [--type ed25519|rsa] [--comment C] [--passphrase]
+#   argvus-keys load NAME                             add the key to the agent
+#   argvus-keys unload NAME                           remove the key from the agent
+#   argvus-keys unload-all                            remove every key from the agent
+#   argvus-keys delete NAME                           delete the key pair from disk
+
+set -eu
+
+ARGVUS_SYSTEM_CONFIG=${ARGVUS_SYSTEM_CONFIG:-/usr/share/argvus}
+ARGVUS_BOOTSTRAP="${ARGVUS_BOOTSTRAP:-$ARGVUS_SYSTEM_CONFIG/session/sh/bootstrap.sh}"
+
+if [ -r "$ARGVUS_BOOTSTRAP" ]; then
+  # shellcheck disable=SC1090,SC1091
+  . "$ARGVUS_BOOTSTRAP"
+else
+  if [ -r "$ARGVUS_SYSTEM_CONFIG/lib/i18n.sh" ]; then
+    # shellcheck disable=SC1090,SC1091
+    . "$ARGVUS_SYSTEM_CONFIG/lib/i18n.sh"
+  fi
+fi
+
+SSH_DIR="${ARGVUS_SSH_DIR:-$HOME/.ssh}"
+
+# The ARGVUS session exports SSH_AUTH_SOCK when argvus-ssh-agent.service starts,
+# but Hyprland keeps the environment it was started with. Terminals opened from
+# Hyprland therefore may lack the variable, so fall back to the socket path the
+# service uses (%t/ssh-agent.socket, where %t is XDG_RUNTIME_DIR).
+SSH_AUTH_SOCK="${SSH_AUTH_SOCK:-${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/ssh-agent.socket}"
+export SSH_AUTH_SOCK
+
+# Key names become file names under ~/.ssh, so only a conservative set is
+# accepted. A leading dot rules out "." and ".."; a ".pub" suffix would make
+# the public file of one key the name of another.
+valid_name() {
+  case "$1" in
+    ''|.*|*.pub|*[!A-Za-z0-9._-]*) return 1 ;;
+    *) return 0 ;;
+  esac
+}
+
+# Comments are written into the terminal command line for passphrase-protected
+# generation, so spaces and quotes are rejected rather than escaped.
+valid_comment() {
+  case "$1" in
+    ''|*[!A-Za-z0-9._@+-]*) return 1 ;;
+    *) return 0 ;;
+  esac
+}
+
+valid_type() {
+  case "$1" in
+    ed25519|rsa) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
+# Quotes a value as a Lua string literal.
+lua_string() {
+  printf '"%s"' "$(printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g')"
+}
+
+# Shows an error for a shortcut run, where stderr is not visible, then stops.
+report_error() {
+  message=$1
+  printf 'argvus-keys: %s\n' "$message" >&2
+  if command -v notify-send >/dev/null 2>&1; then
+    notify-send -a argvus-keys "$message" || true
+  fi
+  exit 1
+}
+
+usage() {
+  argvus_tr launcher error.keys_usage >&2
+  exit 1
+}
+
+# Runs an argvus-keys subcommand inside an ARGVUS terminal. Only the validated
+# names and types above are interpolated into the command, so no quoting is
+# needed beyond the Lua string itself.
+open_terminal() {
+  output=$(hyprctl dispatch "hl.dsp.exec_cmd($(lua_string "argvus terminal --class argvus-keys argvus keys $1"))" 2>&1) \
+    || report_error "$output"
+}
+
+# Pauses after an interactive step, so its result stays readable in the
+# terminal window.
+wait_for_enter() {
+  printf '\n%s\n' "$(argvus_tr launcher message.keys_session_ended)"
+  read -r _ || true
+}
+
+# Prints the fingerprints the agent holds, one per line. Exit status 1 means
+# the agent is reachable but empty, and 2 means it cannot be reached.
+agent_fingerprints() {
+  agent_output=$(ssh-add -l 2>/dev/null) || return $?
+  printf '%s\n' "$agent_output" | awk '{ print $2 }'
+}
+
+# Prints "type<TAB>fingerprint<TAB>comment" for a public key file, from
+# ssh-keygen -lf output such as: 256 SHA256:abc user@host (ED25519)
+key_info() {
+  ssh-keygen -lf "$1" 2>/dev/null | awk -F ' ' '
+    {
+      type = $NF
+      gsub(/[()]/, "", type)
+      comment = ""
+      for (i = 3; i < NF; i++) comment = comment (i > 3 ? " " : "") $i
+      printf "%s\t%s\t%s\n", tolower(type), $2, comment
+    }
+  '
+}
+
+list_keys() {
+  agent_status=0
+  agent_fps=$(agent_fingerprints) || agent_status=$?
+  for pub in "$SSH_DIR"/*.pub; do
+    [ -f "$pub" ] || continue
+    name=$(basename "$pub" .pub)
+    valid_name "$name" || continue
+    [ -f "$SSH_DIR/$name" ] || continue
+    info=$(key_info "$pub") || continue
+    if [ -z "$info" ]; then
+      continue
+    fi
+    fp=$(printf '%s' "$info" | awk -F '\t' '{ print $2 }')
+    if has_passphrase "$SSH_DIR/$name"; then
+      passphrase=yes
+    else
+      passphrase=no
+    fi
+    if [ "$agent_status" -eq 2 ]; then
+      loaded=unknown
+    elif printf '%s\n' "$agent_fps" | grep -Fxq "$fp"; then
+      loaded=yes
+    else
+      loaded=no
+    fi
+    printf '%s\t%s\t%s\t%s\n' "$name" "$info" "$passphrase" "$loaded"
+  done
+}
+
+# True when the private key cannot be read without a passphrase. The empty
+# passphrase is only a probe, never a secret, and stdin is closed so nothing
+# can prompt.
+has_passphrase() {
+  ! ssh-keygen -y -P '' -f "$1" >/dev/null 2>&1 </dev/null
+}
+
+# Interactive steps (passphrase prompt) run in a terminal. Otherwise the step
+# runs here, so a caller that already has a TTY is not sent to a new window.
+interactive_here() {
+  [ -t 0 ]
+}
+
+# Creates the pair. Without an explicit passphrase argument ssh-keygen would
+# prompt, so the caller passes "-N ''" for the non-interactive path.
+create_pair() {
+  name=$1
+  type=$2
+  comment=$3
+  shift 3
+  if [ "$type" = rsa ]; then
+    ssh-keygen -q -t rsa -b 4096 -f "$SSH_DIR/$name" -C "$comment" "$@"
+  else
+    ssh-keygen -q -t ed25519 -f "$SSH_DIR/$name" -C "$comment" "$@"
+  fi
+}
+
+prepare_dir() {
+  if [ ! -d "$SSH_DIR" ]; then
+    mkdir -p "$SSH_DIR"
+    chmod 700 "$SSH_DIR"
+  fi
+}
+
+generate_key() {
+  name=''
+  type=ed25519
+  comment=''
+  passphrase=0
+  while [ "$#" -gt 0 ]; do
+    case "$1" in
+      --type)
+        [ "$#" -ge 2 ] || usage
+        type=$2
+        shift 2
+        ;;
+      --comment)
+        [ "$#" -ge 2 ] || usage
+        comment=$2
+        shift 2
+        ;;
+      --passphrase)
+        passphrase=1
+        shift
+        ;;
+      -*)
+        usage
+        ;;
+      *)
+        [ -z "$name" ] || usage
+        name=$1
+        shift
+        ;;
+    esac
+  done
+  [ -n "$name" ] || usage
+  valid_name "$name" || report_error "$(argvus_tr launcher error.key_invalid_name name="$name")"
+  valid_type "$type" || report_error "$(argvus_tr launcher error.key_bad_type type="$type")"
+  [ -n "$comment" ] || comment=$name
+  valid_comment "$comment" || usage
+  if [ -e "$SSH_DIR/$name" ] || [ -e "$SSH_DIR/$name.pub" ]; then
+    report_error "$(argvus_tr launcher error.key_exists name="$name")"
+  fi
+
+  umask 077
+  prepare_dir
+  if [ "$passphrase" -eq 1 ]; then
+    if interactive_here; then
+      create_pair "$name" "$type" "$comment"
+    else
+      open_terminal "generate-run $name --type $type --comment $comment"
+    fi
+    return 0
+  fi
+  create_pair "$name" "$type" "$comment" -N ''
+  argvus_tr launcher message.key_generated name="$name"
+}
+
+# Runs inside the terminal for a passphrase-protected generation.
+generate_run() {
+  [ "$#" -eq 5 ] || usage
+  [ "$2" = --type ] || usage
+  [ "$4" = --comment ] || usage
+  name=$1
+  type=$3
+  comment=$5
+  valid_name "$name" || usage
+  valid_type "$type" || usage
+  valid_comment "$comment" || usage
+  umask 077
+  prepare_dir
+  status=0
+  create_pair "$name" "$type" "$comment" || status=$?
+  wait_for_enter
+  exit "$status"
+}
+
+key_file() {
+  valid_name "$1" || report_error "$(argvus_tr launcher error.key_invalid_name name="$1")"
+  [ -f "$SSH_DIR/$1" ] || report_error "$(argvus_tr launcher error.key_not_found name="$1")"
+}
+
+load_key() {
+  [ "$#" -eq 1 ] || usage
+  key_file "$1"
+  if ! has_passphrase "$SSH_DIR/$1"; then
+    # Nothing to type, so ssh-add runs here and no terminal is opened.
+    ssh-add "$SSH_DIR/$1" </dev/null
+  elif interactive_here; then
+    ssh-add "$SSH_DIR/$1"
+  else
+    open_terminal "load-run $1"
+  fi
+}
+
+# Runs inside the terminal, where ssh-add can ask for the passphrase.
+load_run() {
+  [ "$#" -eq 1 ] || usage
+  key_file "$1"
+  status=0
+  ssh-add "$SSH_DIR/$1" || status=$?
+  wait_for_enter
+  exit "$status"
+}
+
+unload_key() {
+  [ "$#" -eq 1 ] || usage
+  valid_name "$1" || report_error "$(argvus_tr launcher error.key_invalid_name name="$1")"
+  pub="$SSH_DIR/$1.pub"
+  [ -f "$pub" ] || report_error "$(argvus_tr launcher error.key_no_public name="$1")"
+  ssh-add -d "$pub" || exit 1
+  argvus_tr launcher message.key_unloaded name="$1"
+}
+
+unload_all() {
+  ssh-add -D || exit 1
+  argvus_tr launcher message.keys_unloaded_all
+}
+
+delete_key() {
+  [ "$#" -eq 1 ] || usage
+  key_file "$1"
+  pub="$SSH_DIR/$1.pub"
+  [ -f "$pub" ] || report_error "$(argvus_tr launcher error.key_no_public name="$1")"
+  fp=$(key_info "$pub" | awk -F '\t' '{ print $2 }')
+  [ -n "$fp" ] || report_error "$(argvus_tr launcher error.key_unreadable name="$1")"
+  if agent_fps=$(agent_fingerprints) && printf '%s\n' "$agent_fps" | grep -Fxq "$fp"; then
+    report_error "$(argvus_tr launcher error.key_in_use name="$1")"
+  fi
+  rm -f "$SSH_DIR/$1" "$pub"
+  argvus_tr launcher message.key_deleted name="$1"
+}
+
+case "${1:-}" in
+  ''|-h|--help|help)
+    argvus_tr launcher help.keys
+    exit 0
+    ;;
+  list)
+    list_keys
+    exit 0
+    ;;
+  generate)
+    shift
+    generate_key "$@"
+    exit 0
+    ;;
+  generate-run)
+    shift
+    generate_run "$@"
+    ;;
+  load)
+    shift
+    load_key "$@"
+    exit 0
+    ;;
+  load-run)
+    shift
+    load_run "$@"
+    ;;
+  unload)
+    shift
+    unload_key "$@"
+    exit 0
+    ;;
+  unload-all)
+    unload_all
+    exit 0
+    ;;
+  delete)
+    shift
+    delete_key "$@"
+    exit 0
+    ;;
+  *)
+    usage
+    ;;
+esac

@@ -23,7 +23,7 @@ depends=(
   'wtype'
 )
 optdepends=(
-  'openssh: argvus-ssh host picker'
+  'openssh: argvus-ssh host picker and argvus-keys (ssh-keygen, ssh-add)'
   'lazygit: git TUI for the active project (argvus-git)'
   'gitui: alternative git TUI for argvus-git'
 )
