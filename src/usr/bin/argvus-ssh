@@ -94,7 +94,7 @@ open_host() {
   # separator either: argvus-terminal's own flag loop already stops at the
   # first argument it does not recognize ("ssh"), so the rest of "$@" reaches
   # kitty unchanged without needing one.
-  dispatch "hl.dsp.exec_cmd($(lua_string "argvus-terminal --class argvus-ssh argvus-ssh run $host"))"
+  dispatch "hl.dsp.exec_cmd($(lua_string "argvus terminal --class argvus-ssh argvus ssh run $host"))"
 }
 
 # Runs ssh inside the terminal and keeps the window open afterwards, so the

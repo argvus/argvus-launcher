@@ -8,7 +8,7 @@ slug: de/argvus-launcher/docs/pt-br/index.md
 
 - o lançador de aplicativos (`SUPER + D`);
 - a configuração e os temas do Rofi, compartilhados por todos os menus Rofi do ARGVUS;
-- o seletor de projetos, o seletor de hosts SSH e o seletor de snippets (`argvus-projects`, `argvus-ssh`, `argvus-snippets`);
+- o seletor de projetos, o seletor de hosts SSH e o seletor de snippets (`argvus projects`, `argvus ssh`, `argvus snippets`);
 - o seletor de emojis, o visualizador de cheatsheets e o menu da calculadora.
 
 Os atalhos são declarados pelo `argvus-hyprland`. Este pacote fornece os comandos e os menus por trás deles.
@@ -17,11 +17,11 @@ Os atalhos são declarados pelo `argvus-hyprland`. Este pacote fornece os comand
 
 | Atalho | Ação | Comando | Seção |
 | --- | --- | --- | --- |
-| `SUPER + D` | Lançador de aplicativos | `argvus-launcher` | Lançador de aplicativos |
-| `SUPER + O` | Seletor de projetos | `argvus-projects` | Seletor de projetos |
-| `SUPER + ALT + 1` a `9` | Abre o projeto nessa posição | `argvus-projects open N` | Seletor de projetos |
-| `SUPER + ALT + S` | Seletor de hosts SSH | `argvus-ssh` | SSH |
-| `SUPER + ALT + N` | Seletor de snippets | `argvus-snippets` | Snippets |
+| `SUPER + D` | Lançador de aplicativos | `argvus launcher` | Lançador de aplicativos |
+| `SUPER + O` | Seletor de projetos | `argvus projects` | Seletor de projetos |
+| `SUPER + ALT + 1` a `9` | Abre o projeto nessa posição | `argvus projects open N` | Seletor de projetos |
+| `SUPER + ALT + S` | Seletor de hosts SSH | `argvus ssh` | SSH |
+| `SUPER + ALT + N` | Seletor de snippets | `argvus snippets` | Snippets |
 | `SUPER + .` | Seletor de emojis | `emoji-picker.sh` | Seletor de emojis |
 | `SUPER + C` | Calculadora | `rofi -show calc` | Calculadora |
 | `SUPER + SHIFT + /` | Cheatsheet do Hyprland | `cheatsheets.sh hypr` | Cheatsheets |
@@ -29,20 +29,20 @@ Os atalhos são declarados pelo `argvus-hyprland`. Este pacote fornece os comand
 
 ## Lançador de aplicativos (`SUPER + D`)
 
-`SUPER + D` executa `argvus-launcher`, que abre o Rofi no modo `drun`. Ele lista os aplicativos gráficos instalados com uma entrada de desktop, e o escolhido é iniciado ao pressionar `Enter`.
+`SUPER + D` executa `argvus launcher`, que abre o Rofi no modo `drun`. Ele lista os aplicativos gráficos instalados com uma entrada de desktop, e o escolhido é iniciado ao pressionar `Enter`.
 
 1. Pressione `SUPER + D`.
 2. Digite parte do nome do aplicativo. A lista é ordenada e o filtro ignora maiúsculas e minúsculas.
 3. Pressione `Enter` para iniciar o aplicativo, ou `Esc` para fechar o menu.
 
 ```sh
-argvus-launcher                  # abre o menu de aplicativos
-argvus-launcher --config CAMINHO # usa outro arquivo de configuração do Rofi
+argvus launcher                  # abre o menu de aplicativos
+argvus launcher --config CAMINHO # usa outro arquivo de configuração do Rofi
 ```
 
 Qualquer outro argumento é repassado ao `rofi`. `--config` sem valor termina com erro.
 
-O Hyprland executa `argvus-launcher --config <configuração Rofi>` quando o lançador padrão é `rofi`, que é o padrão. Se o `launcher` nos aplicativos padrão for outro programa, o Hyprland executa `<programa> --show drun`. Defina essa preferência nos aplicativos padrão do Control Center, que a grava no `argvus-config`.
+O Hyprland executa `argvus launcher --config <configuração Rofi>` quando o lançador padrão é `rofi`, que é o padrão. Se o `launcher` nos aplicativos padrão for outro programa, o Hyprland executa `<programa> --show drun`. Defina essa preferência nos aplicativos padrão do Control Center, que a grava no `argvus-config`.
 
 Só aparecem na lista os aplicativos com uma entrada de desktop. Um aplicativo que não instala arquivo `.desktop` não é encontrado aqui.
 
@@ -76,11 +76,11 @@ Não edite os arquivos em `/usr/share/argvus/launcher/`: eles são substituídos
 
 ## Seletor de projetos (`SUPER + O`)
 
-`argvus-projects` (`SUPER + O`) lista os projetos que você adicionou e abre o escolhido em um workspace próprio do Hyprland, com um `argvus-terminal` no diretório dele. Se o workspace do projeto já existir, o seletor apenas o foca.
+`argvus projects` (`SUPER + O`) lista os projetos que você adicionou e abre o escolhido em um workspace próprio do Hyprland, com um `argvus terminal` no diretório dele. Se o workspace do projeto já existir, o seletor apenas o foca.
 
-Para acesso só pelo teclado, `SUPER + ALT + 1` a `SUPER + ALT + 9` abrem o projeto dessa posição da lista, sem o menu. As posições são os números mostrados no menu. Elas seguem a ordem da lista, então incluir ou remover um projeto pode mudá-las. `argvus-projects open <número ou nome do diretório>` faz o mesmo pelo terminal, e as falhas aparecem como notificação.
+Para acesso só pelo teclado, `SUPER + ALT + 1` a `SUPER + ALT + 9` abrem o projeto dessa posição da lista, sem o menu. As posições são os números mostrados no menu. Elas seguem a ordem da lista, então incluir ou remover um projeto pode mudá-las. `argvus projects open <número ou nome do diretório>` faz o mesmo pelo terminal, e as falhas aparecem como notificação.
 
-A lista efetiva de projetos é limitada a 9, já que é só isso que `SUPER + ALT + 1..9` conseguem endereçar. `argvus-projects add` (e a página Projects do Control Center, que o chama) recusa adicionar um projeto ou raiz que levaria o total além de 9, e mostra o erro correspondente.
+A lista efetiva de projetos é limitada a 9, já que é só isso que `SUPER + ALT + 1..9` conseguem endereçar. `argvus projects add` (e a página Projects do Control Center, que o chama) recusa adicionar um projeto ou raiz que levaria o total além de 9, e mostra o erro correspondente.
 
 Um projeto vem de dois lugares da seção `projects` do `argvus-config`:
 
@@ -92,10 +92,10 @@ Nenhuma raiz ou caminho vem configurado por padrão; adicione pelo menos um ante
 Gerencie a lista pelo terminal:
 
 ```sh
-argvus-projects add ~/Work/api          # um projeto
-argvus-projects add --root ~/Clientes   # todos os subdiretórios de ~/Clientes
-argvus-projects remove ~/Work/api       # remove de paths e roots
-argvus-projects list                    # mostra as raízes e os caminhos
+argvus projects add ~/Work/api          # um projeto
+argvus projects add --root ~/Clientes   # todos os subdiretórios de ~/Clientes
+argvus projects remove ~/Work/api       # remove de paths e roots
+argvus projects list                    # mostra as raízes e os caminhos
 ```
 
 Se nenhuma raiz ou caminho existir, `SUPER + O` informa que nenhum projeto foi encontrado. Um editor opcional, `/projects/editor`, é iniciado no mesmo workspace quando ele é criado.
@@ -142,15 +142,15 @@ Quando a sessão termina, a janela continua aberta e mostra o status de saída, 
 ### Comandos
 
 ```sh
-argvus-ssh list          # mostra os hosts configurados, um por linha
-argvus-ssh open myhost   # abre um host específico sem o seletor
+argvus ssh list          # mostra os hosts configurados, um por linha
+argvus ssh open myhost   # abre um host específico sem o seletor
 ```
 
 ### Solução de problemas
 
 | Sintoma | Causa e solução |
 | --- | --- |
-| Notificação "nenhum host encontrado em ~/.ssh/config" | O arquivo não existe ou não tem linhas `Host`. Rode `argvus-ssh list` para verificar. |
+| Notificação "nenhum host encontrado em ~/.ssh/config" | O arquivo não existe ou não tem linhas `Host`. Rode `argvus ssh list` para verificar. |
 | Um host não aparece no seletor | Ele é um wildcard, vem de um arquivo `Include` ou tem caracteres fora do conjunto permitido. Coloque-o no arquivo principal com um alias simples. |
 | A janela mostra um status de erro logo de início | Rode `ssh <host>` em um terminal comum para ver a mensagem completa (host inacessível, chave errada etc.). |
 | A janela mostra `message.ssh_session_ended` em vez de texto | O catálogo do `argvus-i18n` instalado é mais antigo que esta versão. Reinstale o `argvus-i18n`. |
@@ -166,16 +166,16 @@ Requer `openssh` e `argvus-terminal`.
 Adicione um snippet com um nome e o texto dele:
 
 ```sh
-argvus-snippets add "email" "voce@example.com"
+argvus snippets add "email" "voce@example.com"
 ```
 
 Confira se ele foi gravado:
 
 ```sh
-argvus-snippets list
+argvus snippets list
 ```
 
-Os snippets ficam na seção `snippets` do `argvus-config`, como entradas `{name, content}`. Você pode lê-los com `argvus-config get /snippets/items`.
+Os snippets ficam na seção `snippets` do `argvus config`, como entradas `{name, content}`. Você pode lê-los com `argvus config get /snippets/items`.
 
 ### Uso
 
@@ -186,13 +186,13 @@ Os snippets ficam na seção `snippets` do `argvus-config`, como entradas `{name
 ### Comandos
 
 ```sh
-argvus-snippets add "NOME" "CONTEÚDO"  # adiciona um snippet, ou substitui o de mesmo nome
-argvus-snippets remove NOME            # remove um snippet
-argvus-snippets list                   # mostra índice e nome, um por linha
-argvus-snippets open NOME              # digita um snippet pelo nome
-argvus-snippets open 2                 # digita o snippet na posição 2 de `list`
-argvus-snippets                        # abre o seletor (igual ao atalho)
-argvus-snippets --help                 # mostra as opções e um exemplo
+argvus snippets add "NOME" "CONTEÚDO"  # adiciona um snippet, ou substitui o de mesmo nome
+argvus snippets remove NOME            # remove um snippet
+argvus snippets list                   # mostra índice e nome, um por linha
+argvus snippets open NOME              # digita um snippet pelo nome
+argvus snippets open 2                 # digita o snippet na posição 2 de `list`
+argvus snippets                        # abre o seletor (igual ao atalho)
+argvus snippets --help                 # mostra as opções e um exemplo
 ```
 
 ### Regras
@@ -206,8 +206,8 @@ argvus-snippets --help                 # mostra as opções e um exemplo
 
 | Sintoma | Causa e solução |
 | --- | --- |
-| Notificação "nenhum snippet" ao pressionar o atalho | Nenhum snippet foi adicionado ainda. Rode `argvus-snippets add` primeiro. |
-| `open` informa que o snippet não foi encontrado | O nome não confere exatamente. Compare com `argvus-snippets list`. |
+| Notificação "nenhum snippet" ao pressionar o atalho | Nenhum snippet foi adicionado ainda. Rode `argvus snippets add` primeiro. |
+| `open` informa que o snippet não foi encontrado | O nome não confere exatamente. Compare com `argvus snippets list`. |
 | Nada aparece no aplicativo | A janela em foco não é um campo de texto, ou é um aplicativo X11 rodando sob XWayland, que pode ignorar esse tipo de entrada. Teste com um aplicativo Wayland nativo. |
 
 Requer `wtype`, `rofi`, `jq` e `argvus-config`.
@@ -239,7 +239,7 @@ cheatsheets.sh <nome>   # qualquer outro aplicativo com cheatsheet
 ```
 
 - `hypr` usa `data/generated/hypr/keybindings.txt` da configuração ARGVUS do usuário quando esse arquivo existe. Caso contrário, usa o cheatsheet do Hyprland distribuído com o `argvus-hyprland`.
-- `kitty` usa o cheatsheet do terminal distribuído com o `argvus-terminal`.
+- `kitty` usa o cheatsheet do terminal distribuído com o `argvus terminal`.
 - Qualquer outro nome lê `<nome>/docs/cheatsheets/<idioma>.txt`. Se esse arquivo não existir, nenhuma janela é aberta.
 
 O idioma é português quando o locale do sistema é `pt-BR`, e inglês nos demais casos. `Esc` fecha a janela. Selecionar uma linha apenas fecha a janela; nada é executado.
@@ -256,7 +256,7 @@ A configuração do launcher é compartilhada com componentes de outros pacotes:
 
 O pacote `argvus-launcher` é independente de arquitetura e instala:
 
-- `/usr/bin/argvus-launcher`, `/usr/bin/argvus-projects`, `/usr/bin/argvus-snippets` e `/usr/bin/argvus-ssh`;
+- `/usr/lib/argvus/commands/argvus-launcher`, `/usr/lib/argvus/commands/argvus-projects`, `/usr/lib/argvus/commands/argvus-snippets` e `/usr/lib/argvus/commands/argvus-ssh`;
 - `/usr/share/argvus/launcher/config/`, com a configuração e os temas do Rofi;
 - `/usr/share/argvus/launcher/sh/`, com `cheatsheets.sh` e `emoji-picker.sh`.
 
@@ -268,11 +268,11 @@ A instalação do pacote não grava nada em `$HOME`. A configuração do usuári
 
 | Sintoma | Causa e solução |
 | --- | --- |
-| `SUPER + D` não abre nada | Rode `argvus-launcher` em um terminal. Confirme que o `rofi` está instalado e que a configuração Rofi existe. |
+| `SUPER + D` não abre nada | Rode `argvus launcher` em um terminal. Confirme que o `rofi` está instalado e que a configuração Rofi existe. |
 | `SUPER + D` não lista aplicativos | Os aplicativos não têm entrada de desktop. Só aparecem aplicativos com um arquivo `.desktop`. |
 | Os menus usam uma fonte antiga | A linha `font:` é reescrita no início da sessão. Reinicie a sessão depois de mudar a fonte. |
 | Uma troca de tema não chega aos menus Rofi | Verifique se a cópia do usuário do `config.rasi`, em `$XDG_CONFIG_HOME/argvus/data/rofi/`, ainda aponta para o tema empacotado. Aplique o tema de novo pelo `argvus-appearance`. |
-| `SUPER + O` informa que nenhum projeto foi encontrado | Nenhuma raiz ou caminho está configurado, ou os diretórios não existem mais. Rode `argvus-projects list`. |
+| `SUPER + O` informa que nenhum projeto foi encontrado | Nenhuma raiz ou caminho está configurado, ou os diretórios não existem mais. Rode `argvus projects list`. |
 | `SUPER + C` ou o seletor de emojis não abre | Instale `rofi-calc` ou `rofimoji` (ambos são dependências obrigatórias). |
 | Um cheatsheet não abre | O arquivo desse nome e idioma não existe. Confira os caminhos descritos na seção Cheatsheets. |
 | `SUPER + H` não mostra nada | O histórico está vazio, ou o gravador da área de transferência do `argvus-session` ainda não guardou nada. |
@@ -286,6 +286,6 @@ A instalação do pacote não grava nada em `$HOME`. A configuração do usuári
 | `argvus-config` | Guarda os projetos, os snippets e a preferência de lançador padrão. |
 | `argvus-session` | Copia a configuração inicial do Rofi e define a fonte no início da sessão. |
 | `argvus-terminal` | Abre as sessões SSH e os terminais dos projetos. |
-| `argvus-widget-telemetry` | Lê o projeto ativo gravado pelo `argvus-projects`. |
+| `argvus-widget-telemetry` | Lê o projeto ativo gravado pelo `argvus projects`. |
 | `argvus-i18n` | Fornece as mensagens traduzidas usadas pelos scripts do launcher. |
-| `argvus-control-center` | Edita a lista de projetos por meio do `argvus-projects`. |
+| `argvus-control-center` | Edita a lista de projetos por meio do `argvus projects`. |

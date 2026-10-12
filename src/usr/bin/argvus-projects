@@ -239,7 +239,7 @@ open_project() {
     return 0
   fi
 
-  dispatch "hl.dsp.exec_cmd($(lua_string "argvus-terminal --directory $(shell_quote "$path")"))"
+  dispatch "hl.dsp.exec_cmd($(lua_string "argvus terminal --directory $(shell_quote "$path")"))"
 
   editor=$(config_get /projects/editor)
   if [ -n "$editor" ] && [ "$editor" != "null" ]; then
