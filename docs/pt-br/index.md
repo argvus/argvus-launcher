@@ -22,6 +22,7 @@ Os atalhos são declarados pelo `argvus-hyprland`. Este pacote fornece os comand
 | `SUPER + ALT + 1` a `9` | Abre o projeto nessa posição | `argvus projects open N` | Seletor de projetos |
 | `SUPER + ALT + S` | Seletor de hosts SSH | `argvus ssh` | SSH |
 | `SUPER + ALT + N` | Seletor de snippets | `argvus snippets` | Snippets |
+| `SUPER + ALT + G` | Seletor de projetos, depois a TUI de git | `argvus git` | Git |
 | `SUPER + .` | Seletor de emojis | `emoji-picker.sh` | Seletor de emojis |
 | `SUPER + C` | Calculadora | `rofi -show calc` | Calculadora |
 | `SUPER + SHIFT + /` | Cheatsheet do Hyprland | `cheatsheets.sh hypr` | Cheatsheets |
@@ -97,6 +98,8 @@ argvus projects add --root ~/Clientes   # todos os subdiretórios de ~/Clientes
 argvus projects remove ~/Work/api       # remove de paths e roots
 argvus projects list                    # mostra as raízes e os caminhos
 ```
+
+`argvus projects pick` mostra a mesma lista e imprime o caminho escolhido em vez de abri-lo. Outras ferramentas podem usá-lo, como o `argvus git` faz. Cancelar não imprime nada.
 
 Se nenhuma raiz ou caminho existir, `SUPER + O` informa que nenhum projeto foi encontrado. Um editor opcional, `/projects/editor`, é iniciado no mesmo workspace quando ele é criado.
 
@@ -214,6 +217,48 @@ Requer `wtype`, `rofi`, `jq` e `argvus-config`.
 
 O `wtype` simula pressionamentos de tecla no nível de entrada do Wayland. Alguns aplicativos X11 rodando sob XWayland ignoram esses eventos, então o texto pode não aparecer neles mesmo com o snippet encontrado.
 
+## Git (`SUPER + ALT + G`)
+
+`SUPER + ALT + G` abre o mesmo seletor de projetos do `SUPER + O`. Ao escolher um projeto, o `lazygit` (ou o `gitui`) abre direto nele, em um novo terminal ARGVUS no workspace atual. Não há uma etapa separada para escolher o projeto antes.
+
+### Configuração
+
+Instale uma das duas ferramentas. As duas são dependências opcionais deste pacote:
+
+```sh
+sudo pacman -S lazygit   # ou: sudo pacman -S gitui
+```
+
+### Uso
+
+1. Pressione `SUPER + ALT + G`.
+2. Escolha um projeto na lista, ou pressione `Esc` para cancelar. Cancelar não abre nada.
+3. O terminal abre no diretório do projeto e inicia a TUI.
+
+Um projeto que não é repositório git mostra uma notificação e não abre nada. Para pular o seletor, passe um diretório:
+
+```sh
+argvus git ~/Projects/api
+```
+
+### Escolha da ferramenta
+
+O `argvus-git` usa o `lazygit` quando ele está instalado, e o `gitui` caso contrário. Para preferir o `gitui`, defina `ARGVUS_GIT_TUI` no comando:
+
+```sh
+ARGVUS_GIT_TUI=gitui argvus git
+```
+
+A variável é lida do ambiente do comando que executa o script. Ela não é gravada na configuração do ARGVUS.
+
+### Solução de problemas
+
+| Sintoma | Causa e solução |
+| --- | --- |
+| Notificação "não é um repositório git" | O projeto escolhido não é um repositório git, ou o diretório foi movido. Remova-o ou corrija-o com `argvus projects remove`. |
+| Notificação "instale o lazygit ou o gitui" | Nenhuma das duas ferramentas está no `PATH`. Instale uma delas. |
+| O seletor não mostra projetos | Nenhum projeto foi adicionado. Use `argvus projects add`. |
+
 ## Seletor de emojis (`SUPER + .`)
 
 `SUPER + .` abre o `rofimoji` com a configuração Rofi do ARGVUS. Procure um emoji pelo nome, pressione `Enter`, e o emoji é copiado para a área de transferência. Cole-o com `Ctrl + V` no aplicativo desejado.
@@ -256,11 +301,11 @@ A configuração do launcher é compartilhada com componentes de outros pacotes:
 
 O pacote `argvus-launcher` é independente de arquitetura e instala:
 
-- `/usr/lib/argvus/commands/argvus-launcher`, `/usr/lib/argvus/commands/argvus-projects`, `/usr/lib/argvus/commands/argvus-snippets` e `/usr/lib/argvus/commands/argvus-ssh`;
+- `/usr/lib/argvus/commands/argvus-launcher`, `argvus-projects`, `argvus-snippets`, `argvus-ssh` e `argvus-git`, no mesmo diretório;
 - `/usr/share/argvus/launcher/config/`, com a configuração e os temas do Rofi;
 - `/usr/share/argvus/launcher/sh/`, com `cheatsheets.sh` e `emoji-picker.sh`.
 
-Dependências obrigatórias: `argvus-session`, `argvus-appearance`, `argvus-config`, `argvus-i18n`, `argvus-terminal`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard` e `wtype`. Dependência opcional: `openssh`, para o seletor SSH.
+Dependências obrigatórias: `argvus-session`, `argvus-appearance`, `argvus-config`, `argvus-i18n`, `argvus-terminal`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard` e `wtype`. Dependências opcionais: `openssh`, para o seletor SSH; `lazygit` e `gitui`, para a TUI de git.
 
 A instalação do pacote não grava nada em `$HOME`. A configuração do usuário é criada no início da sessão, como descrito em [Configuração e temas do Rofi](#onde-fica-a-configuração-ativa).
 

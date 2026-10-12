@@ -1,0 +1,93 @@
+#!/usr/bin/env sh
+# Git TUI for a project: pick one with the argvus-projects list, then open
+# lazygit (or gitui) in an ARGVUS terminal inside it. Opens in the current
+# workspace, like argvus-ssh, because it is a short-lived view.
+#
+# Usage:
+#   argvus-git            pick a project, then open the git TUI in it (SUPER + ALT + G)
+#   argvus-git DIR        open the git TUI in DIR
+#   argvus-git -h         show the help
+#
+# ARGVUS_GIT_TUI selects the program (for example "gitui"); otherwise lazygit
+# is used when installed, then gitui.
+
+set -eu
+
+ARGVUS_SYSTEM_CONFIG=${ARGVUS_SYSTEM_CONFIG:-/usr/share/argvus}
+ARGVUS_BOOTSTRAP="${ARGVUS_BOOTSTRAP:-$ARGVUS_SYSTEM_CONFIG/session/sh/bootstrap.sh}"
+
+if [ -r "$ARGVUS_BOOTSTRAP" ]; then
+  # shellcheck disable=SC1090,SC1091
+  . "$ARGVUS_BOOTSTRAP"
+else
+  if [ -r "$ARGVUS_SYSTEM_CONFIG/lib/i18n.sh" ]; then
+    # shellcheck disable=SC1090,SC1091
+    . "$ARGVUS_SYSTEM_CONFIG/lib/i18n.sh"
+  fi
+fi
+
+# Shows an error for a shortcut run, where stderr is not visible.
+report_error() {
+  message=$1
+  printf 'argvus-git: %s\n' "$message" >&2
+  if command -v notify-send >/dev/null 2>&1; then
+    notify-send -a argvus-git "$message" || true
+  fi
+}
+
+# Chooses the TUI: an explicit ARGVUS_GIT_TUI wins, then lazygit, then gitui.
+# Prints nothing when none is installed.
+select_tui() {
+  if [ -n "${ARGVUS_GIT_TUI:-}" ]; then
+    if command -v "$ARGVUS_GIT_TUI" >/dev/null 2>&1; then
+      printf '%s\n' "$ARGVUS_GIT_TUI"
+    fi
+    return 0
+  fi
+  for candidate in lazygit gitui; do
+    if command -v "$candidate" >/dev/null 2>&1; then
+      printf '%s\n' "$candidate"
+      return 0
+    fi
+  done
+}
+
+case "${1:-}" in
+  -h|--help|help)
+    argvus_tr launcher help.git
+    exit 0
+    ;;
+esac
+
+if [ "$#" -gt 1 ]; then
+  argvus_tr launcher error.usage >&2
+  exit 1
+fi
+
+if [ "$#" -eq 1 ]; then
+  dir=$1
+else
+  # The picker reports its own errors; an empty result means it was cancelled.
+  dir=$(argvus projects pick "$(argvus_tr launcher search.git_project)") || exit 1
+  [ -n "$dir" ] || exit 0
+fi
+
+if [ ! -d "$dir" ] || ! git -C "$dir" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  report_error "$(argvus_tr launcher error.not_git_repository path="$dir")"
+  exit 1
+fi
+
+tool="$(select_tui)"
+if [ -z "$tool" ]; then
+  report_error "$(argvus_tr launcher error.no_git_tui)"
+  exit 1
+fi
+
+# Passing the directory and the tool as arguments keeps paths with spaces and
+# quotes out of any shell string, so no quoting layer is needed.
+# shellcheck disable=SC2016 # $1 and $2 belong to the inner sh, not this script.
+exec argvus tui-terminal \
+  --class argvus-git \
+  --term kitty \
+  --profile control-center \
+  -- sh -c 'cd -- "$1" && exec "$2"' sh "$dir" "$tool"

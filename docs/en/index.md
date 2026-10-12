@@ -21,6 +21,7 @@ The shortcuts are declared by `argvus-hyprland`. This package provides the comma
 | `SUPER + ALT + 1` to `9` | Open the project in that position | `argvus projects open N` | Project switcher |
 | `SUPER + ALT + S` | SSH host picker | `argvus ssh` | SSH |
 | `SUPER + ALT + N` | Snippet picker | `argvus snippets` | Snippets |
+| `SUPER + ALT + G` | Project picker, then git TUI | `argvus git` | Git |
 | `SUPER + .` | Emoji picker | `emoji-picker.sh` | Emoji picker |
 | `SUPER + C` | Calculator | `rofi -show calc` | Calculator |
 | `SUPER + SHIFT + /` | Hyprland cheatsheet | `cheatsheets.sh hypr` | Cheatsheets |
@@ -96,6 +97,8 @@ argvus projects add --root ~/Clients    # every subdirectory of ~/Clients
 argvus projects remove ~/Work/api       # removes it from paths and roots
 argvus projects list                    # prints the roots and paths
 ```
+
+`argvus projects pick` shows the same list and prints the chosen path instead of opening it. Other tools can use it, as `argvus git` does. Cancelling prints nothing.
 
 If no root or path exists, `SUPER + O` reports that no projects were found. An optional editor command, `/projects/editor`, starts in the same workspace when the workspace is created.
 
@@ -213,6 +216,48 @@ Requires `wtype`, `rofi`, `jq` and `argvus-config`.
 
 `wtype` simulates key presses at the Wayland input level. Some X11 applications running under XWayland ignore these events, so the text may not appear there even though the snippet was found.
 
+## Git (`SUPER + ALT + G`)
+
+`SUPER + ALT + G` opens the same project picker as `SUPER + O`. Choosing a project opens `lazygit` (or `gitui`) directly in it, in a new ARGVUS terminal on the current workspace. There is no separate step to pick the project first.
+
+### Setup
+
+Install one of the two tools. Both are optional dependencies of this package:
+
+```sh
+sudo pacman -S lazygit   # or: sudo pacman -S gitui
+```
+
+### Use
+
+1. Press `SUPER + ALT + G`.
+2. Pick a project in the list, or press `Esc` to cancel. Cancelling opens nothing.
+3. The terminal opens in the project directory and starts the TUI.
+
+A project that is not a git repository shows a notification and opens nothing. To skip the picker, pass a directory:
+
+```sh
+argvus git ~/Projects/api
+```
+
+### Choosing the tool
+
+`argvus-git` uses `lazygit` when it is installed, and `gitui` otherwise. To prefer `gitui`, set `ARGVUS_GIT_TUI` for the command:
+
+```sh
+ARGVUS_GIT_TUI=gitui argvus git
+```
+
+The variable is read from the environment of the command that runs the script. It is not stored in ARGVUS configuration.
+
+### Troubleshooting
+
+| Symptom | Cause and fix |
+| --- | --- |
+| Notification "not a git repository" | The chosen project is not a git repository, or its directory was moved. Remove or fix it with `argvus projects remove`. |
+| Notification "install lazygit or gitui" | Neither tool is on the `PATH`. Install one of them. |
+| Picker shows no projects | No project was added. Use `argvus projects add`. |
+
 ## Emoji picker (`SUPER + .`)
 
 `SUPER + .` opens `rofimoji` with the ARGVUS Rofi configuration. Search for an emoji by name, press `Enter`, and the emoji is copied to the clipboard. Paste it with `Ctrl + V` in the application you want.
@@ -255,11 +300,11 @@ The launcher configuration is shared with components owned by other packages:
 
 The package `argvus-launcher` is architecture-independent and installs:
 
-- `/usr/lib/argvus/commands/argvus-launcher`, `/usr/lib/argvus/commands/argvus-projects`, `/usr/lib/argvus/commands/argvus-snippets` and `/usr/lib/argvus/commands/argvus-ssh`;
+- `/usr/lib/argvus/commands/argvus-launcher`, `argvus-projects`, `argvus-snippets`, `argvus-ssh` and `argvus-git`, under the same directory;
 - `/usr/share/argvus/launcher/config/`, with the Rofi configuration and themes;
 - `/usr/share/argvus/launcher/sh/`, with `cheatsheets.sh` and `emoji-picker.sh`.
 
-Required dependencies: `argvus-session`, `argvus-appearance`, `argvus-config`, `argvus-i18n`, `argvus-terminal`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard` and `wtype`. Optional dependency: `openssh`, for the SSH picker.
+Required dependencies: `argvus-session`, `argvus-appearance`, `argvus-config`, `argvus-i18n`, `argvus-terminal`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard` and `wtype`. Optional dependencies: `openssh`, for the SSH picker; `lazygit` and `gitui`, for the git TUI.
 
 Installing the package does not write into `$HOME`. User configuration is created at session start, as described in [Rofi configuration and themes](#where-the-active-configuration-lives).
 
