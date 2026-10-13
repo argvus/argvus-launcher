@@ -24,6 +24,8 @@ depends=(
 )
 optdepends=(
   'openssh: argvus-ssh host picker and argvus-keys (ssh-keygen, ssh-add)'
+  'gnupg: argvus-gpg key management (gpg, gpg-agent)'
+  'pinentry: passphrase window for argvus-gpg keys (pinentry-qt, pinentry-gtk-2, pinentry-curses)'
   'lazygit: git TUI for the active project (argvus-git)'
   'gitui: alternative git TUI for argvus-git'
 )
