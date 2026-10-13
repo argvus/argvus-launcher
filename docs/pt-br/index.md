@@ -10,6 +10,7 @@ slug: de/argvus-launcher/docs/pt-br/index.md
 - a configuração e os temas do Rofi, compartilhados por todos os menus Rofi do ARGVUS;
 - o seletor de projetos, o seletor de hosts SSH e o seletor de snippets (`argvus projects`, `argvus ssh`, `argvus snippets`);
 - o gerenciador de chaves SSH (`argvus keys`), que cria, lista, carrega e apaga pares de chaves;
+- o gerenciador de chaves GPG (`argvus gpg`), que lista, cria e exporta chaves e escolhe o pinentry;
 - o seletor de emojis, o visualizador de cheatsheets e o menu da calculadora.
 
 Os atalhos são declarados pelo `argvus-hyprland`. Este pacote fornece os comandos e os menus por trás deles.
@@ -199,6 +200,46 @@ Requer `openssh` (`ssh-keygen` e `ssh-add`) e `argvus-terminal`.
 | `delete` informa que a chave está carregada | Rode antes `argvus keys unload NOME` e depois apague de novo. |
 | `generate` informa que o nome já existe | Escolha outro nome. Pares existentes nunca são substituídos. |
 
+## Chaves GPG (`argvus gpg`)
+
+`argvus gpg` lista, cria e exporta chaves GPG, importa chaves públicas e escolhe o pinentry usado pelo `gpg-agent`. Não tem atalho. A página **Chaves GPG** do Control Center usa os mesmos comandos.
+
+```sh
+argvus gpg                                         # mostra as opções e um exemplo
+argvus gpg list                                    # uma chave por linha: impressão digital, id, tipo, validade, secreta, confiança, identidade
+argvus gpg generate "Nome <voce@example.com>"      # chave ed25519, válida por 2 anos; a senha é pedida pelo pinentry
+argvus gpg generate "Nome <voce@example.com>" --algo rsa4096 --expire 0
+argvus gpg generate "Nome <voce@example.com>" --no-passphrase --yes   # chave privada sem proteção; --yes é obrigatório
+argvus gpg export-public voce@example.com ~/publica.asc   # chave pública em ASCII armor, modo 600
+argvus gpg export-public voce@example.com ~/publica.asc --force        # substitui um arquivo existente
+argvus gpg import ~/colega.asc                     # importa chaves públicas; chaves privadas são recusadas
+argvus gpg status                                  # se o gnupg está instalado e qual pinentry está em uso (argvus, usuário ou padrão)
+argvus gpg set-pinentry qt --yes                   # grava pinentry-program em gpg-agent.conf; gtk e curses também são aceitos
+```
+
+Cada chave tem uma chave primária de certificação e assinatura e uma subchave de criptografia. Assim ela serve para criptografar arquivos, além de assinar commits e pacotes. A subchave usa `cv25519` nas chaves ed25519 e `rsa4096` nas chaves RSA.
+
+Regras que valem para todos os comandos:
+
+- As senhas nunca são passadas como argumentos de comando, gravadas em log ou exibidas no Control Center. `generate` deixa a senha para a janela do pinentry, que o `gpg-agent` abre.
+- `--no-passphrase` grava a chave privada sem proteção. O comando só roda com `--yes` também.
+- Chaves privadas nunca são exportadas. `import` recusa qualquer arquivo que contenha um pacote de chave secreta, em ASCII ou binário.
+- `set-pinentry` altera apenas a linha `pinentry-program` entre os marcadores `# BEGIN argvus-managed pinentry` e `# END argvus-managed pinentry`. O restante do `gpg-agent.conf` é mantido. O arquivo anterior é salvo como `gpg-agent.conf.bak`. O comando se recusa a rodar quando o `gpg-agent.conf` já define `pinentry-program` fora desse bloco, para que você escolha qual deve valer.
+- Instalar o pacote nunca escreve em `~/.gnupg`. A configuração só muda quando você roda `set-pinentry --yes`.
+- `GNUPGHOME` substitui `~/.gnupg`, o que é útil para testes.
+
+As escolhas de pinentry correspondem a estes programas: `qt` para `pinentry-qt`, `gtk` para `pinentry-gtk-2` e `curses` para `pinentry-curses`. O programa precisa estar instalado; `set-pinentry` para com erro quando o escolhido não está.
+
+Requer `gnupg` para os comandos de chave e `pinentry` para a janela de senha.
+
+| Sintoma | Causa e solução |
+| --- | --- |
+| `generate` não abre a janela de senha | Rode `argvus gpg status`. O pinentry precisa estar instalado e selecionado com `set-pinentry`, e a sessão precisa expor `WAYLAND_DISPLAY` ou `DISPLAY`. |
+| `set-pinentry` avisa sobre uma linha `pinentry-program` fora do bloco do ARGVUS | Remova essa linha de `~/.gnupg/gpg-agent.conf` e rode o comando de novo. |
+| `generate` avisa que a subchave de criptografia não foi adicionada | A chave foi criada. Adicione a subchave com `gpg --quick-add-key IMPRESSÃO_DIGITAL cv25519 encr 2y`, ou apague a chave com `gpg --delete-secret-and-public-key` e gere de novo. |
+| `import` recusa um arquivo | O arquivo contém uma chave privada. Exporte só a chave pública na outra máquina com `argvus gpg export-public`. |
+| `list` não mostra chaves | O keyring em `GNUPGHOME` (ou em `~/.gnupg`) está vazio. Rode `argvus gpg generate` para criar uma chave. |
+
 ## Snippets (`SUPER + ALT + N`)
 
 `SUPER + ALT + N` abre um seletor com seus snippets. O snippet escolhido é digitado na janela em foco, na posição do cursor, em vez de passar pela área de transferência.
@@ -340,11 +381,11 @@ A configuração do launcher é compartilhada com componentes de outros pacotes:
 
 O pacote `argvus-launcher` é independente de arquitetura e instala:
 
-- `/usr/lib/argvus/commands/argvus-launcher`, `argvus-projects`, `argvus-snippets`, `argvus-ssh`, `argvus-keys` e `argvus-git`, no mesmo diretório;
+- `/usr/lib/argvus/commands/argvus-launcher`, `argvus-projects`, `argvus-snippets`, `argvus-ssh`, `argvus-keys`, `argvus-gpg` e `argvus-git`, no mesmo diretório;
 - `/usr/share/argvus/launcher/config/`, com a configuração e os temas do Rofi;
 - `/usr/share/argvus/launcher/sh/`, com `cheatsheets.sh` e `emoji-picker.sh`.
 
-Dependências obrigatórias: `argvus-session`, `argvus-appearance`, `argvus-config`, `argvus-i18n`, `argvus-terminal`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard` e `wtype`. Dependências opcionais: `openssh`, para o seletor SSH e o gerenciador de chaves; `lazygit` e `gitui`, para a TUI de git.
+Dependências obrigatórias: `argvus-session`, `argvus-appearance`, `argvus-config`, `argvus-i18n`, `argvus-terminal`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard` e `wtype`. Dependências opcionais: `openssh`, para o seletor SSH e o gerenciador de chaves; `gnupg` e `pinentry`, para o gerenciador de chaves GPG; `lazygit` e `gitui`, para a TUI de git.
 
 A instalação do pacote não grava nada em `$HOME`. A configuração do usuário é criada no início da sessão, como descrito em [Configuração e temas do Rofi](#onde-fica-a-configuração-ativa).
 

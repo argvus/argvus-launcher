@@ -9,6 +9,7 @@ description: Launch applications, open projects, SSH hosts and snippets, pick em
 - the Rofi configuration and themes shared by every ARGVUS Rofi menu;
 - the project switcher, SSH picker and snippet picker (`argvus projects`, `argvus ssh`, `argvus snippets`);
 - the SSH key manager (`argvus keys`), which creates, lists, loads and deletes key pairs;
+- the GPG key manager (`argvus gpg`), which lists, creates and exports keys and selects the pinentry;
 - the emoji picker, the cheatsheet viewer and the calculator menu.
 
 The shortcuts are declared by `argvus-hyprland`. This package provides the commands and the menus behind them.
@@ -198,6 +199,46 @@ Requires `openssh` (`ssh-keygen` and `ssh-add`) and `argvus-terminal`.
 | `delete` reports that the key is loaded | Run `argvus keys unload NAME` first, then delete it again. |
 | `generate` reports that the name already exists | Choose another name. Existing pairs are never replaced. |
 
+## GPG keys (`argvus gpg`)
+
+`argvus gpg` lists, creates and exports GPG keys, imports public keys and selects the pinentry that `gpg-agent` uses. It has no shortcut. The **GPG keys** page of the Control Center uses the same commands.
+
+```sh
+argvus gpg                                         # shows the options and an example
+argvus gpg list                                    # one key per line: fingerprint, key id, type, expires, secret, validity, user ID
+argvus gpg generate "Name <you@example.com>"       # ed25519 key, expires in 2 years, passphrase asked by the pinentry
+argvus gpg generate "Name <you@example.com>" --algo rsa4096 --expire 0
+argvus gpg generate "Name <you@example.com>" --no-passphrase --yes   # unprotected private key; --yes is required
+argvus gpg export-public you@example.com ~/public.asc   # public key in ASCII armor, mode 600
+argvus gpg export-public you@example.com ~/public.asc --force        # replaces an existing file
+argvus gpg import ~/colleague.asc                  # imports public keys; private keys are refused
+argvus gpg status                                  # gnupg installed, and the pinentry in use (argvus, user or default)
+argvus gpg set-pinentry qt --yes                   # writes pinentry-program to gpg-agent.conf; gtk and curses are also accepted
+```
+
+Every key gets one certify-and-sign primary key and one encryption subkey, so it can encrypt files as well as sign commits and packages. The subkey uses `cv25519` with ed25519 keys and `rsa4096` with RSA keys.
+
+Rules that apply to every command:
+
+- Passphrases are never passed as command arguments, written to a log or shown in the Control Center. `generate` leaves the passphrase to the pinentry window, which `gpg-agent` opens.
+- `--no-passphrase` stores the private key without protection. It is refused unless `--yes` is also given.
+- Private keys are never exported. `import` refuses any file that contains a secret key packet, in ASCII or binary form.
+- `set-pinentry` only changes the `pinentry-program` line between the `# BEGIN argvus-managed pinentry` and `# END argvus-managed pinentry` markers. The rest of `gpg-agent.conf` is kept. The previous file is saved as `gpg-agent.conf.bak`. The command refuses to run when `gpg-agent.conf` already sets `pinentry-program` outside that block, so you choose which one stays.
+- Installing the package never writes to `~/.gnupg`. The configuration changes only when you run `set-pinentry --yes`.
+- `GNUPGHOME` replaces `~/.gnupg`, which is useful for testing.
+
+The pinentry choices map to these programs: `qt` to `pinentry-qt`, `gtk` to `pinentry-gtk-2` and `curses` to `pinentry-curses`. The programs must be installed; `set-pinentry` stops with an error when the chosen one is missing.
+
+Requires `gnupg` for the key commands and `pinentry` for the passphrase window.
+
+| Symptom | Cause and fix |
+| --- | --- |
+| `generate` does not open a passphrase window | Check `argvus gpg status`. The pinentry must be installed and selected with `set-pinentry`, and the session must expose `WAYLAND_DISPLAY` or `DISPLAY`. |
+| `set-pinentry` reports a `pinentry-program` line outside the ARGVUS block | Remove that line from `~/.gnupg/gpg-agent.conf`, then run the command again. |
+| `generate` reports that the encryption subkey could not be added | The key was created. Add the subkey with `gpg --quick-add-key FINGERPRINT cv25519 encr 2y`, or delete the key with `gpg --delete-secret-and-public-key` and generate it again. |
+| `import` refuses a file | The file contains a private key. Export only the public key on the other machine with `argvus gpg export-public`. |
+| `list` shows no keys | The keyring in `GNUPGHOME` (or `~/.gnupg`) is empty. Run `argvus gpg generate` to create a key. |
+
 ## Snippets (`SUPER + ALT + N`)
 
 `SUPER + ALT + N` opens a picker with your snippets. The selected snippet is typed into the focused window, at the cursor, instead of going through the clipboard.
@@ -339,11 +380,11 @@ The launcher configuration is shared with components owned by other packages:
 
 The package `argvus-launcher` is architecture-independent and installs:
 
-- `/usr/lib/argvus/commands/argvus-launcher`, `argvus-projects`, `argvus-snippets`, `argvus-ssh`, `argvus-keys` and `argvus-git`, under the same directory;
+- `/usr/lib/argvus/commands/argvus-launcher`, `argvus-projects`, `argvus-snippets`, `argvus-ssh`, `argvus-keys`, `argvus-gpg` and `argvus-git`, under the same directory;
 - `/usr/share/argvus/launcher/config/`, with the Rofi configuration and themes;
 - `/usr/share/argvus/launcher/sh/`, with `cheatsheets.sh` and `emoji-picker.sh`.
 
-Required dependencies: `argvus-session`, `argvus-appearance`, `argvus-config`, `argvus-i18n`, `argvus-terminal`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard` and `wtype`. Optional dependencies: `openssh`, for the SSH picker and the SSH key manager; `lazygit` and `gitui`, for the git TUI.
+Required dependencies: `argvus-session`, `argvus-appearance`, `argvus-config`, `argvus-i18n`, `argvus-terminal`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard` and `wtype`. Optional dependencies: `openssh`, for the SSH picker and the SSH key manager; `gnupg` and `pinentry`, for the GPG key manager; `lazygit` and `gitui`, for the git TUI.
 
 Installing the package does not write into `$HOME`. User configuration is created at session start, as described in [Rofi configuration and themes](#where-the-active-configuration-lives).
 
