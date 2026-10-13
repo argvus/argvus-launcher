@@ -1,0 +1,418 @@
+#!/usr/bin/env sh
+# GPG key manager: list keys, generate a key with an encryption subkey, export
+# and import public keys, and choose the pinentry that gpg-agent uses.
+#
+# Passphrases never reach this script or any process argument. gpg asks the
+# pinentry itself, so the secret is typed only into the pinentry window. The
+# one exception is --no-passphrase, which passes an empty passphrase: it is
+# not a secret, and it is refused without --yes.
+#
+# Private keys are never exported. Import refuses any file that carries
+# secret key packets.
+#
+# Usage:
+#   argvus gpg                                        show this help
+#   argvus gpg list                                   print keys as TSV
+#   argvus gpg generate UID [--algo ed25519|rsa4096] [--expire 0|2y|...]
+#                           [--no-passphrase --yes]
+#   argvus gpg export-public ID FILE [--force]        write the public key
+#   argvus gpg import FILE                            import public keys
+#   argvus gpg status                                 show the pinentry in use
+#   argvus gpg set-pinentry qt|gtk|curses --yes       write gpg-agent.conf
+
+set -eu
+
+ARGVUS_SYSTEM_CONFIG=${ARGVUS_SYSTEM_CONFIG:-/usr/share/argvus}
+ARGVUS_BOOTSTRAP="${ARGVUS_BOOTSTRAP:-$ARGVUS_SYSTEM_CONFIG/session/sh/bootstrap.sh}"
+
+if [ -r "$ARGVUS_BOOTSTRAP" ]; then
+  # shellcheck disable=SC1090,SC1091
+  . "$ARGVUS_BOOTSTRAP"
+else
+  if [ -r "$ARGVUS_SYSTEM_CONFIG/lib/i18n.sh" ]; then
+    # shellcheck disable=SC1090,SC1091
+    . "$ARGVUS_SYSTEM_CONFIG/lib/i18n.sh"
+  fi
+fi
+
+GNUPG_HOME="${GNUPGHOME:-$HOME/.gnupg}"
+AGENT_CONF="$GNUPG_HOME/gpg-agent.conf"
+
+# Lines between these markers belong to ARGVUS. Everything else in
+# gpg-agent.conf is the user's and is kept as it is.
+MARK_BEGIN='# BEGIN argvus-managed pinentry'
+MARK_END='# END argvus-managed pinentry'
+
+# A temporary file that must not outlive the script, if a step fails midway.
+tmp_file=''
+trap 'if [ -n "$tmp_file" ]; then rm -f "$tmp_file"; fi' EXIT
+
+# Set by generate; read by gpg_secret_op.
+no_passphrase=0
+
+# Shows an error for a shortcut run, where stderr is not visible, then stops.
+report_error() {
+  message=$1
+  printf 'argvus-gpg: %s\n' "$message" >&2
+  if command -v notify-send >/dev/null 2>&1; then
+    notify-send -a argvus-gpg "$message" || true
+  fi
+  exit 1
+}
+
+usage() {
+  argvus_tr launcher error.gpg_usage >&2
+  exit 1
+}
+
+require_gpg() {
+  command -v gpg >/dev/null 2>&1 || report_error "$(argvus_tr launcher error.gpg_missing)"
+}
+
+# A user ID is free text, so only the length and control characters are
+# checked. A leading dash would read as an option to gpg.
+valid_uid() {
+  case "$1" in
+    ''|-*) return 1 ;;
+  esac
+  [ "${#1}" -le 200 ] || return 1
+  ! printf '%s' "$1" | LC_ALL=C grep -q '[[:cntrl:]]'
+}
+
+# A key id, fingerprint or mail address, with no characters that could be read
+# as a path or an option.
+valid_id() {
+  case "$1" in
+    ''|-*|*[!A-Za-z0-9@._+-]*) return 1 ;;
+    *) return 0 ;;
+  esac
+}
+
+valid_algo() {
+  case "$1" in
+    ed25519|rsa4096) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
+# 0 for no expiry, or a number followed by d, w, m or y.
+valid_expire() {
+  printf '%s' "$1" | grep -Eq '^(0|[0-9]+[dwmy])$'
+}
+
+# Runs a gpg step that uses the secret key. With --no-passphrase the empty
+# passphrase is passed in loopback mode, so the pinentry is not asked.
+gpg_secret_op() {
+  if [ "$no_passphrase" -eq 1 ]; then
+    gpg --batch --pinentry-mode loopback --passphrase '' "$@"
+  else
+    gpg "$@"
+  fi
+}
+
+# Prints "fingerprint<TAB>keyid<TAB>type<TAB>expires<TAB>secret<TAB>validity<TAB>uid"
+# for each primary key. The secret flag is yes when the fingerprint also
+# appears in the secret key listing. Expiry is a date, or "never".
+list_keys() {
+  require_gpg
+  secret_fps=$(gpg --batch --with-colons --fixed-list-mode --list-secret-keys 2>/dev/null \
+    | awk -F: '$1 == "fpr" { print $10 }')
+  gpg --batch --with-colons --fixed-list-mode --list-keys 2>/dev/null \
+    | SECRET_FPS="$secret_fps" awk -F: '
+      function algo_name(id) {
+        if (id == 1) return "rsa"
+        if (id == 16) return "elgamal"
+        if (id == 17) return "dsa"
+        if (id == 18) return "ecc"
+        if (id == 19) return "ecdsa"
+        if (id == 22) return "ed25519"
+        return "other"
+      }
+      function flush() {
+        if (fp == "") return
+        secret = index("\n" ENVIRON["SECRET_FPS"] "\n", "\n" fp "\n") ? "yes" : "no"
+        printf "%s\t%s\t%s\t%s\t%s\t%s\t%s\n", fp, keyid, type, expires, secret, validity, uid
+        fp = ""
+      }
+      $1 == "pub" {
+        flush()
+        keyid = $5
+        type = algo_name($4)
+        validity = $2
+        expires = "never"
+        if ($7 ~ /^[0-9]+$/) {
+          cmd = "date -u -d @" $7 " +%Y-%m-%d"
+          cmd | getline expires
+          close(cmd)
+        }
+        fp = ""
+        uid = ""
+        in_primary = 1
+        next
+      }
+      $1 == "sub" { in_primary = 0; next }
+      $1 == "fpr" { if (in_primary && fp == "") fp = $10; next }
+      $1 == "uid" {
+        if (uid == "") {
+          uid = $10
+          gsub(/\\x3a/, ":", uid)
+          gsub(/\t/, " ", uid)
+        }
+        next
+      }
+      END { flush() }
+    '
+}
+
+generate_key() {
+  uid=''
+  algo=ed25519
+  expire=2y
+  confirmed=0
+  no_passphrase=0
+  while [ "$#" -gt 0 ]; do
+    case "$1" in
+      --algo)
+        [ "$#" -ge 2 ] || usage
+        algo=$2
+        shift 2
+        ;;
+      --expire)
+        [ "$#" -ge 2 ] || usage
+        expire=$2
+        shift 2
+        ;;
+      --no-passphrase)
+        no_passphrase=1
+        shift
+        ;;
+      --yes)
+        confirmed=1
+        shift
+        ;;
+      -*)
+        usage
+        ;;
+      *)
+        [ -z "$uid" ] || usage
+        uid=$1
+        shift
+        ;;
+    esac
+  done
+  [ -n "$uid" ] || usage
+  valid_uid "$uid" || report_error "$(argvus_tr launcher error.gpg_invalid_uid)"
+  valid_algo "$algo" || report_error "$(argvus_tr launcher error.gpg_bad_algo algo="$algo")"
+  valid_expire "$expire" || report_error "$(argvus_tr launcher error.gpg_bad_expire expire="$expire")"
+  if [ "$no_passphrase" -eq 1 ] && [ "$confirmed" -ne 1 ]; then
+    report_error "$(argvus_tr launcher error.gpg_confirm_no_passphrase)"
+  fi
+  require_gpg
+
+  # The status line names the new fingerprint, which avoids searching by user
+  # ID when several keys share one.
+  status_out=$(gpg_secret_op --status-fd 1 --quick-gen-key "$uid" "$algo" default "$expire") \
+    || report_error "$(argvus_tr launcher error.gpg_generate_failed)"
+  fp=$(printf '%s\n' "$status_out" | awk '$2 == "KEY_CREATED" { print $4; exit }')
+  [ -n "$fp" ] || report_error "$(argvus_tr launcher error.gpg_generate_failed)"
+
+  # A primary key with certify and sign usage cannot encrypt, so an encryption
+  # subkey of the matching algorithm is added for file encryption and pass.
+  if [ "$algo" = rsa4096 ]; then
+    subkey_algo=rsa4096
+  else
+    subkey_algo=cv25519
+  fi
+  gpg_secret_op --quick-add-key "$fp" "$subkey_algo" encr "$expire" >/dev/null \
+    || report_error "$(argvus_tr launcher error.gpg_subkey_failed fingerprint="$fp")"
+  argvus_tr launcher message.gpg_generated fingerprint="$fp"
+}
+
+export_public() {
+  [ "$#" -ge 2 ] || usage
+  id=$1
+  file=$2
+  shift 2
+  force=0
+  while [ "$#" -gt 0 ]; do
+    case "$1" in
+      --force) force=1 ;;
+      *) usage ;;
+    esac
+    shift
+  done
+  valid_id "$id" || report_error "$(argvus_tr launcher error.gpg_invalid_id id="$id")"
+  case "$file" in
+    /*) ;;
+    *) file="$PWD/$file" ;;
+  esac
+  dir=$(dirname "$file")
+  [ -d "$dir" ] || report_error "$(argvus_tr launcher error.gpg_no_dir file="$file")"
+  if [ -e "$file" ] && [ "$force" -ne 1 ]; then
+    report_error "$(argvus_tr launcher error.gpg_file_exists file="$file")"
+  fi
+  require_gpg
+
+  # The export goes to a private temporary file in the same directory, and it
+  # is renamed into place only when it holds a key.
+  umask 077
+  tmp_file=$(mktemp "$dir/.argvus-gpg-export.XXXXXX") \
+    || report_error "$(argvus_tr launcher error.gpg_export_failed file="$file")"
+  gpg --batch --armor --export "$id" >"$tmp_file" 2>/dev/null \
+    || report_error "$(argvus_tr launcher error.gpg_export_failed file="$file")"
+  [ -s "$tmp_file" ] || report_error "$(argvus_tr launcher error.gpg_no_key id="$id")"
+  mv -f "$tmp_file" "$file"
+  tmp_file=''
+  argvus_tr launcher message.gpg_exported file="$file"
+}
+
+import_key() {
+  [ "$#" -eq 1 ] || usage
+  file=$1
+  [ -f "$file" ] && [ -r "$file" ] || report_error "$(argvus_tr launcher error.gpg_not_readable file="$file")"
+  require_gpg
+  case "$file" in
+    /*) ;;
+    *) file="$PWD/$file" ;;
+  esac
+  # --list-packets reads both ASCII-armored and binary files, so a private key
+  # is caught in either form.
+  if gpg --batch --list-packets "$file" 2>/dev/null | grep -Eq ':secret (sub )?key packet:'; then
+    report_error "$(argvus_tr launcher error.gpg_private_refused file="$file")"
+  fi
+  gpg --batch --import "$file" >/dev/null 2>&1 \
+    || report_error "$(argvus_tr launcher error.gpg_import_failed file="$file")"
+  argvus_tr launcher message.gpg_imported file="$file"
+}
+
+# Prints the state as TSV: gnupg, then pinentry with its path and whether it
+# is written by ARGVUS or by the user.
+status_pinentry() {
+  if command -v gpg >/dev/null 2>&1; then
+    printf 'gnupg\tyes\n'
+  else
+    printf 'gnupg\tno\n'
+  fi
+  if [ ! -f "$AGENT_CONF" ]; then
+    printf 'pinentry\tnone\tdefault\n'
+    return 0
+  fi
+  managed=$(awk -v b="$MARK_BEGIN" -v e="$MARK_END" '
+    $0 == b { skip = 1; next }
+    $0 == e { skip = 0; next }
+    skip && /^pinentry-program[[:space:]]/ { print $2; exit }
+  ' "$AGENT_CONF")
+  user=$(awk -v b="$MARK_BEGIN" -v e="$MARK_END" '
+    $0 == b { skip = 1; next }
+    $0 == e { skip = 0; next }
+    !skip && /^[[:space:]]*pinentry-program[[:space:]]/ { print $2; exit }
+  ' "$AGENT_CONF")
+  if [ -n "$managed" ]; then
+    printf 'pinentry\t%s\targvus\n' "$managed"
+  elif [ -n "$user" ]; then
+    printf 'pinentry\t%s\tuser\n' "$user"
+  else
+    printf 'pinentry\tnone\tdefault\n'
+  fi
+}
+
+set_pinentry() {
+  [ "$#" -ge 1 ] || usage
+  choice=$1
+  shift
+  confirmed=0
+  while [ "$#" -gt 0 ]; do
+    case "$1" in
+      --yes) confirmed=1 ;;
+      *) usage ;;
+    esac
+    shift
+  done
+  case "$choice" in
+    qt) bin=pinentry-qt ;;
+    gtk) bin=pinentry-gtk-2 ;;
+    curses) bin=pinentry-curses ;;
+    *) report_error "$(argvus_tr launcher error.gpg_bad_pinentry choice="$choice")" ;;
+  esac
+  program=$(command -v "$bin" 2>/dev/null) \
+    || report_error "$(argvus_tr launcher error.gpg_pinentry_missing bin="$bin")"
+
+  # A pinentry-program line outside the ARGVUS block would be a second value
+  # for the same option, so ARGVUS refuses to choose between them.
+  if [ -f "$AGENT_CONF" ]; then
+    user_line=$(awk -v b="$MARK_BEGIN" -v e="$MARK_END" '
+      $0 == b { skip = 1; next }
+      $0 == e { skip = 0; next }
+      !skip && /^[[:space:]]*pinentry-program[[:space:]]/ { print; exit }
+    ' "$AGENT_CONF")
+    [ -z "$user_line" ] || report_error "$(argvus_tr launcher error.gpg_pinentry_conflict)"
+  fi
+
+  [ "$confirmed" -eq 1 ] || report_error "$(argvus_tr launcher error.gpg_confirm_pinentry)"
+
+  if [ ! -d "$GNUPG_HOME" ]; then
+    mkdir -p "$GNUPG_HOME"
+    chmod 700 "$GNUPG_HOME"
+  fi
+  umask 077
+  tmp_file=$(mktemp "$GNUPG_HOME/.gpg-agent.conf.XXXXXX")
+  {
+    if [ -f "$AGENT_CONF" ]; then
+      awk -v b="$MARK_BEGIN" -v e="$MARK_END" '
+        $0 == b { skip = 1; next }
+        $0 == e { skip = 0; next }
+        !skip { print }
+      ' "$AGENT_CONF"
+    fi
+    printf '%s\npinentry-program %s\n%s\n' "$MARK_BEGIN" "$program" "$MARK_END"
+  } >"$tmp_file"
+  if [ -f "$AGENT_CONF" ]; then
+    cp -p "$AGENT_CONF" "$AGENT_CONF.bak"
+  fi
+  mv -f "$tmp_file" "$AGENT_CONF"
+  tmp_file=''
+  # gpg-agent reads its configuration once, so it restarts and starts with
+  # the new pinentry. Without an agent running, nothing needs stopping.
+  if command -v gpgconf >/dev/null 2>&1; then
+    gpgconf --kill gpg-agent >/dev/null 2>&1 || true
+  fi
+  argvus_tr launcher message.gpg_pinentry_set bin="$bin"
+}
+
+case "${1:-}" in
+  ''|-h|--help|help)
+    argvus_tr launcher help.gpg
+    exit 0
+    ;;
+  list)
+    list_keys
+    exit 0
+    ;;
+  generate)
+    shift
+    generate_key "$@"
+    exit 0
+    ;;
+  export-public)
+    shift
+    export_public "$@"
+    exit 0
+    ;;
+  import)
+    shift
+    import_key "$@"
+    exit 0
+    ;;
+  status)
+    status_pinentry
+    exit 0
+    ;;
+  set-pinentry)
+    shift
+    set_pinentry "$@"
+    exit 0
+    ;;
+  *)
+    usage
+    ;;
+esac
