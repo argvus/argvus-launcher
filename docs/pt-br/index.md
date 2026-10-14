@@ -10,7 +10,7 @@ slug: de/argvus-launcher/docs/pt-br/index.md
 - a configuração e os temas do Rofi, compartilhados por todos os menus Rofi do ARGVUS;
 - o seletor de projetos, o seletor de hosts SSH e o seletor de snippets (`argvus projects`, `argvus ssh`, `argvus snippets`);
 - o gerenciador de chaves SSH (`argvus keys`), que cria, lista, carrega e apaga pares de chaves;
-- o gerenciador de chaves GPG (`argvus gpg`), que lista, cria e exporta chaves e escolhe o pinentry;
+- o gerenciador de chaves GPG (`argvus gpg`), que lista, cria e exporta chaves e configura o pinentry-gtk para o gpg-agent;
 - o seletor de emojis, o visualizador de cheatsheets e o menu da calculadora.
 
 Os atalhos são declarados pelo `argvus-hyprland`. Este pacote fornece os comandos e os menus por trás deles.
@@ -202,40 +202,62 @@ Requer `openssh` (`ssh-keygen` e `ssh-add`) e `argvus-terminal`.
 
 ## Chaves GPG (`argvus gpg`)
 
-`argvus gpg` lista, cria e exporta chaves GPG, importa chaves públicas e escolhe o pinentry usado pelo `gpg-agent`. Não tem atalho. A página **Chaves GPG** do Control Center usa os mesmos comandos.
+`argvus gpg` lista, cria e exporta chaves GPG e importa chaves públicas. O gpg-agent usa sempre o `pinentry-gtk`: o ARGVUS grava esse pinentry no `gpg-agent.conf` antes de gerar uma chave. Não tem atalho. A página **Chaves GPG** do Control Center usa os mesmos comandos.
 
 ```sh
 argvus gpg                                         # mostra as opções e um exemplo
 argvus gpg list                                    # uma chave por linha: impressão digital, id, tipo, validade, secreta, confiança, identidade
-argvus gpg generate "Nome <voce@example.com>"      # chave ed25519, válida por 2 anos; a senha é pedida pelo pinentry
-argvus gpg generate "Nome <voce@example.com>" --algo rsa4096 --expire 0
+argvus gpg generate "Nome <voce@example.com>"      # chave RSA 4096, válida por 2 anos; o pinentry pede a senha
+argvus gpg generate "Nome <voce@example.com>" --algo dsa --bits 2048 --expire 2031-06-30
+argvus gpg generate "Nome <voce@example.com>" --expire 0                       # nunca expira
+printf '%s\n' "$SENHA" | argvus gpg generate "Nome <voce@example.com>" --passphrase-stdin
 argvus gpg generate "Nome <voce@example.com>" --no-passphrase --yes   # chave privada sem proteção; --yes é obrigatório
 argvus gpg export-public voce@example.com ~/publica.asc   # chave pública em ASCII armor, modo 600
 argvus gpg export-public voce@example.com ~/publica.asc --force        # substitui um arquivo existente
 argvus gpg import ~/colega.asc                     # importa chaves públicas; chaves privadas são recusadas
 argvus gpg status                                  # se o gnupg está instalado e qual pinentry está em uso (argvus, usuário ou padrão)
-argvus gpg set-pinentry qt --yes                   # grava pinentry-program em gpg-agent.conf; gtk e curses também são aceitos
+argvus gpg export-public voce@example.com -         # imprime a chave pública na saída padrão (usada pela ação de copiar)
+argvus gpg export-private IMPRESSAO_DIGITAL ~/privada.asc --yes   # chave privada em ASCII armor, modo 600; --yes é obrigatório
+argvus gpg import-private ~/privada.asc            # importa um arquivo que contém chave privada
+argvus gpg delete IMPRESSAO_DIGITAL --yes         # exclui a chave e a parte secreta; --yes é obrigatório
+argvus gpg edit expire IMPRESSAO_DIGITAL 2y        # nova validade da chave e de cada subchave (0, Nd/Nw/Nm/Ny ou AAAA-MM-DD)
+argvus gpg edit passwd IMPRESSAO_DIGITAL           # altera a senha; o pinentry pede a antiga e a nova
+argvus gpg edit sign IMPRESSAO_DIGITAL ASSINANTE --yes   # certifica a chave com a chave privada de ASSINANTE
+argvus gpg edit revoke IMPRESSAO_DIGITAL --reason unused --yes   # revoga; motivo none, compromised, superseded ou unused
+argvus gpg edit trust IMPRESSAO_DIGITAL full       # confiança none, marginal, full ou ultimate
+argvus gpg keyserver send IMPRESSAO_DIGITAL --yes  # publica a chave no servidor de chaves do gpg.conf
+argvus gpg keyserver recv IMPRESSAO_DIGITAL        # busca a chave nesse servidor
 ```
 
-Cada chave tem uma chave primária de certificação e assinatura e uma subchave de criptografia. Assim ela serve para criptografar arquivos, além de assinar commits e pacotes. A subchave usa `cv25519` nas chaves ed25519 e `rsa4096` nas chaves RSA.
+`generate` aceita estas opções:
+
+- `--algo rsa|dsa` escolhe o algoritmo da chave. O padrão é `rsa`.
+- `--bits` escolhe o tamanho da chave. RSA aceita `1024`, `2048`, `3072` e `4096`, com `4096` como padrão. DSA aceita `1024`, `2048` e `3072`, com `2048` como padrão; o gpg não cria chaves DSA maiores, então `4096` é recusado antes de o gpg rodar.
+- `--expire` aceita `0` para nenhuma validade, um número seguido de `d`, `w`, `m` ou `y` (como `2y`), ou uma data ISO `AAAA-MM-DD`, que precisa ser uma data real.
+- `--passphrase-stdin` lê a senha da primeira linha da entrada padrão. A Control Center usa essa opção. Uma linha vazia é recusada.
+- `--no-passphrase --yes` cria uma chave sem proteção. As duas formas de senha não podem ser combinadas.
+
+Toda chave recebe uma chave primária de certificação e assinatura e uma subchave de criptografia, então pode criptografar arquivos além de assinar commits e pacotes. A subchave acompanha a chave primária: `rsa` com o mesmo tamanho para RSA, e `elg` com o mesmo tamanho para DSA, que é o par exigido pelo padrão DSA.
 
 Regras que valem para todos os comandos:
 
-- As senhas nunca são passadas como argumentos de comando, gravadas em log ou exibidas no Control Center. `generate` deixa a senha para a janela do pinentry, que o `gpg-agent` abre.
-- `--no-passphrase` grava a chave privada sem proteção. O comando só roda com `--yes` também.
-- Chaves privadas nunca são exportadas. `import` recusa qualquer arquivo que contenha um pacote de chave secreta, em ASCII ou binário.
-- `set-pinentry` altera apenas a linha `pinentry-program` entre os marcadores `# BEGIN argvus-managed pinentry` e `# END argvus-managed pinentry`. O restante do `gpg-agent.conf` é mantido. O arquivo anterior é salvo como `gpg-agent.conf.bak`. O comando se recusa a rodar quando o `gpg-agent.conf` já define `pinentry-program` fora desse bloco, para que você escolha qual deve valer.
-- Instalar o pacote nunca escreve em `~/.gnupg`. A configuração só muda quando você roda `set-pinentry --yes`.
+- As senhas nunca são passadas como argumentos de comando, gravadas em log ou exibidas no Control Center. Com `--passphrase-stdin`, a senha vai ao gpg no descritor de arquivo 0, por um pipe. Sem essa opção, o gpg pede a senha à janela do pinentry, que o `gpg-agent` abre.
+- `--no-passphrase` grava a chave privada sem proteção. Ela é recusada sem `--yes`.
+- `import` recusa qualquer arquivo que contenha um pacote de chave secreta, em ASCII ou binário. Chaves privadas saem do chaveiro só por `export-private`, que exige `--yes` e grava modo `600`; `import-private` as traz de volta.
+- Comandos que alteram ou publicam chaves (`export-private`, `delete`, `edit sign`, `edit revoke`, `keyserver send`) exigem `--yes`. A Control Center o passa só depois da própria confirmação.
+- Comandos que usam a chave secreta rodam o gpg com `--no-tty`, para que ele nunca tente abrir um terminal. A senha vem da janela do pinentry, exceto em `generate --passphrase-stdin`.
+- `generate` faz o gpg-agent usar o `pinentry-gtk`. Ele grava essa linha entre os marcadores `# BEGIN argvus-managed pinentry` e `# END argvus-managed pinentry`, mantém o resto do `gpg-agent.conf` e salva o arquivo anterior como `gpg-agent.conf.bak`. Quando o bloco já indica `pinentry-gtk`, o arquivo e o gpg-agent ficam como estão. O comando se recusa a rodar quando o `gpg-agent.conf` já define `pinentry-program` fora desse bloco, para que dois valores nunca entrem em conflito.
+- Instalar o pacote nunca escreve em `~/.gnupg`. A configuração só muda quando uma chave é gerada.
 - `GNUPGHOME` substitui `~/.gnupg`, o que é útil para testes.
 
-As escolhas de pinentry correspondem a estes programas: `qt` para `pinentry-qt`, `gtk` para `pinentry-gtk-2` e `curses` para `pinentry-curses`. O programa precisa estar instalado; `set-pinentry` para com erro quando o escolhido não está.
+`gnupg` e `pinentry` são dependências obrigatórias: os comandos de chave precisam do gpg, e a janela de senha é o `pinentry-gtk`.
 
-Requer `gnupg` para os comandos de chave e `pinentry` para a janela de senha.
-
-| Sintoma | Causa e solução |
+| Sintoma | Causa e correção |
 | --- | --- |
-| `generate` não abre a janela de senha | Rode `argvus gpg status`. O pinentry precisa estar instalado e selecionado com `set-pinentry`, e a sessão precisa expor `WAYLAND_DISPLAY` ou `DISPLAY`. |
-| `set-pinentry` avisa sobre uma linha `pinentry-program` fora do bloco do ARGVUS | Remova essa linha de `~/.gnupg/gpg-agent.conf` e rode o comando de novo. |
+| `generate` não abre a janela de senha | Rode `argvus gpg status`. O `pinentry-gtk` precisa estar instalado, e a sessão precisa expor `WAYLAND_DISPLAY` ou `DISPLAY`. |
+| `generate` avisa que o `pinentry-gtk` não está instalado | Instale o pacote `pinentry`. |
+| `generate` avisa sobre uma linha `pinentry-program` fora do bloco do ARGVUS | Remova essa linha de `~/.gnupg/gpg-agent.conf` e rode o comando de novo. |
+| `generate` avisa que o tamanho da chave não é suportado | Confira o tamanho para o algoritmo: DSA vai até 3072 bits. |
 | `generate` avisa que a subchave de criptografia não foi adicionada | A chave foi criada. Adicione a subchave com `gpg --quick-add-key IMPRESSÃO_DIGITAL cv25519 encr 2y`, ou apague a chave com `gpg --delete-secret-and-public-key` e gere de novo. |
 | `import` recusa um arquivo | O arquivo contém uma chave privada. Exporte só a chave pública na outra máquina com `argvus gpg export-public`. |
 | `list` não mostra chaves | O keyring em `GNUPGHOME` (ou em `~/.gnupg`) está vazio. Rode `argvus gpg generate` para criar uma chave. |
@@ -385,7 +407,7 @@ O pacote `argvus-launcher` é independente de arquitetura e instala:
 - `/usr/share/argvus/launcher/config/`, com a configuração e os temas do Rofi;
 - `/usr/share/argvus/launcher/sh/`, com `cheatsheets.sh` e `emoji-picker.sh`.
 
-Dependências obrigatórias: `argvus-session`, `argvus-appearance`, `argvus-config`, `argvus-i18n`, `argvus-terminal`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard` e `wtype`. Dependências opcionais: `openssh`, para o seletor SSH e o gerenciador de chaves; `gnupg` e `pinentry`, para o gerenciador de chaves GPG; `lazygit` e `gitui`, para a TUI de git.
+Dependências obrigatórias: `argvus-session`, `argvus-appearance`, `argvus-config`, `argvus-i18n`, `argvus-terminal`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` e `pinentry` (que fornece o `pinentry-gtk`). Dependências opcionais: `openssh`, para o seletor SSH e o gerenciador de chaves; `lazygit` e `gitui`, para a TUI de git.
 
 A instalação do pacote não grava nada em `$HOME`. A configuração do usuário é criada no início da sessão, como descrito em [Configuração e temas do Rofi](#onde-fica-a-configuração-ativa).
 
