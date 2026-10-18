@@ -85,7 +85,7 @@ Para acesso só pelo teclado, `SUPER + ALT + 1` a `SUPER + ALT + 9` abrem o proj
 
 A lista efetiva de projetos é limitada a 9, já que é só isso que `SUPER + ALT + 1..9` conseguem endereçar. `argvus projects add` (e a página Projects do Control Center, que o chama) recusa adicionar um projeto ou raiz que levaria o total além de 9, e mostra o erro correspondente.
 
-Um projeto vem de dois lugares da seção `projects` do `argvus-config`:
+Um projeto vem de dois lugares da seção `projects` do `argvus config`:
 
 - `paths`: diretórios de projeto individuais.
 - `roots`: diretórios cujos subdiretórios imediatos são projetos. Uma raiz que não existe é ignorada.
@@ -107,7 +107,7 @@ Se nenhuma raiz ou caminho existir, `SUPER + O` informa que nenhum projeto foi e
 
 As entradas são lidas da configuração efetiva; o launcher não mantém cópia delas.
 
-Abrir um projeto também registra o caminho dele como o projeto ativo da sessão, que o bloco de telemetria Dev Dashboard (`argvus-widget-telemetry`) lê para relatar o git, as portas em escuta e os containers desse projeto.
+Abrir um projeto também registra o caminho dele como o projeto ativo da sessão, que o bloco de telemetria Dev Dashboard (`argvus widget-telemetry`) lê para relatar o git, as portas em escuta e os containers desse projeto.
 
 ## SSH (`SUPER + ALT + S`)
 
@@ -158,9 +158,9 @@ argvus ssh open myhost   # abre um host específico sem o seletor
 | Notificação "nenhum host encontrado em ~/.ssh/config" | O arquivo não existe ou não tem linhas `Host`. Rode `argvus ssh list` para verificar. |
 | Um host não aparece no seletor | Ele é um wildcard, vem de um arquivo `Include` ou tem caracteres fora do conjunto permitido. Coloque-o no arquivo principal com um alias simples. |
 | A janela mostra um status de erro logo de início | Rode `ssh <host>` em um terminal comum para ver a mensagem completa (host inacessível, chave errada etc.). |
-| A janela mostra `message.ssh_session_ended` em vez de texto | O catálogo do `argvus-i18n` instalado é mais antigo que esta versão. Reinstale o `argvus-i18n`. |
+| A janela mostra `message.ssh_session_ended` em vez de texto | O pacote `argvus` instalado é mais antigo que esta versão. Atualize o `argvus`. |
 
-Requer `openssh` e `argvus-terminal`.
+Requer `openssh` e `argvus` (o comando `argvus terminal`).
 
 ## Chaves SSH (`argvus keys`)
 
@@ -190,7 +190,7 @@ Regras que valem para todos os comandos:
 
 O agente é o serviço de usuário `argvus-ssh-agent.service`, iniciado pelo `argvus-session`. Na sessão, `SSH_AUTH_SOCK` aponta para ele.
 
-Requer `openssh` (`ssh-keygen` e `ssh-add`) e `argvus-terminal`.
+Requer `openssh` (`ssh-keygen` e `ssh-add`) e `argvus` (o comando `argvus terminal`).
 
 | Sintoma | Causa e correção |
 | --- | --- |
@@ -315,7 +315,7 @@ argvus snippets --help                 # mostra as opções e um exemplo
 | `open` informa que o snippet não foi encontrado | O nome não confere exatamente. Compare com `argvus snippets list`. |
 | Nada aparece no aplicativo | A janela em foco não é um campo de texto, ou é um aplicativo X11 rodando sob XWayland, que pode ignorar esse tipo de entrada. Teste com um aplicativo Wayland nativo. |
 
-Requer `wtype`, `rofi`, `jq` e `argvus-config`.
+Requer `wtype`, `rofi`, `jq` e `argvus` (o comando `argvus config`).
 
 O `wtype` simula pressionamentos de tecla no nível de entrada do Wayland. Alguns aplicativos X11 rodando sob XWayland ignoram esses eventos, então o texto pode não aparecer neles mesmo com o snippet encontrado.
 
@@ -403,11 +403,11 @@ A configuração do launcher é compartilhada com componentes de outros pacotes:
 
 O pacote `argvus-launcher` é independente de arquitetura e instala:
 
-- `/usr/lib/argvus/commands/argvus-launcher`, `argvus-snippets`, `argvus-ssh` e `argvus-git`, no mesmo diretório;
+- `argvus launcher`, `argvus-snippets`, `argvus-ssh` e `argvus-git`, no mesmo diretório;
 - `/usr/share/argvus/launcher/config/`, com a configuração e os temas do Rofi;
 - `/usr/share/argvus/launcher/sh/`, com `cheatsheets.sh` e `emoji-picker.sh`.
 
-Dependências obrigatórias: `argvus-session`, `argvus-appearance`, `argvus-config`, `argvus-i18n`, `argvus-terminal`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` e `pinentry` (que fornece o `pinentry-gtk`). Dependências opcionais: `openssh`, para o seletor SSH e o gerenciador de chaves; `lazygit` e `gitui`, para a TUI de git.
+Dependências obrigatórias: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` e `pinentry` (que fornece o `pinentry-gtk`). Dependências opcionais: `openssh`, para o seletor SSH e o gerenciador de chaves; `lazygit` e `gitui`, para a TUI de git.
 
 A instalação do pacote não grava nada em `$HOME`. A configuração do usuário é criada no início da sessão, como descrito em [Configuração e temas do Rofi](#onde-fica-a-configuração-ativa).
 
@@ -430,9 +430,9 @@ A instalação do pacote não grava nada em `$HOME`. A configuração do usuári
 | --- | --- |
 | `argvus-hyprland` | Declara os atalhos e as regras de janela dos menus. |
 | `argvus-appearance` | Troca o tema, o accent e o layout ativos, e reescreve as referências de tema do Rofi. |
-| `argvus-config` | Guarda os projetos, os snippets e a preferência de lançador padrão. |
+| `argvus` (`argvus config`) | Guarda os projetos, os snippets e a preferência de lançador padrão. |
 | `argvus-session` | Copia a configuração inicial do Rofi e define a fonte no início da sessão. |
-| `argvus-terminal` | Abre as sessões SSH, os terminais dos projetos e os pedidos de senha do `argvus keys`. |
-| `argvus-widget-telemetry` | Lê o projeto ativo gravado pelo `argvus projects`. |
-| `argvus-i18n` | Fornece as mensagens traduzidas usadas pelos scripts do launcher. |
-| `argvus-control-center` | Edita a lista de projetos por meio do `argvus projects`. |
+| `argvus` (`argvus terminal`) | Abre as sessões SSH, os terminais dos projetos e os pedidos de senha do `argvus keys`. |
+| `argvus` (`argvus widget-telemetry`) | Lê o projeto ativo gravado pelo `argvus projects`. |
+| `argvus` (`argvus i18n`) | Fornece as mensagens traduzidas usadas pelos scripts do launcher. |
+| `argvus-gtk` (`argvus control-center`) | Edita a lista de projetos por meio do `argvus projects`. |

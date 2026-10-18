@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Regression test: argvus-snippets must reach argvus-config
-# through the private commands directory, not through PATH. Fake commands are
-# created under /tmp/argvus and removed on exit.
+# Regression test: argvus-snippets must reach the config model through the
+# argvus entry point on PATH (argvus config ...). Fake commands are created
+# under /tmp/argvus and removed on exit.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
@@ -23,17 +23,18 @@ PROJECT_DIR="$WORK/project"
 mkdir -p "$COMMANDS" "$TOOLS" "$PROJECT_DIR"
 : > "$LOG"
 
-# Only the utilities the scripts need. argvus-config is deliberately absent
-# from this PATH, so a bare-name call would fail the test.
+# Only the utilities the scripts need. The real argvus binary is deliberately
+# absent from this PATH; only the fake below is reachable.
 for tool in sh env timeout jq awk cat sed grep tr head tail cut sort uniq wc date dirname basename mktemp realpath readlink mkdir rm rmdir cp mv touch; do
   real="$(command -v "$tool" 2>/dev/null || true)"
   [ -n "$real" ] && ln -sf "$real" "$TOOLS/$tool"
 done
 
-# Fake argvus-config: records each call. Whole arrays read as empty, and an
+# Fake argvus: records each config call. Whole arrays read as empty, and an
 # indexed element that does not exist reads as null, as the real tool does.
-cat > "$COMMANDS/argvus-config" <<'EOF'
+cat > "$TOOLS/argvus" <<'EOF'
 #!/bin/sh
+[ "$1" = config ] && shift
 printf '%s\n' "$*" >> "$TEST_CONFIG_LOG"
 case "$1" in
   get)
@@ -45,7 +46,7 @@ case "$1" in
 esac
 exit 0
 EOF
-chmod 755 "$COMMANDS/argvus-config"
+chmod 755 "$TOOLS/argvus"
 
 run() {
   timeout 20 env -i PATH="$TOOLS" HOME="$WORK" TEST_CONFIG_LOG="$LOG" \
@@ -69,7 +70,7 @@ printf '#!/bin/sh\nprintf "override %%s\\n" "$*" >> "$TEST_CONFIG_LOG"\nexit 0\n
 chmod 755 "$OVERRIDE"
 out="$(timeout 20 env -i PATH="$TOOLS" HOME="$WORK" TEST_CONFIG_LOG="$LOG" \
   ARGVUS_CONFIG_BIN="$OVERRIDE" /bin/sh "$BIN_DIR/argvus-snippets" list </dev/null 2>&1)" && status=0 || status=$?
-if [ "$status" -eq 0 ] && grep -q '^override get /snippets/items' "$LOG"; then
+if [ "$status" -eq 0 ] && grep -q '^override config get /snippets/items' "$LOG"; then
   pass "ARGVUS_CONFIG_BIN overrides the default binary"
 else
   fail "ARGVUS_CONFIG_BIN overrides the default binary (status $status, output: $out)"

@@ -106,7 +106,7 @@ If no root or path exists, `SUPER + O` reports that no projects were found. An o
 
 The entries are read from the effective configuration; the launcher keeps no copy of them.
 
-Opening a project also records its path as the active project for the session, which the Dev Dashboard telemetry block (`argvus-widget-telemetry`) reads to report that project's git, listening ports and containers.
+Opening a project also records its path as the active project for the session, which the Dev Dashboard telemetry block (`argvus widget-telemetry`) reads to report that project's git, listening ports and containers.
 
 ## SSH (`SUPER + ALT + S`)
 
@@ -157,9 +157,9 @@ argvus ssh open myhost   # opens a specific host without the picker
 | Notification "no hosts found in ~/.ssh/config" | The file is missing or has no `Host` lines. Run `argvus ssh list` to check. |
 | A host is missing from the picker | It is a wildcard, comes from an `Include` file, or has characters outside the allowed set. Put it in the main file with a plain alias. |
 | The window shows an error status right away | Run `ssh <host>` in a normal terminal to see the full message (unreachable host, wrong key, and so on). |
-| The window shows `message.ssh_session_ended` instead of text | The installed `argvus-i18n` catalog is older than this version. Reinstall `argvus-i18n`. |
+| The window shows `message.ssh_session_ended` instead of text | The installed `argvus` package is older than this version. Update `argvus`. |
 
-Requires `openssh` and `argvus-terminal`.
+Requires `openssh` and `argvus` (the `argvus terminal` command).
 
 ## SSH keys (`argvus keys`)
 
@@ -189,7 +189,7 @@ Rules that apply to every command:
 
 The agent is the `argvus-ssh-agent.service` user service started by `argvus-session`. `SSH_AUTH_SOCK` points to it in the session.
 
-Requires `openssh` (`ssh-keygen` and `ssh-add`) and `argvus-terminal`.
+Requires `openssh` (`ssh-keygen` and `ssh-add`) and `argvus` (the `argvus terminal` command).
 
 | Symptom | Cause and fix |
 | --- | --- |
@@ -314,7 +314,7 @@ argvus snippets --help                 # shows the options and an example
 | `open` reports the snippet was not found | The name does not match exactly. Compare with `argvus snippets list`. |
 | Nothing appears in the application | The focused window is not a text field, or it is an X11 application running under XWayland, which may ignore this kind of input. Test with a native Wayland application. |
 
-Requires `wtype`, `rofi`, `jq` and `argvus-config`.
+Requires `wtype`, `rofi`, `jq` and `argvus` (the `argvus config` command).
 
 `wtype` simulates key presses at the Wayland input level. Some X11 applications running under XWayland ignore these events, so the text may not appear there even though the snippet was found.
 
@@ -385,7 +385,7 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 ```
 
 - `hypr` uses `data/generated/hypr/keybindings.txt` from the user's ARGVUS configuration when that file exists. Otherwise it uses the Hyprland cheatsheet shipped with `argvus-hyprland`.
-- `kitty` uses the terminal cheatsheet shipped with `argvus-terminal`.
+- `kitty` uses the terminal cheatsheet shipped with `argvus`.
 - Any other name reads `<name>/docs/cheatsheets/<language>.txt`. If that file does not exist, no window opens.
 
 The language is Portuguese when the system locale is `pt-BR`, and English otherwise. `Esc` closes the window. Selecting a line only closes it; nothing is executed.
@@ -402,11 +402,11 @@ The launcher configuration is shared with components owned by other packages:
 
 The package `argvus-launcher` is architecture-independent and installs:
 
-- `/usr/lib/argvus/commands/argvus-launcher`, `argvus-snippets`, `argvus-ssh` and `argvus-git`, under the same directory;
+- `argvus launcher`, `argvus-snippets`, `argvus-ssh` and `argvus-git`, under the same directory;
 - `/usr/share/argvus/launcher/config/`, with the Rofi configuration and themes;
 - `/usr/share/argvus/launcher/sh/`, with `cheatsheets.sh` and `emoji-picker.sh`.
 
-Required dependencies: `argvus-session`, `argvus-appearance`, `argvus-config`, `argvus-i18n`, `argvus-terminal`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` and `pinentry` (which provides `pinentry-gtk`). Optional dependencies: `openssh`, for the SSH picker and the SSH key manager; `lazygit` and `gitui`, for the git TUI.
+Required dependencies: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` and `pinentry` (which provides `pinentry-gtk`). Optional dependencies: `openssh`, for the SSH picker and the SSH key manager; `lazygit` and `gitui`, for the git TUI.
 
 Installing the package does not write into `$HOME`. User configuration is created at session start, as described in [Rofi configuration and themes](#where-the-active-configuration-lives).
 
@@ -429,9 +429,9 @@ Installing the package does not write into `$HOME`. User configuration is create
 | --- | --- |
 | `argvus-hyprland` | Declares the shortcuts and the Hyprland window rules for the menus. |
 | `argvus-appearance` | Changes the active theme, accent and layout, and rewrites the Rofi theme references. |
-| `argvus-config` | Stores the projects, the snippets and the default launcher setting. |
+| `argvus` (`argvus config`) | Stores the projects, the snippets and the default launcher setting. |
 | `argvus-session` | Copies the initial Rofi configuration and sets its font at session start. |
-| `argvus-terminal` | Opens SSH sessions, project terminals and the passphrase prompts of `argvus keys`. |
-| `argvus-widget-telemetry` | Reads the active project written by `argvus projects`. |
-| `argvus-i18n` | Provides the translated messages used by the launcher scripts. |
-| `argvus-control-center` | Edits the project list through `argvus projects`. |
+| `argvus` (`argvus terminal`) | Opens SSH sessions, project terminals and the passphrase prompts of `argvus keys`. |
+| `argvus` (`argvus widget-telemetry`) | Reads the active project written by `argvus projects`. |
+| `argvus` (`argvus i18n`) | Provides the translated messages used by the launcher scripts. |
+| `argvus-gtk` (`argvus control-center`) | Edits the project list through `argvus projects`. |

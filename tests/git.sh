@@ -59,17 +59,7 @@ cat >/dev/null
 printf '0\n'
 FAKE
 
-# Fake argvus-config for argvus-projects: one configured path, no roots.
-cat > "$FAKEBIN/argvus-config" <<'FAKE'
-#!/bin/sh
-case "$2" in
-  /projects/paths/0) printf '%s\n' "$TEST_PROJECT_PATH" ;;
-  */[0-9]*) printf 'null\n' ;;
-  *) printf '[]\n' ;;
-esac
-FAKE
-
-chmod 755 "$FAKEBIN/argvus" "$FAKEBIN/lazygit" "$FAKEBIN/rofi" "$FAKEBIN/argvus-config"
+chmod 755 "$FAKEBIN/argvus" "$FAKEBIN/lazygit" "$FAKEBIN/rofi"
 
 run_git() {
   env -i PATH="$FAKEBIN:$TOOLS" HOME="$WORK" \
