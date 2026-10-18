@@ -402,7 +402,7 @@ The launcher configuration is shared with components owned by other packages:
 
 The package `argvus-launcher` is architecture-independent and installs:
 
-- `/usr/lib/argvus/commands/argvus-launcher`, `argvus-projects`, `argvus-snippets`, `argvus-ssh`, `argvus-keys`, `argvus-gpg` and `argvus-git`, under the same directory;
+- `/usr/lib/argvus/commands/argvus-launcher`, `argvus-snippets`, `argvus-ssh` and `argvus-git`, under the same directory;
 - `/usr/share/argvus/launcher/config/`, with the Rofi configuration and themes;
 - `/usr/share/argvus/launcher/sh/`, with `cheatsheets.sh` and `emoji-picker.sh`.
 
