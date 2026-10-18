@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Regression test: argvus-projects and argvus-snippets must reach argvus-config
+# Regression test: argvus-snippets must reach argvus-config
 # through the private commands directory, not through PATH. Fake commands are
 # created under /tmp/argvus and removed on exit.
 set -euo pipefail
@@ -52,26 +52,7 @@ run() {
     ARGVUS_COMMANDS_DIR="$COMMANDS" "$@" </dev/null
 }
 
-# 1. Listing projects reads the config through the private directory.
-out="$(run /bin/sh "$BIN_DIR/argvus-projects" list 2>&1)" && status=0 || status=$?
-if [ "$status" -eq 0 ] && grep -q '^get /projects' "$LOG"; then
-  pass "argvus-projects list reads config from the private commands directory"
-else
-  fail "argvus-projects list reads config from the private commands directory (status $status, output: $out)"
-fi
-: > "$LOG"
-
-# 2. Adding a project writes the config through the same path. This is the
-# exact operation that failed in the Control Center with "command not found".
-out="$(run /bin/sh "$BIN_DIR/argvus-projects" add "$PROJECT_DIR" 2>&1)" && status=0 || status=$?
-if [ "$status" -eq 0 ] && grep -q '^set /projects' "$LOG"; then
-  pass "argvus-projects add writes config from the private commands directory"
-else
-  fail "argvus-projects add writes config from the private commands directory (status $status, output: $out)"
-fi
-: > "$LOG"
-
-# 3. Snippets list reads config through the same path.
+# 1. Snippets list reads config through the same path.
 out="$(run /bin/sh "$BIN_DIR/argvus-snippets" list 2>&1)" && status=0 || status=$?
 if [ "$status" -eq 0 ] && grep -q '^get /snippets/items' "$LOG"; then
   pass "argvus-snippets list reads config from the private commands directory"

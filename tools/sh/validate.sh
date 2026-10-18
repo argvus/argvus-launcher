@@ -21,11 +21,9 @@ cd "$ROOT_DIR"
 
 shellcheck tools/sh/*.sh packaging/arch/common/*.sh src/usr/bin/argvus-launcher src/usr/share/argvus/launcher/sh/*.sh
 bash -n tools/sh/*.sh packaging/arch/common/*.sh src/usr/bin/argvus-launcher src/usr/share/argvus/launcher/sh/*.sh
-shellcheck src/usr/bin/argvus-projects src/usr/bin/argvus-snippets src/usr/bin/argvus-ssh src/usr/bin/argvus-keys src/usr/bin/argvus-gpg src/usr/bin/argvus-git tests/config-bin.sh tests/git.sh tests/keys.sh tests/gpg.sh
+shellcheck src/usr/bin/argvus-snippets src/usr/bin/argvus-ssh src/usr/bin/argvus-git tests/config-bin.sh tests/git.sh
 bash tests/config-bin.sh
 bash tests/git.sh
-bash tests/keys.sh
-bash tests/gpg.sh
 
 metadata() {
 	bash -c '

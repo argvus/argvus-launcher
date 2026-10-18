@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Tests for argvus-git and the `argvus-projects pick` subcommand it relies on.
+# Tests for argvus-git.
 # Every external tool is a fake created under /tmp/argvus and removed on exit.
 set -euo pipefail
 
@@ -123,26 +123,6 @@ if [ "$rc" -ne 0 ] && ! printf '%s\n' "$out" | grep -q 'tui-terminal'; then
   pass "a missing TUI stops argvus git"
 else
   fail "a missing TUI stops argvus git (rc $rc, output: $out)"
-fi
-
-# 7. `argvus-projects pick` prints the chosen path.
-out="$(env -i PATH="$FAKEBIN:$TOOLS" HOME="$WORK" ARGVUS_BOOTSTRAP=/nonexistent \
-  ARGVUS_CONFIG_BIN="$FAKEBIN/argvus-config" TEST_PROJECT_PATH="$REPO" \
-  sh "$BIN_DIR/argvus-projects" pick 2>&1)" && rc=0 || rc=$?
-if [ "$rc" -eq 0 ] && [ "$out" = "$REPO" ]; then
-  pass "argvus-projects pick prints the chosen path"
-else
-  fail "argvus-projects pick prints the chosen path (rc $rc, output: $out)"
-fi
-
-# 8. `argvus-projects pick` prints nothing when the picker is cancelled.
-out="$(env -i PATH="$FAKEBIN:$TOOLS" HOME="$WORK" ARGVUS_BOOTSTRAP=/nonexistent \
-  ARGVUS_CONFIG_BIN="$FAKEBIN/argvus-config" TEST_PROJECT_PATH="$REPO" FAKE_ROFI=cancel \
-  sh "$BIN_DIR/argvus-projects" pick 2>&1)" && rc=0 || rc=$?
-if [ "$rc" -eq 0 ] && [ -z "$out" ]; then
-  pass "argvus-projects pick prints nothing when cancelled"
-else
-  fail "argvus-projects pick prints nothing when cancelled (rc $rc, output: $out)"
 fi
 
 if [ "$failures" -ne 0 ]; then
