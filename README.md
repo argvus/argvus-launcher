@@ -1,12 +1,3 @@
-<!--
-  Template repository for an ARGVUS Arch Linux package.
-
-  Before using this template, replace the placeholders and the example payload:
-  argvus, argvus-launcher, argvus-launcher, Rofi launcher configuration, themes and menus for the ARGVUS desktop., the maintainer, and the license.
-  Keep the local and CI PKGBUILDs aligned; their source definitions are the
-  only intentional difference.
--->
-
 # argvus-launcher
 
 Rofi launcher configuration, themes and menus for the ARGVUS desktop.
@@ -15,9 +6,9 @@ Rofi launcher configuration, themes and menus for the ARGVUS desktop.
 [![Release](https://github.com/argvus/argvus-launcher/actions/workflows/release.yml/badge.svg)](https://github.com/argvus/argvus-launcher/actions/workflows/release.yml)
 [![License](https://img.shields.io/badge/License-GPL--3.0-blue.svg)](LICENSE)
 
-This repository is a starting point for an Arch Linux package. Replace the
-`src/` example with the files owned by the package and update both PKGBUILDs,
-the workflows, metadata, and documentation before publishing it.
+This repository packages the launcher configuration, themes and menus. Its `src/`
+tree is the payload; both PKGBUILDs (`packaging/arch/ci` and `packaging/arch/local`)
+build it.
 
 ## Build and install
 
