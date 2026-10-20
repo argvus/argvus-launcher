@@ -7,7 +7,7 @@ Rofi launcher configuration, themes and menus for the ARGVUS desktop.
 [![License](https://img.shields.io/badge/License-GPL--3.0-blue.svg)](LICENSE)
 
 This repository packages the launcher configuration, themes and menus. Its `src/`
-tree is the payload; both PKGBUILDs (`packaging/arch/ci` and `packaging/arch/local`)
+tree is the payload; both PKGBUILDs (`packaging/arch/remote` and `packaging/arch/local`)
 build it.
 
 ## Build and install
@@ -30,7 +30,7 @@ For package metadata only:
 
 ```sh
 make validate
-makepkg -p packaging/arch/ci/PKGBUILD --printsrcinfo
+makepkg -p packaging/arch/remote/PKGBUILD --printsrcinfo
 ```
 
 See [packaging/arch/README.md](packaging/arch/README.md) for the difference

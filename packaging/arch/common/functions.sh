@@ -42,7 +42,7 @@ arch_package_launcher_payload() {
 	cp -a "${source_root}/src/." "${pkgdir}/"
 	install -dm755 "${pkgdir}/usr/lib/argvus/commands"
 	for _command in argvus-launcher argvus-snippets argvus-ssh argvus-git; do
-		mv "${pkgdir}/usr/bin/${_command}" "${pkgdir}/usr/lib/argvus/commands/${_command}"
+		mv "${pkgdir}/usr/bin/${_command}" "${pkgdir}/usr/lib/argvus/commands/${_command#argvus-}"
 	done
 	find "${pkgdir}" -type f -name '*.sh' -exec chmod 755 {} +
 	install -Dm644 "${source_root}/LICENSE" \

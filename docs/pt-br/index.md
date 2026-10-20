@@ -435,4 +435,4 @@ A instalação do pacote não grava nada em `$HOME`. A configuração do usuári
 | `argvus` (`argvus terminal`) | Abre as sessões SSH, os terminais dos projetos e os pedidos de senha do `argvus keys`. |
 | `argvus` (`argvus widget-telemetry`) | Lê o projeto ativo gravado pelo `argvus projects`. |
 | `argvus` (`argvus i18n`) | Fornece as mensagens traduzidas usadas pelos scripts do launcher. |
-| `argvus-gtk` (`argvus control-center`) | Edita a lista de projetos por meio do `argvus projects`. |
+| `argvus` (`argvus control-center`) | Edita a lista de projetos por meio do `argvus projects`. |

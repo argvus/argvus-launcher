@@ -434,4 +434,4 @@ Installing the package does not write into `$HOME`. User configuration is create
 | `argvus` (`argvus terminal`) | Opens SSH sessions, project terminals and the passphrase prompts of `argvus keys`. |
 | `argvus` (`argvus widget-telemetry`) | Reads the active project written by `argvus projects`. |
 | `argvus` (`argvus i18n`) | Provides the translated messages used by the launcher scripts. |
-| `argvus-gtk` (`argvus control-center`) | Edits the project list through `argvus projects`. |
+| `argvus` (`argvus control-center`) | Edits the project list through `argvus projects`. |
