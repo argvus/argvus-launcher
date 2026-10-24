@@ -23,7 +23,7 @@ both are presented to the PKGBUILD as `${pkgname}-${pkgver}`.
    tag named `v${pkgver}`.
 3. Replace the example functions in `common/functions.sh`, preserving the
    source normalization in `prepare()`.
-4. Update `src/`, `.github/CODEOWNERS`, `SECURITY.md`, and the README
+4. Update `src/`, `.github/CODEOWNERS`, and the README
    placeholders.
 5. Run `make validate && make build` before committing.
 
