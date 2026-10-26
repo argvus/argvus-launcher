@@ -1,0 +1,11 @@
+# Theme consumer: rendered into every theme build as launcher/theme.rasi.
+id = "launcher"
+template = "launcher/theme-template/theme.rasi"
+output = "launcher/theme.rasi"
+
+# Defaults for the tokens the template reads; a theme that defines one wins.
+[palette]
+launcher_bg = "@bg | alpha(0.88)"
+launcher_fg_selected = "@fg"
+launcher_row_selected = "@bg | mix(@fg, 0.1) | alpha(0.88)"
+launcher_separator = "@bg | mix(@fg, 0.4) | alpha(0.52)"

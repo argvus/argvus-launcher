@@ -1,0 +1,10 @@
+/* theme: {{ theme.id }} */
+* {
+    th-bg:            {{ @launcher_bg | rgba_percent }};
+    th-fg:            {{ @accent | rgb }};
+    th-fg-selected:   {{ @launcher_fg_selected | rgba_percent }};
+    th-row-alt:       {{ @accent | alpha(0.07) | rgba_percent }};
+    th-row-selected:  {{ @launcher_row_selected | rgba }};
+    th-border-color:  {{ @accent | alpha(0.36) | rgba }};
+    th-separator:     {{ @launcher_separator | rgba }};
+}

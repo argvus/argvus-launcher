@@ -72,7 +72,7 @@ When `argvus-session` applies the font at session start, it rewrites the `font:`
 
 ### Changing the theme
 
-`argvus-appearance` owns theme changes. When the theme changes, it rewrites the user copies so that `config.rasi` points at the new `theme.rasi`, and `theme.rasi` imports the selected family. The Float layout selects the `-float` variant of the active family. Theme pickers such as the theme menu and the layout menu read the same `config.rasi`, so they use the active style too.
+`argvus-appearance` owns theme changes. When the theme changes, it rewrites the user copies so that `config.rasi` points at the new `theme.rasi`, and `theme.rasi` imports the launcher palette of the theme build (`~/.config/argvus/data/generated/theme/current/launcher/theme.rasi`), which has the active family, layout and highlight colour. Without a theme build it imports the family copy, and the Float layout selects the `-float` variant of the active family. Theme pickers such as the theme menu and the layout menu read the same `config.rasi`, so they use the active style too.
 
 Do not edit the files under `/usr/share/argvus/launcher/`; they are replaced on package upgrade. Make changes in the user copy, under `$XDG_CONFIG_HOME/argvus/data/rofi/`.
 

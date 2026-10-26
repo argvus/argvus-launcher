@@ -73,7 +73,7 @@ Quando o `argvus-session` aplica a fonte na inicialização da sessão, ele rees
 
 ### Trocando o tema
 
-O `argvus-appearance` é quem muda o tema. Ao trocar, ele reescreve as cópias do usuário para que o `config.rasi` aponte para o novo `theme.rasi`, e o `theme.rasi` importe a família escolhida. O layout Float seleciona a variante `-float` da família ativa. Os seletores de tema e de layout leem o mesmo `config.rasi`, então também usam o estilo ativo.
+O `argvus-appearance` é quem muda o tema. Ao trocar, ele reescreve as cópias do usuário para que o `config.rasi` aponte para o novo `theme.rasi`, e o `theme.rasi` importe a paleta do lançador do build de tema (`~/.config/argvus/data/generated/theme/current/launcher/theme.rasi`), que tem a família, o layout e a cor de destaque ativos. Sem build de tema, ele importa a cópia da família, e o layout Float seleciona a variante `-float` da família ativa. Os seletores de tema e de layout leem o mesmo `config.rasi`, então também usam o estilo ativo.
 
 Não edite os arquivos em `/usr/share/argvus/launcher/`: eles são substituídos na atualização do pacote. Faça as alterações na cópia do usuário, em `$XDG_CONFIG_HOME/argvus/data/rofi/`.
 
