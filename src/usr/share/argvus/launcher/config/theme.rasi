@@ -8,6 +8,9 @@
     fg:               @th-fg;
     fg-selected:      @th-fg-selected;
 
+    input-bg:         @th-input-bg;
+    input-fg:         @th-input-fg;
+
     row-alt:          @th-row-alt;
     row-selected:     @th-row-selected;
 
@@ -34,24 +37,24 @@ mainbox {
 inputbar {
   padding: 0 0 12px 0;
   children: [ prompt, textbox-prompt-colon, entry ];
-  background-color: transparent;
+  background-color: @input-bg;
 }
 
 prompt {
   background-color: transparent;
-  text-color: @fg;
+  text-color: @input-fg;
 }
 
 textbox-prompt-colon {
   str: ":";
   expand: false;
-  text-color: @fg;
+  text-color: @input-fg;
   background-color: transparent;
 }
 
 entry {
   background-color: transparent;
-  text-color: @fg;
+  text-color: @input-fg;
 }
 
 textbox {
