@@ -6,6 +6,7 @@ output = "launcher/theme.rasi"
 # Defaults for the tokens the template reads; a theme that defines one wins.
 [palette]
 launcher_bg = "@bg | alpha(0.88)"
+launcher_fg = "@accent"
 launcher_fg_selected = "@fg"
 launcher_input_bg = "@bg | alpha(0.0)"
 launcher_input_fg = "@accent"

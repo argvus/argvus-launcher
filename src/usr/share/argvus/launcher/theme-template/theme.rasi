@@ -1,7 +1,7 @@
 /* theme: {{ theme.id }} */
 * {
     th-bg:            {{ @launcher_bg | rgba_percent }};
-    th-fg:            {{ @accent | rgb }};
+    th-fg:            {{ @launcher_fg | rgb }};
     th-input-bg:      {{ @launcher_input_bg | rgba_percent }};
     th-input-fg:      {{ @launcher_input_fg | rgb }};
     th-fg-selected:   {{ @launcher_fg_selected | rgba_percent }};
