@@ -1,5 +1,5 @@
 ---
-title: Application launcher
+title: Uygulama başlatıcı
 description: ARGVUS Rofi menüleri aracılığıyla uygulamaları başlatın, projeleri açın, SSH hostlarına ve snippet'lere bağlanın, emoji seçin, hesaplama yapın ve hile sayfalarını okuyun.
 ---
 
@@ -14,26 +14,26 @@ description: ARGVUS Rofi menüleri aracılığıyla uygulamaları başlatın, pr
 
 Kısayollar `argvus-hyprland` tarafından beyan edilmiştir. Bu paket, komutları ve bunların arkasındaki menüleri sağlar.
 
-## Shortcuts
+## Kısayollar
 
-| Shortcut | Action | Command | Section |
+| Kısayol | Eylem | Komut | Bölüm |
 | --- | --- | --- | --- |
-| `SUPER + D` | Application launcher | `argvus launcher` | Application launcher |
-| `SUPER + O` | Project switcher | `argvus projects` | Project switcher |
-| `SUPER + ALT + 1` to `9` | Open the project in that position | `argvus projects open N` | Project switcher |
-| `SUPER + ALT + S` | SSH host picker | `argvus ssh` | SSH |
-| `SUPER + ALT + N` | Snippet picker | `argvus snippets` | Snippets |
-| `SUPER + ALT + G` | Project picker, then git TUI | `argvus git` | Git |
-| `SUPER + .` | Emoji picker | `emoji-picker.sh` | Emoji picker |
-| `SUPER + C` | Calculator | `rofi -show calc` | Calculator |
-| `SUPER + SHIFT + /` | Hyprland cheatsheet | `cheatsheets.sh hypr` | Cheatsheets |
-| `SUPER + CTRL + /` | Kitty cheatsheet | `cheatsheets.sh kitty` | Cheatsheets |
+| `SUPER + D` | Uygulama başlatıcısı | `argvus launcher` | Uygulama başlatıcısı |
+| `SUPER + O` | Proje değiştirici | `argvus projects` | Proje değiştirici |
+| `SUPER + ALT + 1` - `9` | Projeyi bu konumda açın | `argvus projects open N` | Proje değiştirici |
+| `SUPER + ALT + S` | SSH ana bilgisayar seçici | `argvus ssh` | SSH |
+| `SUPER + ALT + N` | Parçacık seçici | `argvus snippets` | Parçacıklar |
+| `SUPER + ALT + G` | Proje seçici, ardından git TUI | `argvus git` | Git |
+| `SUPER + .` | Emoji seçici | `emoji-picker.sh` | Emoji seçici |
+| `SUPER + C` | Hesap Makinesi | `rofi -show calc` | Hesap Makinesi |
+| `SUPER + SHIFT + /` | Hyprland hile sayfası | `cheatsheets.sh hypr` | Hile Sayfaları |
+| `SUPER + CTRL + /` | Kitty hile sayfası | `cheatsheets.sh kitty` | Hile Sayfaları |
 
 ## Uygulama başlatıcı (`SUPER + D`)
 
 `SUPER + D`, `argvus launcher` çalıştırır, bu da Rofi'yi `drun` modunda açar. Masaüstü girişi ile yüklü grafik uygulamalarını listeler ve seçilen uygulama `Enter` tuşuna bastığınızda başlar.
 
-1. Press `SUPER + D`.
+1. `SUPER + D`'ye basın.
 2. Uygulama adının bir kısmını yazın. Liste sıralanır ve filtre büyük/küçük harf duyarsızdır.
 3. Uygulamayı başlatmak için `Enter` tuşlayın veya menüyü kapatmak için `Esc` tuşlayın.
 
@@ -52,13 +52,13 @@ Yalnızca masaüstü girişi olan uygulamalar listede görünür. Hiçbir `.desk
 
 Paket, Rofi yapılandırmasını `/usr/share/argvus/launcher/config/` altında yükler:
 
-| File | Role |
+| Dosya | Rol |
 | --- | --- |
-| `config.rasi` | Entry point used by every ARGVUS menu. Sets the Rofi `configuration` (font, no icons, sorted list, case-insensitive matching) and imports `theme.rasi`. |
-| `theme.rasi` | Colors and layout of the window, input bar and list. Imports one theme and the mode file. |
-| `mode.rasi` | Mode override. The packaged file has no overrides and keeps the Dark mode. |
-| `themes/<family>/theme.rasi` | Palette of a theme family, for example `argvus-dark` or `tokyo-night`. |
-| `themes/<family>-spaced/theme.rasi` | Spaced variant of the same family. |
+| `config.rasi` | Her ARGVUS menüsü tarafından kullanılan giriş noktası. Rofi `configuration`'yi (yazı tipi, simge yok, sıralı liste, büyük/küçük harfe duyarlı olmayan eşleştirme) ayarlar ve `theme.rasi`'yi içe aktarır. |
+| `theme.rasi` | Pencerenin, giriş çubuğunun ve listenin renkleri ve düzeni. Bir temayı ve mod dosyasını içe aktarır. |
+| `mode.rasi` | Mod geçersiz kılma. Paketlenmiş dosyanın geçersiz kılmaları yoktur ve Karanlık modu korur. |
+| `themes/<family>/theme.rasi` | Bir tema ailesinin paleti, örneğin `argvus-dark` veya `tokyo-night`. |
+| `themes/<family>-spaced/theme.rasi` | Aynı ailenin aralıklı versiyonu. |
 
 Paket 22 aile sağlar ve her birinin bir `-spaced` varyantı vardır. Paketlenmiş `theme.rasi`, `argvus-dark`'yi içe aktarır.
 
@@ -108,19 +108,19 @@ Girdiler etkin yapılandırmadan okunur; başlatıcı bunların hiçbir kopyası
 
 Bir projeyi açmak aynı zamanda oturum için etkin proje olarak yolunu kaydeder; bu yolu Dev Dashboard telemetri bloğu (`argvus widget-telemetry`), ilgili projenin git, dinleme portları ve konteynerlerini raporlamak için okur.
 
-## SSH (`SUPER + ALT + S`)
+## SSH ('SÜPER + ALT + S')
 
- opens a picker with the hosts defined in 
+ opens a picker with the hosts defined in
 
-. The selected host opens in a new ARGVUS terminal running 
+. The selected host opens in a new ARGVUS terminal running
 
 , in the current workspace.
 
-### Setup
+### Kurulum
 
-Add a 
+Add a
 
- entry for each server to 
+ entry for each server to
 
 :
 
@@ -134,15 +134,15 @@ Host myhost
 
  ~/.ssh/config  Host  ssh <host>  ~/.ssh/config  `SUPER + ALT + S`  `~/.ssh/config`  `ssh <host>`  `Host`  `~/.ssh/config` `ssh myhost`'nin önce normal bir terminalde çalıştığını doğrulayın. Başlatıcı yalnızca `ssh`'yi çalıştırır; kimlik doğrulama, anahtarlar ve sunucu doğrulaması OpenSSH tarafından yönetilir.
 
-### Use
+### Kullanım
 
-1. Press `SUPER + ALT + S`.
+1. `SUPER + ALT + S` tuşuna basın.
 2. Sunucu adının bir kısmını yazın veya ok tuşlarını kullanın.
 3. `Enter` tuşuna basın. Terminal açılır ve `ssh <host>`'yi çalıştırır.
 
 Oturum sona erdiğinde, pencere açık kalır ve çıkış durumunu gösterir, örneğin `ssh exited with status 0. Press Enter to close.` Kapatmak için `Enter` tuşuna basın. Bu, GitHub, GitLab ve Gitea gibi platformlar için önemlidir: onlar sizi doğrular ve hemen bağlantıyı kapatır çünkü bir kabuk sağlamazlar. Pencere, mesajlarını ekranda kaybolmak yerine tutar.
 
-### Rules
+### Kurallar
 
 - Joker girişler (`Host *`, `Host *.internal`) hedef değil, eşleşme bloklarıdır ve asla listelenmez.
 - Bir `Host` satırındaki her takma ad ayrı ayrı listelenir (`Host a b`, `a` ve `b`'yi listeler). Çoğaltmalar kaldırılır.
@@ -151,21 +151,21 @@ Oturum sona erdiğinde, pencere açık kalır ve çıkış durumunu gösterir, �
 - Yapılandırmadaki Windows satır sonları (CRLF) kabul edilir.
 - `ARGVUS_SSH_CONFIG`, test etmek için faydalı olan yapılandırma dosyasının yolunu değiştirir.
 
-### Commands
+### Komutlar
 
 ```sh
 argvus ssh list          # prints the configured hosts, one per line
 argvus ssh open myhost   # opens a specific host without the picker
 ```
 
-### Troubleshooting
+### Sorun giderme
 
-| Symptom | Cause and fix |
+| Belirti | Nedeni ve çözümü |
 | --- | --- |
 | Notification "no hosts found in ~/.ssh/config" | The file is missing or has no `Host` lines. Run `argvus ssh list`kontrol etmek için. |
-| A host is missing from the picker | It is a wildcard, comes from an `Include` file, or has characters outside the allowed set. Put it in the main file with a plain alias. |
-| The window shows an error status right away | Run `ssh <host>` in a normal terminal to see the full message (unreachable host, wrong key, and so on). |
-| The window shows `message.ssh_session_ended` instead of text | The installed `argvus` package is older than this version. Update `argvus`. |
+| Seçicide bir ana makine eksik | Bu bir joker karakterdir, bir `Include` dosyasından gelir veya izin verilen kümenin dışında karakterler içerir. Düz bir takma adla ana dosyaya koyun. |
+| Pencere hemen bir hata durumu gösterir | Mesajın tamamını (ulaşılamayan ana bilgisayar, yanlış anahtar vb.) görmek için normal bir terminalde `ssh <host>` komutunu çalıştırın. |
+| Pencerede metin yerine `message.ssh_session_ended` gösteriliyor | Kurulu `argvus` paketi bu sürümden daha eski. `argvus`'yu güncelleyin. |
 
 , `openssh`'yu ve `argvus`'yu (`argvus terminal` komutu) gerektirir.
 
@@ -199,12 +199,12 @@ Temsilci, `argvus-ssh-agent.service` kullanıcısı hizmetidir ve `argvus-sessio
 
 `openssh` (`ssh-keygen` ve `ssh-add`) ve `argvus` (`argvus terminal` komutu) gerektirir.
 
-| Symptom | Cause and fix |
+| Belirti | Nedeni ve çözümü |
 | --- | --- |
 | `load` bir terminal açar, ancak anahtar yüklenmemiştir | O terminalde parolayı girin. Sorulmadıysa, çalıştırın `ssh-add -l` to see what the agent holds. |
 | The terminal shows `Could not open a connection to your authentication agent` | Hyprland started before the agent did, so its terminals lack `SSH_AUTH_SOCK`. Başlatıcı geri düşer `$XDG_RUNTIME_DIR/ssh-agent.socket`, so update `argvus-launcher`ve yeni bir terminal açın. |
 | `list` shows `unknown`içinde`loaded` column | The agent is not reachable. Check `systemctl --user status argvus-ssh-agent.service` and the `SSH_AUTH_SOCK` variable. |
-| `delete` reports that the key is loaded | Run `argvus keys unload NAME` first, then delete it again. |
+| `delete` anahtarın yüklendiğini bildiriyor | Önce `argvus keys unload NAME`'yu çalıştırın, ardından tekrar silin. |
 | `generate`adı zaten var | Başka bir ad seçin. Mevcut çiftler asla değiştirilmez |
 
 ## GPG anahtarları (`argvus gpg`)
@@ -259,21 +259,21 @@ Her komuta uygulanan kurallar:
 
 `gnupg` ve `pinentry` gerekli bağımlılıklardır: anahtar komutları gpg gerektirir ve parola penceresi `pinentry-gtk`'dur.
 
-| Symptom | Cause and fix |
+| Belirti | Nedeni ve çözümü |
 | --- | --- |
-| `generate` does not open a passphrase window | Check `argvus gpg status`. `pinentry-gtk` must be installed, and the session must expose `WAYLAND_DISPLAY` or `DISPLAY`. |
-| `generate` reports that `pinentry-gtk` is not installed | Install the `pinentry` package. |
-| `generate` reports a `pinentry-program` line outside the ARGVUS block | Remove that line from `~/.gnupg/gpg-agent.conf`, then run the command again. |
-| `generate` reports that the key size is not supported | Check the size for the algorithm: DSA stops at 3072 bits. |
-| `generate` reports that the encryption subkey could not be added | The key was created. Add the subkey with `gpg --quick-add-key FINGERPRINT cv25519 encr 2y`, or delete the key with `gpg --delete-secret-and-public-key`ve tekrar oluştur.
-| `import` refuses a file | The file contains a private key. Export only the public key on the other machine with `argvus gpg export-public`. |
-| `list` shows no keys | The keyring in `GNUPGHOME` (or `~/.gnupg`) is empty. Run `argvus gpg generate` to create a key. |
+| `generate` parola penceresi açmıyor | `argvus gpg status`'yu kontrol edin. `pinentry-gtk` kurulmalı ve oturum `WAYLAND_DISPLAY` veya `DISPLAY`'yu açığa çıkarmalıdır. |
+| `generate`, `pinentry-gtk`'nun kurulu olmadığını bildiriyor | `pinentry` paketini yükleyin. |
+| `generate`, ARGVUS bloğunun dışında bir `pinentry-program` hattını rapor ediyor | Bu satırı `~/.gnupg/gpg-agent.conf`'dan kaldırın ve ardından komutu yeniden çalıştırın. |
+| `generate`, anahtar boyutunun desteklenmediğini bildiriyor | Algoritmanın boyutunu kontrol edin: DSA 3072 bitte durur. |
+| `generate`, şifreleme alt anahtarının eklenemediğini bildiriyor | Anahtar oluşturuldu. `gpg --quick-add-key FINGERPRINT cv25519 encr 2y` ile alt anahtarı ekleyin veya `gpg --delete-secret-and-public-key` ile anahtarı silin ve tekrar oluşturun.
+| `import` bir dosyayı reddediyor | Dosya özel bir anahtar içeriyor. `argvus gpg export-public` ile yalnızca diğer makinedeki genel anahtarı dışa aktarın. |
+| `list`'da anahtar görünmüyor | `GNUPGHOME` (veya `~/.gnupg`) içindeki anahtarlık boş. Bir anahtar oluşturmak için `argvus gpg generate` komutunu çalıştırın. |
 
 ## Parçacıklar (`SUPER + ALT + N`)
 
 `SUPER + ALT + N` parçacıklarınızla bir seçim aracı açar. Seçilen parçacık, pano aracılığıyla gitmek yerine, odaklı pencereye ve imlecin bulunduğu konuma yazılır.
 
-### Setup
+### Kurulum
 
 Bir parçacık ekleyin, adı ve metniyle birlikte:
 
@@ -289,13 +289,13 @@ argvus snippets list
 
 Kesitler, argvus config bölümünün `snippets` kısmında,  `argvus config` `{name, content}` girdileri olarak saklanır. `argvus config get /snippets/items` ile okuyabilirsiniz.
 
-### Use
+### Kullanım
 
 1. Metni alması gereken uygulamanın metin alanına tıklayın.
-2. Press `SUPER + ALT + N`.
+2. `SUPER + ALT + N`'ya basın.
 3. Kesiti adıyla seçin ve `Enter` tuşuna basın. Metin, imlecin bulunduğu yere yazılır.
 
-### Commands
+### Komutlar
 
 ```sh
 argvus snippets add "NAME" "CONTENT"   # adds a snippet, or replaces the one with the same name
@@ -307,30 +307,30 @@ argvus snippets                        # opens the picker (same as the shortcut)
 argvus snippets --help                 # shows the options and an example
 ```
 
-### Rules
+### Kurallar
 
 - İsimler benzersizdir ve büyük/küçük harfe duyarlıdır. Mevcut bir isimle bir snippet eklemek, onun içeriğini değiştirir.
 - İçerik boş olamaz: boş bir snippet bulunamadı olarak raporlanır.
 - `open`, sadece rakamlardan oluşan bir ismi pozisyon olarak ele alır. Belirsizlikten kaçınmak için `code2` gibi harf içeren isimler kullanın.
 - Bir pozisyon, `list` tarafından gösterilen sıralamayı ifade eder. Bir parçacığı kaldırmak, sonrasındaki pozisyonları kaydırır.
 
-### Troubleshooting
+### Sorun giderme
 
-| Symptom | Cause and fix |
+| Belirti | Nedeni ve çözümü |
 | --- | --- |
-| Notification "no snippets" when pressing the shortcut | No snippet was added yet. Run `argvus snippets add` first. |
+| Kısayola basıldığında "parçacık yok" bildirimi | Henüz herhangi bir bölüm eklenmedi. Önce `argvus snippets add`'yu çalıştırın. |
 | `open`parçacığın bulunamadığını bildiriyor | İsim tam olarak eşleşmiyor. İle karşılaştırın`argvus snippets list`. |
-| Nothing appears in the application | The focused window is not a text field, or it is an X11 application running under XWayland, which may ignore this kind of input. Test with a native Wayland application. |
+| Uygulamada hiçbir şey görünmüyor | Odaklanılan pencere bir metin alanı değildir veya XWayland altında çalışan ve bu tür girdileri göz ardı edebilecek bir X11 uygulamasıdır. Yerel bir Wayland uygulamasıyla test edin. |
 
 Şunu gerektirir: `wtype`, `rofi`, `jq` ve `argvus` (`argvus config` komutu).
 
 `wtype`, Wayland giriş seviyesinde tuş basımlarını simüle eder. XWayland altında çalışan bazı X11 uygulamaları bu olayları göz ardı eder, bu yüzden parça bulunduğu halde metin orada görünmeyebilir.
 
-## Git (`SUPER + ALT + G`)
+## Git (`SÜPER + ALT + G`)
 
 `SUPER + ALT + G`, `SUPER + O` ile aynı proje seçim aracını açar. Bir proje seçmek, onu doğrudan `lazygit` (veya `gitui`) içinde açar ve mevcut çalışma alanında yeni bir ARGVUS terminali oluşturur. Projeyi önce seçmek için ayrı bir adım yoktur.
 
-### Setup
+### Kurulum
 
 İki araçtan birini yükleyin. Her ikisi de bu paketin isteğe bağlı bağımlılıklarıdır:
 
@@ -338,9 +338,9 @@ argvus snippets --help                 # shows the options and an example
 sudo pacman -S lazygit   # or: sudo pacman -S gitui
 ```
 
-### Use
+### Kullanım
 
-1. Press `SUPER + ALT + G`.
+1. `SUPER + ALT + G` tuşuna basın.
 2. Listeden bir proje seçin veya iptal etmek için `Esc` tuşuna basın. İptal etmek hiçbir şeyi açmaz.
 3. Terminal proje dizininde açılır ve TUI'yi başlatır.
 
@@ -360,13 +360,13 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 Değişken, betiği çalıştıran komutun ortamından okunur. ARGVUS yapılandırmasında saklanmaz.
 
-### Troubleshooting
+### Sorun giderme
 
-| Symptom | Cause and fix |
+| Belirti | Nedeni ve çözümü |
 | --- | --- |
-| Notification "not a git repository" | The chosen project is not a git repository, or its directory was moved. Remove or fix it with `argvus projects remove`. |
-| Notification "install lazygit or gitui" | Neither tool is on the `PATH`. Install one of them. |
-| Picker shows no projects | No project was added. Use `argvus projects add`. |
+| "git deposu değil" bildirimi | Seçilen proje bir git deposu değil veya dizini taşınmış. `argvus projects remove` ile kaldırın veya düzeltin. |
+| Bildirim "lazygit veya gitui'yi yükleyin" | `PATH`'da her iki araç da yok. Bunlardan birini yükleyin. |
+| Seçici hiçbir proje göstermiyor | Hiçbir proje eklenmedi. `argvus projects add`'yu kullanın. |
 
 ## Emoji seçici (`SUPER + .`)
 
@@ -418,28 +418,28 @@ Gerekli bağımlılıklar: `argvus-session`, `argvus-appearance`, `argvus`, `bas
 
 Paketin kurulumu `$HOME` içerisine yazmaz. Kullanıcı yapılandırması, [Rofi configuration and themes](#where-the-active-configuration-lives) bölümünde açıklandığı gibi oturum başında oluşturulur.
 
-## Troubleshooting
+## Sorun giderme
 
-| Symptom | Cause and fix |
+| Belirti | Nedeni ve çözümü |
 | --- | --- |
 | `SUPER + D`hiçbir şey açmıyor | Kontrol et`argvus launcher` in a terminal. Confirm that `rofi`Yüklü olduğunu ve Rofi yapılandırmasının mevcut olduğunu kontrol edin. |
 | `SUPER + D` hiç uygulama listelemiyor | Uygulamaların masaüstü girdisi yok. Sadece ile başlayan uygulamalar `.desktop` file are shown. |
-| The menus use an old font | The `font:` line is rewritten at session start. Restart the session after changing the font. |
-| A theme change does not reach the Rofi menus | Check whether the user copy of `config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/` still points to the packaged theme. Apply the theme from `argvus-appearance` again. |
-| `SUPER + O` reports that no projects were found | No root or path is configured, or the directories no longer exist. Run `argvus projects list`. |
-| `SUPER + C` or the emoji picker does not open | Install `rofi-calc` or `rofimoji` (both are required dependencies). |
-| A cheatsheet does not open | The file for that name and language does not exist. Check the paths described in the Cheatsheets section. |
+| Menüler eski bir yazı tipini kullanıyor | `font:` satırı oturum başlangıcında yeniden yazılır. Yazı tipini değiştirdikten sonra oturumu yeniden başlatın. |
+| Tema değişikliği Rofi menülerine ulaşmıyor | `$XDG_CONFIG_HOME/argvus/data/rofi/`'daki `config.rasi` kullanıcı kopyasının hala paketlenmiş temayı gösterip göstermediğini kontrol edin. Temayı `argvus-appearance`'dan tekrar uygulayın. |
+| `SUPER + O` hiçbir proje bulunamadığını bildiriyor | Hiçbir kök veya yol yapılandırılmamış veya dizinler artık mevcut değil. `argvus projects list`'yu çalıştırın. |
+| `SUPER + C` veya emoji seçici açılmıyor | `rofi-calc` veya `rofimoji`'yu yükleyin (her ikisi de gerekli bağımlılıklardır). |
+| Hile sayfası açılmıyor | Bu ismin ve dilin dosyası mevcut değil. Hile Sayfaları bölümünde açıklanan yolları kontrol edin. |
 | `SUPER + H` hiçbir şey göstermiyor | Geçmiş boş veya pano kaydedici şundan `argvus-session` has not stored anything yet. |
 
 ## İlgili bileşenler
 
-| Component | Responsibility |
+| Bileşen | Sorumluluk |
 | --- | --- |
-| `argvus-hyprland` | Declares the shortcuts and the Hyprland window rules for the menus. |
+| `argvus-hyprland` | Menülere ilişkin kısayolları ve Hyprland pencere kurallarını bildirir. |
 | `argvus-appearance` | Etkin temayı, vurguyu ve düzeni değiştirir ve Rofi tema referanslarını yeniden yazar. |
 | `argvus` (`argvus config`) | Projeleri, kod parçacıklarını ve varsayılan başlatıcı ayarını saklar. |
-| `argvus-session` | Copies the initial Rofi configuration and sets its font at session start. |
-| `argvus` (`argvus terminal`) | Opens SSH sessions, project terminals and the passphrase prompts of `argvus keys`. |
-| `argvus` (`argvus widget-telemetry`) | Reads the active project written by `argvus projects`. |
-| `argvus` (`argvus i18n`) | Provides the translated messages used by the launcher scripts. |
-| `argvus` (`argvus control-center`) | Edits the project list through `argvus projects`. |
+| `argvus-session` | Başlangıç ​​Rofi yapılandırmasını kopyalar ve oturum başlangıcında yazı tipini ayarlar. |
+| `argvus` (`argvus terminal`) | SSH oturumlarını, proje terminallerini ve `argvus keys` parola istemlerini açar. |
+| `argvus` (`argvus widget-telemetry`) | `argvus projects` tarafından yazılan aktif projeyi okur. |
+| `argvus` (`argvus i18n`) | Başlatıcı komut dosyaları tarafından kullanılan çevrilmiş mesajları sağlar. |
+| `argvus` (`argvus control-center`) | Proje listesini `argvus projects` aracılığıyla düzenler. |

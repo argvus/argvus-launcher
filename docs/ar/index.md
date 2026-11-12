@@ -1,5 +1,5 @@
 ---
-title: Application launcher
+title: مشغل التطبيقات
 description: .ARGVUS Rofi ﻢﺋﺍﻮﻗ ﻝﻼ﻿ﺧ ﻦﻣ ﺕﺍﺭﺎﺼﺘﺧﻻ﻿ﺍ ﺓءﺍﺮﻗﻭ ،ﺕﺎﺑﺎﺴﺤﻟﺎﺑ ﻡﺎﻴﻘﻟﺍﻭ ،ﺔﻳﺮﻴﺒﻌﺘﻟﺍ ﺯﻮﻣﺮﻟ
 ---
 
@@ -14,26 +14,26 @@ description: .ARGVUS Rofi ﻢﺋﺍﻮﻗ ﻝﻼ﻿ﺧ ﻦﻣ ﺕﺍﺭﺎﺼﺘ
 
 .ﺎﻬﺑ ﺔﻄﺒﺗﺮﻤﻟﺍ ﻢﺋﺍﻮﻘﻟﺍﻭ ﺮﻣﺍﻭﻷ﻿ﺍ ﺔﻣﺰﺤﻟﺍ ﻩﺬﻫ ﺮﻓﻮﺗ .`argvus-hyprland` ﺔﻄﺳﺍﻮﺑ ﺕﺍﺭﺎﺼﺘ
 
-## Shortcuts
+## الاختصارات
 
-| Shortcut | Action | Command | Section |
+| الاختصار | العمل | الأمر | القسم |
 | --- | --- | --- | --- |
-| `SUPER + D` | Application launcher | `argvus launcher` | Application launcher |
-| `SUPER + O` | Project switcher | `argvus projects` | Project switcher |
-| `SUPER + ALT + 1` to `9`                                               | ﻊﺿﻮﻤﻟﺍ ﻚﻟﺫ ﻲﻓ ﻉﻭﺮﺸﻤﻟﺍ ﺢﺘﻓﺍ | `argvus projects open N`                                                             | ﻉﻭﺮﺸﻤﻟﺍ ﻝّﺪﺒﻣ | 
-| `SUPER + ALT + S` | SSH host picker | `argvus ssh` | SSH |
-| `SUPER + ALT + N` | Snippet picker | `argvus snippets` | Snippets |
-| `SUPER + ALT + G` | Project picker, then git TUI | `argvus git` | Git |
-| `SUPER + .` | Emoji picker | `emoji-picker.sh` | Emoji picker |
-| `SUPER + C` | Calculator | `rofi -show calc` | Calculator |
-| `SUPER + SHIFT + /` | Hyprland cheatsheet | `cheatsheets.sh hypr` | Cheatsheets |
-| `SUPER + CTRL + /` | Kitty cheatsheet | `cheatsheets.sh kitty` | Cheatsheets |
+| `SUPER + D` | مشغل التطبيقات | `argvus launcher` | مشغل التطبيقات |
+| `SUPER + O` | مشروع الجلاد | `argvus projects` | مشروع الجلاد |
+| `SUPER + ALT + 1` to `9`                                               | ﻊﺿﻮﻤﻟﺍ ﻚﻟﺫ ﻲﻓ ﻉﻭﺮﺸﻤﻟﺍ ﺢﺘﻓﺍ | `argvus projects open N`                                                             | ﻉﻭﺮﺸﻤﻟﺍ ﻝّﺪﺒﻣ |
+| `SUPER + ALT + S` | منتقي مضيف SSH | `argvus ssh` | سش |
+| `SUPER + ALT + N` | منتقي المقتطفات | `argvus snippets` | مقتطفات |
+| `SUPER + ALT + G` | منتقي المشروع، ثم git TUI | `argvus git` | بوابة |
+| `SUPER + .` | منتقي الرموز التعبيرية | `emoji-picker.sh` | منتقي الرموز التعبيرية |
+| `SUPER + C` | حاسبة | `rofi -show calc` | حاسبة |
+| `SUPER + SHIFT + /` | ورقة الغش هايبرلاند | `cheatsheets.sh hypr` | أوراق الغش |
+| `SUPER + CTRL + /` | ورقة غش كيتي | `cheatsheets.sh kitty` | أوراق الغش |
 
 ##                                               (`SUPER + D`) ﻖﻴﺒﻄﺘﻟﺍ ﻞﻐﺸﻣ
 
 `SUPER + D` runs `argvus launcher`                                                          ﻲﻓ Rofi ﺢﺘﻔﻳ ﻱﺬﻟﺍﻭ ،`drun`ﻂﻐﻀﻟﺍ ﺪﻨﻋ ﺩﺪﺤﻤﻟﺍ ﻖﻴﺒﻄﺘﻟﺍ ﻞﻴﻐﺸﺗ ﻢﺘﻳﻭ ،ﺐﺘﻜﻤﻟﺍ ﺢﻄﺳ ﻝﺎﺧﺩﺇ ﻊﻣ ﺔﺘﺒﺜﻤﻟﺍ ﺔﻴﻣﻮﺳﺮﻟﺍ ﺕﺎﻘﻴ`Enter`.
 
-1. Press `SUPER + D`.
+1. اضغط على `SUPER + D`.
 2.         .ﻑﺮﺣﻷ﻿ﺍ ﺔﻟﺎﺣ ﻞﻫﺎﺠﺘﻳ ﺚﺤﺒﻟﺍ ﺢﺷﺮﻣﻭ ﺔﺒﺗﺮﻣ ﺔﻤﺋﺎﻘﻟﺍ .ﻖﻴﺒﻄﺘﻟﺍ ﻢﺳﺍ ﻦﻣ ﺍًءﺰﺟ ﺐﺘﻛﺍ
 3.    .ﺔﻤﺋﺎﻘﻟﺍ ﻕﻼ﻿ﻏﻹ﻿ Esc ﻭﺃ ،ﻖﻴﺒﻄﺘﻟﺍ ءﺪﺒﻟ `Enter` ﻰﻠﻋ ﻂﻐﺿﺍ
 
@@ -52,13 +52,13 @@ argvus launcher --config PATH    # uses another Rofi configuration file
 
                         :`/usr/share/argvus/launcher/config/` ﺖﺤﺗ Rofi ﺕﺍﺩﺍﺪﻋﺇ ﺖﻴﺒﺜﺘﺑ ﺔﻣﺰﺤﻟﺍ ﻡﻮﻘﻳ
 
-| File | Role |
+| ملف | الدور |
 | --- | --- |
 | `config.rasi`                    Rofi ﻂﺒﻀﻳ .ARGVUS ﺔﻤﺋﺎﻗ ﻞﻛ ﻞﺒﻗ ﻦﻣ ﺔﻣﺪﺨﺘﺴﻤﻟﺍ ﻝﻮﺧﺪﻟﺍ ﺔﻄﻘﻧ | `configuration`   ﺕﺍﺩﺍﺮﻴﺘﺳﻻ﻿ﺍﻭ (ﻑﺮﺣﻷ﻿ﺍ ﺔﻟﺎﺤﻟ ﺔﺳﺎﺴﺣ ﺮﻴﻏ ﺔﻘﺑﺎﻄﻣ ،ﺔﺒﺗﺮﻣ ﺔﻤﺋﺎﻗ ،ﺕﺎﻧﻮﻘﻳﺃ ﻥﻭﺪﺑ ،ﻂﺨﻟﺍ)`theme.rasi`. |
-| `theme.rasi` | .ﻊﺿﻮﻟﺍ ﻒﻠﻣﻭ ﺓﺪﺣﺍﻭ ﺔﻤﺳ ﺩﺭﻮﺘﺴﻳ .ﺔﻤﺋﺎﻘﻟﺍﻭ ﻝﺎﺧﺩﻹ﻿ﺍ ﻂﻳﺮﺷ ،ﺓﺬﻓﺎﻨﻟﺍ ﻂﻴﻄﺨﺗﻭ ﻥﺍﻮﻟﺃ | 
-| `mode.rasi`      | .ﻡﻼ﻿ﻈﻟﺍ ﻊﺿﻮﺑ ﻆﻔﺘﺤﻳﻭ ﺕﺍﺯﻭﺎﺠﺗ ﻱﺃ ﻰﻠﻋ ﻱﻮﺘﺤﻳ ﻻ﻿ ﺄﺒﻌﻤﻟﺍ ﻒﻠﻤﻟﺍ .ﻊﺿﻮﻟﺍ ﺯﻭﺎﺠﺗ | 
-| `themes/<family>/theme.rasi` | Palette of a theme family, for example `argvus-dark` or `tokyo-night`. |
-| `themes/<family>-spaced/theme.rasi` | Spaced variant of the same family. |
+| `theme.rasi` | .ﻊﺿﻮﻟﺍ ﻒﻠﻣﻭ ﺓﺪﺣﺍﻭ ﺔﻤﺳ ﺩﺭﻮﺘﺴﻳ .ﺔﻤﺋﺎﻘﻟﺍﻭ ﻝﺎﺧﺩﻹ﻿ﺍ ﻂﻳﺮﺷ ،ﺓﺬﻓﺎﻨﻟﺍ ﻂﻴﻄﺨﺗﻭ ﻥﺍﻮﻟﺃ |
+| `mode.rasi`      | .ﻡﻼ﻿ﻈﻟﺍ ﻊﺿﻮﺑ ﻆﻔﺘﺤﻳﻭ ﺕﺍﺯﻭﺎﺠﺗ ﻱﺃ ﻰﻠﻋ ﻱﻮﺘﺤﻳ ﻻ﻿ ﺄﺒﻌﻤﻟﺍ ﻒﻠﻤﻟﺍ .ﻊﺿﻮﻟﺍ ﺯﻭﺎﺠﺗ |
+| `themes/<family>/theme.rasi` | لوحة الألوان لعائلة السمات، على سبيل المثال `argvus-dark` أو `tokyo-night`. |
+| `themes/<family>-spaced/theme.rasi` | نسخة متباعدة من نفس العائلة. |
 
 ﺩ
 
@@ -82,7 +82,7 @@ Do not edit the files under  config.rasi  -spaced  ~/.config/argvus/data/generat
 
 
 
-The effective project list is capped at 9, since that is all  argvus projects open <number or directory name>  SUPER + ALT + 9  `SUPER + ALT + 1`  `SUPER + ALT + 9`  `argvus projects open <number or directory name>` `SUPER + ALT + 1..9` can address. `argvus projects add` (and the Control Center's Projects page, which calls it) refuses to add a project or root that would push the total past 9, and reports the error instead.
+قائمة المشاريع الفعالة محددة بـ 9، نظرًا لأن هذا هو كل مشاريع argvus المفتوحة <الرقم أو اسم الدليل> SUPER + ALT + 9 `SUPER + ALT + 1` `SUPER + ALT + 9` `argvus projects open <number or directory name>` `SUPER + ALT + 1..9` يمكن معالجتها. `argvus projects add` (وصفحة المشاريع في مركز التحكم، التي تستدعيها) يرفض إضافة مشروع أو جذر من شأنه أن يدفع الإجمالي إلى ما بعد 9، ويبلغ عن الخطأ بدلاً من ذلك.
 
          :argvus-config ﻦﻣ `projects` ﻢﺴﻗ ﻲﻓ ﻦﻴﻧﺎﻜﻣ ﻦﻣ ﻉﻭﺮﺸﻤﻟﺍ ﻲﺗﺄﻳ
 
@@ -112,7 +112,7 @@ argvus projects list                    # prints the roots and paths
 
 `SUPER + ALT + S`                                              ﻲﻓ ﻦﻳﺩﺪﺤﻤﻟﺍ ﻦﻴﻔﻴﻀﻤﻟﺎﺑ ﺍًﺩﺪﺤﻣ ﺢﺘﻔﻳ`~/.ssh/config`                               ﻞﻤﻌﺗ ﺓﺪﻳﺪﺟ ARGVUS ﺔﻴﻓﺮﻃ ﻲﻓ ﺢﺘﻔﻳ ﺩﺪﺤﻤﻟﺍ ﻒﻴﻀﻤﻟﺍ .`ssh <host>`                                                     .ﺔﻴﻟﺎﺤﻟﺍ ﻞﻤﻌﻟﺍ ﺔﺣﺎﺴﻣ ﻲﻓ ،
 
-### Setup
+### الإعداد
 
                    :~/.ssh/config ﻰﻟﺇ ﻡﺩﺎﺧ ﻞﻜﻟ `Host` ﻝﺎﺧﺩﺇ ﻒﺿﺃ
 
@@ -124,17 +124,17 @@ Host myhost
     IdentitiesOnly yes
 ```
 
-Confirm that  `~/.ssh/config` `ssh myhost` works in a normal terminal first. The launcher only runs `ssh`; authentication, keys and host verification are handled by OpenSSH.
+تأكد من أن `~/.ssh/config` `ssh myhost` يعمل في محطة عادية أولاً. المشغل يعمل فقط على `ssh`؛ تتم معالجة المصادقة والمفاتيح والتحقق من المضيف بواسطة OpenSSH.
 
-### Use
+### استخدم
 
-1. Press `SUPER + ALT + S`.
+1. اضغط على `SUPER + ALT + S`.
 2.                               .ﻢﻬﺴﻟﺍ ﺢﻴﺗﺎﻔﻣ ﻡﺪﺨﺘﺳﺍ ﻭﺃ ،ﻒﻴﻀﻤﻟﺍ ﻢﺳﺍ ﻦﻣ ﺍًءﺰﺟ ﺐﺘﻛﺍ
 3.                    . `Enter` `ssh <host>` ﻞﻐﺸﻳﻭ ﻑﺮﻄﻟﺍ ﺢﺘﻔﻳ . `ssh exited with status 0. Press Enter to close.` `Enter` ﻂﻐﺿﺍ
 
 
 
-### Rules
+### القواعد
 
 -                                                      ) ﺔﺤﻣﺎﺠﻟﺍ ﺕﺎﻗﺎﻄﺒﻟﺍ ﺕﻻ﻿ﺎﺧﺩﺇ`Host *`, `Host *.internal`                             .ﺍًﺪﺑﺃ ﺎﻫﺩﺮﺳ ﻢﺘﻳ ﻻ﻿ﻭ ،ﺎًﻓﺍﺪﻫﺃ ﺖﺴﻴﻟﻭ ،ﺔﻘﺑﺎﻄﻣ ﻞﺘﻛ ﻲﻫ (
 -                                                              ﻰﻠﻋ ﺭﺎﻌﺘﺴﻣ ﻢﺳﺍ ﻞﻛ`Host`                                                  ) ﻞﺼﻔﻨﻣ ﻞﻜﺸﺑ ﺮﻄﺴﻟﺍ ﺝﺍﺭﺩﺇ ﻢﺘﻳ`Host a b` lists `a` and `b`                                                   .ﺓﺭﺮﻜﻤﻟﺍ ﺦﺴﻨﻟﺍ ﺔﻟﺍﺯﺇ ﻢﺘﻳ .(
@@ -143,16 +143,16 @@ Confirm that  `~/.ssh/config` `ssh myhost` works in a normal terminal first. The
 -                           .ﺕﺍﺩﺍﺪﻋﻹ﻿ﺍ ﻲﻓ (CRLF) ﺯﻭﺪﻨﻳﻮﻟﺍ ﻲﻓ ﺮﻄﺳﻷ﻿ﺍ ﺕﺎﻳﺎﻬﻧ ﻝﻮﺒﻗ ﻢﺗ
 - `ARGVUS_SSH_CONFIG` ﺭﺎﺒﺘﺧﻼ﻿ﻟ ﺪﻴﻔﻣ ﺮﻣﺃ ﻮﻫﻭ ،ﺕﺍﺩﺍﺪﻋﻹ﻿ﺍ ﻒﻠﻣ ﺭﺎﺴﻣ ﻝﺪﺒﺘﺴﻳ.
 
-### Commands
+### الأوامر
 
 ```sh
 argvus ssh list          # prints the configured hosts, one per line
 argvus ssh open myhost   # opens a specific host without the picker
 ```
 
-### Troubleshooting
+### استكشاف الأخطاء وإصلاحها
 
-| Symptom | Cause and fix |
+| العَرَض | السبب والإصلاح |
 | --- | --- |
 ﻰﻠﻋ ﻱﻮﺘﺤﻳ ﻻ﻿ ﻭﺃ ﺩﻮﻘﻔﻣ ﻒﻠﻤﻟﺍ | "ssh/config./~ ﻲﻓ ﻦﻴﻔﻴﻀﻣ ﻰﻠﻋ ﺭﻮﺜﻌﻟﺍ ﻢﺘﻳ ﻢﻟ" ﺭﺎﻌﺷﺇ`Host`                                                                  ﻞﻴﻐﺸﺗ .ﺮﻄﺳﻷ﻿ﺍ`argvus ssh list`                                                                     | .ﻖﻘﺤﺘﻠﻟ
                            ﻦﻣ ﻲﺗﺄﻳ ،ﻝﺪﺑ ﺰﻣﺭ ﻪﻧﺇ | ﺭﺎﻴﺘﺧﻻ﻿ﺍ ﺓﺍﺩﺃ ﻦﻣ ﺩﻮﻘﻔﻣ ﻒﻴﻀﻣ |`Include`| .ﻱﺩﺎﻋ ﺭﺎﻌﺘﺴﻣ ﻢﺳﺎﺑ ﻲﺴﻴﺋﺮﻟﺍ ﻒﻠﻤﻟﺍ ﻲﻓ ﻪﻌﺿ .ﺎﻬﺑ ﺡﻮﻤﺴﻤﻟﺍ ﺔﻋﻮﻤﺠﻤﻟﺍ ﺝﺭﺎﺧ ﻑﺮﺣﺃ ﻰﻠﻋ ﻱ
@@ -191,13 +191,13 @@ argvus keys delete NAME                  # deletes both files; refused while the
 
 GPG
 
-| Symptom | Cause and fix |
+| العَرَض | السبب والإصلاح |
 | --- | --- |
 |  argvus terminal  argvus  ssh-add  ssh-keygen  `openssh`  `ssh-keygen`  `ssh-add`  `argvus`  `argvus terminal` `load` opens a terminal, but the key is not loaded | Type the passphrase in that terminal. If it was not asked, run `ssh-add -l` to see what the agent holds. |
-                                                                ﺔﻴﻓﺮﻄﻟﺍ ﺽﺮﻌﻳ |`Could not open a connection to your authentication agent`                        ﻪﺗﺎﻳﺎﻬﻧ ﺮﻘﺘﻔﺗ ﺍﺬﻟ ،ﻞﻴﻛﻮﻟﺍ ﺃﺪﺒﻳ ﻥﺃ ﻞﺒﻗ ﺪﻧﻻ﻿ﺮﻴﺒﻳﺎﻫ ﺃﺪﺑ | `SSH_AUTH_SOCK`                                                             ﻰﻟﺇ ﻞﻐﺸﻤﻟﺍ ﺩﻮﻌﻳ .`$XDG_RUNTIME_DIR/ssh-agent.socket`                                                                     ﺙّﺪﺣ ﺍﺬﻟ ،`argvus-launcher`                                                         | .ﺓﺪﻳﺪﺟ ﺔﻴﻓﺮﻃ ﺢﺘﻓﺍﻭ 
+                                                                ﺔﻴﻓﺮﻄﻟﺍ ﺽﺮﻌﻳ |`Could not open a connection to your authentication agent`                        ﻪﺗﺎﻳﺎﻬﻧ ﺮﻘﺘﻔﺗ ﺍﺬﻟ ،ﻞﻴﻛﻮﻟﺍ ﺃﺪﺒﻳ ﻥﺃ ﻞﺒﻗ ﺪﻧﻻ﻿ﺮﻴﺒﻳﺎﻫ ﺃﺪﺑ | `SSH_AUTH_SOCK`                                                             ﻰﻟﺇ ﻞﻐﺸﻤﻟﺍ ﺩﻮﻌﻳ .`$XDG_RUNTIME_DIR/ssh-agent.socket`                                                                     ﺙّﺪﺣ ﺍﺬﻟ ،`argvus-launcher`                                                         | .ﺓﺪﻳﺪﺟ ﺔﻴﻓﺮﻃ ﺢﺘﻓﺍﻭ
 | `list` shows `unknown`                                                                         ﻝﺍ ﻲﻓ`loaded`                                                  ﻖﻘﺤﺗ .ﺡﺎﺘﻣ ﺮﻴﻏ ﻞﻴﻛﻮﻟﺍ | ﺩﻮﻤﻋ`systemctl --user status argvus-ssh-agent.service`                                                                         ﻝﺍ ﻭ `SSH_AUTH_SOCK` variable. |
 | `delete`                                              ﻞﻴﻐﺸﺗ | ﻞّﻤﺤﻣ ﺡﺎﺘﻔﻤﻟﺍ ﻥﺃ ﻰﻟﺇ ﺮﻴﺸﻳ`argvus keys unload NAME`                                                     | .ﻯﺮﺧﺃ ﺓﺮﻣ ﻪﻓﺬﺣﺍ ﻢﺛ ،ًﻻ﻿ﻭﺃ
-| `generate`| .ﺍًﺪﺑﺃ ﺎﻬﻟﺍﺪﺒﺘﺳﺍ ﻢﺘﻳ ﻻ﻿ ﺓﺩﻮﺟﻮﻤﻟﺍ ﺝﺍﻭﺯﻷ﻿ﺍ .ﺮﺧﺁ ﺎًﻤﺳﺍ ﺮﺘﺧﺍ | ﻞﻌﻔﻟﺎﺑ ﺩﻮﺟﻮﻣ ﻢﺳﻻ﻿ﺍ ﻥﺃ 
+| `generate`| .ﺍًﺪﺑﺃ ﺎﻬﻟﺍﺪﺒﺘﺳﺍ ﻢﺘﻳ ﻻ﻿ ﺓﺩﻮﺟﻮﻤﻟﺍ ﺝﺍﻭﺯﻷ﻿ﺍ .ﺮﺧﺁ ﺎًﻤﺳﺍ ﺮﺘﺧﺍ | ﻞﻌﻔﻟﺎﺑ ﺩﻮﺟﻮﻣ ﻢﺳﻻ﻿ﺍ ﻥﺃ
 
 ## (`argvus gpg`)
 
@@ -231,7 +231,7 @@ argvus gpg keyserver recv FINGERPRINT             # fetches the key from that ke
 :ﺕﺍﺭﺎﻴﺨﻟﺍ ﻩﺬﻫ
 
 - .rsa ﻮﻫ ﻲﺿﺍﺮﺘﻓﻻ﻿ﺍ ﺩﺍﺪﻋﻹ﻿ﺍ .ﺡﺎﺘﻔﻤﻟﺍ ﺔﻴﻣﺯﺭﺍﻮﺧ `--algo rsa|dsa` ﺭﺎﺘﺨ
--  `rsa` `--bits` chooses the key size. RSA accepts `1024`, `2048`, `3072` and `4096`, with `4096` as the default. DSA accepts `1024`, `2048` and `3072`, with `2048` as the default; gpg cannot create larger DSA keys, so `4096` is refused before gpg runs.
+- `rsa` `--bits` يختار حجم المفتاح. يقبل RSA `1024` و`2048` و`3072` و`4096`، مع `4096` كإعداد افتراضي. يقبل DSA `1024` و`2048` و`3072`، مع `2048` كإعداد افتراضي؛ لا يمكن لـ gpg إنشاء مفاتيح DSA أكبر، لذلك يتم رفض `4096` قبل تشغيل gpg.
 - `--expire` takes `0`                                             ـﺑ ﻉﻮﺒﺘﻣ ﻢﻗﺭ ،ءﺎﻬﺘﻧﺍ ﻥﻭﺩ ﻡﺍﺪﺨﺘﺳﻼ﻿ﻟ`d`, `w`, `m` or `y`                                                                          ﻞﺜﻣ)`2y`                                                         ISO ﺔﻐﻴﺼﺑ ﺦﻳﺭﺎﺗ ﻭﺃ ,(`YYYY-MM-DD`                                            .ﺎًﻴﻘﻴﻘﺣ ﺎًﺨﻳﺭﺎﺗ ﻥﻮﻜﺗ ﻥﺃ ﺐﺠﻳ ﻲﺘﻟﺍﻭ ،
 - `--passphrase-stdin`.ﻍﺭﺎﻔﻟﺍ ﺮﻄﺴﻟﺍ ﺾﻓﺭ ﻢﺘﻳ .ﻢﻜﺤﺘﻟﺍ ﺰﻛﺮﻣ ﺎﻬﻣﺪﺨﺘﺴﻳ .ﻲﺳﺎﻴﻘﻟﺍ ﻝﺎﺧﺩﻹ﻿ﺍ ﻦﻣ ﻝﻭﻷ﻿ﺍ ﺮﻄﺴﻟﺍ ﻦﻣ ﺭ
 - `--no-passphrase --yes` ﻦﻴﻨﺛﻻ﻿ﺍ ﺭﻭﺮﻤﻟﺍ ﺓﺭﺎﺒﻋ ﻲﻌﺿﻭ ﺞﻣﺩ ﻦﻜﻤﻳ ﻻ﻿ .ﻲﻤﺤﻣ ﺮﻴﻏ ﺎًﺣﺎﺘﻔﻣ ﺊﺸﻨﻳ.
@@ -240,36 +240,36 @@ DSA.
 
                                                 :ﺮﻣﺃ ﻞﻛ ﻰﻠﻋ ﻖﺒﻄﻨﺗ ﻲﺘﻟﺍ ﺪﻋﺍﻮﻘﻟﺍ
 
-- Passphrases are never passed as command arguments, written to a log or shown in the Control Center. With  elg  `rsa`  `elg` `--passphrase-stdin` the passphrase goes to gpg on file descriptor 0 from a pipe. Without that option, gpg asks the pinentry window, which `gpg-agent` opens.
+- لا يتم تمرير عبارات المرور مطلقًا كوسائط أوامر أو كتابتها في سجل أو إظهارها في مركز التحكم. باستخدام elg `rsa` `elg` `--passphrase-stdin`، تنتقل عبارة المرور إلى gpg في واصف الملف 0 من الأنبوب. بدون هذا الخيار، يسأل gpg نافذة الإدخال، والتي يفتحها `gpg-agent`.
 - `--no-passphrase`                                  ﻢﻟ ﺎﻣ ﻪﻀﻓﺭ ﻢﺘﻳ .ﺔﻳﺎﻤﺣ ﻥﻭﺩ ﺹﺎﺨﻟﺍ ﺡﺎﺘﻔﻤﻟﺍ ﻥﺰﺨﻳ`--yes`                                                              .ﺎًﻀﻳﺃ ﻩﺅﺎﻄﻋﺇ ﻢﺘﻳ
 - `import`ﻝﻼ﻿ﺧ ﻦﻣ ﻻ﻿ﺇ ﺢﻴﺗﺎﻔﻤﻟﺍ ﺔﻘﻠﺣ ﺔﺻﺎﺨﻟﺍ ﺢﻴﺗﺎﻔﻤﻟﺍ ﺭﺩﺎﻐﺗ ﻻ﻿ .ﺔﻴﺋﺎﻨﺛ ﻭﺃ ASCII ﺔﻐﻴﺼﺑ ﺖﻧﺎﻛ ءﺍ`export-private`                                                                  ﺝﺎﺘﺤﻳ ﻱﺬﻟﺍ ،`--yes`                                                                   ﻊﺿﻮﻟﺍ ﺐﺘﻜﻳﻭ`600`; `import-private`                                                            .ﻞﺧﺍﺪﻟﺍ ﻰﻟﺇ ﻢﻫﺪﻴﻌﻳ
-- 
+-
 -  --no-tty  --yes  keyserver send  edit revoke  edit sign  delete  `export-private`  `delete`  `edit sign`  `edit revoke`  `keyserver send`  `--yes`  `--no-tty` `generate --passphrase-stdin`.
-- 
+-
 
- makes gpg-agent use 
+ makes gpg-agent use
 
-. It writes that line between the 
+. ويكتب هذا الخط بين
 
- and 
+ and
 
- markers, keeps the rest of 
+ markers, keeps the rest of
 
-, and saves the previous file as 
+، ويحفظ الملف السابق باسم
 
-. When the block already names 
+. When the block already names
 
-, the file and gpg-agent are left as they are. The command refuses to run when 
+، يتم ترك الملف وgpg-agent كما هما. يرفض الأمر التشغيل متى
 
- already sets 
+ already sets
 
- outside that block, so that two values never conflict.
-- .ﺡﺎﺘﻔﻣ ءﺎﺸﻧﺇ ﻢﺘﻳ ﺎﻣﺪﻨﻋ ﻂﻘﻓ ﺕﺎﻨﻳﻮﻜﺘﻟﺍ ﺮﻴﻐﺘﺗ . pinentry-program  gpg-agent.conf  pinentry-gtk  gpg-agent.conf.bak  gpg-agent.conf  # END argvus-managed pinentry  # BEGIN argvus-managed pinentry  pinentry-gtk  `generate`  `pinentry-gtk`  `# BEGIN argvus-managed pinentry`  `# END argvus-managed pinentry`  `gpg-agent.conf`  `gpg-agent.conf.bak`  `pinentry-gtk`  `gpg-agent.conf`  `pinentry-program` `~/.gnupg` ﻰﻟﺇ ﺍًﺪﺑﺃ ﺐﺘﻜﻳ ﻻ﻿ 
+ خارج تلك الكتلة، بحيث لا تتعارض القيمتان أبدًا.
+- .ﺡﺎﺘﻔﻣ ءﺎﺸﻧﺇ ﻢﺘﻳ ﺎﻣﺪﻨﻋ ﻂﻘﻓ ﺕﺎﻨﻳﻮﻜﺘﻟﺍ ﺮﻴﻐﺘﺗ . pinentry-program  gpg-agent.conf  pinentry-gtk  gpg-agent.conf.bak  gpg-agent.conf  # END argvus-managed pinentry  # BEGIN argvus-managed pinentry  pinentry-gtk  `generate`  `pinentry-gtk`  `# BEGIN argvus-managed pinentry`  `# END argvus-managed pinentry`  `gpg-agent.conf`  `gpg-agent.conf.bak`  `pinentry-gtk`  `gpg-agent.conf`  `pinentry-program` `~/.gnupg` ﻰﻟﺇ ﺍًﺪﺑﺃ ﺐﺘﻜﻳ ﻻ﻿
 - `GNUPGHOME` ﻝﺪﺒﺘﺴﻳ `~/.gnupg`، ﺭﺎﺒﺘﺧﻼ﻿ﻟ ﺪﻴﻔﻣ ﻮﻫﻭ.
 
 `gnupg` and `pinentry`         ﻲﻫ ﺭﻭﺮﻤﻟﺍ ﺓﺭﺎﺒﻋ ﺓﺬﻓﺎﻧﻭ ،gpg ﻰﻟﺇ ﺝﺎﺘﺤﺗ ﺡﺎﺘﻔﻤﻟﺍ ﺮﻣﺍﻭﺃ :ﺔﻣﺯﻼ﻿ﻟﺍ ﺕﺎﺒﻠﻄﺘﻤﻟﺍ`pinentry-gtk`.
 
-| Symptom | Cause and fix |
+| العَرَض | السبب والإصلاح |
 | --- | --- |
 | `generate`                                              ﻖﻘﺤﺗ | ﺭﻭﺮﻤﻟﺍ ﺓﺭﺎﺒﻋ ﺓﺬﻓﺎﻧ ﺢﺘﻔﻳ ﻻ﻿`argvus gpg status`. `pinentry-gtk`                                               ﺔﺴﻠﺠﻟﺍ ﻒﺸﻜﺗ ﻥﺃ ﺐﺠﻳﻭ ،ﻪﺘﻴﺒﺜﺗ ﺐﺠﻳ`WAYLAND_DISPLAY` or `DISPLAY`. |
 | `generate`                                                                       ﻥﺃ ﺮﻛﺬﻳ`pinentry-gtk`                                                          ﺖﻴﺒﺜﺘﺑ ﻢﻗ | ﺖﺒﺜﻣ ﺮﻴﻏ`pinentry` package. |
@@ -283,7 +283,7 @@ DSA.
 
 `SUPER + ALT + N` ﺔﻈﻓﺎﺤﻟﺍ ﺮﺒﻋ ﺭﻭﺮﻤﻟﺍ ﻦﻣ ًﻻ﻿ﺪﺑ ،ﺮﺷﺆﻤﻟﺍ ﺪﻨﻋ ،ﺔﻄﺸﻨﻟﺍ ﺓﺬﻓﺎﻨﻟﺍ ﻲﻓ ﺩﺪﺤ
 
-### Setup
+### الإعداد
 
                                                           :ﻪّﺼﻧﻭ ﻢﺳﺎﺑ ﺎًﻌﻄﻘﻣ ﻒﺿﺃ
 
@@ -299,13 +299,13 @@ argvus snippets list
 
                                                      ﻲﻓ ﺕﺎﻔﻄﺘﻘﻤﻟﺎﺑ ﻅﺎﻔﺘﺣﻻ﻿ﺍ ﻢﺘﻳ`snippets`                                                                        ﻦﻣ ﻢﺴﻗ`argvus config`, as `{name, content}`                                                     ﻊﻣ ﺎﻬﺗءﺍﺮﻗ ﻚﻨﻜﻤﻳ .ﻞﺧﺍﺪﻤﻟﺍ`argvus config get /snippets/items`.
 
-### Use
+### استخدم
 
 1.                         .ﺺﻨﻟﺍ ﻞﺒﻘﺘﺴﻳ ﻥﺃ ﺐﺠﻳ ﻱﺬﻟﺍ ﻖﻴﺒﻄﺘﻟﺍ ﻲﻓ ﺺﻨﻟﺍ ﻞﻘﺣ ﻞﺧﺍﺩ ﺮﻘﻧﺍ
-2. Press `SUPER + ALT + N`.
+2. اضغط على `SUPER + ALT + N`.
 3.          .ﺮﺷﺆﻤﻟﺍ ﺚﻴﺣ ﺺﻨﻟﺍ ﺐﺘﻜُﻳ .`Enter` ﻰﻠﻋ ﻂﻐﺿﺍﻭ ﻢﺳﻻ﻿ﺎﺑ ﻒﻄﺘﻘﻤﻟﺍ ﺮﺘﺧﺍ
 
-### Commands
+### الأوامر
 
 ```sh
 argvus snippets add "NAME" "CONTENT"   # adds a snippet, or replaces the one with the same name
@@ -317,18 +317,18 @@ argvus snippets                        # opens the picker (same as the shortcut)
 argvus snippets --help                 # shows the options and an example
 ```
 
-### Rules
+### القواعد
 
 - .ﻩﺍﻮﺘﺤﻣ ﻝﺪﺒﺘﺴﻳ ﺩﻮﺟﻮﻣ ﻢﺳﺎﺑ ﻒﻄﺘﻘﻣ ﺔﻓﺎﺿﺇ .ﻑﺮﺣﻷ﻿ﺍ ﺔﻟﺎﺤﻟ ﺔﺳﺎﺴﺣﻭ ﺓﺪﻳ
 -   .ﺩﻮﺟﻮﻣ ﺮﻴﻏ ﻪﻧﺃ ﻰﻠﻋ ﻍﺭﺎﻔﻟﺍ ﻒﻄﺘﻘﻤﻟﺍ ﻦﻋ ﻍﻼ﻿ﺑﻹ﻿ﺍ ﻢﺘﻳ :ﺎًﻏﺭﺎﻓ ﻯﻮﺘﺤﻤﻟﺍ ﻥﻮﻜﻳ ﻥﺃ ﻦﻜﻤﻳ ﻻ﻿
 - `open`    ﻞﺜﻣ ،ﻑﻭﺮﺣ ﻰﻠﻋ ﻱﻮﺘﺤﺗ ءﺎﻤﺳﺃ ﻡﺪﺨﺘﺳﺍ .ﻊﻗﻮﻤﻛ ﻡﺎﻗﺭﺃ ﻦﻣ ﻂﻘﻓ ﻥَّﻮﻜﻤﻟﺍ ﻢﺳﻻ﻿ﺍ ﻊﻣ ﻞﻣﺎﻌﺘﻳ`code2`                                                               .ﺽﻮﻤﻐﻟﺍ ﺐﻨﺠﺘﻟ ،
-- 
+-
 
-### Troubleshooting
+### استكشاف الأخطاء وإصلاحها
 
-| Symptom | Cause and fix |
+| العَرَض | السبب والإصلاح |
 | --- | --- |
-| Notification "no snippets" when pressing the shortcut | No snippet was added yet. Run  `list` `argvus snippets add` first. |
+| إشعار "عدم وجود قصاصات" عند الضغط على الاختصار | لم تتم إضافة أي مقتطف بعد. قم بتشغيل `list` `argvus snippets add` أولاً. |
 | `open`             ﻊﻣ ﻥﺭﺎﻗ .ﻂﺒﻀﻟﺎﺑ ﻖﺑﺎﻄﻳ ﻻ﻿ ﻢﺳﻻ﻿ﺍ | ﻪﻴﻠﻋ ﺭﻮﺜﻌﻟﺍ ﻢﺘﻳ ﻢﻟ ﻒﻄﺘﻘﻤﻟﺍ ﻥﺃ ﻎﻠﺒﻳ`argvus snippets list`. |
 | .ﻲﻠﺻﺃ Wayland ﻖﻴﺒﻄﺗ ﻊﻣ ﺏﺮﺟ .ﻝﺎﺧﺩﻹ﻿ﺍ ﻦﻣ ﻉﻮﻨﻟﺍ ﺍﺬﻫ ﻞﻫﺎﺠﺘﻳ ﺪﻗ ﻱﺬﻟﺍﻭ ،XWayland ﺖﺤ
 
@@ -338,9 +338,9 @@ argvus snippets --help                 # shows the options and an example
 
 ##                                                        (`SUPER + ALT + G`) ﺖﻴﺟ
 
-`SUPER + ALT + G`                                                     ﻞﺜﻣ ﻉﻭﺮﺸﻤﻟﺍ ﺩﺪﺤﻣ ﺲﻔﻧ ﺢﺘﻔﻳ`SUPER + O`                                                           ﺢﺘﻔﻳ ﻉﻭﺮﺸﻣ ﺭﺎﻴﺘﺧﺍ .`lazygit` (or `gitui`.ًﻻ﻿ﻭﺃ ﻉﻭﺮﺸﻤﻟﺍ ﺭﺎﻴﺘﺧﻻ﻿ ﺔﻠﺼﻔﻨﻣ ﺓﻮﻄﺧ ﺪﺟﻮﻳ ﻻ﻿ .ﺔﻴﻟﺎﺤﻟﺍ ﻞﻤﻌﻟﺍ ﺔﺣﺎﺴﻣ ﻰﻠﻋ ﺓﺪﻳﺪﺟ ARGVUS ﺔ
+`SUPER + ALT + G`                                                     ﻞﺜﻣ ﻉﻭﺮﺸﻤﻟﺍ ﺩﺪﺤﻣ ﺲﻔﻧ ﺢﺘﻔﻳ`SUPER + O`                                                           ﺢﺘﻔﻳ ﻉﻭﺮﺸﻣ ﺭﺎﻴﺘﺧﺍ .`lazygit` (or `gitui`. ًﻻ﻿ﻭﺃ ﻉﻭﺮﺸﻤﻟﺍ ﺭﺎﻴﺘﺧﻻ﻿ ﺔﻠﺼﻔﻨﻣ ﺓﻮﻄﺧ ﺪﺟﻮﻳ ﻻ﻿ .ﺔﻴﻟﺎﺤﻟﺍ ﻞﻤﻌﻟﺍ ﺔﺣﺎﺴﻣ ﻰﻠﻋ ﺓﺪﻳﺪﺟ ARGVUS ﺔ
 
-### Setup
+### الإعداد
 
                    :ﺔﻣﺰﺤﻟﺍ ﻩﺬﻬﻟ ﺔﻳﺭﺎﻴﺘﺧﺍ ﺕﺍﺩﺎﻤﺘﻋﺍ ﺎﻤﻫﻼ﻿ﻛ .ﻦﻴﺗﺍﺩﻷ﻿ﺍ ﺪﺣﺃ ﺖﻴﺒﺜﺘﺑ ﻢﻗ
 
@@ -348,13 +348,13 @@ argvus snippets --help                 # shows the options and an example
 sudo pacman -S lazygit   # or: sudo pacman -S gitui
 ```
 
-### Use
+### استخدم
 
-1. Press `SUPER + ALT + G`.
-2. .ﺎًﺌﻴﺷ ﺢﺘﻔﻳ ﻻ﻿ ءﺎﻐﻟﻹ﻿ﺍ .ءﺎﻐﻟﻺ﻿ﻟ `Esc` ﻰﻠﻋ ﻂﻐﺿﺍ ﻭﺃ ،ﺔﻤﺋﺎﻘﻟﺍ ﻦﻣ ﺎًﻋﻭﺮﺸﻣ ﺮ
+1. اضغط على `SUPER + ALT + G`.
+2. .ﺎًﺌﻴﺷ ﺢﺘﻔﻳ ﻻ﻿ ءﺎﻐﻟﻹ﻿ﺍ . ءﺎﻐﻟﻺ﻿ﻟ `Esc` ﻰﻠﻋ ﻂﻐﺿﺍ ﻭﺃ ،ﺔﻤﺋﺎﻘﻟﺍ ﻦﻣ ﺎًﻋﻭﺮﺸﻣ ﺮ
 3.                      .ﺔﻴﺼﻨﻟﺍ ﻡﺪﺨﺘﺴﻤﻟﺍ ﺔﻬﺟﺍﻭ ﺃﺪﺒﻳﻭ ﻉﻭﺮﺸﻤﻟﺍ ﻞﻴﻟﺩ ﻲﻓ ﺔﻴﻓﺮﻄﻟﺍ ﺢﺘﻔﻳ
 
-:ﺍًﺪﻠﺠﻣ ﺭّﺮﻣ ،ﺩﺪﺤﻤﻟﺍ ﻲﻄﺨﺘﻟ .ءﻲﺷ ﻱﺃ ﺢﺘﻔﻳ ﻻ﻿ﻭ ﺍًﺭﺎﻌﺷﺇ ﺽﺮﻌﻳ git ﻉﺩﻮﺘﺴﻣ ﺲﻴﻟ ﻱﺬﻟﺍ ﻉﻭﺮﺸﻤ
+:ﺍًﺪﻠﺠﻣ ﺭّﺮﻣ ،ﺩﺪﺤﻤﻟﺍ ﻲﻄﺨﺘﻟ . ءﻲﺷ ﻱﺃ ﺢﺘﻔﻳ ﻻ﻿ﻭ ﺍًﺭﺎﻌﺷﺇ ﺽﺮﻌﻳ git ﻉﺩﻮﺘﺴﻣ ﺲﻴﻟ ﻱﺬﻟﺍ ﻉﻭﺮﺸﻤ
 
 ```sh
 argvus git ~/Projects/api
@@ -368,11 +368,11 @@ argvus git ~/Projects/api
 ARGVUS_GIT_TUI=gitui argvus git
 ```
 
-.ARGVUS ﻦﻳﻮﻜﺗ ﻲﻓ ﻪﻨﻳﺰﺨﺗ ﻢﺘﻳ ﻻ﻿ﻭ .ﺖﺒﻳﺮﻜﺴﻟﺍ ﻞّﻐﺸﻳ ﻱﺬﻟﺍ ﺮﻣﻷ﻿ﺍ ﺔﺌﻴﺑ ﻦﻣ ﺮﻴﻐﺘﻤﻟﺍ ﺓءﺍﺮﻗ 
+.ARGVUS ﻦﻳﻮﻜﺗ ﻲﻓ ﻪﻨﻳﺰﺨﺗ ﻢﺘﻳ ﻻ﻿ﻭ .ﺖﺒﻳﺮﻜﺴﻟﺍ ﻞّﻐﺸﻳ ﻱﺬﻟﺍ ﺮﻣﻷ﻿ﺍ ﺔﺌﻴﺑ ﻦﻣ ﺮﻴﻐﺘﻤﻟﺍ ﺓءﺍﺮﻗ
 
-### Troubleshooting
+### استكشاف الأخطاء وإصلاحها
 
-| Symptom | Cause and fix |
+| العَرَض | السبب والإصلاح |
 | --- | --- |
  ﻡﺍﺪﺨﺘﺳﺎﺑ ﻪﺤﻠﺻﺃ ﻭﺃ ﻪﻓﺬﺣﺍ .ﻪﻠﻴﻟﺩ ﻞﻘﻧ ﻢﺗ ﻭﺃ ،Git ﻉﺩﻮﺘﺴﻣ ﺲﻴﻟ ﺭﺎﺘﺨﻤﻟﺍ ﻉﻭﺮﺸﻤﻟﺍ | "G`argvus projects remove`. |
               ﻰﻠﻋ ﺓﺩﻮﺟﻮﻣ ﺕﺍﻭﺩﻷ﻿ﺍ ﻦﻣ ﻱﺃ ﻻ﻿ | "gitui ﻭﺃ lazygit ﺖﻴﺒﺜﺘﺑ ﻢﻗ" ﺭﺎﻌﺷﺇ |`PATH`                                                          | .ﺎﻫﺪﺣﺃ ﺖﻴﺒﺜﺘﺑ ﻢﻗ .
@@ -406,27 +406,27 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 - `kitty` ﻊﻣ ﻖﻓﺮﻤﻟﺍ ﻲﻓﺮﻄﻟﺍ ﺶﻐﻟﺍ ﻞﻴﻟﺩ ﻡﺪﺨﺘﺴﻳ `argvus`.
 - .ﺓﺬﻓﺎﻧ ﻱﺃ ﺢﺘﻔﻳ ﻦﻠﻓ ،ﺍًﺩﻮﺟﻮﻣ ﻒﻠﻤﻟﺍ ﺍﺬﻫ ﻦﻜﻳ ﻢﻟ ﺍﺫﺇ .`<name>/docs/cheatsheets/<language>.txt` ﺃﺮﻘﻳ ﺮﺧﺁ ﻢﺳ
 
-                       ﻡﺎﻈﻨﻠﻟ ﺔﻴﻤﻴﻠﻗﻹ﻿ﺍ ﺕﺍﺩﺍﺪﻋﻹ﻿ﺍ ﻥﻮﻜﺗ ﺎﻣﺪﻨﻋ ﺔﻴﻟﺎﻐﺗﺮﺒﻟﺍ ﻲﻫ ﺔﻐﻠﻟﺍ`pt-BR`                                                       .ﻚﻟﺫ ﻑﻼ﻿ﺨﺑ ﺔﻳﺰﻴﻠﺠﻧﻹ﻿ﺎﺑﻭ ،`Esc`                  .ءﻲﺷ ﻱﺃ ﺬﻴﻔﻨﺗ ﻢﺘﻳ ﻻ﻿ ؛ﻂﻘﻓ ﻪﻘﻠﻐﻳ ﺪﺣﺍﻭ ﺮﻄﺳ ﺭﺎﻴﺘﺧﺍ .ﺓﺬﻓﺎﻨﻟﺍ ﻖﻠﻐﻳ
+                       ﻡﺎﻈﻨﻠﻟ ﺔﻴﻤﻴﻠﻗﻹ﻿ﺍ ﺕﺍﺩﺍﺪﻋﻹ﻿ﺍ ﻥﻮﻜﺗ ﺎﻣﺪﻨﻋ ﺔﻴﻟﺎﻐﺗﺮﺒﻟﺍ ﻲﻫ ﺔﻐﻠﻟﺍ`pt-BR`                                                       .ﻚﻟﺫ ﻑﻼ﻿ﺨﺑ ﺔﻳﺰﻴﻠﺠﻧﻹ﻿ﺎﺑﻭ ،`Esc`                  . ءﻲﺷ ﻱﺃ ﺬﻴﻔﻨﺗ ﻢﺘﻳ ﻻ﻿ ؛ﻂﻘﻓ ﻪﻘﻠﻐﻳ ﺪﺣﺍﻭ ﺮﻄﺳ ﺭﺎﻴﺘﺧﺍ .ﺓﺬﻓﺎﻨﻟﺍ ﻖﻠﻐﻳ
 
 ##                                         Rofi ﺕﺍﺩﺍﺪﻋﺇ ﻡﺪﺨﺘﺴﺗ ﻲﺘﻟﺍ ﻯﺮﺧﻷ﻿ﺍ ﻢﺋﺍﻮﻘﻟﺍ
 
                      :ﻯﺮﺧﺃ ﻡﺰﺣ ﺎﻬﻜﻠﻤﺗ ﻲﺘﻟﺍ ﺕﺎﻧﻮﻜﻤﻟﺍ ﻊﻣ ﻞﻐﺸﻤﻟﺍ ﻦﻳﻮﻜﺗ ﺔﻛﺭﺎﺸﻣ ﻢﺘﺗ
 
-- 
-- Theme, accent and layout pickers in 
+-
+- Theme, accent and layout pickers in
 
- open Rofi with 
+ open Rofi with
 
 .
-- The Hyprland window rules recognize the 
+- The Hyprland window rules recognize the
 
- and 
+ and
 
- namespaces, so the menus receive the launcher surface treatment.
+ مساحات الأسماء، وبالتالي تتلقى القوائم المعالجة السطحية للمشغل.
 
 ## ﺕﺎﻴﻌﺒﺘﻟﺍﻭ ﻒﻴﻠﻐﺘﻟﺍ
 
-The package 
+The package
 
  is architecture-independent and installs:
 
@@ -434,39 +434,39 @@ The package
 - `/usr/share/argvus/launcher/config/`، ﺕﺎﻤﺳﻭ ﺕﺍﺩﺍﺪﻋﺇ ﻊﻣ Rofi؛
 - `/usr/share/argvus/launcher/sh/`، ﻊﻣ `cheatsheets.sh` ﻭ `emoji-picker.sh`.
 
-Required dependencies: 
+Required dependencies:
 
-, 
+,
 
-, 
+,
 
-, 
+,
 
-, 
+,
 
-, 
+,
 
-, 
+,
 
-, 
+,
 
-, 
+,
 
-, 
+,
 
-, 
+,
 
-, 
+,
 
-, 
+,
 
- and `argvus-session` (which provides `argvus-appearance`). Optional dependencies: `argvus`, for the SSH picker and the SSH key manager; `bash` and `jq` gitui  lazygit  openssh  pinentry-gtk  pinentry  gnupg  wtype  wl-clipboard  rofimoji  rofi-calc  rofi  libnotify  `hyprland` , for the git TUI.
+و`argvus-session` (الذي يوفر `argvus-appearance`). التبعيات الاختيارية: `argvus`، لمنتقي SSH ومدير مفاتيح SSH؛ `bash` و`jq` gitui Lazygit يفتح pinentry-gtk pinentry gnupg wtype wl-clipboard rofimoji rofi-calc rofi libnotify `hyprland`، لـ git TUI.
 
 Installing the package does not write into  `libnotify`  `rofi`  `rofi-calc`  `rofimoji`  `wl-clipboard`  `wtype`  `gnupg`  `pinentry`  `pinentry-gtk`  `openssh`  `lazygit`  `gitui` `$HOME`. User configuration is created at session start, as described in [Rofi configuration and themes](#where-the-active-configuration-lives).
 
-## Troubleshooting
+## استكشاف الأخطاء وإصلاحها
 
-| Symptom | Cause and fix |
+| العَرَض | السبب والإصلاح |
 | --- | --- |
 | `SUPER + D`                                                          ﻖﻘﺤﺗ | ءﻲﺷ ﻱﺃ ﺢﺘﻔﻳ ﻻ﻿`argvus launcher`                                                        ﻥﺃ ﻦﻣ ﺪﻛﺄﺗ .ﺔﻴﻓﺮﻄﻟﺍ ﻲﻓ`rofi`                                               .ﺩﻮﺟﻮﻣ Rofi ﻦﻳﻮﻜﺗ ﻥﺃﻭ ﻪﺘﻴﺒﺜﺗ ﻢﺗ
 | `SUPER + D`ﺎﻬﻟ ﻲﺘﻟﺍ ﺕﺎﻘﻴﺒﻄﺘﻟﺍ ﻂﻘﻓ .ﺐﺘﻜﻤﻟﺍ ﺢﻄﺳ ﻰﻠﻋ ﻝﺎﺧﺩﺇ ﺎﻬﻳﺪﻟ ﺲﻴﻟ ﺕﺎﻘﻴﺒﻄﺘﻟﺍ | ﺕﺎﻘﻴﺒﻄﺗ ﻱﺃ `.desktop`                                                              | .ﻒﻠﻤﻟﺍ ﺽﺮﻋ ﻢﺘﻳ
@@ -479,13 +479,13 @@ Installing the package does not write into  `libnotify`  `rofi`  `rofi-calc`  `r
 
 ##                                                             ﺔﻠﺼﻟﺍ ﺕﺍﺫ ﺕﺎﻧﻮﻜﻤﻟﺍ
 
-| Component | Responsibility |
+| المكون | المسؤولية |
 | --- | --- |
-| `argvus-hyprland`                         | .ﻢﺋﺍﻮﻘﻠﻟ Hyprland ﺬﻓﺍﻮﻧ ﺪﻋﺍﻮﻗﻭ ﺕﺍﺭﺎﺼﺘﺧﻻ﻿ﺍ ﻦﻋ ﻦﻠﻌﻳ | 
-| `argvus-appearance`| .Rofi ﺔﻤﺴﺑ ﺔﺻﺎﺨﻟﺍ ﻊﺟﺍﺮﻤﻟﺍ ﺔﺑﺎﺘﻛ ﺪﻴﻌﻳﻭ ،ﻂﻴﻄﺨﺘﻟﺍﻭ ،ﺔﻨﻜﻠﻟﺍﻭ ،ﺔﻄﺸﻨﻟﺍ ﺔﻤﺴﻟﺍ ﺮﻴﻐﻳ 
+| `argvus-hyprland`                         | .ﻢﺋﺍﻮﻘﻠﻟ Hyprland ﺬﻓﺍﻮﻧ ﺪﻋﺍﻮﻗﻭ ﺕﺍﺭﺎﺼﺘﺧﻻ﻿ﺍ ﻦﻋ ﻦﻠﻌﻳ |
+| `argvus-appearance`| .Rofi ﺔﻤﺴﺑ ﺔﺻﺎﺨﻟﺍ ﻊﺟﺍﺮﻤﻟﺍ ﺔﺑﺎﺘﻛ ﺪﻴﻌﻳﻭ ،ﻂﻴﻄﺨﺘﻟﺍﻭ ،ﺔﻨﻜﻠﻟﺍﻭ ،ﺔﻄﺸﻨﻟﺍ ﺔﻤﺴﻟﺍ ﺮﻴﻐﻳ
 | `argvus` (`argvus config`                    | .ﻲﺿﺍﺮﺘﻓﻻ﻿ﺍ ﻞﻐﺸﻤﻟﺍ ﺕﺍﺩﺍﺪﻋﺇﻭ ،ﺕﺎﻔﻄﺘﻘﻤﻟﺍﻭ ،ﻊﻳﺭﺎﺸﻤﻟﺍ ﻥﺰﺨﻳ | (
 | `argvus-session`                           | .ﺔﺴﻠﺠﻟﺍ ءﺪﺑ ﺪﻨﻋ ﻪﻄﺧ ﻂﺒﻀﻳﻭ ﻲﻟﻭﻷ﻿ﺍ Rofi ﻦﻳﻮﻜﺗ ﺦﺴﻨﻳ |
 | `argvus` (`argvus terminal`             ـﺑ ﺔﺻﺎﺨﻟﺍ ﺭﻭﺮﻤﻟﺍ ﺓﺭﺎﺒﻋ ﺕﺎﺒﻟﺎﻄﻣﻭ ﻉﻭﺮﺸﻤﻟﺍ ﺕﺎﻄﺤﻣﻭ SSH ﺕﺎﺴﻠﺟ ﺢﺘﻔﻳ | (`argvus keys`. |
-| `argvus` (`argvus widget-telemetry`) | Reads the active project written by `argvus projects`. |
+| `argvus` (`argvus widget-telemetry`) | يقرأ المشروع النشط الذي كتبه `argvus projects`. |
 | `argvus` (`argvus i18n`                    | .ﻞﻐﺸﻤﻟﺍ ﺕﺎﺘﺒﻳﺮﻜﺳ ﺎﻬﻣﺪﺨﺘﺴﺗ ﻲﺘﻟﺍ ﺔﻤﺟﺮﺘﻤﻟﺍ ﻞﺋﺎﺳﺮﻟﺍ ﺮﻓﻮﻳ | (
-| `argvus` (`argvus control-center`) | Edits the project list through `argvus projects`. |
+| `argvus` (`argvus control-center`) | يقوم بتحرير قائمة المشاريع من خلال `argvus projects`. |

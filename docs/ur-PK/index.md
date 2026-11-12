@@ -1,5 +1,5 @@
 ---
-title: Application launcher
+title: ایپلیکیشن لانچر
 description: ARGVUS Rofi ﮟﯿﻟﻮﮭﮐ ﺲﭩﮑﯿﺟﻭﺮﭘ ،ﮟﯾﺮﮐ ﭻﻧﻻ﻿ ﺰﻨﺸﯿﮑﯿﻠﭙﯾﺍ ﮯﻌﯾﺭﺫ ﮯﮐ ﻮﯿﻨﯿﻣ ﮯﮐ، SSH ۔ﮟﯿﮬﮍﭘ
 ---
 
@@ -7,33 +7,33 @@ description: ARGVUS Rofi ﮟﯿﻟﻮﮭﮐ ﺲﭩﮑﯿﺟﻭﺮﭘ ،ﮟﯾﺮ
 
 -                                            ;(`SUPER + D`) ﺮﭽﻧﻻ﻿ ﻦﺸﯿﮑﯿﻠﭙﯾﺍ
 - Rofi ﺮﮨ ﻮﺟ ﺰﻤﯿﮭﺗ ﺭﻭﺍ ﺐﯿﺗﺮﺗ ﯽﮐ ARGVUS Rofi ؛ﮟﯿﮨ ﯽﺗﺎﺟ ﯽﮐ ﺮﺌﯿﺷ ﮯﻌﯾﺭﺫ ﮯﮐ ﻮﻨﯿﻣ
-- ;(`argvus projects`, `argvus ssh`, `argvus snippets`) ﺮﮑﯿﭘ ﭦﺎﺷ ﭗﯿﻨﺳﺍ ﺭﻭﺍ 
+- ;(`argvus projects`, `argvus ssh`, `argvus snippets`) ﺮﮑﯿﭘ ﭦﺎﺷ ﭗﯿﻨﺳﺍ ﺭﻭﺍ
 -                                                         ) ﺮﺠﯿﻨﻣ ﯽﮐ ﭻﯾﺍ ﺲﯾﺍ ﺲﯾﺍ`argvus keys`          ؛ﮯﮨ ﺎﺗﺮﮐ ﻑﺬﺣ ﺭﻭﺍ ﮯﮨ ﺎﺗﺮﮐ ﮈﻮﻟ ،ﮯﮨ ﺎﺗﺎﻨﺑ ﺖﺳﺮﮩﻓ ،ﮯﮨ ﺎﺗﺎﻨﺑ ﺯﺮﺌﯿﭘ ﯽﮐ ﻮﺟ ،
 -                                                            ) ﺮﺠﯿﻨﻣ ﯽﮐ ﯽﺟ ﯽﭘ ﯽﺟ`argvus gpg`؛ﮯﮨ ﺎﺗﺮﮐ ﭧﯿﺳ ﻮﮐ pinentry-gtk ﮯﯿﻟ ﮯﮐ gpg-agent ﺭﻭﺍ ﮯﮨ ﺎﺗﺮﮐ ﺪﻣﺁﺮﺑ ﺭﻭﺍ ﮯﮨ ﺎﺗﺮﮐ ﻖﯿ
 -                                 ۔ﻮﻨﯿﻣ ﺮﭩﯿﻟﻮﮑﻠﯿﮐ ﺭﻭﺍ ﺮﺋﻮﯾﻭ ﭧﯿﺷ ﭧﯿﭼ ،ﺮﮑﯿﭘ ﯽﺟﻮﻤﯾﺍ
 
                                                   ﮯﮨ ﯽﺗﺎﺟ ﯽﮐ ﺖﺣﺎﺿﻭ ﯽﮐ ﺲﭩﮐ ﭦﺭﺎﺷ`argvus-hyprland`                   ۔ﮯﮨ ﺎﺗﺮﮐ ﻢﮨﺍﺮﻓ ﺯﻮﯿﻨﯿﻣ ﺩﻮﺟﻮﻣ ﮯﮭﭽﯿﭘ ﮯﮐ ﻥﺍ ﺭﻭﺍ ﺯﮉﻧﺎﻤﮐ ﺞﯿﮑﯿﭘ ﮧﯾ
 
-## Shortcuts
+## شارٹ کٹس
 
-| Shortcut | Action | Command | Section |
+| شارٹ کٹ | ایکشن | کمانڈ | سیکشن |
 | --- | --- | --- | --- |
-| `SUPER + D` | Application launcher | `argvus launcher` | Application launcher |
-| `SUPER + O` | Project switcher | `argvus projects` | Project switcher |
-| `SUPER + ALT + 1` to `9`                                                 | ﮟﯿﻟﻮﮭﮐ ﮧﺑﻮﺼﻨﻣ ﺮﭘ ﻡﺎﻘﻣ ﺱﺍ | `argvus projects open N`                                                            | ﺮﭽﺋﻮﺳ ﭧﮑﯿﺟﻭﺮﭘ | 
-| `SUPER + ALT + S` | SSH host picker | `argvus ssh` | SSH |
-| `SUPER + ALT + N` | Snippet picker | `argvus snippets` | Snippets |
-| `SUPER + ALT + G` | Project picker, then git TUI | `argvus git` | Git |
-| `SUPER + .` | Emoji picker | `emoji-picker.sh` | Emoji picker |
-| `SUPER + C` | Calculator | `rofi -show calc` | Calculator |
-| `SUPER + SHIFT + /` | Hyprland cheatsheet | `cheatsheets.sh hypr` | Cheatsheets |
-| `SUPER + CTRL + /` | Kitty cheatsheet | `cheatsheets.sh kitty` | Cheatsheets |
+| `SUPER + D` | ایپلیکیشن لانچر | `argvus launcher` | ایپلیکیشن لانچر |
+| `SUPER + O` | پروجیکٹ سوئچر | `argvus projects` | پروجیکٹ سوئچر |
+| `SUPER + ALT + 1` to `9`                                                 | ﮟﯿﻟﻮﮭﮐ ﮧﺑﻮﺼﻨﻣ ﺮﭘ ﻡﺎﻘﻣ ﺱﺍ | `argvus projects open N`                                                            | ﺮﭽﺋﻮﺳ ﭧﮑﯿﺟﻭﺮﭘ |
+| `SUPER + ALT + S` | SSH میزبان چننے والا | `argvus ssh` | SSH |
+| `SUPER + ALT + N` | ٹکڑا چننے والا | `argvus snippets` | ٹکڑوں |
+| `SUPER + ALT + G` | پروجیکٹ چننے والا، پھر گٹ TUI | `argvus git` | گٹ |
+| `SUPER + .` | ایموجی چننے والا | `emoji-picker.sh` | ایموجی چننے والا |
+| `SUPER + C` | کیلکولیٹر | `rofi -show calc` | کیلکولیٹر |
+| `SUPER + SHIFT + /` | Hyprland cheatsheet | `cheatsheets.sh hypr` | دھوکہ دہی |
+| `SUPER + CTRL + /` | کٹی چیٹ شیٹ | `cheatsheets.sh kitty` | دھوکہ دہی |
 
 ##                                             (`SUPER + D`) ﺮﭽﻧﻻ﻿ ﻦﺸﯿﮑﯿﻠﭙﯾﺍ
 
 `SUPER + D` runs `argvus launcher`                                                       ﮯﮨ ﺎﺘﻟﻮﮭﮐ ﮟﯿﻣ Rofi ﻮﺟ ،`drun`ﮟﯿﺋﺎﺑﺩ ﭖﺁ ﺐﺟ ﮯﮨ ﯽﺗﻮﮨ ﻉﻭﺮﺷ ﺖﻗﻭ ﺱﺍ ﻦﺸﯿﮑﯿﻠﭙﯾﺍ ﮦﺩﺮﮐ ﺐﺨﺘﻨﻣ ﺭﻭﺍ ،ﮟﯿﮨ ﯽﺗﻮﮨ ﻝﺎﭩﺴﻧﺍ ﮫﺗﺎ`Enter`.
 
-1. Press `SUPER + D`.
+1. `SUPER + D` دبائیں۔
 2. ۔ﺎﺗﺮﮐ ﮟﯿﮩﻧ ﺭﻮﻏ ﺮﭘ ﯼﮍﺑ ﺎﯾ ﭦﻮﮭﭼ ﯽﮐ ﻑﺮﺣ ﺮﭩﻠﻓ ﺭﻭﺍ ﮯﮨ ﮦﺪﺷ ﺐﯿﺗﺮﺗ ﺖﺳﺮﮩﻓ ۔ﮟﯿﮭﮑﻟ ﮧﺼﺣ ﮫﭽ
 3. ۔ﮟﯿﺋﺎﺑﺩ Esc ﮯﯿﻟ ﮯﮐ ﮯﻧﺮﮐ ﺪﻨﺑ ﻮﻨﯿﻣ ﺎﯾ ،ﮟﯿﺋﺎﺑﺩ `Enter` ﮯﯿ
 
@@ -46,25 +46,25 @@ Any other argument is passed to  `Esc` `rofi`. `--config` without a value stops 
 
 
 
-۔ﯽﺘﮑﺳ ﻞﻣ ﮟﯿﮩﻧ ﮞﺎﮩﯾ ،ﯽﺗﺮﮐ ﮟﯿﮩﻧ ﻝﺎﭩﺴﻧﺍ ﻞﺋﺎﻓ  argvus-config  <program> --show drun  launcher  rofi  `argvus launcher --config <Rofi configuration>`  `rofi`  `launcher`  `<program> --show drun`  `argvus-config` `.desktop` ﯽﺋﻮﮐ ﻮﺟ ﻦﺸﯿﮑﯿﻠﭙﯾﺍ 
+۔ﯽﺘﮑﺳ ﻞﻣ ﮟﯿﮩﻧ ﮞﺎﮩﯾ ،ﯽﺗﺮﮐ ﮟﯿﮩﻧ ﻝﺎﭩﺴﻧﺍ ﻞﺋﺎﻓ  argvus-config  <program> --show drun  launcher  rofi  `argvus launcher --config <Rofi configuration>`  `rofi`  `launcher`  `<program> --show drun`  `argvus-config` `.desktop` ﯽﺋﻮﮐ ﻮﺟ ﻦﺸﯿﮑﯿﻠﭙﯾﺍ
 
 ## Rofi ﺰﻤﯿﮭﺗ ﺭﻭﺍ ﺐﯿﺗﺮﺗ ﯽﮐ
 
             :ﮯﮨ ﺎﺗﺮﮐ ﻝﺎﭩﺴﻧﺍ ﺖﺤﺗ ﮯﮐ `/usr/share/argvus/launcher/config/` ﻮﮐ ﻦﺸﯾﺮﮕﯿﻔﻨﮐ ﯽﮐ Rofi ﺞﮑﯿﭘ
 
-| File | Role |
+| فائل | کردار |
 | --- | --- |
 | `config.rasi`  ﮯﮨ ﺎﺗﺮﮐ ﭧﯿﺳ ﻮﮐ Rofi ۔ﮧﻄﻘﻧ ﯽﻠﺧﺍﺩ ﻻ﻿ﺍﻭ ﮯﻧﻮﮨ ﻝﺎﻤﻌﺘﺳﺍ ﮯﺳ ﺐﻧﺎﺟ ﯽﮐ ﻮﻨﯿﻣ ARGVUS ﺮﮨ |`configuration`    ﺕﺍﺪﻣﺁﺭﺩ ﺭﻭﺍ (ﭖﻼ﻿ﻣ ﺱﺎﺴﺣ ﺮﯿﻏ ﮯﺳ ﺲﯿﮐ ،ﺖﺳﺮﮩﻓ ﮦﺪﺷ ﺐﺗﺮﻣ ،ﮟﯿﮩﻧ ﺰﻨﮑﯿﺋﺁ ﯽﺋﻮﮐ ،ﭧﻧﻮﻓ) `theme.rasi`. |
 | `theme.rasi`| ۔ﮯﮨ ﺎﺗﺮﮐ ﺪﻣﺁﺭﺩ ﻞﺋﺎﻓ ﮈﻮﻣ ﺭﻭﺍ ﻢﯿﮭﺗ ﮏﯾﺍ ۔ﺐﯿﺗﺮﺗ ﺭﻭﺍ ﮓﻧﺭ ﮯﮐ ﭧﺴﻟ ﺭﻭﺍ ﺭﺎﺑ ﭧﭘ ﻥﺍ ،ﻭﮉ
 | `mode.rasi`| ۔ﮯﮨ ﯽﺘﮭﮐﺭ ﺭﺍﺮﻗﺮﺑ ﮈﻮﻣ ﮎﺭﺍﮈ ﮧﯾ ﺭﻭﺍ ﮯﮨ ﮟﯿﮩﻧ ﮉﯿﺋﺍﺭﺭﻭﻭﺍ ﯽﺋﻮﮐ ﮟﯿﻣ ﻞﺋﺎﻓ ﮦﺪﺷ ﺞﮑﯿﭘ ۔ﮉ
-| `themes/<family>/theme.rasi` | Palette of a theme family, for example `argvus-dark` or `tokyo-night`. |
-| `themes/<family>-spaced/theme.rasi` | Spaced variant of the same family. |
+| `themes/<family>/theme.rasi` | تھیم فیملی کا پیلیٹ، مثال کے طور پر `argvus-dark` یا `tokyo-night`۔ |
+| `themes/<family>-spaced/theme.rasi` | ایک ہی خاندان کا فاصلاتی شکل۔ |
 
 ۔ﮯﮨ ﺎﺗﺮﮐ ﺪﻣﺁﺭﺩ
 
 ### ﮯﮨ ﺩﻮﺟﻮﻣ ﻦﺸﯾﺮﮕﯿﻔﻨﮐ ﻝﺎﻌﻓ ﮞﺎﮩﺟ
 
-ARGVUS resolves each Rofi file through  argvus-dark  theme.rasi  `-spaced`  `theme.rasi`  `argvus-dark` `paths_config`. The first existing file among the user overrides, the user copy, the legacy locations and the generated tree wins; otherwise the packaged file under `/usr/share/argvus/launcher/config/` is used. The user copy of a file is `$XDG_CONFIG_HOME/argvus/data/rofi/<file>`: the `launcher/config/` prefix is stored under `rofi/`.
+ARGVUS ہر Rofi فائل کو argvus-dark theme.rasi `-spaced` `theme.rasi` `argvus-dark` `paths_config` کے ذریعے حل کرتا ہے۔ صارف کے درمیان پہلی موجودہ فائل اوور رائیڈز، یوزر کاپی، لیگیسی لوکیشنز اور جنریٹڈ ٹری جیت؛ بصورت دیگر `/usr/share/argvus/launcher/config/` کے تحت پیکیجڈ فائل استعمال کی جاتی ہے۔ فائل کی صارف کاپی `$XDG_CONFIG_HOME/argvus/data/rofi/<file>` ہے: `launcher/config/` کا سابقہ ​​`rofi/` کے تحت محفوظ ہے۔
 
 ARGVUS ﺐﺟ ﮯﮨ ﺎﺗﺎﻨﺑ ﯽﭘﺎﮐ ﯽﮐ ﻑﺭﺎﺻ ﮏﯾﺍ ﺭﺎﺑ ﯽﻠﮩﭘ ARGVUS ؛ﮯﮨ ﺎﺘﻟﺪﺑ ﻮﮐ ﻞﺋﺎﻓ ﺱﺍ ﭧﭘﺮﮑﺳ`argvus-appearance`۔ﮯﮨ ﯽﺘﮭﮐﺭ ﺖﯿﻗﻮﻓ ﺮﭘ ﻞﺋﺎﻓ ﮦﺪﺷ ﺞﯿﮑﯿﭘ ﯽﭘﺎﮐ ﯽﮐ ﻑﺭﺎﺻ ﺭﻭﺍ ،ﮟﯿﮨ ﯽﺘﮨﺭ ﯽﺘﮬﮍﭘ ﮯﺳ ﺞﯿﮑﯿﭘ ،ﮟ
 
@@ -78,11 +78,11 @@ ARGVUS ﺐﺟ ﮯﮨ ﺎﺗﺎﻨﺑ ﯽﭘﺎﮐ ﯽﮐ ﻑﺭﺎﺻ ﮏﯾﺍ 
 
 ##                                              (`SUPER + O`) ﺮﭽﺋﻮﺳ ﭧﮑﯿﺟﻭﺮﭘ
 
-`argvus projects` (`SUPER + O` ﮏﯾﺍ ﮫﺗﺎﺳ ﮯﮐ ،ﮯﮨ ﺎﺘﻟﻮﮭﮐ ﮟﯿﻣ ﺲﯿﭙﺳﺍ ﮎﺭﻭ Hyprland ﮯﻨﭘﺍ ﮯﮐ ﺱﺍ ﻮﮐ ﭧﮑﯿﺟﻭﺮﭘ ﮦﺪﺷ ﺐﺨﺘﻨﻣ`argvus terminal`۔ﮯﮨ ﺎﺗﺮﮐ ﺯﻮﮐﺮﻣ ﮧﺟﻮﺗ ﺮﭘ ﺱﺍ ﻑﺮﺻ ﺮﭽﺋﻮﺳ ﻮﺗ ،ﮯﮨ ﺩﻮﺟﻮﻣ ﮯﺳ ﮯﻠﮩﭘ ﺲﯿﭙﺳﺍ ﮎﺭﻭ ﺎﮐ ﭧﮑﯿﺟﻭﺮﭘ 
+`argvus projects` (`SUPER + O` ﮏﯾﺍ ﮫﺗﺎﺳ ﮯﮐ ،ﮯﮨ ﺎﺘﻟﻮﮭﮐ ﮟﯿﻣ ﺲﯿﭙﺳﺍ ﮎﺭﻭ Hyprland ﮯﻨﭘﺍ ﮯﮐ ﺱﺍ ﻮﮐ ﭧﮑﯿﺟﻭﺮﭘ ﮦﺪﺷ ﺐﺨﺘﻨﻣ`argvus terminal`۔ﮯﮨ ﺎﺗﺮﮐ ﺯﻮﮐﺮﻣ ﮧﺟﻮﺗ ﺮﭘ ﺱﺍ ﻑﺮﺻ ﺮﭽﺋﻮﺳ ﻮﺗ ،ﮯﮨ ﺩﻮﺟﻮﻣ ﮯﺳ ﮯﻠﮩﭘ ﺲﯿﭙﺳﺍ ﮎﺭﻭ ﺎﮐ ﭧﮑﯿﺟﻭﺮﭘ
 
 
 
-The effective project list is capped at 9, since that is all  argvus projects open <number or directory name>  SUPER + ALT + 9  `SUPER + ALT + 1`  `SUPER + ALT + 9`  `argvus projects open <number or directory name>` `SUPER + ALT + 1..9` can address. `argvus projects add` (and the Control Center's Projects page, which calls it) refuses to add a project or root that would push the total past 9, and reports the error instead.
+مؤثر پروجیکٹ کی فہرست 9 پر محدود ہے، کیونکہ یہ تمام argvus پروجیکٹس کھلے ہیں <نمبر یا ڈائریکٹری کا نام> SUPER + ALT + 9 `SUPER + ALT + 1` `SUPER + ALT + 9` `argvus projects open <number or directory name>` `SUPER + ALT + 1..9` ایڈریس کر سکتے ہیں۔ `argvus projects add` (اور کنٹرول سینٹر کا پروجیکٹس صفحہ، جو اسے کہتے ہیں) کسی پروجیکٹ یا روٹ کو شامل کرنے سے انکار کرتا ہے جو کل ماضی 9 کو آگے بڑھاتا ہے، اور اس کی بجائے غلطی کی اطلاع دیتا ہے۔
 
 :ﮯﮨ ﺎﺗﺁ ﮯﺳ ﮞﻮﮩﮕﺟ ﻭﺩ ﮟﯿﻣ ﻦﺸﮑﯿﺳ `projects` ﮯﮐ `argvus-config` ﭧﮑﯿﺟﻭﺮﭘ ﮏ
 
@@ -112,7 +112,7 @@ argvus projects list                    # prints the roots and paths
 
 `SUPER + ALT + S`               ﮟﯿﮨ ﮯﺌﮔ ﮯﯿﮐ ﻒﯾﺮﻌﺗ ﮟﯿﻣ ﺱﺍ ﻮﺟ ﮯﮨ ﺎﺘﻟﻮﮭﮐ ﺮّﮑﭘ ﮏﯾﺍ ﮫﺗﺎﺳ ﮯﮐ ﮞﻮﻧﺎﺑﺰﯿﻣ `~/.ssh/config`              ﮯﮨ ﺎﮨﺭ ﻞﭼ ﻮﺟ ﮯﮨ ﺎﺘﻠﮭﮐ ﮟﯿﻣ ﻞﻨﯿﻣﺮﭨ ARGVUS ﮯﺌﻧ ﮏﯾﺍ ﭧﺳﻮﮨ ﮦﺪﺷ ﺐﺨﺘﻨﻣ .`ssh <host>`                                                      ۔ﮟﯿﻣ ﮧﮕﺟ ﯽﮐ ﻡﺎﮐ ﮦﺩﻮﺟﻮﻣ ،
 
-### Setup
+### سیٹ اپ
 
   :ﮟﯾﺮﮐ ﻞﻣﺎﺷ ﺝﺍﺭﺪﻧﺍ `Host` ﮏﯾﺍ ﮟﯿﻣ `~/.ssh/config` ﮯﯿﻟ ﮯﮐ ﺭﻭﺮﺳ ﺮﮨ
 
@@ -126,37 +126,37 @@ Host myhost
 
                                                                  ﮧﮐ ﮟﯾﺮﮐ ﻖﯾﺪﺼﺗ`ssh myhost`                   ﮯﮨ ﺎﺘﻠﭼ ﻑﺮﺻ ﺮﭽﻧﻻ﻿ ۔ﮯﮨ ﺎﺗﺮﮐ ﻡﺎﮐ ﮟﯿﻣ ﻞﻨﯿﻣﺮﭨ ﻡﺎﻋ ﮏﯾﺍ ﮯﻠﮩﭘ ﮯﺳ ﺐﺳ`ssh`        ۔ﮟﯿﮨ ﯽﺗﺎﺟ ﯽﻟﺎﮭﺒﻨﺳ ﮯﻌﯾﺭﺫ ﮯﮐ OpenSSH ﻖﯾﺪﺼﺗ ﯽﮐ ﻥﺎﺑﺰﯿﻣ ﺭﻭﺍ ﮞﺎﯿﺑﺎﭼ ،ﻖﯾﺪﺼﺗ ;
 
-### Use
+### استعمال کریں۔
 
-1. Press `SUPER + ALT + S`.
+1. `SUPER + ALT + S` دبائیں۔
 2.                         ۔ﮟﯾﺮﮐ ﻝﺎﻤﻌﺘﺳﺍ ﻦﭩﺑ ﮯﮐ ﺮﯿﺗ ﺎﯾ ،ﮟﯾﺮﮐ ﭗﺋﺎﭨ ﮧﺼﺣ ﺎﮐ ﻡﺎﻧ ﭧﺳﻮﮨ
 3. `Enter` ﺭﻭﺍ ﮯﮨ ﺎﺘﻠﮭﮐ ﻞﻨﯿﻣﺮﭨ ۔ﮟﯿﺋﺎﺑﺩ `ssh <host>` ۔ﮯﮨ ﺎﺘﻠﭼ
 
 
 
-### Rules
+### قواعد
 
-- Wildcard entries ( Enter  `ssh exited with status 0. Press Enter to close.`  `Enter` `Host *`, `Host *.internal`) are match blocks, not targets, and are never listed.
+- وائلڈ کارڈ اندراجات (`ssh exited with status 0. Press Enter to close.` `Enter` `Host *`، `Host *.internal` درج کریں) میچ بلاکس ہیں، اہداف نہیں، اور کبھی بھی درج نہیں ہوتے۔
 -                                                                ﮏﯾﺍ ﺮﭘ ﺖﯿﻓﺮﻋ ﺮﮨ`Host`                                                   ) ﮯﮨ ﯽﺌﮔ ﯽﮐ ﺝﺭﺩ ﮯﺳ ﮓﻟﺍ ﻦﺋﻻ﻿ `Host a b` lists `a` and `b`                                                       ۔ﮟﯿﮨ ﯽﺌﮔ ﯼﺩ ﺎﭩﮨ ﻝﻮﻘﻧ .(
 -                          ﮟﯿﮨ ﮯﺌﮔ ﮯﯿﮐ ﻦﯿﻌﺘﻣ ﺮﭘ ﮯﻧﻮﮨ ﮈﻮﻟ ﮟﯿﻣ ﮞﻮﻠﺋﺎﻓ ﻑﺮﺻ ﻮﺟ ﻥﺎﻤﮩﻣ`Include`                           ۔ﮯﮨ ﺎﺘﮬﮍﭘ ﻮﮐ ﻞﺋﺎﻓ ﯼﺰﮐﺮﻣ ﻑﺮﺻ ﺮّﮑﭘ ؛ﮟﯿﮨ ﮟﯿﮩﻧ ﮟﯿﻣ ﺖﺳﺮﮩﻓ
 -                               ،ﮞﻮﮨ ﻞﻤﺘﺸﻣ ﺮﭘ ﺩﺍﺪﻋﺍ ﺭﻭﺍ ﻑﻭﺮﺣ ﻮﺟ ﻡﺎﻧ ﻑﺮﻋ ﮯﺴﯾﺍ ﻑﺮﺻ`.`, `-` and `_` ۔ﮯﮨ ﺎﺗﺎﺟ ﺎﯾﺩ ﺮﮐ ﺩﺮﺘﺴﻣ ﮫﺗﺎﺳ ﮯﮐ ﺲﭨﻮﻧ ﻮﮐ ﻡﺎﻧ ﮮﺮﺳﻭﺩ ﯽﮭﺑ ﯽﺴﮐ ۔ﮟﯿﮨ ﮯﺗﺎﺟ ﮯﯾﺩ ﺮﮐ ﻉﻭﺮﺷ
 -                      ۔ﮟﯿﮨ ﮯﺗﺎﺟ ﮯﯿﮐ ﻝﻮﺒﻗ (CRLF) ﺰﮕﻧﮉﻨﯾﺍ ﻦﺋﻻ﻿ ﺯﻭﮉﻧﻭ ﮟﯿﻣ ﻦﺸﯾﺮﮕﯿﻔﻨﮐ
 - `ARGVUS_SSH_CONFIG` ۔ﮯﮨ ﺪﯿﻔﻣ ﮯﯿﻟ ﮯﮐ ﮓﻨﭩﺴﯿﭨ ﻮﺟ ،ﮯﮨ ﺎﺘﯿﻟ ﮧﮕﺟ ﯽﮐ ﮯﺘﺳﺍﺭ ﮯﮐ ﻞﺋﺎﻓ ﻦﺸﯾﺮ
 
-### Commands
+### احکام
 
 ```sh
 argvus ssh list          # prints the configured hosts, one per line
 argvus ssh open myhost   # opens a specific host without the picker
 ```
 
-### Troubleshooting
+### خرابی کا سراغ لگانا
 
-| Symptom | Cause and fix |
+| علامت | وجہ اور درست کریں |
 | --- | --- |
 ﮯﮨ ﮟﯿﮩﻧ ﯽﺋﻮﮐ ﮟﯿﻣ ﺱﺍ ﺎﯾ ﮯﮨ ﮟﯿﮩﻧ ﺩﻮﺟﻮﻣ ﻞﺋﺎﻓ | "ﻼ﻿ﻣ ﮟﯿﮩﻧ ﻥﺎﺑﺰﯿﻣ ﯽﺋﻮﮐ ﮟﯿﻣ ssh/confi`Host`                                                                  ﮟﯿﺋﻼ﻿ﭼ ۔ﮟﯿﻨﺋﻻ﻿`argvus ssh list`                                                            | ۔ﮯﯿﻟ ﮯﮐ ﮯﻧﺮﮐ ﮏﯿﭼ
-        ﮯﺳ ﮏﯾﺍ ﮯﮨ ﺎﺗﺁ ،ﮯﮨ ﮈﺭﺎﮐﮉﻠﺋﺍﻭ ﮏﯾﺍ ﮧﯾ | ﮯﮨ ﺐﺋﺎﻏ ﻥﺎﺑﺰﯿﻣ ﮏﯾﺍ ﮯﺳ ﮯﻟﺍﻭ ﮯﻨﻨﭼ |`Include`| ۔ﮟﯿﮭﮐﺭ ﮫﺗﺎﺳ ﮯﮐ ﻡﺎﻧ ﯽﻓﺮﻋ ﮦﺩﺎﺳ ﮏﯾﺍ ﮟﯿﻣ ﻞﺋﺎﻓ ﻦﯿﻣ ﮯﺳﺍ ۔ﮟﯿﮨ ﻑﻭﺮﺣ ﺮﮨﺎﺑ ﮯﮐ ﭧﯿﺳ ﯽﺌﮔ 
-                                 ﮟﯿﺋﻼ﻿ﭼ | ﮯﮨ ﯽﺗﺎﮭﮐﺩ ﺲﭩﯿﭩﺳﺍ ﺭﺮﯾﺍ ﮏﯾﺍ ًﺍﺭﻮﻓ ﻭﮉﻧﻭ |`ssh <host>`| .(ﮦﺮﯿﻏﻭ ،ﺪﯿﻠﮐ ﻂﻠﻏ ،ﻥﺎﺑﺰﯿﻣ ﯽﺋﺎﺳﺭ ﻞﺑﺎﻗﺎﻧ) ﮯﯿﻟ ﮯﮐ ﮯﻨﮭﮑﯾﺩ ﻡﺎﻐﯿﭘ ﺍﺭﻮﭘ ﮟﯿﻣ ﻞﻨﯿﻣﺮﭨ 
+        ﮯﺳ ﮏﯾﺍ ﮯﮨ ﺎﺗﺁ ،ﮯﮨ ﮈﺭﺎﮐﮉﻠﺋﺍﻭ ﮏﯾﺍ ﮧﯾ | ﮯﮨ ﺐﺋﺎﻏ ﻥﺎﺑﺰﯿﻣ ﮏﯾﺍ ﮯﺳ ﮯﻟﺍﻭ ﮯﻨﻨﭼ |`Include`| ۔ﮟﯿﮭﮐﺭ ﮫﺗﺎﺳ ﮯﮐ ﻡﺎﻧ ﯽﻓﺮﻋ ﮦﺩﺎﺳ ﮏﯾﺍ ﮟﯿﻣ ﻞﺋﺎﻓ ﻦﯿﻣ ﮯﺳﺍ ۔ﮟﯿﮨ ﻑﻭﺮﺣ ﺮﮨﺎﺑ ﮯﮐ ﭧﯿﺳ ﯽﺌﮔ
+                                 ﮟﯿﺋﻼ﻿ﭼ | ﮯﮨ ﯽﺗﺎﮭﮐﺩ ﺲﭩﯿﭩﺳﺍ ﺭﺮﯾﺍ ﮏﯾﺍ ًﺍﺭﻮﻓ ﻭﮉﻧﻭ |`ssh <host>`| .(ﮦﺮﯿﻏﻭ ،ﺪﯿﻠﮐ ﻂﻠﻏ ،ﻥﺎﺑﺰﯿﻣ ﯽﺋﺎﺳﺭ ﻞﺑﺎﻗﺎﻧ) ﮯﯿﻟ ﮯﮐ ﮯﻨﮭﮑﯾﺩ ﻡﺎﻐﯿﭘ ﺍﺭﻮﭘ ﮟﯿﻣ ﻞﻨﯿﻣﺮﭨ
                                                              ﮯﮨ ﯽﺗﺎﮭﮐﺩ ﯽﮐﮍﮭﮐ |`message.ssh_session_ended`                                                        ﮦﺪﺷ ﺐﺼﻧ | ﮯﺋﺎﺠﺑ ﯽﮐ ﻦﺘﻣ`argvus`                                        ﮟﯾﺮﮐ ﭧﯾﮈ ﭖﺍ ۔ﮯﮨ ﺎﻧﺍﺮﭘ ﮯﺳ ﻥﮊﺭﻭ ﺱﺍ ﺞﯿﮑﯿﭘ`argvus`. |
 
 `openssh` ﺭﻭﺍ `argvus` (`argvus terminal` ﮉﻧﺎﻤﮐ) ۔ﮯﮨ ﺕﺭﻭﺮﺿ ﯽﮐ
@@ -184,24 +184,24 @@ argvus keys delete NAME                  # deletes both files; refused while the
 -                                                ﮫﺗﺎﺳ ﮯﮐ ﻞﺋﺎﻓ ﯽﻣﺍﻮﻋ ﮏﯾﺍ ﮮﮌﻮﺟ ﻑﺮﺻ`NAME.pub`                 ۔ﮯﮨ ﺎﺘﮑﺳ ﺎﺟ ﺎﯿﮐ ﻑﺬﺣ ﺎﯾ ﮈﻮﻟ ﻥﺍ ،ﮈﻮﻟ ﻮﮐ ﯽﮩﻧﺍ ﻑﺮﺻ ﺭﻭﺍ ،ﮟﯿﮨ ﺝﺭﺩ (
 - ۔ﮯﺗﺎﺟ ﮯﺋﺎﮭﮐﺩ ﮟﯿﮩﻧ ﮟﯿﻣ ﺮﭩﻨﯿﺳ ﻝﻭﺮﭩﻨﮐ ﺎﯾ ﮯﺗﺎﺟ ﮯﮭﮑﻟ ﮟﯿﮩﻧ ﮟﯿﻣ ﮒﻻ﻿ ،ﮯﺗﺎﺟ ﮯﯾﺩ ﮟﯿﮩﻧ ﺮﭘ `load` and `generate --passphrase`              ۔ﮯﮨ ﺎﺘﮬﮍﭘ ﺯﺍﺭ ﮯﺳ ﻞﻨﯿﻣﺮﭨ ﺱﺍ OpenSSH ﺭﻭﺍ ،ﮟﯿﻟﻮﮭﮐ ﻞﻨﯿﻣﺮﭨ ARGVUS ﮏﯾﺍ
 - `list` reports `unknown`                                                                           ﮟﯿﻣ`loaded`               ۔ﺎﺗﺎﮕﻟ ﮟﯿﮩﻧ ﮦﺯﺍﺪﻧﺍ ﯽﮭﺒﮐ ﮧﯾ ۔ﺎﺘﮑﺳ ﺎﺟ ﮟﯿﮩﻧ ﺎﭽﻨﮩﭘ ﮏﺗ ﭧﻨﺠﯾﺍ ﺐﺟ ﻢﻟﺎﮐ
-- `delete` ۔ﻮﮨ ﺕﺭﻭﺮﺿ ﯽﮭﺑ ﺏﺍ ﻮﮐ ﭖﺁ ﯽﮐ ﺲﺟ ﮟﯿﮭﮐﺭ ﯽﭘﺎﮐ ﯽﮐ ﺪﯿﻠﮐ ﯽﮭﺑ ﯽﺴﮐ ۔ﮯﮨ 
+- `delete` ۔ﻮﮨ ﺕﺭﻭﺮﺿ ﯽﮭﺑ ﺏﺍ ﻮﮐ ﭖﺁ ﯽﮐ ﺲﺟ ﮟﯿﮭﮐﺭ ﯽﭘﺎﮐ ﯽﮐ ﺪﯿﻠﮐ ﯽﮭﺑ ﯽﺴﮐ ۔ﮯﮨ
 - `ARGVUS_SSH_DIR`، ﮯﮨ ﺪﯿﻔﻣ ﮯﯿﻟ ﮯﮐ ﮓﻨﭩﺴﯿﭨ ﮧﮐ ﻮﺟ، `~/.ssh` ۔ﮯﮨ ﺎﺘﯿﻟ ﮧﮕﺟ
 
                                                                       ﮯﮨ ﭧﻨﺠﯾﺍ`argvus-ssh-agent.service`                                                      ﯽﺌﮔ ﯽﮐ ﻉﻭﺮﺷ ﺖﻣﺪﺧ ﯽﮐ ﻑﺭﺎﺻ`argvus-session`. `SSH_AUTH_SOCK`                                             ۔ﮯﮨ ﺎﺗﺮﮐ ﮦﺭﺎﺷﺍ ﮟﯿﻣ ﻦﺸﯿﺳ ﻑﺮﻃ ﯽﮐ ﺱﺍ
 
 GPG ۔ﮯﮨ ﺕﺭﻭﺮﺿ ﯽﮐ (ﮉﻧ
 
-| Symptom | Cause and fix |
+| علامت | وجہ اور درست کریں |
 | --- | --- |
-|  argvus terminal  argvus  ssh-add  ssh-keygen  `openssh`  `ssh-keygen`  `ssh-add`  `argvus`  `argvus terminal` `load` opens a terminal, but the key is not loaded | Type the passphrase in that terminal. If it was not asked, run `ssh-add -l` to see what the agent holds. |
+|  argvus ٹرمینل argvus ssh-add ssh-keygen `openssh` `ssh-keygen` `ssh-add` `argvus` `argvus terminal` `load` ٹرمینل کھولتا ہے، لیکن کلید لوڈ نہیں ہوتی | اس ٹرمینل میں پاسفریز ٹائپ کریں۔ اگر یہ نہیں پوچھا گیا تو یہ دیکھنے کے لیے `ssh-add -l` چلائیں کہ ایجنٹ کے پاس کیا ہے۔ |
                                                             ﮯﮨ ﺎﺗﺎﮭﮐﺩ ﻞﻨﯿﻣﺮﭨ |`Could not open a connection to your authentication agent`ﮯﮨ ﯽﻤﮐ ﮟﯿﻣ ﺰﻠﻨﯿﻣﺮﭨ ﮯﮐ ﺱﺍ ﺍﺬٰﮩﻟ ،ﺍﻮﮨ ﻉﻭﺮﺷ ﮯﻠﮩﭘ ﮯﺳ ﮯﻧﺮﮐ ﻉﻭﺮﺷ ﻡﺎﮐ ﮯﮐ ﭧﻨﺠﯾﺍ ﮉﻨﯿﻟﺮﭙﺋ`SSH_AUTH_SOCK`                                                         ﮯﮨ ﺎﺗﺎﺟ ﺁ ﺲﭘﺍﻭ ﺮﭽﻧﻻ﻿ .`$XDG_RUNTIME_DIR/ssh-agent.socket`                                                          ﮟﯾﺮﮐ ﭧﯾﮈ ﭖﺍ ﮯﯿﻟ ﺱﺍ ،`argvus-launcher`                                                  | ۔ﮟﯿﻟﻮﮭﮐ ﻞﻨﯿﻣﺮﭨ ﺎﯿﻧ ﮏﯾﺍ ﺭﻭﺍ
 | `list` shows `unknown`                                                                           ﮟﯿﻣ`loaded`                                     ﮟﯾﺮﮐ ﮏﯿﭼ ۔ﮟﯿﮩﻧ ﻦﮑﻤﻣ ﯽﺋﺎﺳﺭ ﮏﺗ ﭧﻨﺠﯾﺍ | ﻢﻟﺎﮐ`systemctl --user status argvus-ssh-agent.service`                                                                          ﺭﻭﺍ `SSH_AUTH_SOCK` variable. |
 | `delete`                                   ﮟﯿﺋﻼ﻿ﭼ | ﮯﮨ ﯽﺌﮔ ﻮﮨ ﮈﻮﻟ ﺪﯿﻠﮐ ﮧﮐ ﮯﮨ ﺎﺗﺮﮐ ﭦﺭﻮﭘﺭ`argvus keys unload NAME`                                              | ۔ﮟﯾﺮﮐ ﻑﺬﺣ ﮦﺭﺎﺑﻭﺩ ﮯﺳﺍ ﺮﮭﭘ ،ﮯﻠﮩﭘ
-| `generate`| ۔ﮯﺗﺎﺟ ﮯﯿﮐ ﮟﯿﮩﻧ ﻞﯾﺪﺒﺗ ﯽﮭﺒﮐ ﮮﮌﻮﺟ ﮦﺩﻮﺟﻮﻣ ۔ﮟﯾﺮﮐ ﺐﺨﺘﻨﻣ ﻡﺎﻧ ﺭﻭﺍ ﮏﯾﺍ | ﮯﮨ ﺩﻮﺟﻮﻣ ﮯﺳ 
+| `generate`| ۔ﮯﺗﺎﺟ ﮯﯿﮐ ﮟﯿﮩﻧ ﻞﯾﺪﺒﺗ ﯽﮭﺒﮐ ﮮﮌﻮﺟ ﮦﺩﻮﺟﻮﻣ ۔ﮟﯾﺮﮐ ﺐﺨﺘﻨﻣ ﻡﺎﻧ ﺭﻭﺍ ﮏﯾﺍ | ﮯﮨ ﺩﻮﺟﻮﻣ ﮯﺳ
 
 ## (`argvus gpg`) ﺰﯿﮐ
 
-`argvus gpg`ﮯﮨ ﺎﺗﺮﮐ ﻝﺎﻤﻌﺘﺳﺍ ﮧﺸﯿﻤﮨ gpg-agent ۔ﮯﮨ ﺎﺗﺮﮐ ﺪﻣﺁﺭﺩ ﺰﯿﮐ ﯽﻣﺍﻮﻋ ﺭﻭﺍ ﮯﮨ ﺎﺗﺮﮐ ﺪﻣﺁﺮﺑ ﺭﻭﺍ`pinentry-gtk`: ARGVUS ﮧﮐ ﮯﮨ ﺎﺘﮭﮑﻟ pinentry ﮟﯿﻣ`gpg-agent.conf`۔ﮟﯿﮨ ﮯﺗﻮﮨ ﻝﺎﻤﻌﺘﺳﺍ ﺯﮉﻧﺎﻤﮐ ﯽﮨﻭ ﮟﯿﻣ ﮯﺤﻔﺻ **ﺰﯿﮐ GPG** ﮯﮐ ﺮﭩﻨﯿﺳ ﻝﻭﺮﭩﻨﮐ ۔ﮯﮨ ﮟﯿﮩﻧ ﭧﮐ 
+`argvus gpg`ﮯﮨ ﺎﺗﺮﮐ ﻝﺎﻤﻌﺘﺳﺍ ﮧﺸﯿﻤﮨ gpg-agent ۔ﮯﮨ ﺎﺗﺮﮐ ﺪﻣﺁﺭﺩ ﺰﯿﮐ ﯽﻣﺍﻮﻋ ﺭﻭﺍ ﮯﮨ ﺎﺗﺮﮐ ﺪﻣﺁﺮﺑ ﺭﻭﺍ`pinentry-gtk`: ARGVUS ﮧﮐ ﮯﮨ ﺎﺘﮭﮑﻟ pinentry ﮟﯿﻣ`gpg-agent.conf`۔ﮟﯿﮨ ﮯﺗﻮﮨ ﻝﺎﻤﻌﺘﺳﺍ ﺯﮉﻧﺎﻤﮐ ﯽﮨﻭ ﮟﯿﻣ ﮯﺤﻔﺻ **ﺰﯿﮐ GPG** ﮯﮐ ﺮﭩﻨﯿﺳ ﻝﻭﺮﭩﻨﮐ ۔ﮯﮨ ﮟﯿﮩﻧ ﭧﮐ
 
 ```sh
 argvus gpg                                         # shows the options and an example
@@ -231,27 +231,27 @@ argvus gpg keyserver recv FINGERPRINT             # fetches the key from that ke
 `generate` ﮯﮨ ﺎﺘﯿﻟ ﺕﺍﺭﺎﯿﺘﺧﺍ ﮧﯾ:
 
 - `--algo rsa|dsa` ﭧﻟﺎﻔﯾﮈ ۔ﮯﮨ ﺎﺗﺮﮐ ﺏﺎﺨﺘﻧﺍ ﺎﮐ ﻢﮭﺗﺭﻮﮕﻟﺍ ﺪﯿﻠﮐ `rsa` ۔ﮯ
-- 
+-
 
- chooses the key size. RSA accepts 
+کلیدی سائز کا انتخاب کرتا ہے۔ RSA قبول کرتا ہے۔
 
-, 
+,
 
-, 
+,
 
- and 
+ and
 
-, with 
+, with
 
- as the default. DSA accepts 
+پہلے سے طے شدہ کے طور پر. DSA قبول کرتا ہے۔
 
-, 
+,
 
- and 
+ and
 
-, with 
+, with
 
- as the default; gpg cannot create larger DSA keys, so 
+پہلے سے طے شدہ کے طور پر؛ gpg بڑی ڈی ایس اے کیز نہیں بنا سکتے، اس لیے
 
  is refused before gpg runs.
 -   `--bits`  `1024`  `2048`  `3072` `4096`   `4096`  `1024` `2048`  `3072`  `2048`  1024  `4096`  4096  3072  2048  1024  --bits `--expire` takes `0` for no expiry, a number followed by `d`, `w`, `m` or `y` (such as `2y`), or an ISO date `YYYY-MM-DD`, which must be a real date.
@@ -262,18 +262,18 @@ argvus gpg keyserver recv FINGERPRINT             # fetches the key from that ke
 
                                          :ﮟﯿﮨ ﮯﺗﻮﮨ ﻮﮔﻻ﻿ ﺮﭘ ﻢﮑﺣ ﺮﮨ ﻮﺟ ﺪﻋﺍﻮﻗ ﮯﺴﯾﺍ
 
-- Passphrases are never passed as command arguments, written to a log or shown in the Control Center. With  elg  `rsa`  `elg` `--passphrase-stdin` the passphrase goes to gpg on file descriptor 0 from a pipe. Without that option, gpg asks the pinentry window, which `gpg-agent` opens.
+- پاسفریز کبھی بھی کمانڈ آرگیومنٹ کے طور پر نہیں گزرے جاتے، لاگ پر لکھے جاتے ہیں یا کنٹرول سینٹر میں دکھائے جاتے ہیں۔ elg `rsa` `elg` `--passphrase-stdin` کے ساتھ پاسفریز پائپ سے فائل ڈسکرپٹر 0 پر جی پی جی پر جاتا ہے۔ اس اختیار کے بغیر، gpg پنینٹری ونڈو سے پوچھتا ہے، جو `gpg-agent` کھلتی ہے۔
 - `--no-passphrase`     ﮧﮐ ﮏﺗ ﺐﺟ ﮯﮨ ﺎﺗﺎﺟ ﺎﯾﺩ ﺮﮐ ﺩﺮﺘﺴﻣ ﮯﺳﺍ ۔ﮯﮨ ﺎﺗﺮﮐ ﻅﻮﻔﺤﻣ ﮯﮐ ﻆﻔﺤﺗ ﺮﯿﻐﺑ ﻮﮐ ﺪﯿﻠﮐ ﯽﺠﻧ`--yes`                                                            ۔ﮯﮨ ﺎﯿﮔ ﺎﯾﺩ ﯽﮭﺑ ﻮﮐ
 - `import`ﮟﯿﮨ ﯽﺗﻮﮨ ﺝﺭﺎﺧ ﮯﺳ ﮓﻧِﺭ ﯽﮐ ﮯﻌﯾﺭﺫ ﮯﮐ ﺱﺍ ﻑﺮﺻ ﮞﺎﯿﺑﺎﭼ ﯽﺠﻧ ۔ﮟﯿﻣ ﻞﮑﺷ ﯼﺮﻨﺋﺎﺑ ﺎﯾ ﻮﮨ ASCII`export-private`                                                              ﮯﮨ ﺕﺭﻭﺮﺿ ﯽﮐ ﺲﺟ ،`--yes`                                                              ﻊﺿﻭ ﮯﮨ ﺎﺘﮭﮑﻟ ﺭﻭﺍ`600`; `import-private`                                                    ۔ﮯﮨ ﺎﺗﺁ ﮯﻟ ﺭﺪﻧﺍ ﺲﭘﺍﻭ ﮟﯿﮩﻧﺍ
-- 
-- 
+-
+-
 -  generate --passphrase-stdin  --no-tty  --yes  keyserver send  edit revoke  edit sign  delete  `export-private`  `delete`  `edit sign`  `edit revoke`  `keyserver send`  `--yes`  `--no-tty`  `generate --passphrase-stdin` `generate` makes gpg-agent use `pinentry-gtk`. It writes that line between the `# BEGIN argvus-managed pinentry` and `# END argvus-managed pinentry` markers, keeps the rest of `gpg-agent.conf`, and saves the previous file as `gpg-agent.conf.bak`. When the block already names `pinentry-gtk`, the file and gpg-agent are left as they are. The command refuses to run when `gpg-agent.conf` already sets `pinentry-program` outside that block, so that two values never conflict.
 -                                 ﯽﺗﻮﮨ ﮟﯿﮩﻧ ﯽﺋﺎﮭﮑﻟ ﯽﮭﺑ ﯽﮭﺒﮐ ﮯﺳ ﮯﻧﺮﮐ ﻝﺎﭩﺴﻧﺍ ﺞﯿﮑﯿﭘ`~/.gnupg`                 ۔ﮯﮨ ﯽﺗﺎﺟ ﯽﮐ ﺭﺎﯿﺗ ﺪﯿﻠﮐ ﮏﯾﺍ ﺐﺟ ﮯﮨ ﯽﺗﻮﮨ ﻞﯾﺪﺒﺗ ﺖﻗﻭ ﺱﺍ ﻑﺮﺻ ﻞﯿﮑﺸﺗ .
 - `GNUPGHOME`، ﮯﮨ ﺪﯿﻔﻣ ﮯﯿﻟ ﮯﮐ ﮓﻨﭩﺴﯿﭨ ﮧﮐ ﻮﺟ، `~/.gnupg` ۔ﮯﮨ ﺎﺘﯿﻟ ﮧﮕﺟ
 
 `gnupg` and `pinentry`       ﮯﮨ ﻭﮉﻧﻭ ﺰﯾﺮﻓ ﺱﺎﭘ ﺭﻭﺍ ،ﮯﮨ ﺕﺭﻭﺮﺿ ﯽﮐ gpg ﻮﮐ ﺯﮉﻧﺎﻤﮐ ﯼﺪﯿﻠﮐ :ﮟﯿﮨ ﺭﺎﺼﺤﻧﺍ ﯼﺭﻭﺮﺿ`pinentry-gtk`.
 
-| Symptom | Cause and fix |
+| علامت | وجہ اور درست کریں |
 | --- | --- |
 | `generate`                                           ﮟﯾﺮﮐ ﮏﯿﭼ | ﯽﺘﻠﮭﮐ ﮟﯿﮩﻧ ﻭﮉﻧﻭ ﺰﯾﺮﻓ ﺱﺎﭘ`argvus gpg status`. `pinentry-gtk`                ﮯﯿﮨﺎﭼ ﺎﻧﺮﮐ ﺮﮨﺎﻇ ﻮﮐ ﻦﺸﯿﺳ ﺭﻭﺍ ،ﮯﯿﮨﺎﭼ ﺎﻧﺎﺟ ﺎﯿﮐ ﻝﺎﭩﺴﻧﺍ ﺮﭘ ﺭﻮﻃ ﯽﻣﺯﻻ﻿`WAYLAND_DISPLAY` or `DISPLAY`. |
 | `generate`                                                              ﮧﮐ ﮯﮨ ﺎﺗﺮﮐ ﭦﺭﻮﭘﺭ`pinentry-gtk`                                                  ﮟﯾﺮﮐ ﻝﺎﭩﺴﻧﺍ | ﮯﮨ ﮟﯿﮩﻧ ﻝﺎﭩﺴﻧﺍ`pinentry` package. |
@@ -287,7 +287,7 @@ argvus gpg keyserver recv FINGERPRINT             # fetches the key from that ke
 
 `SUPER + ALT + N` ۔ﮯﺋﺎﺟ ﮯﻌﯾﺭﺫ ﮯﮐ ﮈﺭﻮﺑ ﭗﻠﮐ ﮧﮐ ﮯﮐ ﺱﺍ ﮯﺋﺎﺠﺑ ،ﮯﮨ ﺎﺗﻮﮨ ﭗﺋﺎﭨ ﮟﯿﻣ ﻭﮉﻧ
 
-### Setup
+### سیٹ اپ
 
                              :ﮟﯾﺮﮐ ﻞﻣﺎﺷ ﺍﮍﮑﭨ ﮏﯾﺍ ﮫﺗﺎﺳ ﮯﮐ ﻦﺘﻣ ﺎﮐ ﺱﺍ ﺭﻭﺍ ﻡﺎﻧ ﮏﯾﺍ
 
@@ -303,13 +303,13 @@ argvus snippets list
 
                                                             ﮟﯿﮨ ﮯﺗﺎﺟ ﮯﮭﮐﺭ ﮮﮍﮑﭨ`snippets`                                                                           ﮧﺼﺣ`argvus config`, as `{name, content}`                                               ﮟﯿﮨ ﮯﺘﮑﺳ ﮪﮍﭘ ﮟﯿﮩﻧﺍ ﭖﺁ ۔ﺕﺎﺟﺍﺭﺪﻧﺍ`argvus config get /snippets/items`.
 
-### Use
+### استعمال کریں۔
 
 1.                   ۔ﯽﮔ ﮮﺮﮐ ﻝﻮﺻﻭ ﭧﺴﮑﯿﭨ ﻮﺟ ﮟﯾﺮﮐ ﮏﻠﮐ ﺮﭘ ﮉﻠﯿﻓ ﭧﺴﮑﯿﭨ ﮯﮐ ﻦﺸﯿﮑﯿﻠﭙﯾﺍ ﺱﺍ
-2. Press `SUPER + ALT + N`.
+2. دبائیں `SUPER + ALT + N`۔
 3. ۔ﮯﮨ ﺮﺳﺮﮐ ﮞﺎﮩﺟ ﺎﮔ ﮯﺋﺎﺟ ﺎﯿﮐ ﭗﺋﺎﭨ ﮞﺎﮨﻭ ﻦﺘﻣ ۔ﮟﯿﺋﺎﺑﺩ `Enter` ﺭﻭﺍ ﮟﯾﺮﮐ ﺐﺨﺘ
 
-### Commands
+### احکام
 
 ```sh
 argvus snippets add "NAME" "CONTENT"   # adds a snippet, or replaces the one with the same name
@@ -321,30 +321,30 @@ argvus snippets                        # opens the picker (same as the shortcut)
 argvus snippets --help                 # shows the options and an example
 ```
 
-### Rules
+### قواعد
 
 - ۔ﮯﮨ ﺎﺗﺎﺟ ﻮﮨ ﻞﯾﺪﺒﺗ ﺩﺍﻮﻣ ﺎﮐ ﺱﺍ ﮯﺳ ﮯﻧﺮﮐ ﻞﻣﺎﺷ ﺍﮍﮑﭨ ﮏﯾﺍ ﮫﺗﺎﺳ ﮯﮐ ﻡﺎﻧ ﮦﺩﻮﺟﻮﻣ ۔ﮟﯿﮨ ﮯﺘﮭ
 -      ۔ﮯﮨ ﺎﯿﮔ ﺎﯿﮐ ﭦﺭﻮﭘﺭ ﺮﭘ ﺭﻮﻃ ﮯﮐ ﻼ﻿ﻣ ﮟﯿﮩﻧ ﺍﮍﮑﭨ ﯽﻟﺎﺧ ﮏﯾﺍ :ﺎﺘﮑﺳ ﻮﮨ ﮟﯿﮩﻧ ﯽﻟﺎﺧ ﺩﺍﻮﻣ
 - `open`ﮯﺴﯿﺟ ،ﮞﻮﮨ ﻑﻭﺮﺣ ﮟﯿﻣ ﻦﺟ ﮟﯾﺮﮐ ﻝﺎﻤﻌﺘﺳﺍ ﻡﺎﻧ ﮯﺴﯾﺍ ۔ﮯﮨ ﺎﺘﮭﺠﻤﺳ ﺮﭘ ﺭﻮﻃ ﮯﮐ ﻦﺸﯾﺯﻮﭘ ﮏﯾﺍ ﻮﮐ`code2`                                                       ۔ﮯﯿﻟ ﮯﮐ ﮯﻨﭽﺑ ﮯﺳ ﻡﺎﮩﺑﺍ ،
--                                           ﻮﺟ ﮯﮨ ﺎﺗﺮﮐ ﺮﮨﺎﻇ ﻮﮐ ﺐﯿﺗﺮﺗ ﺱُﺍ ﻡﺎﻘﻣ ﮏﯾﺍ`list`۔ﮟﯿﮨ ﯽﺗﺎﺟ ﻮﮨ ﻞﯾﺪﺒﺗ ﮟﯿﻨﺸﯾﺯﻮﭘ ﯽﮐ ﺕﺎﺳﺎﺒﺘﻗﺍ ﮯﻟﺍﻭ ﺪﻌﺑ ﮯﮐ ﺱﺍ ﮯﺳ ﮯﻧﺎﭩﮨ ﻮﮐ ﺱﺎﺒﺘﻗﺍ ﯽﺴﮐ 
+-                                           ﻮﺟ ﮯﮨ ﺎﺗﺮﮐ ﺮﮨﺎﻇ ﻮﮐ ﺐﯿﺗﺮﺗ ﺱُﺍ ﻡﺎﻘﻣ ﮏﯾﺍ`list`۔ﮟﯿﮨ ﯽﺗﺎﺟ ﻮﮨ ﻞﯾﺪﺒﺗ ﮟﯿﻨﺸﯾﺯﻮﭘ ﯽﮐ ﺕﺎﺳﺎﺒﺘﻗﺍ ﮯﻟﺍﻭ ﺪﻌﺑ ﮯﮐ ﺱﺍ ﮯﺳ ﮯﻧﺎﭩﮨ ﻮﮐ ﺱﺎﺒﺘﻗﺍ ﯽﺴﮐ
 
-### Troubleshooting
+### خرابی کا سراغ لگانا
 
-| Symptom | Cause and fix |
+| علامت | وجہ اور درست کریں |
 | --- | --- |
 ﮟﯿﺋﻼ﻿ﭼ ۔ﺎﯿﮔ ﺎﯿﮐ ﮟﯿﮩﻧ ﻞﻣﺎﺷ ﭧﭙﯿﻨﺳﺍ ﯽﺋﻮﮐ ﮏﺗ ﯽﮭﺑﺍ | 'ﮟﯿﮩﻧ ﭧﭙﯿﻨﺳﺍ ﯽﺋﻮﮐ' ﻦﺸﯿﮑﻔﯿﭨﻮﻧ ﺮﭘ`argvus snippets add` first. |
 | `open` ﮫﺗﺎﺳ ﮯﮐ ﮟﯾﺮﮐ ﮧﻧﺯﺍﻮﻣ ۔ﺎﺗﺎﮭﮐ ﮟﯿﮩﻧ ﻞﯿﻣ ﻞﮑﻟﺎﺑ ﻡﺎﻧ | ﻼ﻿ﻣ ﮟﯿﮩﻧ ﻮﮐ ﮯﺼﺣ ﮯﭨﻮﮭﭼ ﺱﺍ ﮧﮐ ﮯﮨ`argvus snippets list`. |
 | ۔ﮟﯾﺮﮐ ﭧﺴﯿﭨ ﮫﺗﺎﺳ ﮯﮐ ﻦﺸﯿﮑﯿﻠﭙﯾﺍ Wayland ﯽﻣﺎﻘﻣ ﯽﺴﮐ ۔ﮯﮨ ﯽﺘﮑﺳ ﺮﮐ ﺯﺍﺪﻧﺍ ﺮﻈﻧ ﻮﮐ ﭧﭘ ﻥ
 
-Requires `wtype`, `rofi`, `jq` and `argvus` (the `argvus config` command).
+`wtype`، `rofi`، `jq` اور `argvus` (`argvus config` کمانڈ) کی ضرورت ہے۔
 
 `wtype` ﮫﭽﮐ ۔ﮯﮨ ﺎﺗﺮﮐ ﻞﻘﻧ ﯽﮐ ﺰﺴﯾﺮﭘ ﯽﮐ ﺮﭘ ﺢﻄﺳ ﭧﭘ ﻥﺍ ﮉﻨﯿﻠﯾﺍﻭ X11 ﻮﺟ ﺰﻨﺸ
 
 ## Git (`SUPER + ALT + G`)
 
-`SUPER + ALT + G`                                 ﮧﮐ ﺎﺴﯿﺟ ﮯﮨ ﺎﺘﻟﻮﮭﮐ ﻻ﻿ﺍﻭ ﮯﻧﺮﮐ ﺐﺨﺘﻨﻣ ﭧﮑﯿﺟﻭﺮﭘ ﯽﮨﻭ `SUPER + O`                                            ﮯﮨ ﺎﺘﻟﻮﮭﮐ ﺎﻧﺮﮐ ﺐﺨﺘﻨﻣ ﭧﮑﯿﺟﻭﺮﭘ ﮏﯾﺍ .`lazygit` (or `gitui`۔ﮯﮨ ﮟﯿﮩﻧ ﮧﻠﺣﺮﻣ ﮓﻟﺍ ﯽﺋﻮﮐ ﮯﯿﻟ ﮯﮐ ﮯﻧﺮﮐ ﺐﺨﺘﻨﻣ ﭧﮑﯿﺟﻭﺮﭘ ﮯﻠﮩﭘ ۔ﮟﯿﻣ ﻞﻨﯿﻣﺮﭨ ARGVUS ﮯﺌﻧ 
+`SUPER + ALT + G`                                 ﮧﮐ ﺎﺴﯿﺟ ﮯﮨ ﺎﺘﻟﻮﮭﮐ ﻻ﻿ﺍﻭ ﮯﻧﺮﮐ ﺐﺨﺘﻨﻣ ﭧﮑﯿﺟﻭﺮﭘ ﯽﮨﻭ `SUPER + O`                                            ﮯﮨ ﺎﺘﻟﻮﮭﮐ ﺎﻧﺮﮐ ﺐﺨﺘﻨﻣ ﭧﮑﯿﺟﻭﺮﭘ ﮏﯾﺍ .`lazygit` (or `gitui`۔ﮯﮨ ﮟﯿﮩﻧ ﮧﻠﺣﺮﻣ ﮓﻟﺍ ﯽﺋﻮﮐ ﮯﯿﻟ ﮯﮐ ﮯﻧﺮﮐ ﺐﺨﺘﻨﻣ ﭧﮑﯿﺟﻭﺮﭘ ﮯﻠﮩﭘ ۔ﮟﯿﻣ ﻞﻨﯿﻣﺮﭨ ARGVUS ﮯﺌﻧ
 
-### Setup
+### سیٹ اپ
 
 :ﮟﯿﮨ ﺭﺎﺼﺤﻧﺍ ﯼﺭﺎﯿﺘﺧﺍ ﮯﮐ ﺞﯿﮑﯿﭘ ﺱﺍ ﮞﻮﻧﻭﺩ ۔ﮟﯾﺮﮐ ﻝﺎﭩﺴﻧﺍ ﻮﮐ ﻝﻮﭨ ﮏﯾﺍ ﯽﺴﮐ ﮯﺳ ﮟﯿﻣ ﮞﻮﻧﻭﺩ
 
@@ -352,9 +352,9 @@ Requires `wtype`, `rofi`, `jq` and `argvus` (the `argvus config` command).
 sudo pacman -S lazygit   # or: sudo pacman -S gitui
 ```
 
-### Use
+### استعمال کریں۔
 
-1. Press `SUPER + ALT + G`.
+1. دبائیں `SUPER + ALT + G`۔
 2. ۔ﺎﺘﻠﮭﮐ ﮟﯿﮩﻧ ﮫﭽﮐ ﮯﺳ ﮯﻧﺮﮐ ﺥﻮﺴﻨﻣ ۔ﮟﯿﺋﺎﺑﺩ `Esc` ﮯﯿﻟ ﮯﮐ ﮯﻧﺮﮐ ﺥﻮﺴﻨﻣ ﺎﯾ ،
 3.                    ۔ﮯﮨ ﺎﺗﺮﮐ ﻉﻭﺮﺷ TUI ﺭﻭﺍ ﮯﮨ ﺎﺘﻠﮭﮐ ﮟﯿﻣ ﯼﺮﭩﮑﯾﺮﺋﺍﮈ ﭧﮑﯿﺟﻭﺮﭘ ﻞﻨﯿﻣﺮﭨ
 
@@ -374,9 +374,9 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 ۔ﺎﯿﮔ ﺎﯿﮐ ﮟﯿﮩﻧ ﻅﻮﻔﺤﻣ ﮟﯿﻣ ﺐﯿﺗﺮﺗ ARGVUS ﮧﯾ ۔ﮯﮨ ﺎﺗﻼ﻿ﭼ ﭧﭘﺮﮑﺳﺍ ﻮﺟ ﮯﮨ ﺎﺗﺎﺟ ﺎﮬﮍﭘ ﮯﺳ ﻝﻮﺣ
 
-### Troubleshooting
+### خرابی کا سراغ لگانا
 
-| Symptom | Cause and fix |
+| علامت | وجہ اور درست کریں |
 | --- | --- |
 ﮟﯾﺮﮐ ﺖﺳﺭﺩ ﺎﯾ ﮟﯾﺩ ﺎﭩﮨ ﮯﺳﺍ ۔ﮯﮨ ﯽﺌﮔ ﯼﺩ ﺮﮐ ﻞﻘﺘﻨﻣ ﯼﺮﭩﮑﯾﺮﺋﺍﮈ ﯽﮐ ﺱﺍ ﺎﯾ ،ﮯﮨ ﮟﯿﮩﻧ ﯼﺮﭨﺯﻮ`argvus projects remove`. |
               ﮟﯿﮨ ﮟﯿﮩﻧ ﺩﻮﺟﻮﻣ ﺕﻻ﻿ﺁ ﮞﻮﻧﻭﺩ | "ﮟﯾﺮﮐ ﻝﺎﭩﺴﻧﺍ gitui ﺎﯾ lazygit" ﻉﻼ﻿ﻃﺍ |`PATH`                                                | ۔ﮟﯾﺮﮐ ﻝﺎﭩﺴﻧﺍ ﮏﯾﺍ ﮯﺳ ﮟﯿﻣ ﻥﺍ ۔
@@ -408,7 +408,7 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 
 - `hypr` uses `data/generated/hypr/keybindings.txt`ﮯﮨ ﯽﺗﻮﮨ ﯽﺋﺁ ﮫﺗﺎﺳ ﻮﺟ ﮯﮨ ﺎﺗﺮﮐ ﻝﺎﻤﻌﺘﺳﺍ ﭧﯿﺷ ﺲﭩﯿﭼ Hyprland ﮧﯾ ﮧﻧﺭﻭ ۔ﮯﺳ ﺐﯿﺗﺮﺗ ARGVUS`argvus-hyprland`.
 - `kitty` `argvus` ۔ﮯﮨ ﺎﺗﺮﮐ ﻝﺎﻤﻌﺘﺳﺍ ﺎﮐ ﭧﯿﺷ ﺲﭩﯿﭼ ﻞﻨﯿﻣﺮﭨ ﮯﺌﮔ ﮯﺠ
-- ۔ﯽﺘﻠﮭﮐ ﮟﯿﮩﻧ ﻭﮉﻧﻭ ﯽﺋﻮﮐ ﻮﺗ ،ﻮﮨ ﮧﻧ ﺩﻮﺟﻮﻣ ﻞﺋﺎﻓ ﮦﻭ ﺮﮔﺍ ۔ﮯﮨ ﺎﺘﮬﮍﭘ `<name>/docs/cheatsheets/<language>.txt` 
+- ۔ﯽﺘﻠﮭﮐ ﮟﯿﮩﻧ ﻭﮉﻧﻭ ﯽﺋﻮﮐ ﻮﺗ ،ﻮﮨ ﮧﻧ ﺩﻮﺟﻮﻣ ﻞﺋﺎﻓ ﮦﻭ ﺮﮔﺍ ۔ﮯﮨ ﺎﺘﮬﮍﭘ `<name>/docs/cheatsheets/<language>.txt`
 
 The language is Portuguese when the system locale is `pt-BR`                                                     ۔ﯼﺰﯾﺮﮕﻧﺍ ﺮﮕﯾﺩ ﺕﺭﻮﺼﺑ ﺭﻭﺍ ،`Esc`۔ﺎﺗﺁ ﮟﯿﮩﻧ ﮟﯿﻣ ﻞﻤﻋ ﯽﮭﺑ ﮫﭽﮐ ؛ﮯﮨ ﯽﺗﻮﮨ ﺪﻨﺑ ﮦﻭ ﻑﺮﺻ ﮯﺳ ﮯﻧﺮﮐ ﺐﺨﺘﻨﻣ ﻮﮐ ﻦﺋﻻ﻿ ﯽﺴﮐ ۔ﮯﮨ ﺎﺗﺮ
 
@@ -416,7 +416,7 @@ The language is Portuguese when the system locale is `pt-BR`                    
 
           :ﮯﮨ ﯽﺗﺎﺟ ﯽﮐ ﺮﺌﯿﺷ ﮫﺗﺎﺳ ﮯﮐ ءﺍﺰﺟﺍ ﺖﯿﮑﻠﻣ ﺮﯾﺯ ﮯﮐ ﺰﺠﮑﯿﭘ ﺮﮕﯾﺩ ﺐﯿﺗﺮﺗ ﯽﮐ ﺮﭽﻧﻻ﻿
 
-- 
+-
 - Theme, accent and layout pickers in  `SUPER + H`  `SUPER + SHIFT + H` `argvus-hyprland`   `cliphist`  `cliphist`  `argvus-session`  `argvus`  SUPER + H `argvus-appearance` open Rofi with `config.rasi`.
 -                                          ﮟﯿﮨ ﮯﺗﺮﮐ ﻢﯿﻠﺴﺗ ﻮﮐ ﺰﻟﻭﺭ ﻭﮉﻧﻭ ﮉﻨﯿﻟﺮﭙﺋﺎﮨ`argvus-launcher` and `rofi`                     ۔ﮟﯾﺮﮐ ﻞﺻﺎﺣ ﻮﮐ ﺝﻼ﻿ﻋ ﮯﮐ ﺢﻄﺳ ﯽﮐ ﺮﭽﻧﻻ﻿ ﺯﻮﯿﻨﯿﻣ ﮧﮐﺎﺗ ،ﺰﺴﯿﭙﺳﺍ ﻢﯿﯿﻧ
 
@@ -432,28 +432,28 @@ The language is Portuguese when the system locale is `pt-BR`                    
 
 Installing the package does not write into  gitui  lazygit  openssh  pinentry-gtk  pinentry  gnupg  wtype  wl-clipboard  rofimoji  rofi-calc  rofi  libnotify  hyprland  jq  bash  argvus  argvus-appearance  `argvus-session`  `argvus-appearance`  `argvus`  `bash`  `jq`  `hyprland`  `libnotify`  `rofi`  `rofi-calc`  `rofimoji`  `wl-clipboard`  `wtype`  `gnupg`  `pinentry`  `pinentry-gtk`  `openssh`  `lazygit`  `gitui` `$HOME`. User configuration is created at session start, as described in [Rofi configuration and themes](#where-the-active-configuration-lives).
 
-## Troubleshooting
+## خرابی کا سراغ لگانا
 
-| Symptom | Cause and fix |
+| علامت | وجہ اور درست کریں |
 | --- | --- |
 | `SUPER + D`                                                    ﮟﯾﺮﮐ ﮏﯿﭼ | ﺎﺘﻟﻮﮭﮐ ﮟﯿﮩﻧ ﮫﭽﮐ`argvus launcher`                                               ﮧﮐ ﮟﯾﺮﮐ ﻖﯾﺪﺼﺗ ﯽﮐ ﺱﺍ ۔ﮟﯿﻣ ﻞﻨﯿﻣﺮﭨ`rofi`                               | ۔ﮯﮨ ﺩﻮﺟﻮﻣ ﺐﯿﺗﺮﺗ ﯽﮐ Rofi ﺭﻭﺍ ﮯﮨ ﺎﯿﮔ ﺎﯿﮐ ﻝﺎﭩﺴﻧﺍ
 | `SUPER + D` ﺱﺎﭘ ﮯﮐ ﻦﺟ ﮟﯿﺘﺳﺍﻮﺧﺭﺩ ﮦﻭ ﻑﺮﺻ ۔ﮯﮨ ﮟﯿﮩﻧ ﯼﺮﭩﻧﺍ ﭖﺎﭨ ﮏﺴﯾﮈ ﯽﺋﻮﮐ ﺎﮐ ﮞﻮﺘﺳﺍﻮﺧﺭﺩ | ﮟﯿﮨ ﮟﯿ`.desktop`                                                         | ۔ﮯﮨ ﯽﺌﮔ ﯽﺋﺎﮭﮐﺩ ﻞﺋﺎﻓ
                                       | ﮟﯿﮨ ﮯﺗﺮﮐ ﻝﺎﻤﻌﺘﺳﺍ ﭧﻧﻮﻓ ﺎﻧﺍﺮﭘ ﮏﯾﺍ ﻮﻨﯿﻣ |`font:`| ۔ﮟﯾﺮﮐ ﻉﻭﺮﺷ ﮦﺭﺎﺑﻭﺩ ﻮﮐ ﻦﺸﯿﺳ ﺪﻌﺑ ﮯﮐ ﮯﻧﺮﮐ ﻞﯾﺪﺒﺗ ﭧﻧﻮﻓ ۔ﮯﮨ ﯽﺗﺎﺟ ﯽﮭﮑﻟ ﮦﺭﺎﺑﻭﺩ ﻦﺋﻻ﻿ ﺮﭘ
 | A theme change does not reach the Rofi menus | Check whether the user copy of `config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/`                 ﮟﯾﺮﮐ ﻮﮔﻻ﻿ ﮯﺳ ﻮﮐ ﻢﯿﮭﺗ ۔ﮯﮨ ﺎﺗﺮﮐ ﮦﺭﺎﺷﺍ ﻑﺮﻃ ﯽﮐ ﻢﯿﮭﺗ ﮦﺪﺷ ﮏﯿﭘ ﯽﮭﺑ ﺏﺍ`argvus-appearance` again. |
 | `SUPER + O` ﮟﯿﺋﻼ﻿ﭼ ۔ﮟﯿﮨ ﮟﯿﮩﻧ ﺩﻮﺟﻮﻣ ﺏﺍ ﺰﯾﺮﭩﮑﯾﺮﺋﺍﮈ ﺎﯾ ،ﮯﮨ ﮟﯿﮩﻧ ﮧﺘﻓﺎﯾ ﺐﯿﺗﺮﺗ ﮧﺘﺳﺍﺭ ﺎﯾ ﭦﻭﺭ ﯽﺋﻮﮐ`argvus projects list`. |
-| `SUPER + C`                                        ﮟﯾﺮﮐ ﻝﺎﭩﺴﻧﺍ | ﺎﺘﻠﮭﮐ ﮟﯿﮩﻧ ﺮَﮑﭘ ﯽﺟﻮﻤﯾﺍ ﺎﯾ`rofi-calc` or `rofimoji`                                                  | .(ﮟﯿﮨ ﺭﺎﺼﺤﻧﺍ ﯼﺭﻭﺮﺿ ﮞﻮﻧﻭﺩ) 
-| ۔ﮟﯾﺮﮐ ﭻﻧﺎﺟ ﯽﮐ ﮞﻮﺘﺳﺍﺭ ﮦﺪﺷ ﻥﺎﯿﺑ ﮟﯿﻣ ﻦﺸﮑﯿﺳ ﮯﮐ ﺲﭩﯿﺷ ﭧﯿﭼ ۔ﮯﮨ ﮟﯿﮩﻧ ﺩﻮﺟﻮﻣ ﻞﺋﺎﻓ ﮯﯿﻟ 
+| `SUPER + C`                                        ﮟﯾﺮﮐ ﻝﺎﭩﺴﻧﺍ | ﺎﺘﻠﮭﮐ ﮟﯿﮩﻧ ﺮَﮑﭘ ﯽﺟﻮﻤﯾﺍ ﺎﯾ`rofi-calc` or `rofimoji`                                                  | .(ﮟﯿﮨ ﺭﺎﺼﺤﻧﺍ ﯼﺭﻭﺮﺿ ﮞﻮﻧﻭﺩ)
+| ۔ﮟﯾﺮﮐ ﭻﻧﺎﺟ ﯽﮐ ﮞﻮﺘﺳﺍﺭ ﮦﺪﺷ ﻥﺎﯿﺑ ﮟﯿﻣ ﻦﺸﮑﯿﺳ ﮯﮐ ﺲﭩﯿﺷ ﭧﯿﭼ ۔ﮯﮨ ﮟﯿﮩﻧ ﺩﻮﺟﻮﻣ ﻞﺋﺎﻓ ﮯﯿﻟ
 | `SUPER + H`                   ﮯﺳ ﺭﮈﺭﺎﮑﯾﺭ ﮈﺭﻮﺑ ﭗﻠﮐ ﺎﯾ ،ﮯﮨ ﯽﻟﺎﺧ ﺦﯾﺭﺎﺗ | ﺎﺗﺎﮭﮐﺩ ﮟﯿﮩﻧ ﯽﮭﺑ ﮫﭽﮐ`argvus-session` has not stored anything yet. |
 
 ##                                                                   ءﺍﺰﺟﺍ ﮧﻘﻠﻌﺘﻣ
 
-| Component | Responsibility |
+| جزو | ذمہ داری |
 | --- | --- |
-| `argvus-hyprland` | Declares the shortcuts and the Hyprland window rules for the menus. |
-| `argvus-appearance` | Changes the active theme, accent and layout, and rewrites the Rofi theme references. |
-| `argvus` (`argvus config`) | Stores the projects, the snippets and the default launcher setting. |
+| `argvus-hyprland` | مینو کے لیے شارٹ کٹس اور Hyprland ونڈو کے قوانین کا اعلان کرتا ہے۔ |
+| `argvus-appearance` | فعال تھیم، لہجہ اور لے آؤٹ کو تبدیل کرتا ہے، اور Rofi تھیم کے حوالوں کو دوبارہ لکھتا ہے۔ |
+| `argvus` (`argvus config`) | پروجیکٹس، اسنیپٹس اور ڈیفالٹ لانچر سیٹنگ کو اسٹور کرتا ہے۔ |
 | `argvus-session`| ۔ﮯﮨ ﺎﺗﺮﮐ ﺭﺮﻘﻣ ﭧﻧﻮﻓ ﺎﮐ ﺱﺍ ﮟﯿﻣ ﺯﺎﻏﺁ ﮯﮐ ﻦﺸﯿﺳ ﺭﻭﺍ ﮯﮨ ﺎﺗﺮﮐ ﻞﻘﻧ ﯽﮐ ﺐﯿﺗﺮﺗ ﯽﮐ Rofi ﯽ
 | `argvus` (`argvus terminal`         ﮯﮨ ﺎﺘﻟﻮﮭﮐ ﺲﭩﭙﻣﺍﺮﭘ ﺰﯾﺮﻓ ﺱﺎﭘ ﺭﻭﺍ ﺰﻠﻨﯿﻣﺮﭨ ﭧﮑﯿﺟﻭﺮﭘ ،ﺰﻨﺸﯿﺳ ﭻﯾﺍ ﺲﯾﺍ ﺲﯾﺍ | (`argvus keys`. |
-| `argvus` (`argvus widget-telemetry`) | Reads the active project written by `argvus projects`. |
-| `argvus` (`argvus i18n`) | Provides the translated messages used by the launcher scripts. |
-| `argvus` (`argvus control-center`) | Edits the project list through `argvus projects`. |
+| `argvus` (`argvus widget-telemetry`) | `argvus projects` کا لکھا ہوا ایکٹو پروجیکٹ پڑھتا ہے۔ |
+| `argvus` (`argvus i18n`) | لانچر اسکرپٹس کے ذریعہ استعمال کردہ ترجمہ شدہ پیغامات فراہم کرتا ہے۔ |
+| `argvus` (`argvus control-center`) | `argvus projects` کے ذریعے پروجیکٹ کی فہرست میں ترمیم کرتا ہے۔ |

@@ -105,7 +105,7 @@ Le voci vengono lette dalla configurazione effettiva; il launcher non conserva a
 
 Aprire un progetto registra anche il suo percorso come progetto attivo per la sessione, che il blocco telemetria del Dev Dashboard (`argvus widget-telemetry`) legge per riportare il git di quel progetto, le porte in ascolto e i container.
 
-## SSH (`SUPER + ALT + S`)
+## SSH ("SUPER + ALT + S")
 
 `SUPER + ALT + S` apre un selezionatore con gli host definiti in `~/.ssh/config`. L'host selezionato si apre in un nuovo terminale ARGVUS eseguendo `ssh <host>`, nel workspace corrente.
 
@@ -132,12 +132,12 @@ Quando la sessione termina, la finestra rimane aperta e mostra lo stato di uscit
 
 ### Regole
 
-- Le voci jolly (`Host *`, `Host *.internal`) sono blocchi di corrispondenza, non obiettivi, e non vengono mai elencate.  
-- Ogni alias in una riga `Host` viene elencato separatamente (`Host a b` elenca `a` e `b`). I duplicati vengono rimossi.  
-- Gli host definiti solo nei file caricati con `Include` non vengono elencati; il selezionatore legge solo il file principale.  
-- Vengono avviati solo alias composti da lettere, cifre, `.`, `-` e `_`. Qualsiasi altro nome viene rifiutato con una notifica.  
-- Gli a capo di Windows (CRLF) nella configurazione sono accettati.  
-- `ARGVUS_SSH_CONFIG` sostituisce il percorso del file di configurazione, il che è utile per i test.  
+- Le voci jolly (`Host *`, `Host *.internal`) sono blocchi di corrispondenza, non obiettivi, e non vengono mai elencate.
+- Ogni alias in una riga `Host` viene elencato separatamente (`Host a b` elenca `a` e `b`). I duplicati vengono rimossi.
+- Gli host definiti solo nei file caricati con `Include` non vengono elencati; il selezionatore legge solo il file principale.
+- Vengono avviati solo alias composti da lettere, cifre, `.`, `-` e `_`. Qualsiasi altro nome viene rifiutato con una notifica.
+- Gli a capo di Windows (CRLF) nella configurazione sono accettati.
+- `ARGVUS_SSH_CONFIG` sostituisce il percorso del file di configurazione, il che è utile per i test.
 
 ### Comandi
 

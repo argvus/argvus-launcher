@@ -1,5 +1,5 @@
 ---
-title: Application launcher
+title: Peluncur aplikasi
 description: Luncurkan aplikasi, buka proyek, host SSH dan cuplikan, pilih emoji, menghitung, dan membaca lembar contekan melalui menu ARGVUS Rofi.
 ---
 
@@ -14,26 +14,26 @@ description: Luncurkan aplikasi, buka proyek, host SSH dan cuplikan, pilih emoji
 
 Pintasan dideklarasikan oleh `argvus-hyprland`. Paket ini menyediakan perintah-perintah dan menu di belakangnya.
 
-## Shortcuts
+## Jalan pintas
 
-| Shortcut | Action | Command | Section |
+| Pintasan | Aksi | Perintah | Bagian |
 | --- | --- | --- | --- |
-| `SUPER + D` | Application launcher | `argvus launcher` | Application launcher |
-| `SUPER + O` | Project switcher | `argvus projects` | Project switcher |
+| `SUPER + D` | Peluncur aplikasi | `argvus launcher` | Peluncur aplikasi |
+| `SUPER + O` | Pengalih proyek | `argvus projects` | Pengalih proyek |
 | `SUPER + ALT + 1` to `9` | Buka proyek di posisi itu | `argvus projects open N` | Pengalih proyek |
-| `SUPER + ALT + S` | SSH host picker | `argvus ssh` | SSH |
-| `SUPER + ALT + N` | Snippet picker | `argvus snippets` | Snippets |
-| `SUPER + ALT + G` | Project picker, then git TUI | `argvus git` | Git |
-| `SUPER + .` | Emoji picker | `emoji-picker.sh` | Emoji picker |
-| `SUPER + C` | Calculator | `rofi -show calc` | Calculator |
-| `SUPER + SHIFT + /` | Hyprland cheatsheet | `cheatsheets.sh hypr` | Cheatsheets |
-| `SUPER + CTRL + /` | Kitty cheatsheet | `cheatsheets.sh kitty` | Cheatsheets |
+| `SUPER + ALT + S` | Pemilih host SSH | `argvus ssh` | SSH |
+| `SUPER + ALT + N` | Pemilih cuplikan | `argvus snippets` | Cuplikan |
+| `SUPER + ALT + G` | Pemilih proyek, lalu git TUI | `argvus git` | Git |
+| `SUPER + .` | Pemilih emoji | `emoji-picker.sh` | Pemilih emoji |
+| `SUPER + C` | Kalkulator | `rofi -show calc` | Kalkulator |
+| `SUPER + SHIFT + /` | Lembar contekan Hyprland | `cheatsheets.sh hypr` | Lembar Cheat |
+| `SUPER + CTRL + /` | Lembar contekan kucing | `cheatsheets.sh kitty` | Lembar Cheat |
 
 ## Peluncur aplikasi (`SUPER + D`)
 
 `SUPER + D` menjalankan `argvus launcher`, yang membuka Rofi dalam mode `drun`. Ini menampilkan aplikasi grafis yang terpasang dengan entri desktop, dan yang dipilih akan dijalankan saat Anda menekan `Enter`.
 
-1. Press `SUPER + D`.
+1. Tekan `SUPER + D`.
 2. Ketik sebagian nama aplikasi. Daftar disortir dan filter mengabaikan huruf besar/kecil.
 3. Tekan `Enter` untuk memulai aplikasi, atau `Esc` untuk menutup menu.
 
@@ -52,13 +52,13 @@ Hanya aplikasi dengan entri desktop yang muncul dalam daftar. Aplikasi yang tida
 
 Paket menginstal konfigurasi Rofi di bawah `/usr/share/argvus/launcher/config/`:
 
-| File | Role |
+| Berkas | Peran |
 | --- | --- |
 | `config.rasi` | Titik masuk yang digunakan oleh setiap menu ARGVUS. Mengatur Rofi `configuration`(font, tanpa ikon, daftar yang diurutkan, pencocokan tanpa memperhatikan huruf besar/kecil) dan impor`theme.rasi`. |
 | `theme.rasi`| Warna dan tata letak jendela, bilah input, dan daftar. Mengimpor satu tema dan file mode. |
 | `mode.rasi` | Penggantian mode. File paket tidak memiliki penggantian dan tetap menggunakan mode Gelap. |
-| `themes/<family>/theme.rasi` | Palette of a theme family, for example `argvus-dark` or `tokyo-night`. |
-| `themes/<family>-spaced/theme.rasi` | Spaced variant of the same family. |
+| `themes/<family>/theme.rasi` | Palet rangkaian tema, misalnya `argvus-dark` atau `tokyo-night`. |
+| `themes/<family>-spaced/theme.rasi` | Varian spasi dari keluarga yang sama. |
 
 Paket ini menyediakan 22 keluarga, dan masing-masing memiliki varian `-spaced`. `theme.rasi` yang dikemas mengimpor `argvus-dark`.
 
@@ -108,11 +108,11 @@ Entri dibaca dari konfigurasi yang efektif; peluncur tidak menyimpan salinannya.
 
 Membuka sebuah proyek juga mencatat jalurnya sebagai proyek aktif untuk sesi tersebut, yang dibaca oleh blok telemetri Dev Dashboard (`argvus widget-telemetry`) untuk melaporkan git, port yang mendengarkan, dan kontainer proyek tersebut.
 
-## SSH (`SUPER + ALT + S`)
+## SSH(`SUPER+ALT+S`)
 
 `SUPER + ALT + S` membuka pemilih dengan host yang ditentukan dalam `~/.ssh/config`. Host yang dipilih terbuka di terminal ARGVUS baru yang menjalankan `ssh <host>`, di ruang kerja saat ini.
 
-### Setup
+### Pengaturan
 
 Tambahkan entri `Host` untuk setiap server ke `~/.ssh/config`:
 
@@ -126,15 +126,15 @@ Host myhost
 
 Konfirmasi bahwa `ssh myhost` berfungsi di terminal normal terlebih dahulu. Peluncur hanya menjalankan `ssh`; autentikasi, kunci, dan verifikasi host ditangani oleh OpenSSH.
 
-### Use
+### Gunakan
 
-1. Press `SUPER + ALT + S`.
+1. Tekan `SUPER + ALT + S`.
 2. Ketik sebagian nama host, atau gunakan tombol panah.
 3. Tekan `Enter`. Terminal terbuka dan menjalankan `ssh <host>`.
 
 Saat sesi berakhir, jendela tetap terbuka dan menampilkan status keluar, misalnya `ssh exited with status 0. Press Enter to close.` Tekan `Enter` untuk menutupnya. Hal ini penting untuk layanan seperti GitHub, GitLab, dan Gitea: mereka mengotentikasi Anda dan segera menutup koneksi karena mereka tidak menyediakan shell. Jendela tetap menampilkan pesan mereka di layar alih-alih menghilang.
 
-### Rules
+### Aturan
 
 - Entri wildcard (`Host *`, `Host *.internal`) adalah blok kecocokan, bukan target, dan tidak pernah dicantumkan.
 - Setiap alias pada baris `Host` dicantumkan secara terpisah (`Host a b` mencantumkan `a` dan `b`). Duplikat dihapus.
@@ -143,16 +143,16 @@ Saat sesi berakhir, jendela tetap terbuka dan menampilkan status keluar, misalny
 - Akhiran baris Windows (CRLF) dalam konfigurasi diterima.
 - `ARGVUS_SSH_CONFIG` menggantikan jalur file konfigurasi, yang berguna untuk pengujian.
 
-### Commands
+### Perintah
 
 ```sh
 argvus ssh list          # prints the configured hosts, one per line
 argvus ssh open myhost   # opens a specific host without the picker
 ```
 
-### Troubleshooting
+### Pemecahan masalah
 
-| Symptom | Cause and fix |
+| Gejala | Penyebab dan perbaikan |
 | --- | --- |
 | Notifikasi "tidak ada host yang ditemukan di ~/.ssh/config" | File tersebut hilang atau tidak memiliki`Host`baris. Jalankan`argvus ssh list`untuk memeriksa. |
 | Seorang host hilang dari pemilih | Ini adalah karakter bebas, berasal dari sebuah `Include`file, atau memiliki karakter di luar set yang diperbolehkan. Letakkan di file utama dengan alias biasa. |
@@ -189,21 +189,21 @@ Aturan yang berlaku untuk setiap perintah:
 
 Agen adalah layanan pengguna `argvus-ssh-agent.service` yang dimulai oleh `argvus-session`. `SSH_AUTH_SOCK` menunjuk ke itu dalam sesi.
 
-Requires 
+Requires
 
  (
 
- and 
+ and
 
-) and 
+) and
 
- (the 
+ (the
 
  command).
 
-| Symptom | Cause and fix |
+| Gejala | Penyebab dan perbaikan |
 | --- | --- |
-|  argvus terminal  argvus  ssh-add  ssh-keygen  `openssh`  `ssh-keygen`  `ssh-add`  `argvus`  `argvus terminal` `load` opens a terminal, but the key is not loaded | Type the passphrase in that terminal. If it was not asked, run `ssh-add -l` to see what the agent holds. |
+|  argvus terminal argvus ssh-add ssh-keygen `openssh` `ssh-keygen` `ssh-add` `argvus` `argvus terminal` `load` membuka terminal, tetapi kuncinya tidak dimuat | Ketikkan frasa sandi di terminal itu. Jika tidak diminta, jalankan `ssh-add -l` untuk melihat apa yang dimiliki agen. |
 | Terminal menampilkan `Could not open a connection to your authentication agent` | Hyprland dimulai sebelum agen, jadi terminalnya tidak memiliki `SSH_AUTH_SOCK`. Peluncur kembali ke `$XDG_RUNTIME_DIR/ssh-agent.socket`, jadi perbarui `argvus-launcher`dan buka terminal baru. |
 | `list` shows `unknown`di dalam`loaded` kolom | Agen tidak dapat dijangkau. Periksa `systemctl --user status argvus-ssh-agent.service` dan `SSH_AUTH_SOCK` variable. |
 | `delete`melaporkan bahwa kunci telah dimuat | Jalankan `argvus keys unload NAME`pertama, kemudian hapus lagi. |
@@ -258,24 +258,24 @@ Aturan yang berlaku untuk setiap perintah:
 - Perintah yang mengubah atau menerbitkan kunci (`export-private`, `delete`, `edit sign`, `edit revoke`, `keyserver send`) memerlukan `--yes`. Pusat Kontrol hanya memberikannya setelah konfirmasi sendiri.
 - Perintah yang menggunakan kunci rahasia menjalankan gpg dengan `--no-tty`, sehingga gpg tidak pernah mencoba membuka terminal. Frase sandi berasal dari jendela pinentry, kecuali dalam `generate --passphrase-stdin`.
 - `generate` membuat gpg-agent menggunakan `pinentry-gtk`. Ini menulis baris tersebut di antara penanda `# BEGIN argvus-managed pinentry` dan `# END argvus-managed pinentry`, mempertahankan sisa `gpg-agent.conf`, dan menyimpan file sebelumnya sebagai `gpg-agent.conf.bak`. Ketika blok sudah menamai `pinentry-gtk`, file dan gpg-agent dibiarkan seperti apa adanya. Perintah menolak dijalankan ketika `gpg-agent.conf` sudah mengatur `pinentry-program` di luar blok itu, sehingga dua nilai tidak pernah bertentangan.
-- Installing the package never writes to 
+- Installing the package never writes to
 
 . The configuration changes only when a key is generated.
-- 
+-
 
- replaces 
+ replaces
 
 , which is useful for testing.
 
- and 
+ and
 
- are required dependencies: the key commands need gpg, and the passphrase window is 
+ adalah ketergantungan yang diperlukan: perintah kunci memerlukan gpg, dan jendela frasa sandinya
 
 .
 
-| Symptom | Cause and fix |
+| Gejala | Penyebab dan perbaikan |
 | --- | --- |
-|  pinentry-gtk  pinentry  gnupg  `~/.gnupg`  `GNUPGHOME`  `~/.gnupg`  `gnupg`  `pinentry`  `pinentry-gtk` `generate` does not open a passphrase window | Check `argvus gpg status`. `pinentry-gtk` must be installed, and the session must expose `WAYLAND_DISPLAY` or `DISPLAY`. |
+|  pinentry-gtk pinentry gnupg `~/.gnupg` `GNUPGHOME` `~/.gnupg` `gnupg` `pinentry` `pinentry-gtk` `generate` tidak membuka jendela frasa sandi | Periksa `argvus gpg status`. `pinentry-gtk` harus diinstal, dan sesi harus mengekspos `WAYLAND_DISPLAY` atau `DISPLAY`. |
 | `generate`melaporkan bahwa`pinentry-gtk`tidak terpasang | Pasang `pinentry` package. |
 | `generate` reports a `pinentry-program`baris di luar blok ARGVUS | Hapus baris itu dari`~/.gnupg/gpg-agent.conf`, lalu jalankan perintahnya lagi. |
 | `generate`melaporkan bahwa ukuran kunci tidak didukung | Periksa ukuran untuk algoritma: DSA berhenti pada 3072 bit. |
@@ -287,7 +287,7 @@ Aturan yang berlaku untuk setiap perintah:
 
 `SUPER + ALT + N` membuka pemilih dengan potongan kode Anda. Potongan kode yang dipilih diketik ke dalam jendela yang sedang difokuskan, di posisi kursor, alih-alih melalui papan klip.
 
-### Setup
+### Pengaturan
 
 Tambahkan potongan kode dengan nama dan teksnya:
 
@@ -303,13 +303,13 @@ argvus snippets list
 
 Cuplikan disimpan di bagian `snippets` dari `argvus config`, sebagai entri `{name, content}`. Anda dapat membacanya dengan `argvus config get /snippets/items`.
 
-### Use
+### Gunakan
 
 1. Klik ke dalam bidang teks aplikasi yang seharusnya menerima teks.
-2. Press `SUPER + ALT + N`.
+2. Tekan `SUPER + ALT + N`.
 3. Pilih cuplikan berdasarkan nama dan tekan `Enter`. Teks diketik di tempat kursor berada.
 
-### Commands
+### Perintah
 
 ```sh
 argvus snippets add "NAME" "CONTENT"   # adds a snippet, or replaces the one with the same name
@@ -321,20 +321,16 @@ argvus snippets                        # opens the picker (same as the shortcut)
 argvus snippets --help                 # shows the options and an example
 ```
 
-### Rules
+### Aturan
 
 - Nama bersifat unik dan peka terhadap huruf besar-kecil. Menambahkan cuplikan dengan nama yang sudah ada akan mengganti isinya.
 - Konten tidak boleh kosong: cuplikan kosong dilaporkan sebagai tidak ditemukan.
-- 
-
- treats a name made only of digits as a position. Use names with letters, such as 
-
-, to avoid ambiguity.
+- Perintah `open` memperlakukan nama yang hanya terdiri dari angka sebagai posisi. Gunakan nama yang mengandung huruf, seperti `code2`, agar tidak ambigu.
 - Sebuah posisi merujuk pada urutan yang ditampilkan oleh  code2  `open`  `code2` `list`. Menghapus sebuah cuplikan menggeser posisi cuplikan setelahnya.
 
-### Troubleshooting
+### Pemecahan masalah
 
-| Symptom | Cause and fix |
+| Gejala | Penyebab dan perbaikan |
 | --- | --- |
 | Pemberitahuan "tidak ada cuplikan" saat menekan pintasan | Belum ada cuplikan yang ditambahkan. Jalankan `argvus snippets add` first. |
 | `open`melaporkan cuplikan tidak ditemukan | Nama tidak cocok persis. Bandingkan dengan `argvus snippets list`. |
@@ -348,7 +344,7 @@ Memerlukan `wtype`, `rofi`, `jq` dan `argvus` (perintah `argvus config`).
 
 `SUPER + ALT + G` membuka pemilih proyek yang sama seperti `SUPER + O`. Memilih sebuah proyek membuka `lazygit` (atau `gitui`) langsung di dalamnya, di terminal ARGVUS baru pada ruang kerja saat ini. Tidak ada langkah terpisah untuk memilih proyek terlebih dahulu.
 
-### Setup
+### Pengaturan
 
 Instal salah satu dari dua alat tersebut. Keduanya adalah dependensi opsional dari paket ini:
 
@@ -356,9 +352,9 @@ Instal salah satu dari dua alat tersebut. Keduanya adalah dependensi opsional da
 sudo pacman -S lazygit   # or: sudo pacman -S gitui
 ```
 
-### Use
+### Gunakan
 
-1. Press `SUPER + ALT + G`.
+1. Tekan `SUPER + ALT + G`.
 2. Pilih proyek dari daftar, atau tekan `Esc` untuk membatalkan. Membatalkan tidak membuka apa pun.
 3. Terminal terbuka di direktori proyek dan memulai TUI.
 
@@ -378,9 +374,9 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 Variabel ini dibaca dari lingkungan perintah yang menjalankan skrip. Ini tidak disimpan dalam konfigurasi ARGVUS.
 
-### Troubleshooting
+### Pemecahan masalah
 
-| Symptom | Cause and fix |
+| Gejala | Penyebab dan perbaikan |
 | --- | --- |
 | Pemberitahuan "bukan repositori git" | Proyek yang dipilih bukan repositori git, atau direktori-nya telah dipindahkan. Hapus atau perbaiki dengan `argvus projects remove`. |
 | Notifikasi "install lazygit atau gitui" | Tidak ada salah satu alat tersebut di `PATH`. Pasang salah satunya. |
@@ -436,9 +432,9 @@ Dependensi yang dibutuhkan: `argvus-session`, `argvus-appearance`, `argvus`, `ba
 
 Menginstal paket tidak menulis ke `$HOME`. Konfigurasi pengguna dibuat saat sesi dimulai, seperti yang dijelaskan dalam [Konfigurasi dan tema Rofi](#where-the-active-configuration-lives).
 
-## Troubleshooting
+## Pemecahan masalah
 
-| Symptom | Cause and fix |
+| Gejala | Penyebab dan perbaikan |
 | --- | --- |
 | `SUPER + D`tidak membuka apa pun | Periksa`argvus launcher`di terminal. Konfirmasikan bahwa`rofi`telah terpasang dan konfigurasi Rofi ada.
 | `SUPER + D`menampilkan tidak ada aplikasi | Aplikasi tidak memiliki entri desktop. Hanya aplikasi dengan`.desktop`file ditampilkan. |
@@ -451,13 +447,13 @@ Menginstal paket tidak menulis ke `$HOME`. Konfigurasi pengguna dibuat saat sesi
 
 ## Komponen terkait
 
-| Component | Responsibility |
+| Komponen | Tanggung jawab |
 | --- | --- |
 | `argvus-hyprland`| Menyatakan pintasan dan aturan jendela Hyprland untuk menu. |
 | `argvus-appearance` | Mengubah tema aktif, aksen, dan tata letak, serta menulis ulang referensi tema Rofi. |
 | `argvus` (`argvus config`) | Menyimpan proyek, potongan kode, dan pengaturan peluncur default. |
 | `argvus-session` | Menyalin konfigurasi Rofi awal dan mengatur fontnya saat memulai sesi. |
 | `argvus` (`argvus terminal`) | Membuka sesi SSH, terminal proyek, dan prompt passphrase dari `argvus keys`. |
-| `argvus` (`argvus widget-telemetry`) | Reads the active project written by `argvus projects`. |
+| `argvus` (`argvus widget-telemetry`) | Membaca proyek aktif yang ditulis oleh `argvus projects`. |
 | `argvus` (`argvus i18n`) | Menyediakan pesan yang diterjemahkan yang digunakan oleh skrip peluncur. |
-| `argvus` (`argvus control-center`) | Edits the project list through `argvus projects`. |
+| `argvus` (`argvus control-center`) | Mengedit daftar proyek melalui `argvus projects`. |

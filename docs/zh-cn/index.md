@@ -105,7 +105,7 @@ argvus projects list                    # prints the roots and paths
 
 打开一个项目也会将其路径记录为该会话的活动项目，Dev Dashboard 遥测模块 (`argvus widget-telemetry`) 会读取它以报告该项目的 git、监听端口和容器。
 
-## SSH (`SUPER + ALT + S`)
+## SSH（`超级 + ALT + S`）
 
 `SUPER + ALT + S` 会打开一个选择器，显示在 `~/.ssh/config` 中定义的主机。所选主机会在当前工作区中以运行 `ssh <host>` 的新 ARGVUS 终端中打开。
 
@@ -236,8 +236,8 @@ argvus gpg keyserver recv FINGERPRINT             # fetches the key from that ke
 - 密码短语从不作为命令参数传递，也不会写入日志或显示在控制中心。使用 `--passphrase-stdin` 时，密码短语通过管道传递给文件描述符 0 上的 gpg。没有该选项时，gpg 会调用 pinentry 窗口，`gpg-agent` 会打开该窗口。
 - `--no-passphrase` 存储私钥时不进行保护。除非同时提供 `--yes`，否则将被拒绝。
 - `import` 会拒绝包含秘密密钥包的任何文件，无论是 ASCII 还是二进制格式。私钥只通过 `export-private` 离开密钥环，这需要 `--yes` 并使用写模式 `600`；`import-private` 可以将它们导入回来。
-- 修改或发布密钥的命令（`export-private`、`delete`、`edit sign`、`edit revoke`、`keyserver send`）需要 `--yes`。控制中心仅在自身确认后传递它。 
-- 使用密钥的命令运行 gpg 时附带 `--no-tty`，因此 gpg 从不尝试打开终端。密码短语来自 pinentry 窗口，除非在 `generate --passphrase-stdin` 中。 
+- 修改或发布密钥的命令（`export-private`、`delete`、`edit sign`、`edit revoke`、`keyserver send`）需要 `--yes`。控制中心仅在自身确认后传递它。
+- 使用密钥的命令运行 gpg 时附带 `--no-tty`，因此 gpg 从不尝试打开终端。密码短语来自 pinentry 窗口，除非在 `generate --passphrase-stdin` 中。
 - `generate` 使 gpg-agent 使用 `pinentry-gtk`。它在 `# BEGIN argvus-managed pinentry` 和 `# END argvus-managed pinentry` 标记之间写入该行，保留 `gpg-agent.conf` 的其余部分，并将之前的文件保存为 `gpg-agent.conf.bak`。当该块已经命名为 `pinentry-gtk` 时，文件和 gpg-agent 保持原样。当 `gpg-agent.conf` 已经在该块外设置了 `pinentry-program` 时，该命令拒绝运行，以确保两个值永不冲突。
 - 安装该软件包从不会写入 `~/.gnupg`。配置只会在生成密钥时更改。
 - `GNUPGHOME` 替代 `~/.gnupg`，这对于测试很有用。
@@ -256,7 +256,7 @@ argvus gpg keyserver recv FINGERPRINT             # fetches the key from that ke
 
 ## 片段 (`SUPER + ALT + N`)
 
-`SUPER + ALT + N` 打开一个带有你的片段的选择器。选中的片段会在光标处输入到聚焦的窗口中，而不是通过剪贴板。 
+`SUPER + ALT + N` 打开一个带有你的片段的选择器。选中的片段会在光标处输入到聚焦的窗口中，而不是通过剪贴板。
 
 ### 设置
 

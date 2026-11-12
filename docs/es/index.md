@@ -236,8 +236,8 @@ Reglas que se aplican a cada comando:
 - Las contraseñas nunca se pasan como argumentos de comando, se escriben en un registro ni se muestran en el Centro de Control. Con `--passphrase-stdin` la contraseña se envía a gpg en el descriptor de archivo 0 desde una tubería. Sin esa opción, gpg solicita la ventana de pinentry, que `gpg-agent` abre.
 - `--no-passphrase` almacena la clave privada sin protección. Se rechaza a menos que `--yes` también se proporcione.
 - `import` rechaza cualquier archivo que contenga un paquete de clave secreta, en forma ASCII o binaria. Las claves privadas solo salen del llavero mediante `export-private`, que necesita `--yes` y escribe en modo `600`; `import-private` las trae de vuelta.
-- Los comandos que cambian o publican claves (`export-private`, `delete`, `edit sign`, `edit revoke`, `keyserver send`) necesitan `--yes`. El Centro de Control lo pasa solo después de su propia confirmación. 
-- Los comandos que usan la clave secreta ejecutan gpg con `--no-tty`, por lo que gpg nunca intenta abrir un terminal. La frase de contraseña proviene de la ventana de pinentry, excepto en `generate --passphrase-stdin`. 
+- Los comandos que cambian o publican claves (`export-private`, `delete`, `edit sign`, `edit revoke`, `keyserver send`) necesitan `--yes`. El Centro de Control lo pasa solo después de su propia confirmación.
+- Los comandos que usan la clave secreta ejecutan gpg con `--no-tty`, por lo que gpg nunca intenta abrir un terminal. La frase de contraseña proviene de la ventana de pinentry, excepto en `generate --passphrase-stdin`.
 - `generate` hace que gpg-agent use `pinentry-gtk`. Escribe esa línea entre los marcadores `# BEGIN argvus-managed pinentry` y `# END argvus-managed pinentry`, mantiene el resto de `gpg-agent.conf` y guarda el archivo anterior como `gpg-agent.conf.bak`. Cuando el bloque ya nombra `pinentry-gtk`, el archivo y gpg-agent se dejan como están. El comando se niega a ejecutarse cuando `gpg-agent.conf` ya establece `pinentry-program` fuera de ese bloque, de modo que dos valores nunca entren en conflicto.
 - La instalación del paquete nunca escribe en `~/.gnupg`. La configuración solo cambia cuando se genera una clave.
 - `GNUPGHOME` reemplaza a `~/.gnupg`, lo cual es útil para las pruebas.
@@ -382,7 +382,7 @@ El idioma es portugués cuando la configuración regional del sistema es `pt-BR`
 
 La configuración del lanzador se comparte con componentes propiedad de otros paquetes:
 
-- El historial del portapapeles (`SUPER + H`) y su atajo para limpiar (`SUPER + SHIFT + H`) son declarados por `argvus-hyprland`. Ellos canalizan `cliphist` en Rofi con esta configuración. `cliphist` proviene de `argvus-session`, que ejecuta el grabador del portapapeles que llena el historial; el meta-paquete `argvus` también depende de él. 
+- El historial del portapapeles (`SUPER + H`) y su atajo para limpiar (`SUPER + SHIFT + H`) son declarados por `argvus-hyprland`. Ellos canalizan `cliphist` en Rofi con esta configuración. `cliphist` proviene de `argvus-session`, que ejecuta el grabador del portapapeles que llena el historial; el meta-paquete `argvus` también depende de él.
 - Los selectores de tema, acento y diseño en `argvus-appearance` abren Rofi con `config.rasi`.
 - Las reglas de ventanas de Hyprland reconocen los espacios de nombres `argvus-launcher` y `rofi`, por lo que los menús reciben el tratamiento de superficie de lanzador.
 
@@ -396,7 +396,7 @@ El paquete `argvus-launcher` es independiente de la arquitectura e instala:
 
 Dependencias requeridas: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` y `pinentry` (que proporciona `pinentry-gtk`). Dependencias opcionales: `openssh`, para el selector SSH y el gestor de claves SSH; `lazygit` y `gitui`, para la interfaz TUI de git.
 
-La instalación del paquete no escribe en `$HOME`. La configuración del usuario se crea al iniciar la sesión, como se describe en [Configuración y temas de Rofi](#where-the-active-configuration-lives)].
+La instalación del paquete no escribe en `$HOME`. La configuración del usuario se crea al iniciar la sesión, como se describe en [Configuración y temas de Rofi](#where-the-active-configuration-lives).
 
 ## Solución de problemas
 

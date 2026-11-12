@@ -236,8 +236,8 @@ argvus gpg keyserver recv FINGERPRINT             # fetches the key from that ke
 - パスフレーズは決してコマンド引数として渡されたり、ログに書き込まれたり、コントロールセンターに表示されたりしません。`--passphrase-stdin` を使用すると、パスフレーズはパイプからファイルディスクリプタ0経由で gpg に渡されます。そのオプションがない場合、gpg は pinentry ウィンドウに尋ね、`gpg-agent` がそれを開きます。
 - `--no-passphrase` は秘密鍵を保護なしで保存します。`--yes` が指定されない限り拒否されます。
 - `import` は ASCII 形式またはバイナリ形式の秘密鍵パケットを含むファイルを拒否します。秘密鍵は `export-private` を通じてのみキーホイールを離れます。この際 `--yes` が必要で、`600` のモードで書き込みます。`import-private` は鍵を戻します。
-- 鍵を変更または公開するコマンド（`export-private`、`delete`、`edit sign`、`edit revoke`、`keyserver send`）には`--yes`が必要です。コントロールセンターは自らの確認後にのみこれを渡します。  
-- 秘密鍵を使用するコマンドは`--no-tty`付きでgpgを実行するため、gpgは端末を開こうとしません。パスフレーズはpinentryウィンドウから取得されますが、`generate --passphrase-stdin`の場合を除きます。  
+- 鍵を変更または公開するコマンド（`export-private`、`delete`、`edit sign`、`edit revoke`、`keyserver send`）には`--yes`が必要です。コントロールセンターは自らの確認後にのみこれを渡します。
+- 秘密鍵を使用するコマンドは`--no-tty`付きでgpgを実行するため、gpgは端末を開こうとしません。パスフレーズはpinentryウィンドウから取得されますが、`generate --passphrase-stdin`の場合を除きます。
 - `generate`はgpg-agentに`pinentry-gtk`を使用させます。その行は`# BEGIN argvus-managed pinentry`と`# END argvus-managed pinentry`のマーカーの間に書き込み、残りの`gpg-agent.conf`は保持し、前のファイルを`gpg-agent.conf.bak`として保存します。ブロックですでに`pinentry-gtk`が指定されている場合、ファイルとgpg-agentはそのままにされます。`gpg-agent.conf`が既にそのブロック外で`pinentry-program`を設定している場合、コマンドは実行を拒否し、二つの値が競合しないようにします。
 - パッケージをインストールしても、`~/.gnupg`には書き込まれません。構成はキーが生成されたときのみ変更されます。
 - `GNUPGHOME`は`~/.gnupg`に置き換わり、テストに便利です。
@@ -395,7 +395,7 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 
 必要な依存関係: `argvus-session`、`argvus-appearance`、`argvus`、`bash`、`jq`、`hyprland`、`libnotify`、`rofi`、`rofi-calc`、`rofimoji`、`wl-clipboard`、`wtype`、`gnupg`、および`pinentry`（`pinentry-gtk`を提供）。オプションの依存関係: SSHピッカーおよびSSHキー管理用の`openssh`; git TUI用の`lazygit`および`gitui`。
 
-パッケージをインストールしても`$HOME`には書き込まれません。ユーザー設定は[Rofi configuration and themes](#where-the-active-configuration-lives)]に記載されているように、セッション開始時に作成されます。
+パッケージをインストールしても`$HOME`には書き込まれません。ユーザー設定は[Rofi configuration and themes](#where-the-active-configuration-lives)に記載されているように、セッション開始時に作成されます。
 
 ## トラブルシューティング
 

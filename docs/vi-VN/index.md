@@ -1,5 +1,5 @@
 ---
-title: Application launcher
+title: Trình khởi chạy ứng dụng
 description: Khởi chạy ứng dụng, mở dự án, máy chủ SSH và đoạn mã, chọn emoji, tính toán và đọc danh sách mẹo thông qua các menu Rofi của ARGVUS.
 ---
 
@@ -14,26 +14,26 @@ description: Khởi chạy ứng dụng, mở dự án, máy chủ SSH và đo�
 
 Các phím tắt được khai báo bởi `argvus-hyprland`. Gói này cung cấp các lệnh và các menu đứng sau chúng.
 
-## Shortcuts
+## Phím tắt
 
-| Shortcut | Action | Command | Section |
+| Phím tắt | Hành động | Lệnh | Phần |
 | --- | --- | --- | --- |
-| `SUPER + D` | Application launcher | `argvus launcher` | Application launcher |
-| `SUPER + O` | Project switcher | `argvus projects` | Project switcher |
+| `SUPER + D` | Trình khởi chạy ứng dụng | `argvus launcher` | Trình khởi chạy ứng dụng |
+| `SUPER + O` | Chuyển đổi dự án | `argvus projects` | Chuyển đổi dự án |
 | `SUPER + ALT + 1` to `9` | Mở dự án ở vị trí đó | `argvus projects open N` | Project switcher |
-| `SUPER + ALT + S` | SSH host picker | `argvus ssh` | SSH |
-| `SUPER + ALT + N` | Snippet picker | `argvus snippets` | Snippets |
-| `SUPER + ALT + G` | Project picker, then git TUI | `argvus git` | Git |
-| `SUPER + .` | Emoji picker | `emoji-picker.sh` | Emoji picker |
-| `SUPER + C` | Calculator | `rofi -show calc` | Calculator |
-| `SUPER + SHIFT + /` | Hyprland cheatsheet | `cheatsheets.sh hypr` | Cheatsheets |
-| `SUPER + CTRL + /` | Kitty cheatsheet | `cheatsheets.sh kitty` | Cheatsheets |
+| `SUPER + ALT + S` | Bộ chọn máy chủ SSH | `argvus ssh` | SSH |
+| `SUPER + ALT + N` | Bộ chọn đoạn trích | `argvus snippets` | Đoạn trích |
+| `SUPER + ALT + G` | Bộ chọn dự án, sau đó git TUI | `argvus git` | Git |
+| `SUPER + .` | Bộ chọn biểu tượng cảm xúc | `emoji-picker.sh` | Bộ chọn biểu tượng cảm xúc |
+| `SUPER + C` | Máy tính | `rofi -show calc` | Máy tính |
+| `SUPER + SHIFT + /` | Bảng cheat Hyprland | `cheatsheets.sh hypr` | Cheatsheet |
+| `SUPER + CTRL + /` | Áo khoác Kitty | `cheatsheets.sh kitty` | Cheatsheet |
 
 ## Trình khởi chạy ứng dụng (`SUPER + D`)
 
 `SUPER + D` chạy `argvus launcher`, mở Rofi ở chế độ `drun`. Nó liệt kê các ứng dụng đồ họa đã cài đặt với một mục trình đơn, và ứng dụng được chọn sẽ khởi chạy khi bạn nhấn `Enter`.
 
-1. Press `SUPER + D`.
+1. Nhấn `SUPER + D`.
 2. Gõ một phần của tên ứng dụng. Danh sách được sắp xếp và bộ lọc không phân biệt chữ hoa chữ thường.
 3. Nhấn `Enter` để khởi động ứng dụng, hoặc `Esc` để đóng menu.
 
@@ -52,13 +52,13 @@ Chỉ những ứng dụng có mục nhập trên máy tính để bàn mới xu
 
 Gói cài đặt cấu hình Rofi dưới `/usr/share/argvus/launcher/config/`:
 
-| File | Role |
+| Tập tin | Vai trò |
 | --- | --- |
-| `config.rasi` | Entry point used by every ARGVUS menu. Sets the Rofi `configuration` (font, no icons, sorted list, case-insensitive matching) and imports `theme.rasi`. |
-| `theme.rasi` | Colors and layout of the window, input bar and list. Imports one theme and the mode file. |
+| `config.rasi` | Điểm vào được mọi menu ARGVUS sử dụng. Đặt Rofi `configuration` (phông chữ, không có biểu tượng, danh sách được sắp xếp, khớp không phân biệt chữ hoa chữ thường) và nhập `theme.rasi`. |
+| `theme.rasi` | Màu sắc và bố cục của cửa sổ, thanh nhập liệu và danh sách. Nhập một chủ đề và tệp chế độ. |
 | `mode.rasi` | Ghi đè chế độ. Tệp được đóng gói không có ghi đè và giữ chế độ Tối. |
-| `themes/<family>/theme.rasi` | Palette of a theme family, for example `argvus-dark` or `tokyo-night`. |
-| `themes/<family>-spaced/theme.rasi` | Spaced variant of the same family. |
+| `themes/<family>/theme.rasi` | Bảng màu của nhóm chủ đề, ví dụ `argvus-dark` hoặc `tokyo-night`. |
+| `themes/<family>-spaced/theme.rasi` | Biến thể cách nhau của cùng một gia đình. |
 
 Gói cung cấp 22 họ, và mỗi họ có một biến thể `-spaced`. Gói `theme.rasi` nhập `argvus-dark`.
 
@@ -108,11 +108,11 @@ Các mục được đọc từ cấu hình hiệu lực; trình khởi chạy k
 
 Mở một dự án cũng ghi lại đường dẫn của nó như dự án hoạt động cho phiên, mà khối thu thập dữ liệu telemetry của Dev Dashboard (`argvus widget-telemetry`) đọc để báo cáo git, cổng lắng nghe và các container của dự án đó.
 
-## SSH (`SUPER + ALT + S`)
+## SSH (`SIÊU + ALT + S`)
 
 `SUPER + ALT + S` mở một trình chọn với các máy chủ được định nghĩa trong `~/.ssh/config`. Máy chủ được chọn sẽ mở trong một terminal ARGVUS mới chạy `ssh <host>`, trong không gian làm việc hiện tại.
 
-### Setup
+### thiết lập
 
 Thêm một mục `Host` cho mỗi máy chủ vào `~/.ssh/config`:
 
@@ -126,15 +126,15 @@ Host myhost
 
 Xác nhận rằng `ssh myhost` hoạt động trong một terminal bình thường trước. Trình khởi chạy chỉ chạy `ssh`; xác thực, khóa và xác minh máy chủ được xử lý bởi OpenSSH.
 
-### Use
+### sử dụng
 
-1. Press `SUPER + ALT + S`.
+1. Nhấn `SUPER + ALT + S`.
 2. Gõ một phần tên máy chủ, hoặc sử dụng các phím mũi tên.
 3. Nhấn `Enter`. Terminal sẽ mở và chạy `ssh <host>`.
 
 Khi phiên làm việc kết thúc, cửa sổ vẫn mở và hiển thị trạng thái thoát, ví dụ `ssh exited with status 0. Press Enter to close.` Nhấn `Enter` để đóng nó. Điều này quan trọng đối với các dịch vụ như GitHub, GitLab và Gitea: chúng xác thực bạn và đóng kết nối ngay lập tức vì chúng không cung cấp shell. Cửa sổ giữ thông báo của họ trên màn hình thay vì biến mất.
 
-### Rules
+### Quy tắc
 
 - Các mục wildcard (`Host *`, `Host *.internal`) là các khối khớp, không phải mục tiêu, và không bao giờ được liệt kê.
 - Mỗi bí danh trên một dòng `Host` được liệt kê riêng biệt (`Host a b` liệt kê `a` và `b`). Các mục trùng lặp được loại bỏ.
@@ -143,21 +143,21 @@ Khi phiên làm việc kết thúc, cửa sổ vẫn mở và hiển thị trạ
 - Kết thúc dòng của Windows (CRLF) trong cấu hình được chấp nhận.
 - `ARGVUS_SSH_CONFIG` thay thế đường dẫn của tệp cấu hình, điều này hữu ích cho việc kiểm tra.
 
-### Commands
+### Lệnh
 
 ```sh
 argvus ssh list          # prints the configured hosts, one per line
 argvus ssh open myhost   # opens a specific host without the picker
 ```
 
-### Troubleshooting
+### Khắc phục sự cố
 
-| Symptom | Cause and fix |
+| Triệu chứng | Nguyên nhân và cách khắc phục |
 | --- | --- |
 | Thông báo "không tìm thấy máy chủ trong ~/.ssh/config" | Tệp tin bị thiếu hoặc không có`Host` lines. Run `argvus ssh list` to check. |
 | A host is missing from the picker | It is a wildcard, comes from an `Include`tệp, hoặc có các ký tự nằm ngoài tập hợp cho phép. Đặt nó vào tệp chính với một bí danh đơn giản. |
-| The window shows an error status right away | Run `ssh <host>` in a normal terminal to see the full message (unreachable host, wrong key, and so on). |
-| The window shows `message.ssh_session_ended` instead of text | The installed `argvus` package is older than this version. Update `argvus`. |
+| Cửa sổ hiển thị ngay trạng thái lỗi | Chạy `ssh <host>` trong một thiết bị đầu cuối bình thường để xem thông báo đầy đủ (máy chủ không thể truy cập, khóa sai, v.v.). |
+| Cửa sổ hiển thị `message.ssh_session_ended` thay vì văn bản | Gói `argvus` đã cài đặt cũ hơn phiên bản này. Cập nhật `argvus`. |
 
 Yêu cầu `openssh` và `argvus` (lệnh `argvus terminal`).
 
@@ -184,32 +184,32 @@ Quy tắc áp dụng cho mọi lệnh:
 - Chỉ các cặp với tập tin công khai (`NAME.pub`) được liệt kê, và chỉ những cặp này có thể được tải, gỡ hoặc xóa.
 - Các cụm mật khẩu không bao giờ được truyền dưới dạng đối số lệnh, ghi vào nhật ký hoặc hiển thị trong Trung tâm Điều khiển. `load` và `generate --passphrase` mở một terminal ARGVUS, và OpenSSH đọc thông tin bí mật từ terminal đó.
 - `list` báo `unknown` trong cột `loaded` khi không thể kết nối với tác nhân. Nó không bao giờ đoán.
-- 
+-
 
  removes the private key for good. Keep a copy of any key you still need.
-- 
+-
 
- replaces 
+ replaces
 
 , which is useful for testing.
 
-The agent is the 
+The agent is the
 
- user service started by 
+ user service started by
 
-. 
+.
 
  points to it in the session.
 
 Yêu cầu  SSH_AUTH_SOCK  argvus-session  argvus-ssh-agent.service  ~/.ssh  ARGVUS_SSH_DIR  `delete`  `ARGVUS_SSH_DIR`  `~/.ssh`  `argvus-ssh-agent.service`  `argvus-session`  `SSH_AUTH_SOCK` `openssh` (`ssh-keygen` và `ssh-add`) và `argvus` (lệnh `argvus terminal`). Khóa GPG
 
-| Symptom | Cause and fix |
+| Triệu chứng | Nguyên nhân và cách khắc phục |
 | --- | --- |
-| `load` opens a terminal, but the key is not loaded | Type the passphrase in that terminal. If it was not asked, run `ssh-add -l` to see what the agent holds. |
-| The terminal shows `Could not open a connection to your authentication agent` | Hyprland started before the agent did, so its terminals lack `SSH_AUTH_SOCK`. The launcher falls back to `$XDG_RUNTIME_DIR/ssh-agent.socket`, vì vậy hãy cập nhật`argvus-launcher` and open a new terminal. |
-| `list` shows `unknown` in the `loaded` column | The agent is not reachable. Check `systemctl --user status argvus-ssh-agent.service` and the `SSH_AUTH_SOCK` variable. |
+| `load` mở terminal nhưng phím không được tải | Nhập cụm mật khẩu vào thiết bị đầu cuối đó. Nếu nó không được hỏi, hãy chạy `ssh-add -l` để xem tác nhân nắm giữ những gì. |
+| Thiết bị đầu cuối hiển thị `Could not open a connection to your authentication agent` | Hyprland bắt đầu trước khi đại lý thực hiện, vì vậy thiết bị đầu cuối của nó thiếu `SSH_AUTH_SOCK`. Trình khởi chạy sẽ quay trở lại `$XDG_RUNTIME_DIR/ssh-agent.socket`, vì vậy hãy cập nhật`argvus-launcher` và mở một thiết bị đầu cuối mới. |
+| `list` hiển thị `unknown` trong cột `loaded` | Các đại lý không thể truy cập được. Kiểm tra `systemctl --user status argvus-ssh-agent.service` và biến `SSH_AUTH_SOCK`. |
 | `delete`báo cáo rằng chìa khóa đã được nạp | Chạy `argvus keys unload NAME` first, then delete it again. |
-| `generate` reports that the name already exists | Choose another name. Existing pairs are never replaced. |
+| `generate` báo cáo rằng tên đã tồn tại | Chọn một tên khác. Các cặp hiện có không bao giờ được thay thế. |
 
 ## (`argvus gpg`)
 
@@ -263,21 +263,21 @@ Quy tắc áp dụng cho mọi lệnh:
 
 `gnupg` và `pinentry` là các phụ thuộc cần thiết: các lệnh khóa cần gpg, và cửa sổ mật khẩu là `pinentry-gtk`.
 
-| Symptom | Cause and fix |
+| Triệu chứng | Nguyên nhân và cách khắc phục |
 | --- | --- |
-| `generate` does not open a passphrase window | Check `argvus gpg status`. `pinentry-gtk` must be installed, and the session must expose `WAYLAND_DISPLAY` or `DISPLAY`. |
-| `generate` reports that `pinentry-gtk` is not installed | Install the `pinentry` package. |
-| `generate` reports a `pinentry-program` line outside the ARGVUS block | Remove that line from `~/.gnupg/gpg-agent.conf`, then run the command again. |
-| `generate` reports that the key size is not supported | Check the size for the algorithm: DSA stops at 3072 bits. |
-| `generate` reports that the encryption subkey could not be added | The key was created. Add the subkey with `gpg --quick-add-key FINGERPRINT cv25519 encr 2y`, or delete the key with `gpg --delete-secret-and-public-key` and generate it again. |
-| `import` refuses a file | The file contains a private key. Export only the public key on the other machine with `argvus gpg export-public`. |
+| `generate` không mở cửa sổ cụm mật khẩu | Kiểm tra `argvus gpg status`. `pinentry-gtk` phải được cài đặt và phiên phải hiển thị `WAYLAND_DISPLAY` hoặc `DISPLAY`. |
+| `generate` báo cáo rằng `pinentry-gtk` chưa được cài đặt | Cài đặt gói `pinentry`. |
+| `generate` báo cáo dòng `pinentry-program` bên ngoài khối ARGVUS | Xóa dòng đó khỏi `~/.gnupg/gpg-agent.conf`, sau đó chạy lại lệnh. |
+| `generate` báo cáo rằng kích thước khóa không được hỗ trợ | Kiểm tra kích thước cho thuật toán: DSA dừng ở 3072 bit. |
+| `generate` báo cáo rằng không thể thêm khóa con mã hóa | Chìa khóa đã được tạo. Thêm khóa con bằng `gpg --quick-add-key FINGERPRINT cv25519 encr 2y` hoặc xóa khóa bằng `gpg --delete-secret-and-public-key` và tạo lại. |
+| `import` từ chối một tập tin | Tệp chứa khóa riêng. Chỉ xuất khóa chung trên máy khác có `argvus gpg export-public`. |
 | `list` shows no keys | The keyring in `GNUPGHOME` (or `~/.gnupg`) is empty. Run `argvus gpg generate`tạo một chìa khóa. |
 
 ## Đoạn trích (`SUPER + ALT + N`)
 
 `SUPER + ALT + N` mở một trình chọn với các đoạn trích của bạn. Đoạn trích đã chọn sẽ được nhập vào cửa sổ đang được tập trung, tại con trỏ, thay vì đi qua khay nhớ tạm.
 
-### Setup
+### thiết lập
 
 Thêm một đoạn trích với tên và văn bản của nó:
 
@@ -293,13 +293,13 @@ argvus snippets list
 
 Các đoạn trích được giữ trong phần `snippets` của `argvus config`, dưới dạng các mục `{name, content}`. Bạn có thể đọc chúng bằng `argvus config get /snippets/items`.
 
-### Use
+### sử dụng
 
 1. Nhấp vào trường văn bản của ứng dụng mà nên nhận văn bản.
-2. Press `SUPER + ALT + N`.
+2. Nhấn `SUPER + ALT + N`.
 3. Chọn đoạn trích theo tên và nhấn `Enter`. Văn bản sẽ được gõ vào nơi con trỏ đang ở.
 
-### Commands
+### Lệnh
 
 ```sh
 argvus snippets add "NAME" "CONTENT"   # adds a snippet, or replaces the one with the same name
@@ -311,30 +311,30 @@ argvus snippets                        # opens the picker (same as the shortcut)
 argvus snippets --help                 # shows the options and an example
 ```
 
-### Rules
+### Quy tắc
 
 - Tên là duy nhất và phân biệt chữ hoa chữ thường. Thêm một đoạn mã với tên đã tồn tại sẽ thay thế nội dung của nó.
 - Nội dung không được để trống: một đoạn mã trống sẽ được báo cáo là không tìm thấy.
 - `open` coi một tên chỉ gồm các chữ số như một vị trí. Sử dụng tên có chữ cái, chẳng hạn như `code2`, để tránh sự mơ hồ.
 - Một vị trí đề cập đến thứ tự được hiển thị bởi `list`. Việc loại bỏ một đoạn làm thay đổi vị trí của những đoạn sau nó.
 
-### Troubleshooting
+### Khắc phục sự cố
 
-| Symptom | Cause and fix |
+| Triệu chứng | Nguyên nhân và cách khắc phục |
 | --- | --- |
-| Notification "no snippets" when pressing the shortcut | No snippet was added yet. Run `argvus snippets add` first. |
-| `open` reports the snippet was not found | The name does not match exactly. Compare with `argvus snippets list`. |
-| Nothing appears in the application | The focused window is not a text field, or it is an X11 application running under XWayland, which may ignore this kind of input. Test with a native Wayland application. |
+| Thông báo "không có đoạn trích" khi nhấn phím tắt | Chưa có đoạn trích nào được thêm vào. Chạy `argvus snippets add` trước. |
+| `open` báo cáo không tìm thấy đoạn trích | Tên không khớp chính xác. So sánh với `argvus snippets list`. |
+| Không có gì xuất hiện trong ứng dụng | Cửa sổ tập trung không phải là trường văn bản hoặc là ứng dụng X11 chạy trong XWayland, có thể bỏ qua loại đầu vào này. Kiểm tra bằng ứng dụng Wayland gốc. |
 
 Yêu cầu `wtype`, `rofi`, `jq` và `argvus` (lệnh `argvus config`).
 
 `wtype` mô phỏng nhấn phím ở cấp độ đầu vào Wayland. Một số ứng dụng X11 chạy dưới XWayland bỏ qua các sự kiện này, vì vậy văn bản có thể không xuất hiện ở đó mặc dù đoạn mã đã được tìm thấy.
 
-## Git (`SUPER + ALT + G`)
+## Git (`SIÊU + ALT + G`)
 
 `SUPER + ALT + G` mở cùng một bộ chọn dự án như `SUPER + O`. Chọn một dự án sẽ mở `lazygit` (hoặc `gitui`) trực tiếp trong đó, trong một terminal ARGVUS mới trên không gian làm việc hiện tại. Không có bước riêng để chọn dự án trước.
 
-### Setup
+### thiết lập
 
 Cài đặt một trong hai công cụ. Cả hai đều là phụ thuộc tùy chọn của gói này:
 
@@ -342,9 +342,9 @@ Cài đặt một trong hai công cụ. Cả hai đều là phụ thuộc tùy c
 sudo pacman -S lazygit   # or: sudo pacman -S gitui
 ```
 
-### Use
+### sử dụng
 
-1. Press `SUPER + ALT + G`.
+1. Nhấn `SUPER + ALT + G`.
 2. Chọn một dự án trong danh sách, hoặc nhấn `Esc` để hủy. Hủy không mở gì cả.
 3. Terminal mở trong thư mục dự án và bắt đầu TUI.
 
@@ -364,11 +364,11 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 Biến này được đọc từ môi trường của lệnh chạy tập lệnh. Nó không được lưu trong cấu hình ARGVUS.
 
-### Troubleshooting
+### Khắc phục sự cố
 
-| Symptom | Cause and fix |
+| Triệu chứng | Nguyên nhân và cách khắc phục |
 | --- | --- |
-| Notification "not a git repository" | The chosen project is not a git repository, or its directory was moved. Remove or fix it with `argvus projects remove`. |
+| Thông báo "không phải kho lưu trữ git" | Dự án được chọn không phải là kho lưu trữ git hoặc thư mục của nó đã bị di chuyển. Loại bỏ hoặc sửa nó bằng `argvus projects remove`. |
 | Notification "install lazygit or gitui" | Neither tool is on the `PATH`. Cài đặt một trong số chúng. |
 | Bộ chọn không hiển thị dự án nào | Chưa có dự án nào được thêm. Sử dụng `argvus projects add`. |
 
@@ -422,28 +422,28 @@ Các phụ thuộc bắt buộc: `argvus-session`, `argvus-appearance`, `argvus`
 
 Cài đặt gói không ghi vào `$HOME`. Cấu hình người dùng được tạo khi bắt đầu phiên, như được mô tả trong [Cấu hình và chủ đề Rofi](#where-the-active-configuration-lives).
 
-## Troubleshooting
+## Khắc phục sự cố
 
-| Symptom | Cause and fix |
+| Triệu chứng | Nguyên nhân và cách khắc phục |
 | --- | --- |
-| `SUPER + D` opens nothing | Check `argvus launcher` in a terminal. Confirm that `rofi` is installed and that the Rofi configuration exists. |
+| `SUPER + D` không mở được gì | Kiểm tra `argvus launcher` trong thiết bị đầu cuối. Xác nhận rằng `rofi` đã được cài đặt và cấu hình Rofi tồn tại. |
 | `SUPER + D`không liệt kê ứng dụng nào | Các ứng dụng không có mục nhập trên máy tính để bàn. Chỉ những ứng dụng có`.desktop` file are shown. |
-| The menus use an old font | The `font:` line is rewritten at session start. Restart the session after changing the font. |
+| Các menu sử dụng phông chữ cũ | Dòng `font:` được viết lại khi bắt đầu phiên. Khởi động lại phiên sau khi thay đổi phông chữ. |
 | Thay đổi chủ đề không ảnh hưởng đến các menu Rofi | Kiểm tra xem bản sao của người dùng có`config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/` still points to the packaged theme. Apply the theme from `argvus-appearance` again. |
-| `SUPER + O` reports that no projects were found | No root or path is configured, or the directories no longer exist. Run `argvus projects list`. |
+| `SUPER + O` báo cáo không tìm thấy dự án nào | Không có gốc hoặc đường dẫn nào được định cấu hình hoặc các thư mục không còn tồn tại. Chạy `argvus projects list`. |
 | `SUPER + C`hoặc bộ chọn biểu tượng cảm xúc không mở | Cài đặt`rofi-calc` or `rofimoji` (both are required dependencies). |
-| A cheatsheet does not open | The file for that name and language does not exist. Check the paths described in the Cheatsheets section. |
-| `SUPER + H` shows nothing | The history is empty, or the clipboard recorder from `argvus-session` has not stored anything yet. |
+| Một chiếc áo choàng không mở được | Tệp cho tên và ngôn ngữ đó không tồn tại. Kiểm tra các đường dẫn được mô tả trong phần Cheatsheet. |
+| `SUPER + H` không hiển thị gì | Lịch sử trống hoặc trình ghi clipboard từ `argvus-session` chưa lưu trữ bất cứ thứ gì. |
 
 ## Các thành phần liên quan
 
-| Component | Responsibility |
+| Thành phần | Trách nhiệm |
 | --- | --- |
-| `argvus-hyprland` | Declares the shortcuts and the Hyprland window rules for the menus. |
+| `argvus-hyprland` | Khai báo các phím tắt và quy tắc cửa sổ Hyprland cho các menu. |
 | `argvus-appearance` | Thay đổi chủ đề đang hoạt động, điểm nhấn và bố cục, và viết lại các tham chiếu chủ đề Rofi. |
-| `argvus` (`argvus config`) | Stores the projects, the snippets and the default launcher setting. |
-| `argvus-session` | Copies the initial Rofi configuration and sets its font at session start. |
-| `argvus` (`argvus terminal`) | Opens SSH sessions, project terminals and the passphrase prompts of `argvus keys`. |
-| `argvus` (`argvus widget-telemetry`) | Reads the active project written by `argvus projects`. |
-| `argvus` (`argvus i18n`) | Provides the translated messages used by the launcher scripts. |
-| `argvus` (`argvus control-center`) | Edits the project list through `argvus projects`. |
+| `argvus` (`argvus config`) | Lưu trữ các dự án, đoạn mã và cài đặt trình khởi chạy mặc định. |
+| `argvus-session` | Sao chép cấu hình Rofi ban đầu và đặt phông chữ của nó khi bắt đầu phiên. |
+| `argvus` (`argvus terminal`) | Mở phiên SSH, thiết bị đầu cuối dự án và lời nhắc cụm mật khẩu của `argvus keys`. |
+| `argvus` (`argvus widget-telemetry`) | Đọc dự án đang hoạt động được viết bởi `argvus projects`. |
+| `argvus` (`argvus i18n`) | Cung cấp các thông báo đã dịch được sử dụng bởi tập lệnh khởi chạy. |
+| `argvus` (`argvus control-center`) | Chỉnh sửa danh sách dự án thông qua `argvus projects`. |

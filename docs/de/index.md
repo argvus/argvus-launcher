@@ -105,7 +105,7 @@ Die Einträge werden aus der effektiven Konfiguration gelesen; der Launcher beh�
 
 Das Öffnen eines Projekts zeichnet auch seinen Pfad als aktives Projekt für die Sitzung auf, das der Dev Dashboard-Telemetrieblock (`argvus widget-telemetry`) liest, um die Git-, Listening-Ports und Container dieses Projekts zu melden.
 
-## SSH (`SUPER + ALT + S`)
+## SSH („SUPER + ALT + S“)
 
 `SUPER + ALT + S` öffnet einen Picker mit den Hosts, die in `~/.ssh/config` definiert sind. Der ausgewählte Host öffnet sich in einem neuen ARGVUS-Terminal, das `ssh <host>` im aktuellen Arbeitsbereich ausführt.
 
@@ -132,11 +132,11 @@ Wenn die Sitzung endet, bleibt das Fenster geöffnet und zeigt den Exit-Status a
 
 ### Regeln
 
-- Platzhalter-Einträge (`Host *`, `Host *.internal`) sind Übereinstimmungsblöcke, keine Ziele, und werden niemals aufgelistet. 
-- Jeder Alias in einer `Host`-Zeile wird separat aufgelistet (`Host a b` listet `a` und `b`). Duplikate werden entfernt. 
-- Hosts, die nur in Dateien definiert sind, die mit `Include` geladen werden, werden nicht aufgelistet; der Auswähler liest nur die Hauptdatei. 
-- Nur Aliase, die aus Buchstaben, Ziffern, `.`, `-` und `_` bestehen, werden gestartet. Jeder andere Name wird mit einer Benachrichtigung abgelehnt. 
-- Windows-Zeilenenden (CRLF) in der Konfiguration werden akzeptiert. 
+- Platzhalter-Einträge (`Host *`, `Host *.internal`) sind Übereinstimmungsblöcke, keine Ziele, und werden niemals aufgelistet.
+- Jeder Alias in einer `Host`-Zeile wird separat aufgelistet (`Host a b` listet `a` und `b`). Duplikate werden entfernt.
+- Hosts, die nur in Dateien definiert sind, die mit `Include` geladen werden, werden nicht aufgelistet; der Auswähler liest nur die Hauptdatei.
+- Nur Aliase, die aus Buchstaben, Ziffern, `.`, `-` und `_` bestehen, werden gestartet. Jeder andere Name wird mit einer Benachrichtigung abgelehnt.
+- Windows-Zeilenenden (CRLF) in der Konfiguration werden akzeptiert.
 - `ARGVUS_SSH_CONFIG` ersetzt den Pfad der Konfigurationsdatei, was für Tests nützlich ist.
 
 ### Befehle
@@ -239,10 +239,10 @@ Regeln, die für jeden Befehl gelten:
 - Befehle, die Schlüssel ändern oder veröffentlichen (`export-private`, `delete`, `edit sign`, `edit revoke`, `keyserver send`), benötigen `--yes`. Das Kontrollzentrum gibt es nur nach eigener Bestätigung weiter.
 - Befehle, die den geheimen Schlüssel verwenden, führen gpg mit `--no-tty` aus, sodass gpg niemals versucht, ein Terminal zu öffnen. Das Passwort wird aus dem pinentry-Fenster genommen, außer in `generate --passphrase-stdin`.
 - `generate` veranlasst den gpg-agent, `pinentry-gtk` zu verwenden. Es schreibt diese Zeile zwischen den `# BEGIN argvus-managed pinentry`- und `# END argvus-managed pinentry`-Markern, behält den Rest von `gpg-agent.conf` und speichert die vorherige Datei als `gpg-agent.conf.bak`. Wenn der Block bereits `pinentry-gtk` benennt, bleiben die Datei und der gpg-agent unverändert. Der Befehl verweigert die Ausführung, wenn `gpg-agent.conf` bereits `pinentry-program` außerhalb dieses Blocks setzt, sodass zwei Werte niemals im Konflikt stehen.
-- Die Installation des Pakets schreibt niemals in `~/.gnupg`. Die Konfigurationsänderungen erfolgen nur, wenn ein Schlüssel generiert wird.  
-- `GNUPGHOME` ersetzt `~/.gnupg`, was für Tests nützlich ist.  
+- Die Installation des Pakets schreibt niemals in `~/.gnupg`. Die Konfigurationsänderungen erfolgen nur, wenn ein Schlüssel generiert wird.
+- `GNUPGHOME` ersetzt `~/.gnupg`, was für Tests nützlich ist.
 
-`gnupg` und `pinentry` sind erforderliche Abhängigkeiten: die Schlüsselbefehle benötigen gpg, und das Passwortfenster ist `pinentry-gtk`.  
+`gnupg` und `pinentry` sind erforderliche Abhängigkeiten: die Schlüsselbefehle benötigen gpg, und das Passwortfenster ist `pinentry-gtk`.
 
 | Symptom | Ursache und Lösung |
 | --- | --- |
@@ -308,7 +308,7 @@ Erfordert `wtype`, `rofi`, `jq` und `argvus` (den Befehl `argvus config`).
 
 `wtype` simuliert Tastendrücke auf der Wayland-Ebene der Eingabe. Einige unter XWayland laufende X11-Anwendungen ignorieren diese Ereignisse, sodass der Text dort möglicherweise nicht erscheint, selbst wenn das Snippet gefunden wurde.
 
-## Git (`SUPER + ALT + G`)
+## Git („SUPER + ALT + G“)
 
 `SUPER + ALT + G` öffnet denselben Projekt-Picker wie `SUPER + O`. Die Auswahl eines Projekts öffnet `lazygit` (oder `gitui`) direkt darin, in einem neuen ARGVUS-Terminal auf dem aktuellen Arbeitsbereich. Es gibt keinen separaten Schritt, zuerst das Projekt auszuwählen.
 
@@ -381,16 +381,16 @@ Die Sprache ist Portugiesisch, wenn das Systemgebietsschema `pt-BR` ist, und ans
 
 Die Launcher-Konfiguration wird mit Komponenten geteilt, die anderen Paketen gehören:
 
-- Zwischenablage-Verlauf (`SUPER + H`) und seine Shortcut-Löschung (`SUPER + SHIFT + H`) werden von `argvus-hyprland` deklariert. Sie leiten `cliphist` mit dieser Konfiguration in Rofi ein. `cliphist` stammt von `argvus-session`, das den Zwischenablage-Rekorder ausführt, der den Verlauf füllt; das Meta-Paket `argvus` ist ebenfalls davon abhängig.  
-- Theme-, Akzent- und Layout-Auswahlen in `argvus-appearance` öffnen Rofi mit `config.rasi`.  
-- Die Hyprland-Fensterregeln erkennen die Namespaces `argvus-launcher` und `rofi`, sodass die Menüs die Launcher-Oberflächenbehandlung erhalten.  
+- Zwischenablage-Verlauf (`SUPER + H`) und seine Shortcut-Löschung (`SUPER + SHIFT + H`) werden von `argvus-hyprland` deklariert. Sie leiten `cliphist` mit dieser Konfiguration in Rofi ein. `cliphist` stammt von `argvus-session`, das den Zwischenablage-Rekorder ausführt, der den Verlauf füllt; das Meta-Paket `argvus` ist ebenfalls davon abhängig.
+- Theme-, Akzent- und Layout-Auswahlen in `argvus-appearance` öffnen Rofi mit `config.rasi`.
+- Die Hyprland-Fensterregeln erkennen die Namespaces `argvus-launcher` und `rofi`, sodass die Menüs die Launcher-Oberflächenbehandlung erhalten.
 
 ## Verpackung und Abhängigkeiten
 
 Das Paket `argvus-launcher` ist architekturunabhängig und installiert:
 
-- `argvus launcher`, `argvus-snippets`, `argvus-ssh` und `argvus-git` im gleichen Verzeichnis;  
-- `/usr/share/argvus/launcher/config/` mit der Rofi-Konfiguration und Themes;  
+- `argvus launcher`, `argvus-snippets`, `argvus-ssh` und `argvus-git` im gleichen Verzeichnis;
+- `/usr/share/argvus/launcher/config/` mit der Rofi-Konfiguration und Themes;
 - `/usr/share/argvus/launcher/sh/` mit `cheatsheets.sh` und `emoji-picker.sh`.
 
 Erforderliche Abhängigkeiten: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` und `pinentry` (welches `pinentry-gtk` bereitstellt). Optionale Abhängigkeiten: `openssh`, für den SSH-Auswähler und den SSH-Schlüsselmanager; `lazygit` und `gitui`, für die git-TUI.

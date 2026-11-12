@@ -1,5 +1,5 @@
 ---
-title: Application launcher
+title: एप्लिकेशन लॉन्चर
 description: ARGVUS Rofi मेनू के माध्यम से एप्लिकेशन लॉन्च करें, प्रोजेक्ट खोलें, SSH होस्ट और स्निपेट्स, इमोजी चुनें, गणना करें, और चीटशीट पढ़ें।
 ---
 
@@ -14,26 +14,26 @@ description: ARGVUS Rofi मेनू के माध्यम से एप्
 
 शॉर्टकट `argvus-hyprland` द्वारा घोषित किए गए हैं। यह पैकेज कमांड और उनके पीछे के मेनू प्रदान करता है।
 
-## Shortcuts
+## शॉर्टकट
 
-| Shortcut | Action | Command | Section |
+| शॉर्टकट | कार्रवाई | आदेश | धारा |
 | --- | --- | --- | --- |
-| `SUPER + D` | Application launcher | `argvus launcher` | Application launcher |
-| `SUPER + O` | Project switcher | `argvus projects` | Project switcher |
+| `SUPER + D` | एप्लिकेशन लॉन्चर | `argvus launcher` | एप्लिकेशन लॉन्चर |
+| `SUPER + O` | प्रोजेक्ट स्विचर | `argvus projects` | प्रोजेक्ट स्विचर |
 | `SUPER + ALT + 1` to `9`उस स्थिति में प्रोजेक्ट खोलें`argvus projects open N` | प्रोजेक्ट स्विचर |
-| `SUPER + ALT + S` | SSH host picker | `argvus ssh` | SSH |
-| `SUPER + ALT + N` | Snippet picker | `argvus snippets` | Snippets |
-| `SUPER + ALT + G` | Project picker, then git TUI | `argvus git` | Git |
-| `SUPER + .` | Emoji picker | `emoji-picker.sh` | Emoji picker |
-| `SUPER + C` | Calculator | `rofi -show calc` | Calculator |
-| `SUPER + SHIFT + /` | Hyprland cheatsheet | `cheatsheets.sh hypr` | Cheatsheets |
-| `SUPER + CTRL + /` | Kitty cheatsheet | `cheatsheets.sh kitty` | Cheatsheets |
+| `SUPER + ALT + S` | SSH होस्ट पिकर | `argvus ssh` | एसएसएच |
+| `SUPER + ALT + N` | स्निपेट पिकर | `argvus snippets` | स्निपेट्स |
+| `SUPER + ALT + G` | प्रोजेक्ट पिकर, फिर गिट टीयूआई | `argvus git` | गिट |
+| `SUPER + .` | इमोजी पिकर | `emoji-picker.sh` | इमोजी पिकर |
+| `SUPER + C` | कैलकुलेटर | `rofi -show calc` | कैलकुलेटर |
+| `SUPER + SHIFT + /` | हाइप्रलैंड चीटशीट | `cheatsheets.sh hypr` | चीटशीट्स |
+| `SUPER + CTRL + /` | किटी चीटशीट | `cheatsheets.sh kitty` | चीटशीट्स |
 
 ## एप्लिकेशन लॉन्चर (`SUPER + D`)
 
 `SUPER + D` चलाता है `argvus launcher`, जो `drun` मोड में Rofi को खोलता है। यह डेस्कटॉप एंट्री के साथ इंस्टॉल की गई ग्राफिकल एप्लिकेशन्स की सूची दिखाता है, और चुनी गई एप्लिकेशन `Enter` दबाने पर शुरू होती है।
 
-1. Press `SUPER + D`.
+1. `SUPER + D` दबाएँ।
 2. एप्लिकेशन के नाम का हिस्सा टाइप करें। सूची क्रमबद्ध होती है और फ़िल्टर केस की परवाह नहीं करता।
 3. एप्लिकेशन शुरू करने के लिए `Enter` दबाएँ, या मेनू बंद करने के लिए `Esc` दबाएँ।
 
@@ -52,13 +52,13 @@ argvus launcher --config PATH    # uses another Rofi configuration file
 
 पैकेज Rofi कॉन्फ़िगरेशन को `/usr/share/argvus/launcher/config/` के तहत इंस्टॉल करता है:
 
-| File | Role |
+| फ़ाइल | भूमिका |
 | --- | --- |
 | `config.rasi` | प्रत्येक ARGVUS मेनू द्वारा उपयोग किया जाने वाला एंट्री पॉइंट। Rofi सेट करता है `configuration`(फ़ॉन्ट, कोई आइकन नहीं, क्रमबद्ध सूची, केस-इन्सेंसिटिव मिलान) और इम्पोर्ट्स`theme.rasi`. |
 | `theme.rasi` | विंडो, इनपुट बार और सूची के रंग और लेआउट। एक थीम और मोड फ़ाइल आयात करता है। |
 | `mode.rasi` | मोड ओवरराइड। पैकेज किया गया फाइल कोई ओवरराइड नहीं रखता और डार्क मोड बनाए रखता है। |
-| `themes/<family>/theme.rasi` | Palette of a theme family, for example `argvus-dark` or `tokyo-night`. |
-| `themes/<family>-spaced/theme.rasi` | Spaced variant of the same family. |
+| `themes/<family>/theme.rasi` | थीम परिवार का पैलेट, उदाहरण के लिए `argvus-dark` या `tokyo-night`। |
+| `themes/<family>-spaced/theme.rasi` | एक ही परिवार का अंतरित संस्करण। |
 
 पैकेज 22 परिवार प्रदान करता है, और प्रत्येक के पास `-spaced` प्रकार है। पैकेज किए गए `theme.rasi` ने `argvus-dark` को आयात किया।
 
@@ -110,7 +110,7 @@ argvus projects list                    # prints the roots and paths
 
 `SUPER + ALT + S` एक पिकर खोलता है जिसमें `~/.ssh/config` में परिभाषित होस्ट होते हैं। चयनित होस्ट वर्तमान कार्यस्थान में `ssh <host>` चला रहे एक नए ARGVUS टर्मिनल में खुलता है।
 
-### Setup
+### सेटअप
 
 प्रत्येक सर्वर के लिए `Host` प्रविष्टि `~/.ssh/config` में जोड़ें:
 
@@ -124,15 +124,15 @@ Host myhost
 
 सबसे पहले पुष्टि करें कि `ssh myhost` एक सामान्य टर्मिनल में काम करता है। लॉन्चर केवल `ssh` चलाता है; प्रमाणीकरण, कुंजी और होस्ट सत्यापन OpenSSH द्वारा संभाले जाते हैं।
 
-### Use
+### उपयोग करें
 
-1. Press `SUPER + ALT + S`.
+1. `SUPER + ALT + S` दबाएँ।
 2. होस्ट नाम का हिस्सा टाइप करें, या एरो कीज़ का उपयोग करें।
 3. `Enter` दबाएँ। टर्मिनल खुलता है और `ssh <host>` चलाता है।
 
 जब सत्र समाप्त होता है, तो विंडो खुली रहती है और निकासी स्थिति दिखाती है, उदाहरण के लिए `ssh exited with status 0. Press Enter to close.` इसे बंद करने के लिए `Enter` दबाएँ। यह GitHub, GitLab और Gitea जैसी फोर्ज के लिए महत्वपूर्ण है: वे आपको प्रमाणित करते हैं और तुरंत कनेक्शन बंद कर देते हैं क्योंकि वे शेल प्रदान नहीं करते। विंडो उनका संदेश स्क्रीन पर बनी रहती है, गायब होने के बजाय।
 
-### Rules
+### नियम
 
 - वाइल्डकार्ड प्रविष्टियां (`Host *`, `Host *.internal`) मैच ब्लॉक हैं, लक्ष्य नहीं, और कभी सूचीबद्ध नहीं की जातीं।
 - किसी भी `Host` लाइन पर हर उपनाम अलग-अलग सूचीबद्ध किया जाता है (`Host a b` में `a` और `b` सूचीबद्ध हैं)। प्रतिलिपियां हटा दी जाती हैं।
@@ -141,16 +141,16 @@ Host myhost
 - कॉन्फ़िग में विंडोज़ लाइन एंडिंग्स (CRLF) स्वीकार किए जाते हैं।
 - `ARGVUS_SSH_CONFIG` कॉन्फ़िग फ़ाइल का पथ बदलता है, जो परीक्षण के लिए उपयोगी है।
 
-### Commands
+### आदेश
 
 ```sh
 argvus ssh list          # prints the configured hosts, one per line
 argvus ssh open myhost   # opens a specific host without the picker
 ```
 
-### Troubleshooting
+### समस्या निवारण
 
-| Symptom | Cause and fix |
+| लक्षण | कारण और निवारण |
 | --- | --- |
 | सूचना "~/.ssh/config में कोई होस्ट पाए नहीं गए" | फाइल गायब है या इसमें कोई नहीं है`Host`लाइनें। चलाएँ`argvus ssh list`जाँचने के लिए। |
 | पिकर से एक होस्ट गायब है | यह एक वाइल्डकार्ड है, यह एक से आता है `Include`फ़ाइल, या उसमें अनुमत सेट के बाहर के अक्षर हैं। इसे मुख्य फ़ाइल में एक साधारण उपनाम के साथ रखें। |
@@ -189,7 +189,7 @@ argvus keys delete NAME                  # deletes both files; refused while the
 
 `openssh` (`ssh-keygen` और `ssh-add`) और `argvus` (`argvus terminal` कमांड) की आवश्यकता है।
 
-| Symptom | Cause and fix |
+| लक्षण | कारण और निवारण |
 | --- | --- |
 | `load`एक टर्मिनल खोलता है, लेकिन कुंजी लोड नहीं हुई है | उस टर्मिनल में पासफ्रेज़ टाइप करें। अगर यह नहीं पूछा गया, तो चलाएँ `ssh-add -l`यह देखने के लिए कि एजेंट के पास क्या है। |
 | टर्मिनल दिखाता है`Could not open a connection to your authentication agent` | Hyprland एजेंट से पहले शुरू हुआ, इसलिए इसके टर्मिनल्स में कमी है `SSH_AUTH_SOCK`. लॉन्चर पीछे हट जाता है`$XDG_RUNTIME_DIR/ssh-agent.socket`, इसलिए अपडेट करें`argvus-launcher`और एक नया टर्मिनल खोलें। |
@@ -249,7 +249,7 @@ argvus gpg keyserver recv FINGERPRINT             # fetches the key from that ke
 
 `gnupg` और `pinentry` आवश्यक निर्भरता हैं: कुंजी आदेशों को gpg की आवश्यकता होती है, और पासफ़्रेज़ विंडो `pinentry-gtk` है।
 
-| Symptom | Cause and fix |
+| लक्षण | कारण और निवारण |
 | --- | --- |
 | `generate`पासफ़्रेज़ विंडो नहीं खोलता | जाँच करें`argvus gpg status`. `pinentry-gtk`को स्थापित किया जाना चाहिए, और सत्र को उजागर करना चाहिए`WAYLAND_DISPLAY` or `DISPLAY`. |
 | `generate`रिपोर्ट करता है कि`pinentry-gtk`स्थापित नहीं है | स्थापित करें `pinentry` package. |
@@ -263,7 +263,7 @@ argvus gpg keyserver recv FINGERPRINT             # fetches the key from that ke
 
 `SUPER + ALT + N` आपके स्निपेट्स के साथ एक पिकर खोलता है। चयनित स्निपेट को फोकस किए गए विंडो में, कर्सर पर टाइप किया जाता है, क्लिपबोर्ड के माध्यम से जाने के बजाय।
 
-### Setup
+### सेटअप
 
 एक स्निपेट जोड़ें जिसमें नाम और उसका टेक्स्ट हो:
 
@@ -279,13 +279,13 @@ argvus snippets list
 
 स्निपेट्स को argvus config के `snippets` सेक्शन में  `argvus config` `{name, content}` प्रविष्टियों के रूप में रखा जाता है। आप उन्हें `argvus config get /snippets/items` के साथ पढ़ सकते हैं।
 
-### Use
+### उपयोग करें
 
 1. उस एप्लिकेशन के टेक्स्ट फ़ील्ड पर क्लिक करें जिसे टेक्स्ट प्राप्त करना चाहिए।
-2. Press `SUPER + ALT + N`.
+2. `SUPER + ALT + N` दबाएँ।
 3. नाम से स्निपेट का चयन करें और `Enter` दबाएं। टेक्स्ट उस स्थान पर टाइप किया जाता है जहां कर्सर है।
 
-### Commands
+### आदेश
 
 ```sh
 argvus snippets add "NAME" "CONTENT"   # adds a snippet, or replaces the one with the same name
@@ -297,16 +297,16 @@ argvus snippets                        # opens the picker (same as the shortcut)
 argvus snippets --help                 # shows the options and an example
 ```
 
-### Rules
+### नियम
 
 - नाम अद्वितीय और केस-संवेदी होते हैं। किसी मौजूदा नाम के साथ एक स्निपेट जोड़ने से इसकी सामग्री बदल जाती है।
 - सामग्री खाली नहीं हो सकती: एक खाली स्निपेट को नहीं मिलने के रूप में रिपोर्ट किया जाता है।
 - `open` केवल अंकों से बने नाम को स्थिति के रूप में मानता है। अस्पष्टता से बचने के लिए अक्षरों वाले नामों का उपयोग करें, जैसे `code2`।
 - एक पद का अर्थ है वह क्रम जो `list` द्वारा दिखाया गया है। किसी स्निपेट को हटाने से उसके बाद वाले पदों की स्थिति बदल जाती है।
 
-### Troubleshooting
+### समस्या निवारण
 
-| Symptom | Cause and fix |
+| लक्षण | कारण और निवारण |
 | --- | --- |
 | शॉर्टकट दबाने पर "कोई स्निपेट नहीं" सूचना | अभी तक कोई स्निपेट जोड़ा नहीं गया है। चलाएँ`argvus snippets add` first. |
 | `open`रिपोर्ट करता है कि स्निपेट नहीं मिला | नाम बिल्कुल मेल नहीं खाता। तुलना करें`argvus snippets list`. |
@@ -320,7 +320,7 @@ argvus snippets --help                 # shows the options and an example
 
 `SUPER + ALT + G` `SUPER + O` के समान प्रोजेक्ट पिकर खोलता है। किसी प्रोजेक्ट को चुनने से सीधे इसमें `lazygit` (या `gitui`) खुल जाता है, वर्तमान वर्कस्पेस में एक नए ARGVUS टर्मिनल में। पहले प्रोजेक्ट चुनने का अलग चरण नहीं है।
 
-### Setup
+### सेटअप
 
 दो टूल्स में से एक स्थापित करें। दोनों इस पैकेज की ऐच्छिक निर्भरताएँ हैं:
 
@@ -328,9 +328,9 @@ argvus snippets --help                 # shows the options and an example
 sudo pacman -S lazygit   # or: sudo pacman -S gitui
 ```
 
-### Use
+### उपयोग करें
 
-1. Press `SUPER + ALT + G`.
+1. `SUPER + ALT + G` दबाएँ।
 2. सूची में से कोई प्रोजेक्ट चुनें, या रद्द करने के लिए `Esc` दबाएं। रद्द करने पर कुछ भी नहीं खुलता।
 3. टर्मिनल प्रोजेक्ट डायरेक्टरी में खुलता है और TUI शुरू करता है।
 
@@ -350,9 +350,9 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 । इस वेरिएबल को उस कमांड के पर्यावरण से पढ़ा जाता है जो स्क्रिप्ट चलाता है। इसे ARGVUS कॉन्फ़िगरेशन में संग्रहीत नहीं किया जाता।\n
 
-### Troubleshooting
+### समस्या निवारण
 
-| Symptom | Cause and fix |
+| लक्षण | कारण और निवारण |
 | --- | --- |
 | सूचना "गिट रिपॉजिटरी नहीं है" | चुना हुआ प्रोजेक्ट एक गिट रिपॉजिटरी नहीं है, या इसकी डायरेक्टरी को स्थानांतरित किया गया था। इसे हटाएं या ठीक करें `argvus projects remove`. |
 | सूचना "lazygit या gitui इंस्टॉल करें" | इनमें से कोई भी टूल मौजूद नहीं है`PATH`. इनमें से किसी एक को इंस्टॉल करें। |
@@ -408,9 +408,9 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 
 पैकेज इंस्टॉल करने से `$HOME` में कोई लेखन नहीं होता है। उपयोगकर्ता कॉन्फ़िगरेशन सत्र प्रारंभ में बनाया जाता है, जैसा कि [Rofi कॉन्फ़िगरेशन और थीम्स](#where-the-active-configuration-lives) में वर्णित है।
 
-## Troubleshooting
+## समस्या निवारण
 
-| Symptom | Cause and fix |
+| लक्षण | कारण और निवारण |
 | --- | --- |
 | `SUPER + D`कुछ भी नहीं खोलता | जाँच करें`argvus launcher`एक टर्मिनल में। पुष्टि करें कि`rofi`संस्थापित है और Rofi कॉन्फ़िगरेशन मौजूद है। |
 | `SUPER + D`कोई आवेदन सूचीबद्ध नहीं है | इन आवेदनों का डेस्कटॉप एंट्री नहीं है। केवल वे आवेदन जिनके पास`.desktop`फ़ाइल दिखाई जाती है। |
@@ -423,13 +423,13 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 
 ## संबंधित घटक
 
-| Component | Responsibility |
+| घटक | जिम्मेदारी |
 | --- | --- |
 | `argvus-hyprland` | मेनू के लिए शॉर्टकट और Hyprland विंडो नियम घोषित करता है। |
 | `argvus-appearance`| सक्रिय थीम, उच्चारण और लेआउट को बदलता है, और Rofi थीम संदर्भों को पुनः लिखता है। |
 | `argvus` (`argvus config`) | परियोजनाओं, स्निपेट्स और डिफ़ॉल्ट लॉन्चर सेटिंग को स्टोर करता है। |
 | `argvus-session`| प्रारंभिक Rofi कॉन्फ़िगरेशन की प्रतियां बनाता है और सत्र की शुरुआत में इसका फ़ॉन्ट सेट करता है। |
 | `argvus` (`argvus terminal`) | SSH सत्र, प्रोजेक्ट टर्मिनल और पासफ्रेज़ प्रॉम्प्ट खोलता है`argvus keys`. |
-| `argvus` (`argvus widget-telemetry`) | Reads the active project written by `argvus projects`. |
+| `argvus` (`argvus widget-telemetry`) | `argvus projects` द्वारा लिखित सक्रिय प्रोजेक्ट पढ़ता है। |
 | `argvus` (`argvus i18n`) | लॉन्चर स्क्रिप्ट्स द्वारा उपयोग किए जाने वाले अनुवादित संदेश प्रदान करता है। |
-| `argvus` (`argvus control-center`) | Edits the project list through `argvus projects`. |
+| `argvus` (`argvus control-center`) | `argvus projects` के माध्यम से प्रोजेक्ट सूची संपादित करता है। |

@@ -262,7 +262,7 @@ Regras que valem para todos os comandos:
 | `import` recusa um arquivo | O arquivo contém uma chave privada. Exporte só a chave pública na outra máquina com `argvus gpg export-public`. |
 | `list` não mostra chaves | O keyring em `GNUPGHOME` (ou em `~/.gnupg`) está vazio. Rode `argvus gpg generate` para criar uma chave. |
 
-## Snippets (`SUPER + ALT + N`)
+## Trechos (`SUPER + ALT + N`)
 
 `SUPER + ALT + N` abre um seletor com seus snippets. O snippet escolhido é digitado na janela em foco, na posição do cursor, em vez de passar pela área de transferência.
 

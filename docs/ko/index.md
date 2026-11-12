@@ -105,7 +105,7 @@ argvus projects list                    # prints the roots and paths
 
 프로젝트를 열면 해당 경로가 세션의 활성 프로젝트로 기록되며, Dev Dashboard 텔레메트리 블록(`argvus widget-telemetry`)이 해당 프로젝트의 git, 리스닝 포트 및 컨테이너를 보고하는 데 읽습니다.
 
-## SSH (`SUPER + ALT + S`)
+## SSH(`SUPER + ALT + S`)
 
 `SUPER + ALT + S`은 `~/.ssh/config`에 정의된 호스트와 함께 선택기를 엽니다. 선택된 호스트는 현재 워크스페이스에서 `ssh <host>`을 실행하는 새로운 ARGVUS 터미널에서 열립니다.
 
@@ -395,7 +395,7 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 
 필수 종속성: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` 및 `pinentry` (이것은 `pinentry-gtk`를 제공합니다). 선택적 종속성: `openssh`, SSH 선택기 및 SSH 키 관리자를 위해; `lazygit` 및 `gitui`, git TUI용.
 
-패키지를 설치해도 `$HOME`에 쓰지 않습니다. 사용자 구성은 세션 시작 시 생성되며, [Rofi 구성 및 테마](#where-the-active-configuration-lives)]에 설명되어 있습니다.
+패키지를 설치해도 `$HOME`에 쓰지 않습니다. 사용자 구성은 세션 시작 시 생성되며, [Rofi 구성 및 테마](#where-the-active-configuration-lives)에 설명되어 있습니다.
 
 ## 문제 해결
 
