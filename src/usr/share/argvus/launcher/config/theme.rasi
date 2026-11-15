@@ -21,6 +21,32 @@
 }
 
 window {
+  fullscreen: true;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  children: [ backdrop ];
+}
+backdrop {
+  orientation: vertical;
+  background-color: transparent;
+  children: [ top-space, menu-row, bottom-space ];
+}
+top-space, bottom-space, left-space, right-space {
+  expand: true;
+  background-color: transparent;
+}
+menu-row {
+  orientation: horizontal;
+  expand: false;
+  background-color: transparent;
+  children: [ left-space, menu-card, right-space ];
+}
+menu-card {
+  orientation: vertical;
+  expand: false;
+  width: 50%;
+  children: [ mainbox ];
   background-color: @bg;
   border: 1px;
   border-color: @border-color;

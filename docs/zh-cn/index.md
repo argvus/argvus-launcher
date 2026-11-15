@@ -422,3 +422,5 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 | `argvus` (`argvus widget-telemetry`) | 读取由 `argvus projects` 写入的活动项目。 |
 | `argvus` (`argvus i18n`) | 提供启动器脚本使用的已翻译消息。 |
 | `argvus` (`argvus control-center`) | 通过 `argvus projects` 编辑项目列表。 |
+
+在 Sticky 和 Spaced 模式下，Rofi 模糊覆盖菜单所在的整个显示器，包括栏和边距。菜单保持居中，并遵循全局模糊设置。

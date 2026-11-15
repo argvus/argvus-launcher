@@ -422,3 +422,5 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 | `argvus` (`argvus widget-telemetry`) | `argvus projects`에서 작성한 활성 프로젝트를 읽습니다. |
 | `argvus` (`argvus i18n`) | 런처 스크립트에서 사용되는 번역된 메시지를 제공합니다. |
 | `argvus` (`argvus control-center`) | `argvus projects`를 통해 프로젝트 목록을 편집합니다. |
+
+Sticky와 Spaced에서 Rofi 흐림 효과는 표시줄과 여백을 포함한 메뉴 모니터 전체를 덮습니다. 메뉴는 중앙에 유지되며 전역 흐림 설정을 따릅니다.

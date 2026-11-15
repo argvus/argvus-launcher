@@ -422,3 +422,5 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 | `argvus` (`argvus widget-telemetry`) | `argvus projects`によって書き込まれたアクティブプロジェクトを読み取ります。 |
 | `argvus` (`argvus i18n`) | ランチャースクリプトで使用される翻訳済みメッセージを提供します。 |
 | `argvus` (`argvus control-center`) | `argvus projects`を通じてプロジェクトリストを編集します。 |
+
+Sticky と Spaced では、Rofi のぼかしがバーや余白を含むメニューのモニター全体を覆います。メニューは中央に表示され、ぼかしの全体設定に従います。

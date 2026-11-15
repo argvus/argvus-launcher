@@ -423,3 +423,5 @@ La instalación del paquete no escribe en `$HOME`. La configuración del usuario
 | `argvus` (`argvus widget-telemetry`) | Lee el proyecto activo escrito por `argvus projects`. |
 | `argvus` (`argvus i18n`) | Proporciona los mensajes traducidos usados por los scripts del lanzador. |
 | `argvus` (`argvus control-center`) | Edita la lista de proyectos a través de `argvus projects`. |
+
+Rofi desenfoca todo el monitor del menú, incluidas barras y márgenes, en Sticky y Spaced. El menú permanece centrado y respeta el ajuste global de desenfoque.

@@ -457,3 +457,5 @@ Menginstal paket tidak menulis ke `$HOME`. Konfigurasi pengguna dibuat saat sesi
 | `argvus` (`argvus widget-telemetry`) | Membaca proyek aktif yang ditulis oleh `argvus projects`. |
 | `argvus` (`argvus i18n`) | Menyediakan pesan yang diterjemahkan yang digunakan oleh skrip peluncur. |
 | `argvus` (`argvus control-center`) | Mengedit daftar proyek melalui `argvus projects`. |
+
+Dalam Sticky dan Spaced, blur Rofi mencakup seluruh monitor menu, termasuk bilah dan margin. Menu tetap di tengah dan mengikuti pengaturan blur global.

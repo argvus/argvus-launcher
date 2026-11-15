@@ -447,3 +447,5 @@ Cài đặt gói không ghi vào `$HOME`. Cấu hình người dùng được t�
 | `argvus` (`argvus widget-telemetry`) | Đọc dự án đang hoạt động được viết bởi `argvus projects`. |
 | `argvus` (`argvus i18n`) | Cung cấp các thông báo đã dịch được sử dụng bởi tập lệnh khởi chạy. |
 | `argvus` (`argvus control-center`) | Chỉnh sửa danh sách dự án thông qua `argvus projects`. |
+
+Trong Sticky và Spaced, hiệu ứng mờ Rofi phủ toàn bộ màn hình chứa menu, gồm thanh và lề. Menu vẫn ở giữa và tuân theo cài đặt mờ toàn cục.

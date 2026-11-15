@@ -433,3 +433,5 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 | `argvus` (`argvus widget-telemetry`) | `argvus projects` द्वारा लिखित सक्रिय प्रोजेक्ट पढ़ता है। |
 | `argvus` (`argvus i18n`) | लॉन्चर स्क्रिप्ट्स द्वारा उपयोग किए जाने वाले अनुवादित संदेश प्रदान करता है। |
 | `argvus` (`argvus control-center`) | `argvus projects` के माध्यम से प्रोजेक्ट सूची संपादित करता है। |
+
+Sticky और Spaced में Rofi का धुंधलापन बार और किनारों सहित मेनू वाले पूरे मॉनिटर को ढकता है। मेनू बीच में रहता है और वैश्विक धुंधलापन सेटिंग का पालन करता है।

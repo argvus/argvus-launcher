@@ -435,3 +435,5 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 | `argvus` (`argvus widget-telemetry`) | `argvus projects` দ্বারা লিখিত সক্রিয় প্রকল্প পড়ে। |
 | `argvus` (`argvus i18n`) | লঞ্চার স্ক্রিপ্টগুলিতে ব্যবহৃত অনুবাদিত বার্তাগুলি সরবরাহ করে। |
 | `argvus` (`argvus control-center`) | `argvus projects` এর মাধ্যমে প্রকল্প তালিকা সম্পাদনা করে। |
+
+Sticky ও Spaced মোডে Rofi মেনুর পুরো মনিটর বার ও মার্জিনসহ ঝাপসা করে। মেনু কেন্দ্রে থাকে এবং বৈশ্বিক ব্লার সেটিং অনুসরণ করে।

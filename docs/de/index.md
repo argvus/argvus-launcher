@@ -422,3 +422,5 @@ Die Installation des Pakets schreibt nicht in `$HOME`. Die Benutzerkonfiguration
 | `argvus` (`argvus widget-telemetry`) | Liest das aktive Projekt, das von `argvus projects` geschrieben wurde. |
 | `argvus` (`argvus i18n`) | Stellt die übersetzten Nachrichten bereit, die von den Launcher-Skripten verwendet werden. |
 | `argvus` (`argvus control-center`) | Bearbeitet die Projektliste über `argvus projects`. |
+
+Rofi verwischt im Sticky- und Spaced-Modus den gesamten Menümonitor einschließlich Leisten und Rändern. Das Menü bleibt zentriert; die globale Unschärfeeinstellung gilt weiterhin.

@@ -422,3 +422,5 @@ L'installazione del pacchetto non scrive in `$HOME`. La configurazione utente vi
 | `argvus` (`argvus widget-telemetry`) | Legge il progetto attivo scritto da `argvus projects`. |
 | `argvus` (`argvus i18n`) | Fornisce i messaggi tradotti utilizzati dagli script del launcher. |
 | `argvus` (`argvus control-center`) | Modifica la lista dei progetti tramite `argvus projects`. |
+
+Rofi sfoca tutto il monitor del menu, incluse barre e margini, in Sticky e Spaced. Il menu resta centrato e rispetta l’impostazione globale della sfocatura.

@@ -33,4 +33,4 @@ case "$APP" in
     ;;
 esac
 
-exec rofi -config "$(paths_config launcher/config/config.rasi)" -dmenu -p "$PROMPT" -i -theme-str 'window { width: 1050px; height: 600px;}' < "$CHEAT_FILE"
+exec rofi -config "$(paths_config launcher/config/config.rasi)" -dmenu -p "$PROMPT" -i -theme-str 'menu-card { width: 1050px; height: 600px;}' < "$CHEAT_FILE"

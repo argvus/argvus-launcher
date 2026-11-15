@@ -435,3 +435,5 @@ Installing the package does not write into `$HOME`. User configuration is create
 | `argvus` (`argvus widget-telemetry`) | Reads the active project written by `argvus projects`. |
 | `argvus` (`argvus i18n`) | Provides the translated messages used by the launcher scripts. |
 | `argvus` (`argvus control-center`) | Edits the project list through `argvus projects`. |
+
+Rofi uses a fullscreen transparent surface: blur covers the entire menu monitor, including bars and margins, in Sticky and Spaced. The menu stays centered; global blur settings still apply.

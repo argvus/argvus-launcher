@@ -489,3 +489,5 @@ Installing the package does not write into  `libnotify`  `rofi`  `rofi-calc`  `r
 | `argvus` (`argvus widget-telemetry`) | يقرأ المشروع النشط الذي كتبه `argvus projects`. |
 | `argvus` (`argvus i18n`                    | .ﻞﻐﺸﻤﻟﺍ ﺕﺎﺘﺒﻳﺮﻜﺳ ﺎﻬﻣﺪﺨﺘﺴﺗ ﻲﺘﻟﺍ ﺔﻤﺟﺮﺘﻤﻟﺍ ﻞﺋﺎﺳﺮﻟﺍ ﺮﻓﻮﻳ | (
 | `argvus` (`argvus control-center`) | يقوم بتحرير قائمة المشاريع من خلال `argvus projects`. |
+
+يغطي تمويه Rofi كامل شاشة القائمة بما فيها الأشرطة والهوامش في Sticky وSpaced. تبقى القائمة في الوسط وتتبع إعداد التمويه العام.

@@ -436,3 +436,5 @@ A instalação do pacote não grava nada em `$HOME`. A configuração do utiliza
 | `argvus` (`argvus widget-telemetry`) | Lê o projeto ativo gravado pelo `argvus projects`. |
 | `argvus` (`argvus i18n`) | Fornece as mensagens traduzidas usadas pelos scripts do launcher. |
 | `argvus` (`argvus control-center`) | Edita a lista de projetos por meio do `argvus projects`. |
+
+O Rofi usa uma superfície transparente em ecrã inteiro: o desfoque cobre todo o monitor do menu, incluindo barras e margens, em Sticky e Spaced. O menu permanece centrado e respeita o controlo global de desfoque.

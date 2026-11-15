@@ -422,3 +422,5 @@ L'installation du paquet n'écrit pas dans `$HOME`. La configuration utilisateur
 | `argvus` (`argvus widget-telemetry`) | Lit le projet actif écrit par `argvus projects`. |
 | `argvus` (`argvus i18n`) | Fournit les messages traduits utilisés par les scripts du lanceur. |
 | `argvus` (`argvus control-center`) | Modifie la liste des projets via `argvus projects`. |
+
+Rofi floute tout le moniteur du menu, barres et marges comprises, en Sticky et Spaced. Le menu reste centré et respecte le réglage global du flou.

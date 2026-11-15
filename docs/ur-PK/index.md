@@ -457,3 +457,5 @@ Installing the package does not write into  gitui  lazygit  openssh  pinentry-gt
 | `argvus` (`argvus widget-telemetry`) | `argvus projects` کا لکھا ہوا ایکٹو پروجیکٹ پڑھتا ہے۔ |
 | `argvus` (`argvus i18n`) | لانچر اسکرپٹس کے ذریعہ استعمال کردہ ترجمہ شدہ پیغامات فراہم کرتا ہے۔ |
 | `argvus` (`argvus control-center`) | `argvus projects` کے ذریعے پروجیکٹ کی فہرست میں ترمیم کرتا ہے۔ |
+
+Sticky اور Spaced میں Rofi کا دھندلاپن بار اور حاشیوں سمیت مینو کے پورے مانیٹر پر ہوتا ہے۔ مینو درمیان میں رہتا ہے اور عمومی دھندلاپن کی ترتیب پر عمل کرتا ہے۔

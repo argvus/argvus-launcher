@@ -422,3 +422,5 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 | `argvus` (`argvus widget-telemetry`) | Считывает активный проект, записанный `argvus projects`. |
 | `argvus` (`argvus i18n`) | Предоставляет переведённые сообщения, используемые скриптами запуска. |
 | `argvus` (`argvus control-center`) | Редактирует список проектов через `argvus projects`. |
+
+Rofi размывает весь монитор меню, включая панели и поля, в Sticky и Spaced. Меню остаётся по центру; глобальная настройка размытия сохраняет силу.

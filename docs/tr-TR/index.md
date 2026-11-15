@@ -443,3 +443,5 @@ Paketin kurulumu `$HOME` içerisine yazmaz. Kullanıcı yapılandırması, [Rofi
 | `argvus` (`argvus widget-telemetry`) | `argvus projects` tarafından yazılan aktif projeyi okur. |
 | `argvus` (`argvus i18n`) | Başlatıcı komut dosyaları tarafından kullanılan çevrilmiş mesajları sağlar. |
 | `argvus` (`argvus control-center`) | Proje listesini `argvus projects` aracılığıyla düzenler. |
+
+Sticky ve Spaced modlarında Rofi bulanıklığı çubuklar ve kenarlar dahil menü monitörünün tamamını kaplar. Menü ortada kalır ve genel bulanıklık ayarına uyar.
