@@ -1,8 +1,8 @@
 ---
-title: 应用启动器
-description: 通过 ARGVUS Rofi 菜单启动应用程序、打开项目、SSH 主机和代码片段、选择表情符号、进行计算以及阅读速查表。
+title: 启动器与搜索
+description: 启动器与搜索 — Quickshell/QML + Rust.
 ---
-`argvus-launcher` 提供了 ARGVUS 用于从键盘打开内容的 Rofi 配置、主题和菜单。它包含：
+主启动器采用 Quickshell/QML 和本地 Rust 搜索引擎，可查找应用、窗口、设置、操作、项目、SSH 主机、文件和快捷键。文件索引默认关闭，需明确选择文件夹。仅索引名称和路径，不读取文档内容。最近文件来自 XDG 记录。默认排除隐藏文件，不跟随目录符号链接。专用 Rofi 菜单继续可用。
 
 - 应用启动器（`SUPER + D`）；
 - 每个 ARGVUS Rofi 菜单共享的 Rofi 配置和主题；
@@ -28,23 +28,26 @@ description: 通过 ARGVUS Rofi 菜单启动应用程序、打开项目、SSH �
 | `SUPER + SHIFT + /` | Hyprland 速查表 | `cheatsheets.sh hypr` | 速查表 |
 | `SUPER + CTRL + /` | Kitty 速查表 | `cheatsheets.sh kitty` | 速查表 |
 
-## 应用启动器 (`SUPER + D`)
+## 启动器与搜索
 
-`SUPER + D` 运行 `argvus launcher`，它以 `drun` 模式打开 Rofi。它列出了使用桌面条目安装的图形应用程序，按下 `Enter` 时会启动所选的应用程序。
+主启动器采用 Quickshell/QML 和本地 Rust 搜索引擎，可查找应用、窗口、设置、操作、项目、SSH 主机、文件和快捷键。文件索引默认关闭，需明确选择文件夹。仅索引名称和路径，不读取文档内容。最近文件来自 XDG 记录。默认排除隐藏文件，不跟随目录符号链接。专用 Rofi 菜单继续可用。
 
-1. 按下 `SUPER + D`。
-2. 输入应用程序名称的一部分。列表会排序，筛选器不区分大小写。
-3. 按下 `Enter` 启动应用程序，或按 `Esc` 关闭菜单。
+`argvus launcher` · `argvus control-center launcher`
 
-```sh
-argvus launcher                  # opens the application menu
-argvus launcher --config PATH    # uses another Rofi configuration file
-```
-任何其他参数都会传递给 `rofi`。`--config` 如果没有值则会报错。
+↑↓ 导航 · Enter 打开 · Esc 返回 · Ctrl+F 收藏
 
-当默认启动器是 rofi（默认设置）时，Hyprland 会运行 `argvus launcher --config <Rofi configuration>`。如果默认应用中的默认  `rofi` `launcher` 被设置为其他程序，则 Hyprland 会运行 `<program> --show drun`。请在控制中心的默认应用中设置，它会将值存储在 `argvus-config` 中。
+- 配置搜索: 应用领域, 视窗, 设置, 行动, 项目, SSH, 文件, 帮助.
+- 添加索引文件夹 / 添加排除项 — 绝对路径.
+- 暂停索引 / 清除索引并暂停 / 重建索引.
+- ↑↓ 导航 · Enter 切换/添加 · Delete 删除 · Ctrl+↑↓ 排序 · F5 刷新 · Esc 返回
 
-只有具有桌面条目的应用才会出现在列表中。未安装 `.desktop` 文件的应用无法在此处找到。
+`argvus config get /launcher --effective`
+
+`$XDG_CONFIG_HOME/argvus/config/launcher.json` → `$XDG_CACHE_HOME/argvus/launcher/index.json`
+
+Quickshell: `launcher/Theme.qml` · Rofi: `launcher/theme.rasi`
+
+`--config` / Rasi: 配置搜索 → `argvus control-center launcher`.
 
 ## Rofi 配置和主题
 
@@ -401,7 +404,7 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 
 | 症状 | 原因与解决方法 |
 | --- | --- |
-| `SUPER + D` 什么也没打开 | 在终端中检查 `argvus launcher`。确认 `rofi` 已安装，并且 Rofi 配置存在。 |
+| `SUPER + D` 什么也没打开 | `argvus launcher` · `argvus control-center launcher` · `quickshell` · `argvus` |
 | `SUPER + D` 未列出应用程序 | 应用程序没有桌面条目。只有具有 `.desktop` 文件的应用程序会显示。 |
 | 菜单使用了旧字体 | `font:` 行在会话开始时会被重写。更改字体后请重启会话。 |
 | 主题更改没有应用到 Rofi 菜单 | 检查用户副本 `config.rasi` 在 `$XDG_CONFIG_HOME/argvus/data/rofi/` 中是否仍指向打包的主题。再次应用 `argvus-appearance` 中的主题。 |
@@ -424,3 +427,8 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 | `argvus` (`argvus control-center`) | 通过 `argvus projects` 编辑项目列表。 |
 
 在 Sticky 和 Spaced 模式下，Rofi 模糊覆盖菜单所在的整个显示器，包括栏和边距。菜单保持居中，并遵循全局模糊设置。
+
+
+`/launcher/show_icons`: `true` / `false`.
+
+`/launcher/selected_category`: `""` (All), `applications`, `windows`, `settings`, `actions`, `projects`, `ssh`, `files`, `help`.

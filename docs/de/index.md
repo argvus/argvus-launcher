@@ -1,8 +1,8 @@
 ---
-title: Anwendungsstarter
-description: Starten Sie Anwendungen, öffnen Sie Projekte, SSH-Hosts und Snippets, wählen Sie Emoji aus, berechnen Sie und lesen Sie Spickzettel über die ARGVUS Rofi-Menüs.
+title: Starter und Suche
+description: Starter und Suche — Quickshell/QML + Rust.
 ---
-`argvus-launcher` stellt die Rofi-Konfiguration, Themen und Menüs bereit, die ARGVUS verwendet, um Dinge über die Tastatur zu öffnen. Es enthält:
+Der Hauptstarter verwendet Quickshell/QML mit einer lokalen Rust-Suche für Apps, Fenster, Einstellungen, Aktionen, Projekte, SSH-Ziele, Dateien und Tastenkürzel. Die Indizierung ist zunächst deaktiviert; Ordner müssen ausdrücklich ausgewählt werden. Nur Namen und Pfade werden indiziert, keine Dokumentinhalte. Zuletzt verwendete Dateien stammen aus dem XDG-Verzeichnis. Versteckte Dateien sind standardmäßig ausgeschlossen; Verzeichnis-Symlinks werden nicht verfolgt. Spezialisierte Rofi-Menüs bleiben verfügbar.
 
 - den Anwendungsstarter (`SUPER + D`);
 - die Rofi-Konfiguration und Themen, die von jedem ARGVUS Rofi-Menü gemeinsam genutzt werden;
@@ -28,23 +28,26 @@ Die Tastenkombinationen werden von `argvus-hyprland` deklariert. Dieses Paket st
 | `SUPER + SHIFT + /` | Hyprland-Spickzettel | `cheatsheets.sh hypr` | Spickzettel |
 | `SUPER + CTRL + /` | Kitty-Spickzettel | `cheatsheets.sh kitty` | Spickzettel |
 
-## Anwendungsstarter (`SUPER + D`)
+## Starter und Suche
 
-`SUPER + D` startet `argvus launcher`, das Rofi im `drun`-Modus öffnet. Es listet die mit einem Desktop-Eintrag installierten grafischen Anwendungen auf, und die ausgewählte Anwendung startet, wenn Sie `Enter` drücken.
+Der Hauptstarter verwendet Quickshell/QML mit einer lokalen Rust-Suche für Apps, Fenster, Einstellungen, Aktionen, Projekte, SSH-Ziele, Dateien und Tastenkürzel. Die Indizierung ist zunächst deaktiviert; Ordner müssen ausdrücklich ausgewählt werden. Nur Namen und Pfade werden indiziert, keine Dokumentinhalte. Zuletzt verwendete Dateien stammen aus dem XDG-Verzeichnis. Versteckte Dateien sind standardmäßig ausgeschlossen; Verzeichnis-Symlinks werden nicht verfolgt. Spezialisierte Rofi-Menüs bleiben verfügbar.
 
-1. Drücken Sie `SUPER + D`.
-2. Geben Sie einen Teil des Anwendungsnamens ein. Die Liste ist sortiert und der Filter ignoriert Groß-/Kleinschreibung.
-3. Drücken Sie `Enter`, um die Anwendung zu starten, oder `Esc`, um das Menü zu schließen.
+`argvus launcher` · `argvus control-center launcher`
 
-```sh
-argvus launcher                  # opens the application menu
-argvus launcher --config PATH    # uses another Rofi configuration file
-```
-Jedes andere Argument wird an `rofi` übergeben. `--config` ohne einen Wert stoppt mit einem Fehler.
+↑↓ Navigieren · Enter Öffnen · Esc Zurück · Ctrl+F Favorit
 
-Hyprland führt `argvus launcher --config <Rofi configuration>` aus, wenn der Standardschnellstarter `rofi` ist, was die Standardeinstellung ist. Wenn der Standard-`launcher` in den Standardanwendungen auf ein anderes Programm gesetzt wird, führt Hyprland stattdessen `<program> --show drun` aus. Legen Sie es in den Standardanwendungen des Kontrollzentrums fest, welches den Wert in `argvus-config` speichert.
+- Suche konfigurieren: Anwendungen, Windows, Einstellungen, Aktionen, Projekte, SSH, Dateien, Helfen.
+- Indizierten Ordner hinzufügen / Ausschluss hinzufügen — Absoluter Pfad.
+- Indizierung pausieren / Index löschen und pausieren / Index neu erstellen.
+- ↑↓ Navigieren · Enter Umschalten/Hinzufügen · Delete Entfernen · Ctrl+↑↓ Sortieren · F5 Aktualisieren · Esc Zurück
 
-Nur Anwendungen mit einer Desktop-Eintragung erscheinen in der Liste. Eine Anwendung, die keine `.desktop`-Datei installiert, kann hier nicht gefunden werden.
+`argvus config get /launcher --effective`
+
+`$XDG_CONFIG_HOME/argvus/config/launcher.json` → `$XDG_CACHE_HOME/argvus/launcher/index.json`
+
+Quickshell: `launcher/Theme.qml` · Rofi: `launcher/theme.rasi`
+
+`--config` / Rasi: Suche konfigurieren → `argvus control-center launcher`.
 
 ## Rofi-Konfiguration und Themes
 
@@ -393,7 +396,7 @@ Das Paket `argvus-launcher` ist architekturunabhängig und installiert:
 - `/usr/share/argvus/launcher/config/` mit der Rofi-Konfiguration und Themes;
 - `/usr/share/argvus/launcher/sh/` mit `cheatsheets.sh` und `emoji-picker.sh`.
 
-Erforderliche Abhängigkeiten: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` und `pinentry` (welches `pinentry-gtk` bereitstellt). Optionale Abhängigkeiten: `openssh`, für den SSH-Auswähler und den SSH-Schlüsselmanager; `lazygit` und `gitui`, für die git-TUI.
+Erforderliche Abhängigkeiten: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` und `pinentry` (welches `pinentry-gtk` bereitstellt). Optionale Abhängigkeiten: `openssh`, für den SSH-Auswähler und den SSH-Schlüsselmanager; `lazygit` und `gitui`, für die git-TUI.
 
 Die Installation des Pakets schreibt nicht in `$HOME`. Die Benutzerkonfiguration wird beim Start der Sitzung erstellt, wie unter [Rofi-Konfiguration und Themen](#where-the-active-configuration-lives) beschrieben.
 
@@ -401,7 +404,7 @@ Die Installation des Pakets schreibt nicht in `$HOME`. Die Benutzerkonfiguration
 
 | Symptom | Ursache und Lösung |
 | --- | --- |
-| `SUPER + D` öffnet nichts | Überprüfen Sie `argvus launcher` in einem Terminal. Bestätigen Sie, dass `rofi` installiert ist und die Rofi-Konfiguration existiert. |
+| `SUPER + D` öffnet nichts | `argvus launcher` · `argvus control-center launcher` · `quickshell` · `argvus` |
 | `SUPER + D` listet keine Anwendungen | Die Anwendungen haben keinen Desktop-Eintrag. Es werden nur Anwendungen mit einer `.desktop`-Datei angezeigt. |
 | Die Menüs verwenden eine alte Schriftart | Die `font:`-Zeile wird beim Start der Sitzung neu geschrieben. Starten Sie die Sitzung nach dem Ändern der Schriftart neu. |
 | Eine Designänderung erreicht die Rofi-Menüs nicht | Überprüfen Sie, ob die Benutzerkopie von `config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/` weiterhin auf das bereitgestellte Design zeigt. Wenden Sie das Design erneut von `argvus-appearance` an. |
@@ -424,3 +427,8 @@ Die Installation des Pakets schreibt nicht in `$HOME`. Die Benutzerkonfiguration
 | `argvus` (`argvus control-center`) | Bearbeitet die Projektliste über `argvus projects`. |
 
 Rofi verwischt im Sticky- und Spaced-Modus den gesamten Menümonitor einschließlich Leisten und Rändern. Das Menü bleibt zentriert; die globale Unschärfeeinstellung gilt weiterhin.
+
+
+`/launcher/show_icons`: `true` / `false`.
+
+`/launcher/selected_category`: `""` (All), `applications`, `windows`, `settings`, `actions`, `projects`, `ssh`, `files`, `help`.

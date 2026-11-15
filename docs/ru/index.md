@@ -1,8 +1,8 @@
 ---
-title: Запуск приложений
-description: Запускайте приложения, открывайте проекты, SSH-хосты и сниппеты, выбирайте эмодзи, рассчитывайте и читайте шпаргалки через меню Rofi ARGVUS.
+title: Запуск и поиск
+description: Запуск и поиск — Quickshell/QML + Rust.
 ---
-`argvus-launcher` предоставляет конфигурацию Rofi, темы и меню, которые ARGVUS использует для открытия вещей с клавиатуры. Он содержит:
+Основная панель использует Quickshell/QML и локальный движок Rust для поиска приложений, окон, настроек, действий, проектов, узлов SSH, файлов и сочетаний клавиш. Индексация изначально отключена: папки выбираются явно. Индексируются только имена и пути, без содержимого. Недавние файлы берутся из реестра XDG. Скрытые файлы по умолчанию исключены, символические ссылки на каталоги не обходятся. Специализированные меню Rofi сохранены.
 
 - запуск приложений (`SUPER + D`);
 - конфигурацию Rofi и темы, используемые каждым меню Rofi ARGVUS;
@@ -28,23 +28,26 @@ description: Запускайте приложения, открывайте п�
 | `SUPER + SHIFT + /` | Шпаргалка Hyprland | `cheatsheets.sh hypr` | Шпаргалки |
 | `SUPER + CTRL + /` | Шпаргалка Kitty | `cheatsheets.sh kitty` | Шпаргалки |
 
-## Запуск приложений (`SUPER + D`)
+## Запуск и поиск
 
-`SUPER + D` запускает `argvus launcher`, который открывает Rofi в режиме `drun`. Он отображает установленные графические приложения с соответствующими записями рабочего стола, и выбранное приложение запускается при нажатии `Enter`.
+Основная панель использует Quickshell/QML и локальный движок Rust для поиска приложений, окон, настроек, действий, проектов, узлов SSH, файлов и сочетаний клавиш. Индексация изначально отключена: папки выбираются явно. Индексируются только имена и пути, без содержимого. Недавние файлы берутся из реестра XDG. Скрытые файлы по умолчанию исключены, символические ссылки на каталоги не обходятся. Специализированные меню Rofi сохранены.
 
-1. Нажмите `SUPER + D`.
-2. Введите часть имени приложения. Список отсортирован, а фильтр не учитывает регистр.
-3. Нажмите `Enter`, чтобы запустить приложение, или `Esc`, чтобы закрыть меню.
+`argvus launcher` · `argvus control-center launcher`
 
-```sh
-argvus launcher                  # opens the application menu
-argvus launcher --config PATH    # uses another Rofi configuration file
-```
-Любой другой аргумент передается `rofi`. `--config` без значения прекращает работу с ошибкой.
+↑↓ Навигация · Enter Открыть · Esc Назад · Ctrl+F Избранное
 
-Hyprland запускает `argvus launcher --config <Rofi configuration>`, когда запускается программа по умолчанию `rofi`, которая является значением по умолчанию. Если значение по умолчанию `launcher` в стандартных приложениях установлено на другую программу, Hyprland запускает вместо этого `<program> --show drun`. Установите его в стандартных приложениях Центра управления, который сохраняет значение в `argvus-config`.
+- Настроить поиск: Приложения, Окна, Настройки, Действия, Проекты, SSH, файлы, Помощь.
+- Добавить индексируемую папку / Добавить исключение — Абсолютный путь.
+- Приостановить индексацию / Очистить индекс и приостановить / Перестроить индекс.
+- ↑↓ Навигация · Enter Выбрать/Добавить · Delete Удалить · Ctrl+↑↓ Порядок · F5 Обновить · Esc Назад
 
-В списке отображаются только приложения с записью рабочего стола. Приложение, которое не устанавливает файл `.desktop`, не может быть найдено здесь.
+`argvus config get /launcher --effective`
+
+`$XDG_CONFIG_HOME/argvus/config/launcher.json` → `$XDG_CACHE_HOME/argvus/launcher/index.json`
+
+Quickshell: `launcher/Theme.qml` · Rofi: `launcher/theme.rasi`
+
+`--config` / Rasi: Настроить поиск → `argvus control-center launcher`.
 
 ## Конфигурация и темы Rofi
 
@@ -393,7 +396,7 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 - `/usr/share/argvus/launcher/config/` с конфигурацией Rofi и темами;
 - `/usr/share/argvus/launcher/sh/` с `cheatsheets.sh` и `emoji-picker.sh`.
 
-Необходимые зависимости: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` и `pinentry` (который предоставляет `pinentry-gtk`). Необязательные зависимости: `openssh` для SSH-пикера и менеджера SSH-ключей; `lazygit` и `gitui` для git TUI.
+Необходимые зависимости: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` и `pinentry` (который предоставляет `pinentry-gtk`). Необязательные зависимости: `openssh` для SSH-пикера и менеджера SSH-ключей; `lazygit` и `gitui` для git TUI.
 
 Установка пакета не пишет в `$HOME`. Конфигурация пользователя создается при запуске сессии, как описано в [Конфигурация и темы Rofi](#where-the-active-configuration-lives).
 
@@ -401,7 +404,7 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 
 | Симптом | Причина и решение |
 | --- | --- |
-| `SUPER + D` ничего не открывает | Проверьте `argvus launcher` в терминале. Убедитесь, что `rofi` установлен и что конфигурация Rofi существует. |
+| `SUPER + D` ничего не открывает | `argvus launcher` · `argvus control-center launcher` · `quickshell` · `argvus` |
 | `SUPER + D` не отображает приложения | У приложений нет ярлыка рабочего стола. Показаны только приложения с файлом `.desktop`. |
 | Меню используют старый шрифт | Строка `font:` перезаписывается при запуске сессии. Перезапустите сессию после изменения шрифта. |
 | Изменение темы не влияет на меню Rofi | Проверьте, указывает ли пользовательская копия `config.rasi` в `$XDG_CONFIG_HOME/argvus/data/rofi/` по-прежнему на упакованную тему. Примените тему из `argvus-appearance` снова. |
@@ -424,3 +427,8 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 | `argvus` (`argvus control-center`) | Редактирует список проектов через `argvus projects`. |
 
 Rofi размывает весь монитор меню, включая панели и поля, в Sticky и Spaced. Меню остаётся по центру; глобальная настройка размытия сохраняет силу.
+
+
+`/launcher/show_icons`: `true` / `false`.
+
+`/launcher/selected_category`: `""` (All), `applications`, `windows`, `settings`, `actions`, `projects`, `ssh`, `files`, `help`.

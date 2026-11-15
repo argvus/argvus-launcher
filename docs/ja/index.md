@@ -1,8 +1,8 @@
 ---
-title: アプリケーションランチャー
-description: ARGVUSのRofiメニューを通じて、アプリケーションの起動、プロジェクトの開閉、SSHホストやスニペットの操作、絵文字の選択、計算、チートシートの閲覧を行います。
+title: ランチャーと検索
+description: ランチャーと検索 — Quickshell/QML + Rust.
 ---
-`argvus-launcher`は、ARGVUSがキーボードから物事を開くために使用するRofiの設定、テーマ、およびメニューを提供します。これには以下が含まれます：
+メインランチャーは Quickshell/QML とローカルの Rust 検索エンジンを使用し、アプリ、ウィンドウ、設定、操作、プロジェクト、SSH ホスト、ファイル、ショートカットを検索します。索引化は初期状態で無効で、対象フォルダーの明示的な選択が必要です。名前とパスのみを索引化し、文書の内容は読み取りません。最近のファイルは XDG の履歴に依存します。隠しファイルは標準で除外し、ディレクトリーのシンボリックリンクはたどりません。専用の Rofi メニューも引き続き利用できます。
 
 - アプリケーションランチャー（`SUPER + D`）；
 - すべてのARGVUS Rofiメニューで共有されるRofiの設定およびテーマ；
@@ -28,23 +28,26 @@ description: ARGVUSのRofiメニューを通じて、アプリケーションの
 | `SUPER + SHIFT + /` | Hyprland チートシート | `cheatsheets.sh hypr` | チートシート |
 | `SUPER + CTRL + /` | Kitty チートシート | `cheatsheets.sh kitty` | チートシート |
 
-## アプリケーションランチャー (`SUPER + D`)
+## ランチャーと検索
 
-`SUPER + D`は`argvus launcher`を実行し、`drun`モードでRofiを開きます。これはデスクトップエントリーを使用してインストールされたグラフィカルアプリケーションを一覧表示し、選択されたものは`Enter`を押すと起動します。
+メインランチャーは Quickshell/QML とローカルの Rust 検索エンジンを使用し、アプリ、ウィンドウ、設定、操作、プロジェクト、SSH ホスト、ファイル、ショートカットを検索します。索引化は初期状態で無効で、対象フォルダーの明示的な選択が必要です。名前とパスのみを索引化し、文書の内容は読み取りません。最近のファイルは XDG の履歴に依存します。隠しファイルは標準で除外し、ディレクトリーのシンボリックリンクはたどりません。専用の Rofi メニューも引き続き利用できます。
 
-1. `SUPER + D`を押します。
-2. アプリケーション名の一部を入力します。リストはソートされ、フィルターは大文字小文字を区別しません。
-3. `Enter`を押してアプリケーションを起動するか、`Esc`を押してメニューを閉じます。
+`argvus launcher` · `argvus control-center launcher`
 
-```sh
-argvus launcher                  # opens the application menu
-argvus launcher --config PATH    # uses another Rofi configuration file
-```
-他の引数はすべて`rofi`に渡されます。`--config`は値がない場合、エラーで終了します。
+↑↓ 移動 · Enter 開く · Esc 戻る · Ctrl+F お気に入り
 
-Hyprlandはデフォルトランチャーがrofi（デフォルト）である場合、`argvus launcher --config <Rofi configuration>`を実行します。デフォルトアプリケーションのデフォルト `rofi` `launcher`が別のプログラムに設定されている場合、Hyprlandは代わりに`<program> --show drun`を実行します。値はコントロールセンターのデフォルトアプリケーションで設定してください。ここで値は`argvus-config`に保存されます。
+- 検索を設定: アプリケーション, 窓, 設定, アクション, プロジェクト, SSH, ファイル, ヘルプ.
+- 索引対象フォルダーを追加 / 除外を追加 — 絶対パス.
+- 索引化を一時停止 / 索引を削除して一時停止 / 索引を再構築.
+- ↑↓ 移動 · Enter 切替/追加 · Delete 削除 · Ctrl+↑↓ 並替 · F5 更新 · Esc 戻る
 
-デスクトップエントリを持つアプリケーションのみがリストに表示されます。`.desktop`ファイルをインストールしないアプリケーションは、ここで見つけることができません。
+`argvus config get /launcher --effective`
+
+`$XDG_CONFIG_HOME/argvus/config/launcher.json` → `$XDG_CACHE_HOME/argvus/launcher/index.json`
+
+Quickshell: `launcher/Theme.qml` · Rofi: `launcher/theme.rasi`
+
+`--config` / Rasi: 検索を設定 → `argvus control-center launcher`.
 
 ## Rofiの設定とテーマ
 
@@ -401,7 +404,7 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 
 | 症状 | 原因と解決方法 |
 | --- | --- |
-| `SUPER + D`が何も開かない | ターミナルで`argvus launcher`を確認してください。`rofi`がインストールされており、Rofiの設定が存在することを確認してください。 |
+| `SUPER + D`が何も開かない | `argvus launcher` · `argvus control-center launcher` · `quickshell` · `argvus` |
 | `SUPER + D`がアプリケーションを表示しない | アプリケーションにデスクトップエントリがありません。`.desktop`ファイルを持つアプリケーションのみが表示されます。 |
 | メニューが古いフォントを使用している | セッション開始時に`font:`行が書き換えられます。フォントを変更した後、セッションを再起動してください。 |
 | テーマ変更がRofiメニューに反映されない | $XDG_CONFIG_HOME/argvus/data/rofi/内の`config.rasi`のユーザーコピーがまだパッケージ済みテーマを指しているか確認してください。 `$XDG_CONFIG_HOME/argvus/data/rofi/` `argvus-appearance`からテーマを再適用してください。 |
@@ -424,3 +427,8 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 | `argvus` (`argvus control-center`) | `argvus projects`を通じてプロジェクトリストを編集します。 |
 
 Sticky と Spaced では、Rofi のぼかしがバーや余白を含むメニューのモニター全体を覆います。メニューは中央に表示され、ぼかしの全体設定に従います。
+
+
+`/launcher/show_icons`: `true` / `false`.
+
+`/launcher/selected_category`: `""` (All), `applications`, `windows`, `settings`, `actions`, `projects`, `ssh`, `files`, `help`.

@@ -1,8 +1,8 @@
 ---
-title: 응용 프로그램 실행기
-description: ARGVUS Rofi 메뉴를 통해 애플리케이션을 실행하고, 프로젝트를 열고, SSH 호스트와 스니펫을 열고, 이모지를 선택하고, 계산하고, 치트시트를 읽으세요.
+title: 실행기 및 검색
+description: 실행기 및 검색 — Quickshell/QML + Rust.
 ---
-`argvus-launcher`은 ARGVUS가 키보드로 항목을 열 때 사용하는 Rofi 설정, 테마 및 메뉴를 제공합니다. 이 패키지에는 다음이 포함되어 있습니다:
+기본 실행기는 Quickshell/QML과 로컬 Rust 검색 엔진으로 앱, 창, 설정, 작업, 프로젝트, SSH 호스트, 파일, 단축키를 검색합니다. 색인은 기본적으로 꺼져 있으며 폴더를 명시적으로 선택해야 합니다. 이름과 경로만 색인하고 문서 내용은 읽지 않습니다. 최근 파일은 XDG 기록에 따릅니다. 숨김 파일은 기본적으로 제외하며 디렉터리 심볼릭 링크를 따라가지 않습니다. 전용 Rofi 메뉴도 계속 사용할 수 있습니다.
 
 - 애플리케이션 실행기(`SUPER + D`);
 - 모든 ARGVUS Rofi 메뉴에서 공유되는 Rofi 설정 및 테마;
@@ -28,23 +28,26 @@ description: ARGVUS Rofi 메뉴를 통해 애플리케이션을 실행하고, �
 | `SUPER + SHIFT + /` | Hyprland 치트시트 | `cheatsheets.sh hypr` | 치트시트 |
 | `SUPER + CTRL + /` | Kitty 치트시트 | `cheatsheets.sh kitty` | 치트시트 |
 
-## 애플리케이션 실행기 (`SUPER + D`)
+## 실행기 및 검색
 
-`SUPER + D`은 `argvus launcher`를 실행하며, 이는 `drun` 모드에서 Rofi를 엽니다. 설치된 그래픽 애플리케이션을 데스크탑 항목과 함께 나열하며, 선택된 항목은 `Enter`를 누르면 시작됩니다.
+기본 실행기는 Quickshell/QML과 로컬 Rust 검색 엔진으로 앱, 창, 설정, 작업, 프로젝트, SSH 호스트, 파일, 단축키를 검색합니다. 색인은 기본적으로 꺼져 있으며 폴더를 명시적으로 선택해야 합니다. 이름과 경로만 색인하고 문서 내용은 읽지 않습니다. 최근 파일은 XDG 기록에 따릅니다. 숨김 파일은 기본적으로 제외하며 디렉터리 심볼릭 링크를 따라가지 않습니다. 전용 Rofi 메뉴도 계속 사용할 수 있습니다.
 
-1. `SUPER + D`를 누르세요.
-2. 애플리케이션 이름의 일부를 입력하세요. 목록은 정렬되며 필터는 대소문자를 구분하지 않습니다.
-3. 애플리케이션을 시작하려면 `Enter`를 누르고, 메뉴를 닫으려면 `Esc`를 누르세요.
+`argvus launcher` · `argvus control-center launcher`
 
-```sh
-argvus launcher                  # opens the application menu
-argvus launcher --config PATH    # uses another Rofi configuration file
-```
-다른 모든 인수는 `rofi`로 전달됩니다. 값 없이 `--config`를 실행하면 오류와 함께 중단됩니다.
+↑↓ 이동 · Enter 열기 · Esc 뒤로 · Ctrl+F 즐겨찾기
 
-Hyprland는 기본 실행기가 rofi(기본값)일 때 `argvus launcher --config <Rofi configuration>`를 실행합니다. 기본 애플리케이션에서 기본  `rofi` `launcher`가 다른 프로그램으로 설정되어 있으면, Hyprland는 대신 `<program> --show drun`를 실행합니다. 제어 센터의 기본 애플리케이션에서 설정할 수 있으며, 이 값은 `argvus-config`에 저장됩니다.
+- 검색 설정: 응용, 윈도우, 설정, 행위, 프로젝트, SSH, 파일, 돕다.
+- 색인 폴더 추가 / 제외 항목 추가 — 절대 경로.
+- 색인 일시 중지 / 색인 지우고 일시 중지 / 색인 다시 만들기.
+- ↑↓ 이동 · Enter 전환/추가 · Delete 삭제 · Ctrl+↑↓ 순서 · F5 새로고침 · Esc 뒤로
 
-데스크탑 엔트리가 있는 애플리케이션만 목록에 나타납니다. `.desktop` 파일을 설치하지 않는 애플리케이션은 여기에서 찾을 수 없습니다.
+`argvus config get /launcher --effective`
+
+`$XDG_CONFIG_HOME/argvus/config/launcher.json` → `$XDG_CACHE_HOME/argvus/launcher/index.json`
+
+Quickshell: `launcher/Theme.qml` · Rofi: `launcher/theme.rasi`
+
+`--config` / Rasi: 검색 설정 → `argvus control-center launcher`.
 
 ## Rofi 구성 및 테마
 
@@ -393,7 +396,7 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 - Rofi 구성과 테마가 포함된 `/usr/share/argvus/launcher/config/`;
 -  `/usr/share/argvus/launcher/sh/` `cheatsheets.sh` 및 `emoji-picker.sh`가 포함된 /usr/share/argvus/launcher/sh/.
 
-필수 종속성: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` 및 `pinentry` (이것은 `pinentry-gtk`를 제공합니다). 선택적 종속성: `openssh`, SSH 선택기 및 SSH 키 관리자를 위해; `lazygit` 및 `gitui`, git TUI용.
+필수 종속성: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` 및 `pinentry` (이것은 `pinentry-gtk`를 제공합니다). 선택적 종속성: `openssh`, SSH 선택기 및 SSH 키 관리자를 위해; `lazygit` 및 `gitui`, git TUI용.
 
 패키지를 설치해도 `$HOME`에 쓰지 않습니다. 사용자 구성은 세션 시작 시 생성되며, [Rofi 구성 및 테마](#where-the-active-configuration-lives)에 설명되어 있습니다.
 
@@ -401,7 +404,7 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 
 | 증상 | 원인 및 해결 방법 |
 | --- | --- |
-| `SUPER + D`이 아무 것도 열지 않음 | 터미널에서 `argvus launcher`를 확인하십시오. `rofi`가 설치되어 있고 Rofi 구성이 존재하는지 확인하십시오. |
+| `SUPER + D`이 아무 것도 열지 않음 | `argvus launcher` · `argvus control-center launcher` · `quickshell` · `argvus` |
 | `SUPER + D`이 애플리케이션을 표시하지 않음 | 애플리케이션에 데스크탑 항목이 없습니다. `.desktop` 파일이 있는 애플리케이션만 표시됩니다. |
 | 메뉴에서 오래된 폰트를 사용함 | 세션 시작 시 `font:` 줄이 다시 작성됩니다. 폰트를 변경한 후 세션을 재시작하세요. |
 | 테마 변경이 Rofi 메뉴에 적용되지 않음 | $XDG_CONFIG_HOME/argvus/data/rofi/에 있는 사용자 복사본 `config.rasi`가 여전히 패키지된 테마를 가리키는지 확인하세요.  `$XDG_CONFIG_HOME/argvus/data/rofi/` `argvus-appearance`에서 테마를 다시 적용하세요. |
@@ -424,3 +427,8 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 | `argvus` (`argvus control-center`) | `argvus projects`를 통해 프로젝트 목록을 편집합니다. |
 
 Sticky와 Spaced에서 Rofi 흐림 효과는 표시줄과 여백을 포함한 메뉴 모니터 전체를 덮습니다. 메뉴는 중앙에 유지되며 전역 흐림 설정을 따릅니다.
+
+
+`/launcher/show_icons`: `true` / `false`.
+
+`/launcher/selected_category`: `""` (All), `applications`, `windows`, `settings`, `actions`, `projects`, `ssh`, `files`, `help`.

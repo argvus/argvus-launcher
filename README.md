@@ -1,6 +1,6 @@
 # argvus-launcher
 
-Rofi launcher configuration, themes and menus for the ARGVUS desktop.
+Universal Quickshell launcher with a local Rust search engine, themes and specialized Rofi menus for the ARGVUS desktop.
 
 [![CI](https://github.com/argvus/argvus-launcher/actions/workflows/ci.yml/badge.svg)](https://github.com/argvus/argvus-launcher/actions/workflows/ci.yml)
 [![Release](https://github.com/argvus/argvus-launcher/actions/workflows/release.yml/badge.svg)](https://github.com/argvus/argvus-launcher/actions/workflows/release.yml)
@@ -15,6 +15,17 @@ Rofi launcher configuration, themes and menus for the ARGVUS desktop.
 This repository packages the launcher configuration, themes and menus. Its `src/`
 tree is the payload; both PKGBUILDs (`packaging/arch/remote` and `packaging/arch/local`)
 build it.
+
+## Universal search
+
+`argvus launcher` opens a central panel for applications, windows, settings,
+actions, projects, SSH, files and shortcut help. Configure sources, priorities,
+favorites and indexing with `argvus control-center launcher`. File indexing is
+opt-in and stores names and paths only; recent files use the XDG registry.
+Preferences belong to `argvus config`, while the index is rebuildable cache.
+The engine ships in the `argvus` master package; this package supplies QML,
+the launcher entry point, theme templates and the existing specialized Rofi menus.
+Rasi `--config` overrides are no longer accepted by the main launcher.
 
 ## Build and install
 

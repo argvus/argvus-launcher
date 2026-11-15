@@ -1,9 +1,9 @@
 ---
-title: مشغل التطبيقات
-description: .ARGVUS Rofi ﻢﺋﺍﻮﻗ ﻝﻼ﻿ﺧ ﻦﻣ ﺕﺍﺭﺎﺼﺘﺧﻻ﻿ﺍ ﺓءﺍﺮﻗﻭ ،ﺕﺎﺑﺎﺴﺤﻟﺎﺑ ﻡﺎﻴﻘﻟﺍﻭ ،ﺔﻳﺮﻴﺒﻌﺘﻟﺍ ﺯﻮﻣﺮﻟ
+title: المشغّل والبحث
+description: المشغّل والبحث — Quickshell/QML + Rust.
 ---
 
-`argvus-launcher`:ﻰﻠﻋ ﻱﻮﺘﺤﻳ .ﺢﻴﺗﺎﻔﻤﻟﺍ ﺔﺣﻮﻟ ﻦﻣ ءﺎﻴﺷﻷ﻿ﺍ ﺢﺘﻔﻟ ARGVUS ﺎﻬﻣﺪﺨﺘﺴﻳ ﻲﺘﻟﺍ ﻢﺋﺍﻮﻘﻟﺍﻭ ﺕﺎﻤﺴﻟﺍﻭ
+يستخدم المشغّل الرئيسي Quickshell/QML ومحرك بحث محليًا بلغة Rust للتطبيقات والنوافذ والإعدادات والإجراءات والمشاريع ومضيفي SSH والملفات والاختصارات. الفهرسة معطّلة افتراضيًا وتتطلب اختيار المجلدات صراحةً. تُفهرس الأسماء والمسارات فقط دون محتوى المستندات. تعتمد الملفات الحديثة على سجل XDG. تُستبعد الملفات المخفية افتراضيًا ولا تُتبع روابط المجلدات الرمزية. تبقى قوائم Rofi المتخصصة متاحة.
 
 -                                            ؛(`SUPER + D`) ﺕﺎﻘﻴﺒﻄﺘﻟﺍ ﻞﻐﺸﻣ
 -                    ؛ARGVUS ﻦﻣ Rofi ﺔﻤﺋﺎﻗ ﻞﻛ ﺔﻄﺳﺍﻮﺑ ﺔﻛﺮﺘﺸﻤﻟﺍ ﺕﺎﻤﺴﻟﺍﻭ Rofi ﻦﻳﻮﻜﺗ
@@ -29,24 +29,26 @@ description: .ARGVUS Rofi ﻢﺋﺍﻮﻗ ﻝﻼ﻿ﺧ ﻦﻣ ﺕﺍﺭﺎﺼﺘ
 | `SUPER + SHIFT + /` | ورقة الغش هايبرلاند | `cheatsheets.sh hypr` | أوراق الغش |
 | `SUPER + CTRL + /` | ورقة غش كيتي | `cheatsheets.sh kitty` | أوراق الغش |
 
-##                                               (`SUPER + D`) ﻖﻴﺒﻄﺘﻟﺍ ﻞﻐﺸﻣ
+## المشغّل والبحث
 
-`SUPER + D` runs `argvus launcher`                                                          ﻲﻓ Rofi ﺢﺘﻔﻳ ﻱﺬﻟﺍﻭ ،`drun`ﻂﻐﻀﻟﺍ ﺪﻨﻋ ﺩﺪﺤﻤﻟﺍ ﻖﻴﺒﻄﺘﻟﺍ ﻞﻴﻐﺸﺗ ﻢﺘﻳﻭ ،ﺐﺘﻜﻤﻟﺍ ﺢﻄﺳ ﻝﺎﺧﺩﺇ ﻊﻣ ﺔﺘﺒﺜﻤﻟﺍ ﺔﻴﻣﻮﺳﺮﻟﺍ ﺕﺎﻘﻴ`Enter`.
+يستخدم المشغّل الرئيسي Quickshell/QML ومحرك بحث محليًا بلغة Rust للتطبيقات والنوافذ والإعدادات والإجراءات والمشاريع ومضيفي SSH والملفات والاختصارات. الفهرسة معطّلة افتراضيًا وتتطلب اختيار المجلدات صراحةً. تُفهرس الأسماء والمسارات فقط دون محتوى المستندات. تعتمد الملفات الحديثة على سجل XDG. تُستبعد الملفات المخفية افتراضيًا ولا تُتبع روابط المجلدات الرمزية. تبقى قوائم Rofi المتخصصة متاحة.
 
-1. اضغط على `SUPER + D`.
-2.         .ﻑﺮﺣﻷ﻿ﺍ ﺔﻟﺎﺣ ﻞﻫﺎﺠﺘﻳ ﺚﺤﺒﻟﺍ ﺢﺷﺮﻣﻭ ﺔﺒﺗﺮﻣ ﺔﻤﺋﺎﻘﻟﺍ .ﻖﻴﺒﻄﺘﻟﺍ ﻢﺳﺍ ﻦﻣ ﺍًءﺰﺟ ﺐﺘﻛﺍ
-3.    .ﺔﻤﺋﺎﻘﻟﺍ ﻕﻼ﻿ﻏﻹ﻿ Esc ﻭﺃ ،ﻖﻴﺒﻄﺘﻟﺍ ءﺪﺒﻟ `Enter` ﻰﻠﻋ ﻂﻐﺿﺍ
+`argvus launcher` · `argvus control-center launcher`
 
-```sh
-argvus launcher                  # opens the application menu
-argvus launcher --config PATH    # uses another Rofi configuration file
-```
+↑↓ تنقل · Enter فتح · Esc رجوع · Ctrl+F مفضلة
 
-.ﺄﻄﺧ ﻊﻣ ﻒﻗﻮﺘﻳ ﺔﻤﻴﻗ ﻥﻭﺪﺑ  `Esc` `rofi`. `--config` ﻰﻟﺇ ﺭَّﺮﻤُﺗ ﻯﺮﺧﺃ ﺔﺠﺣ
+- إعداد البحث: التطبيقات, النوافذ, الترتيبات, الإجراءات, المشاريع, SSH, الملفات, النجدة.
+- إضافة مجلد للفهرسة / إضافة استثناء — مسار مطلق.
+- إيقاف الفهرسة مؤقتًا / مسح الفهرس والإيقاف مؤقتًا / إعادة بناء الفهرس.
+- ↑↓ تنقل · Enter تبديل/إضافة · Delete حذف · Ctrl+↑↓ ترتيب · F5 تحديث · Esc رجوع
 
- <program> --show drun  launcher  rofi  `argvus launcher --config <Rofi configuration>`  `rofi`  `launcher`  `<program> --show drun` `argvus-config`.
+`argvus config get /launcher --effective`
 
-.ﺎﻨﻫ `.desktop` ﻒﻠﻣ ﻱﺃ ﺖﺒﺜﻳ ﻻ﻿ ﻱﺬﻟﺍ ﻖﻴﺒﻄﺘﻟﺍ ﻰﻠﻋ ﺭﻮﺜﻌﻟﺍ ﻦﻜﻤﻳ ﻻ﻿ .ﺔﻤﺋﺎﻘﻟﺍ ﻲ
+`$XDG_CONFIG_HOME/argvus/config/launcher.json` → `$XDG_CACHE_HOME/argvus/launcher/index.json`
+
+Quickshell: `launcher/Theme.qml` · Rofi: `launcher/theme.rasi`
+
+`--config` / Rasi: إعداد البحث → `argvus control-center launcher`.
 
 ##                                                            ﻲﻓﻭﺭ ﺕﺎﻤﻴﺛﻭ ﺕﺍﺩﺍﺪﻋﺇ
 
@@ -491,3 +493,8 @@ Installing the package does not write into  `libnotify`  `rofi`  `rofi-calc`  `r
 | `argvus` (`argvus control-center`) | يقوم بتحرير قائمة المشاريع من خلال `argvus projects`. |
 
 يغطي تمويه Rofi كامل شاشة القائمة بما فيها الأشرطة والهوامش في Sticky وSpaced. تبقى القائمة في الوسط وتتبع إعداد التمويه العام.
+
+
+`/launcher/show_icons`: `true` / `false`.
+
+`/launcher/selected_category`: `""` (All), `applications`, `windows`, `settings`, `actions`, `projects`, `ssh`, `files`, `help`.

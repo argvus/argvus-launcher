@@ -1,9 +1,9 @@
 ---
-title: Peluncur aplikasi
-description: Luncurkan aplikasi, buka proyek, host SSH dan cuplikan, pilih emoji, menghitung, dan membaca lembar contekan melalui menu ARGVUS Rofi.
+title: Peluncur dan Pencarian
+description: Peluncur dan Pencarian — Quickshell/QML + Rust.
 ---
 
-`argvus-launcher` menyediakan konfigurasi Rofi, tema, dan menu yang digunakan ARGVUS untuk membuka sesuatu dari keyboard. Ini berisi:
+Peluncur utama memakai Quickshell/QML dan mesin Rust lokal untuk aplikasi, jendela, pengaturan, tindakan, proyek, host SSH, berkas, dan pintasan. Pengindeksan awalnya nonaktif; pilih folder secara eksplisit. Hanya nama dan jalur yang diindeks, bukan isi dokumen. Berkas terbaru bergantung pada catatan XDG. Berkas tersembunyi dikecualikan secara bawaan dan symlink direktori tidak diikuti. Menu khusus Rofi tetap tersedia.
 
 - peluncur aplikasi (`SUPER + D`);
 - konfigurasi dan tema Rofi yang dibagikan oleh setiap menu Rofi ARGVUS;
@@ -29,24 +29,26 @@ Pintasan dideklarasikan oleh `argvus-hyprland`. Paket ini menyediakan perintah-p
 | `SUPER + SHIFT + /` | Lembar contekan Hyprland | `cheatsheets.sh hypr` | Lembar Cheat |
 | `SUPER + CTRL + /` | Lembar contekan kucing | `cheatsheets.sh kitty` | Lembar Cheat |
 
-## Peluncur aplikasi (`SUPER + D`)
+## Peluncur dan Pencarian
 
-`SUPER + D` menjalankan `argvus launcher`, yang membuka Rofi dalam mode `drun`. Ini menampilkan aplikasi grafis yang terpasang dengan entri desktop, dan yang dipilih akan dijalankan saat Anda menekan `Enter`.
+Peluncur utama memakai Quickshell/QML dan mesin Rust lokal untuk aplikasi, jendela, pengaturan, tindakan, proyek, host SSH, berkas, dan pintasan. Pengindeksan awalnya nonaktif; pilih folder secara eksplisit. Hanya nama dan jalur yang diindeks, bukan isi dokumen. Berkas terbaru bergantung pada catatan XDG. Berkas tersembunyi dikecualikan secara bawaan dan symlink direktori tidak diikuti. Menu khusus Rofi tetap tersedia.
 
-1. Tekan `SUPER + D`.
-2. Ketik sebagian nama aplikasi. Daftar disortir dan filter mengabaikan huruf besar/kecil.
-3. Tekan `Enter` untuk memulai aplikasi, atau `Esc` untuk menutup menu.
+`argvus launcher` · `argvus control-center launcher`
 
-```sh
-argvus launcher                  # opens the application menu
-argvus launcher --config PATH    # uses another Rofi configuration file
-```
+↑↓ Navigasi · Enter Buka · Esc Kembali · Ctrl+F Favorit
 
-Argumen lain diteruskan ke `rofi`. `--config` tanpa nilai akan berhenti dengan kesalahan.
+- Atur pencarian: Aplikasi, Jendela, Pengaturan, Aksi, Proyek, SSH, berkas, Bantuan.
+- Tambah folder terindeks / Tambah pengecualian — Jalur absolut.
+- Jeda pengindeksan / Hapus indeks dan jeda / Bangun ulang indeks.
+- ↑↓ Navigasi · Enter Alih/Tambah · Delete Hapus · Ctrl+↑↓ Urutkan · F5 Segarkan · Esc Kembali
 
-Hyprland menjalankan `argvus launcher --config <Rofi configuration>` ketika peluncur default adalah `rofi`, yang merupakan default. Jika `launcher` default dalam aplikasi default diatur ke program lain, Hyprland menjalankan `<program> --show drun` sebagai gantinya. Atur itu di aplikasi default di Pusat Kontrol, yang menyimpan nilainya di `argvus-config`.
+`argvus config get /launcher --effective`
 
-Hanya aplikasi dengan entri desktop yang muncul dalam daftar. Aplikasi yang tidak menginstal file `.desktop` tidak dapat ditemukan di sini.
+`$XDG_CONFIG_HOME/argvus/config/launcher.json` → `$XDG_CACHE_HOME/argvus/launcher/index.json`
+
+Quickshell: `launcher/Theme.qml` · Rofi: `launcher/theme.rasi`
+
+`--config` / Rasi: Atur pencarian → `argvus control-center launcher`.
 
 ## Konfigurasi dan tema Rofi
 
@@ -428,7 +430,7 @@ Paket `argvus-launcher` bersifat independen terhadap arsitektur dan menginstal:
 - `/usr/share/argvus/launcher/config/`, dengan konfigurasi dan tema Rofi;
 - `/usr/share/argvus/launcher/sh/`, dengan `cheatsheets.sh` dan `emoji-picker.sh`.
 
-Dependensi yang dibutuhkan: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` dan `pinentry` (yang menyediakan `pinentry-gtk`). Dependensi opsional: `openssh`, untuk pemilih SSH dan manajer kunci SSH; `lazygit` dan `gitui`, untuk TUI git.
+Dependensi yang dibutuhkan: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` dan `pinentry` (yang menyediakan `pinentry-gtk`). Dependensi opsional: `openssh`, untuk pemilih SSH dan manajer kunci SSH; `lazygit` dan `gitui`, untuk TUI git.
 
 Menginstal paket tidak menulis ke `$HOME`. Konfigurasi pengguna dibuat saat sesi dimulai, seperti yang dijelaskan dalam [Konfigurasi dan tema Rofi](#where-the-active-configuration-lives).
 
@@ -459,3 +461,8 @@ Menginstal paket tidak menulis ke `$HOME`. Konfigurasi pengguna dibuat saat sesi
 | `argvus` (`argvus control-center`) | Mengedit daftar proyek melalui `argvus projects`. |
 
 Dalam Sticky dan Spaced, blur Rofi mencakup seluruh monitor menu, termasuk bilah dan margin. Menu tetap di tengah dan mengikuti pengaturan blur global.
+
+
+`/launcher/show_icons`: `true` / `false`.
+
+`/launcher/selected_category`: `""` (All), `applications`, `windows`, `settings`, `actions`, `projects`, `ssh`, `files`, `help`.

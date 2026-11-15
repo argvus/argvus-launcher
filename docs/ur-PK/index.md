@@ -1,9 +1,9 @@
 ---
-title: ایپلیکیشن لانچر
-description: ARGVUS Rofi ﮟﯿﻟﻮﮭﮐ ﺲﭩﮑﯿﺟﻭﺮﭘ ،ﮟﯾﺮﮐ ﭻﻧﻻ﻿ ﺰﻨﺸﯿﮑﯿﻠﭙﯾﺍ ﮯﻌﯾﺭﺫ ﮯﮐ ﻮﯿﻨﯿﻣ ﮯﮐ، SSH ۔ﮟﯿﮬﮍﭘ
+title: لانچر اور تلاش
+description: لانچر اور تلاش — Quickshell/QML + Rust.
 ---
 
-`argvus-launcher` ﮦﻭ Rofi ﻮﺟ ﮯﮨ ﺎﺗﺮﮐ ﻢﮨﺍﺮﻓ ﻮﻨﯿﻣ ﺭﻭﺍ ﺰﻤﯿﮭﺗ ،ﺐﯿﺗﺮﺗ ﯽﮐ ARGVUS ﮟﯿﮨ
+مرکزی لانچر Quickshell/QML اور مقامی Rust سرچ انجن سے ایپس، ونڈوز، ترتیبات، کارروائیاں، منصوبے، SSH میزبان، فائلیں اور شارٹ کٹس تلاش کرتا ہے۔ اشاریہ سازی شروع میں بند ہے؛ فولڈر واضح طور پر منتخب کریں۔ صرف نام اور راستے شامل ہوتے ہیں، دستاویز کا مواد نہیں۔ حالیہ فائلیں XDG ریکارڈ پر منحصر ہیں۔ پوشیدہ فائلیں بطورِ طے شدہ خارج ہیں اور ڈائریکٹری سم لنکس کی پیروی نہیں ہوتی۔ مخصوص Rofi مینو دستیاب رہتے ہیں۔
 
 -                                            ;(`SUPER + D`) ﺮﭽﻧﻻ﻿ ﻦﺸﯿﮑﯿﻠﭙﯾﺍ
 - Rofi ﺮﮨ ﻮﺟ ﺰﻤﯿﮭﺗ ﺭﻭﺍ ﺐﯿﺗﺮﺗ ﯽﮐ ARGVUS Rofi ؛ﮟﯿﮨ ﯽﺗﺎﺟ ﯽﮐ ﺮﺌﯿﺷ ﮯﻌﯾﺭﺫ ﮯﮐ ﻮﻨﯿﻣ
@@ -29,24 +29,26 @@ description: ARGVUS Rofi ﮟﯿﻟﻮﮭﮐ ﺲﭩﮑﯿﺟﻭﺮﭘ ،ﮟﯾﺮ
 | `SUPER + SHIFT + /` | Hyprland cheatsheet | `cheatsheets.sh hypr` | دھوکہ دہی |
 | `SUPER + CTRL + /` | کٹی چیٹ شیٹ | `cheatsheets.sh kitty` | دھوکہ دہی |
 
-##                                             (`SUPER + D`) ﺮﭽﻧﻻ﻿ ﻦﺸﯿﮑﯿﻠﭙﯾﺍ
+## لانچر اور تلاش
 
-`SUPER + D` runs `argvus launcher`                                                       ﮯﮨ ﺎﺘﻟﻮﮭﮐ ﮟﯿﻣ Rofi ﻮﺟ ،`drun`ﮟﯿﺋﺎﺑﺩ ﭖﺁ ﺐﺟ ﮯﮨ ﯽﺗﻮﮨ ﻉﻭﺮﺷ ﺖﻗﻭ ﺱﺍ ﻦﺸﯿﮑﯿﻠﭙﯾﺍ ﮦﺩﺮﮐ ﺐﺨﺘﻨﻣ ﺭﻭﺍ ،ﮟﯿﮨ ﯽﺗﻮﮨ ﻝﺎﭩﺴﻧﺍ ﮫﺗﺎ`Enter`.
+مرکزی لانچر Quickshell/QML اور مقامی Rust سرچ انجن سے ایپس، ونڈوز، ترتیبات، کارروائیاں، منصوبے، SSH میزبان، فائلیں اور شارٹ کٹس تلاش کرتا ہے۔ اشاریہ سازی شروع میں بند ہے؛ فولڈر واضح طور پر منتخب کریں۔ صرف نام اور راستے شامل ہوتے ہیں، دستاویز کا مواد نہیں۔ حالیہ فائلیں XDG ریکارڈ پر منحصر ہیں۔ پوشیدہ فائلیں بطورِ طے شدہ خارج ہیں اور ڈائریکٹری سم لنکس کی پیروی نہیں ہوتی۔ مخصوص Rofi مینو دستیاب رہتے ہیں۔
 
-1. `SUPER + D` دبائیں۔
-2. ۔ﺎﺗﺮﮐ ﮟﯿﮩﻧ ﺭﻮﻏ ﺮﭘ ﯼﮍﺑ ﺎﯾ ﭦﻮﮭﭼ ﯽﮐ ﻑﺮﺣ ﺮﭩﻠﻓ ﺭﻭﺍ ﮯﮨ ﮦﺪﺷ ﺐﯿﺗﺮﺗ ﺖﺳﺮﮩﻓ ۔ﮟﯿﮭﮑﻟ ﮧﺼﺣ ﮫﭽ
-3. ۔ﮟﯿﺋﺎﺑﺩ Esc ﮯﯿﻟ ﮯﮐ ﮯﻧﺮﮐ ﺪﻨﺑ ﻮﻨﯿﻣ ﺎﯾ ،ﮟﯿﺋﺎﺑﺩ `Enter` ﮯﯿ
+`argvus launcher` · `argvus control-center launcher`
 
-```sh
-argvus launcher                  # opens the application menu
-argvus launcher --config PATH    # uses another Rofi configuration file
-```
+↑↓ حرکت · Enter کھولیں · Esc واپس · Ctrl+F پسندیدہ
 
-Any other argument is passed to  `Esc` `rofi`. `--config` without a value stops with an error.
+- تلاش ترتیب دیں: ایپلیکیشنز, ونڈو, ترتیبات, عمل, پراجیکٹ, SSH, فائلیں, مدد.
+- اشاریہ فولڈر شامل کریں / استثنا شامل کریں — مکمل راستہ.
+- اشاریہ سازی روکیں / اشاریہ مٹائیں اور روکیں / اشاریہ دوبارہ بنائیں.
+- ↑↓ حرکت · Enter بدلیں/شامل · Delete ہٹائیں · Ctrl+↑↓ ترتیب · F5 تازہ · Esc واپس
 
+`argvus config get /launcher --effective`
 
+`$XDG_CONFIG_HOME/argvus/config/launcher.json` → `$XDG_CACHE_HOME/argvus/launcher/index.json`
 
-۔ﯽﺘﮑﺳ ﻞﻣ ﮟﯿﮩﻧ ﮞﺎﮩﯾ ،ﯽﺗﺮﮐ ﮟﯿﮩﻧ ﻝﺎﭩﺴﻧﺍ ﻞﺋﺎﻓ  argvus-config  <program> --show drun  launcher  rofi  `argvus launcher --config <Rofi configuration>`  `rofi`  `launcher`  `<program> --show drun`  `argvus-config` `.desktop` ﯽﺋﻮﮐ ﻮﺟ ﻦﺸﯿﮑﯿﻠﭙﯾﺍ
+Quickshell: `launcher/Theme.qml` · Rofi: `launcher/theme.rasi`
+
+`--config` / Rasi: تلاش ترتیب دیں → `argvus control-center launcher`.
 
 ## Rofi ﺰﻤﯿﮭﺗ ﺭﻭﺍ ﺐﯿﺗﺮﺗ ﯽﮐ
 
@@ -436,7 +438,7 @@ Installing the package does not write into  gitui  lazygit  openssh  pinentry-gt
 
 | علامت | وجہ اور درست کریں |
 | --- | --- |
-| `SUPER + D`                                                    ﮟﯾﺮﮐ ﮏﯿﭼ | ﺎﺘﻟﻮﮭﮐ ﮟﯿﮩﻧ ﮫﭽﮐ`argvus launcher`                                               ﮧﮐ ﮟﯾﺮﮐ ﻖﯾﺪﺼﺗ ﯽﮐ ﺱﺍ ۔ﮟﯿﻣ ﻞﻨﯿﻣﺮﭨ`rofi`                               | ۔ﮯﮨ ﺩﻮﺟﻮﻣ ﺐﯿﺗﺮﺗ ﯽﮐ Rofi ﺭﻭﺍ ﮯﮨ ﺎﯿﮔ ﺎﯿﮐ ﻝﺎﭩﺴﻧﺍ
+| `SUPER + D`                                                    ﮟﯾﺮﮐ ﮏﯿﭼ | `argvus launcher` · `argvus control-center launcher` · `quickshell` · `argvus` |
 | `SUPER + D` ﺱﺎﭘ ﮯﮐ ﻦﺟ ﮟﯿﺘﺳﺍﻮﺧﺭﺩ ﮦﻭ ﻑﺮﺻ ۔ﮯﮨ ﮟﯿﮩﻧ ﯼﺮﭩﻧﺍ ﭖﺎﭨ ﮏﺴﯾﮈ ﯽﺋﻮﮐ ﺎﮐ ﮞﻮﺘﺳﺍﻮﺧﺭﺩ | ﮟﯿﮨ ﮟﯿ`.desktop`                                                         | ۔ﮯﮨ ﯽﺌﮔ ﯽﺋﺎﮭﮐﺩ ﻞﺋﺎﻓ
                                       | ﮟﯿﮨ ﮯﺗﺮﮐ ﻝﺎﻤﻌﺘﺳﺍ ﭧﻧﻮﻓ ﺎﻧﺍﺮﭘ ﮏﯾﺍ ﻮﻨﯿﻣ |`font:`| ۔ﮟﯾﺮﮐ ﻉﻭﺮﺷ ﮦﺭﺎﺑﻭﺩ ﻮﮐ ﻦﺸﯿﺳ ﺪﻌﺑ ﮯﮐ ﮯﻧﺮﮐ ﻞﯾﺪﺒﺗ ﭧﻧﻮﻓ ۔ﮯﮨ ﯽﺗﺎﺟ ﯽﮭﮑﻟ ﮦﺭﺎﺑﻭﺩ ﻦﺋﻻ﻿ ﺮﭘ
 | A theme change does not reach the Rofi menus | Check whether the user copy of `config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/`                 ﮟﯾﺮﮐ ﻮﮔﻻ﻿ ﮯﺳ ﻮﮐ ﻢﯿﮭﺗ ۔ﮯﮨ ﺎﺗﺮﮐ ﮦﺭﺎﺷﺍ ﻑﺮﻃ ﯽﮐ ﻢﯿﮭﺗ ﮦﺪﺷ ﮏﯿﭘ ﯽﮭﺑ ﺏﺍ`argvus-appearance` again. |
@@ -459,3 +461,8 @@ Installing the package does not write into  gitui  lazygit  openssh  pinentry-gt
 | `argvus` (`argvus control-center`) | `argvus projects` کے ذریعے پروجیکٹ کی فہرست میں ترمیم کرتا ہے۔ |
 
 Sticky اور Spaced میں Rofi کا دھندلاپن بار اور حاشیوں سمیت مینو کے پورے مانیٹر پر ہوتا ہے۔ مینو درمیان میں رہتا ہے اور عمومی دھندلاپن کی ترتیب پر عمل کرتا ہے۔
+
+
+`/launcher/show_icons`: `true` / `false`.
+
+`/launcher/selected_category`: `""` (All), `applications`, `windows`, `settings`, `actions`, `projects`, `ssh`, `files`, `help`.

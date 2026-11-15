@@ -1,9 +1,9 @@
 ---
-title: Application launcher
-description: Launch applications, open projects, SSH hosts and snippets, pick emoji, calculate, and read cheatsheets through the ARGVUS Rofi menus.
+title: Launcher and Search
+description: Launcher and Search — Quickshell/QML + Rust.
 ---
 
-`argvus-launcher` provides the Rofi configuration, themes and menus that ARGVUS uses to open things from the keyboard. It contains:
+The main launcher uses Quickshell/QML with a local Rust search engine. It searches applications, open windows, settings, actions, projects, SSH hosts, files and shortcuts. File indexing starts disabled; select folders explicitly. Only names and paths are indexed, never document contents. Recent files depend on the XDG recent-file registry. Hidden files are excluded by default, and directory symlinks are not followed. Specialized Rofi menus remain available.
 
 - the application launcher (`SUPER + D`);
 - the Rofi configuration and themes shared by every ARGVUS Rofi menu;
@@ -29,24 +29,26 @@ The shortcuts are declared by `argvus-hyprland`. This package provides the comma
 | `SUPER + SHIFT + /` | Hyprland cheatsheet | `cheatsheets.sh hypr` | Cheatsheets |
 | `SUPER + CTRL + /` | Kitty cheatsheet | `cheatsheets.sh kitty` | Cheatsheets |
 
-## Application launcher (`SUPER + D`)
+## Launcher and Search
 
-`SUPER + D` runs `argvus launcher`, which opens Rofi in `drun` mode. It lists the graphical applications installed with a desktop entry, and the selected one starts when you press `Enter`.
+The main launcher uses Quickshell/QML with a local Rust search engine. It searches applications, open windows, settings, actions, projects, SSH hosts, files and shortcuts. File indexing starts disabled; select folders explicitly. Only names and paths are indexed, never document contents. Recent files depend on the XDG recent-file registry. Hidden files are excluded by default, and directory symlinks are not followed. Specialized Rofi menus remain available.
 
-1. Press `SUPER + D`.
-2. Type part of the application name. The list is sorted and the filter ignores case.
-3. Press `Enter` to start the application, or `Esc` to close the menu.
+`argvus launcher` · `argvus control-center launcher`
 
-```sh
-argvus launcher                  # opens the application menu
-argvus launcher --config PATH    # uses another Rofi configuration file
-```
+↑↓ Navigate · Enter Open · Esc Back · Ctrl+F Favorite
 
-Any other argument is passed to `rofi`. `--config` without a value stops with an error.
+- Configure search: Applications, Windows, Settings, Actions, Projects, SSH, files, Help.
+- Add indexed folder / Add exclusion — Absolute path.
+- Pause indexing / Clear index and pause / Rebuild index.
+- ↑↓ Navigate · Enter Toggle/Add · Delete Remove · Ctrl+↑↓ Reorder · F5 Refresh · Esc Back
 
-Hyprland runs `argvus launcher --config <Rofi configuration>` when the default launcher is `rofi`, which is the default. If the default `launcher` in the default applications is set to another program, Hyprland runs `<program> --show drun` instead. Set it in the default applications of the Control Center, which stores the value in `argvus-config`.
+`argvus config get /launcher --effective`
 
-Only applications with a desktop entry appear in the list. An application that installs no `.desktop` file cannot be found here.
+`$XDG_CONFIG_HOME/argvus/config/launcher.json` → `$XDG_CACHE_HOME/argvus/launcher/index.json`
+
+Quickshell: `launcher/Theme.qml` · Rofi: `launcher/theme.rasi`
+
+`--config` / Rasi: Configure search → `argvus control-center launcher`.
 
 ## Rofi configuration and themes
 
@@ -406,7 +408,7 @@ The package `argvus-launcher` is architecture-independent and installs:
 - `/usr/share/argvus/launcher/config/`, with the Rofi configuration and themes;
 - `/usr/share/argvus/launcher/sh/`, with `cheatsheets.sh` and `emoji-picker.sh`.
 
-Required dependencies: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` and `pinentry` (which provides `pinentry-gtk`). Optional dependencies: `openssh`, for the SSH picker and the SSH key manager; `lazygit` and `gitui`, for the git TUI.
+Required dependencies: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` and `pinentry` (which provides `pinentry-gtk`). Optional dependencies: `openssh`, for the SSH picker and the SSH key manager; `lazygit` and `gitui`, for the git TUI.
 
 Installing the package does not write into `$HOME`. User configuration is created at session start, as described in [Rofi configuration and themes](#where-the-active-configuration-lives).
 
@@ -414,7 +416,7 @@ Installing the package does not write into `$HOME`. User configuration is create
 
 | Symptom | Cause and fix |
 | --- | --- |
-| `SUPER + D` opens nothing | Check `argvus launcher` in a terminal. Confirm that `rofi` is installed and that the Rofi configuration exists. |
+| `SUPER + D` opens nothing | `argvus launcher` · `argvus control-center launcher` · `quickshell` · `argvus` |
 | `SUPER + D` lists no applications | The applications have no desktop entry. Only applications with a `.desktop` file are shown. |
 | The menus use an old font | The `font:` line is rewritten at session start. Restart the session after changing the font. |
 | A theme change does not reach the Rofi menus | Check whether the user copy of `config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/` still points to the packaged theme. Apply the theme from `argvus-appearance` again. |
@@ -437,3 +439,8 @@ Installing the package does not write into `$HOME`. User configuration is create
 | `argvus` (`argvus control-center`) | Edits the project list through `argvus projects`. |
 
 Rofi uses a fullscreen transparent surface: blur covers the entire menu monitor, including bars and margins, in Sticky and Spaced. The menu stays centered; global blur settings still apply.
+
+
+`/launcher/show_icons`: `true` / `false`.
+
+`/launcher/selected_category`: `""` (All), `applications`, `windows`, `settings`, `actions`, `projects`, `ssh`, `files`, `help`.

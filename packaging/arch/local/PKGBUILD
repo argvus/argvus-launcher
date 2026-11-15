@@ -2,7 +2,7 @@
 pkgname=argvus-launcher
 pkgver=0.0.0
 pkgrel=1
-pkgdesc="Rofi launcher configuration, themes and menus for the ARGVUS desktop."
+pkgdesc="Universal Quickshell launcher, themes and Rofi menus for the ARGVUS desktop."
 arch=('any')
 url="https://github.com/argvus/argvus-launcher"
 license=('GPL-3.0-only')
@@ -14,6 +14,8 @@ depends=(
   'jq'
   'hyprland'
   'libnotify'
+  'quickshell'
+  'qt6-declarative'
   'rofi'
   'rofi-calc'
   'rofimoji'

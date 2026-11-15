@@ -1,9 +1,9 @@
 ---
-title: Uygulama başlatıcı
-description: ARGVUS Rofi menüleri aracılığıyla uygulamaları başlatın, projeleri açın, SSH hostlarına ve snippet'lere bağlanın, emoji seçin, hesaplama yapın ve hile sayfalarını okuyun.
+title: Başlatıcı ve Arama
+description: Başlatıcı ve Arama — Quickshell/QML + Rust.
 ---
 
-`argvus-launcher`, ARGVUS'un klavyeden bir şeyleri açmak için kullandığı Rofi yapılandırmasını, temalarını ve menülerini sağlar. İçerir:
+Ana başlatıcı Quickshell/QML ve yerel Rust arama motoruyla uygulama, pencere, ayar, eylem, proje, SSH sunucusu, dosya ve kısayol arar. Dizinleme başlangıçta kapalıdır; klasörleri açıkça seçin. Yalnızca adlar ve yollar dizinlenir, belge içerikleri okunmaz. Son dosyalar XDG kaydına bağlıdır. Gizli dosyalar varsayılan olarak dışlanır ve dizin sembolik bağlantıları izlenmez. Özel Rofi menüleri kullanılabilir.
 
 - uygulama başlatıcıyı (`SUPER + D`);
 - her ARGVUS Rofi menüsü tarafından paylaşılan Rofi yapılandırması ve temaları;
@@ -29,24 +29,26 @@ Kısayollar `argvus-hyprland` tarafından beyan edilmiştir. Bu paket, komutlar�
 | `SUPER + SHIFT + /` | Hyprland hile sayfası | `cheatsheets.sh hypr` | Hile Sayfaları |
 | `SUPER + CTRL + /` | Kitty hile sayfası | `cheatsheets.sh kitty` | Hile Sayfaları |
 
-## Uygulama başlatıcı (`SUPER + D`)
+## Başlatıcı ve Arama
 
-`SUPER + D`, `argvus launcher` çalıştırır, bu da Rofi'yi `drun` modunda açar. Masaüstü girişi ile yüklü grafik uygulamalarını listeler ve seçilen uygulama `Enter` tuşuna bastığınızda başlar.
+Ana başlatıcı Quickshell/QML ve yerel Rust arama motoruyla uygulama, pencere, ayar, eylem, proje, SSH sunucusu, dosya ve kısayol arar. Dizinleme başlangıçta kapalıdır; klasörleri açıkça seçin. Yalnızca adlar ve yollar dizinlenir, belge içerikleri okunmaz. Son dosyalar XDG kaydına bağlıdır. Gizli dosyalar varsayılan olarak dışlanır ve dizin sembolik bağlantıları izlenmez. Özel Rofi menüleri kullanılabilir.
 
-1. `SUPER + D`'ye basın.
-2. Uygulama adının bir kısmını yazın. Liste sıralanır ve filtre büyük/küçük harf duyarsızdır.
-3. Uygulamayı başlatmak için `Enter` tuşlayın veya menüyü kapatmak için `Esc` tuşlayın.
+`argvus launcher` · `argvus control-center launcher`
 
-```sh
-argvus launcher                  # opens the application menu
-argvus launcher --config PATH    # uses another Rofi configuration file
-```
+↑↓ Gezin · Enter Aç · Esc Geri · Ctrl+F Favori
 
-Başka herhangi bir argüman `rofi`'ye iletilir. `--config` bir değer olmadan hata ile durur.
+- Aramayı yapılandır: Uygulamalar, Windows, Ayarlar, Eylemler, Projeler, SSH, dosyaları, Yardım.
+- Dizinlenecek klasör ekle / Hariç tutma ekle — Mutlak yol.
+- Dizinlemeyi duraklat / Dizini temizle ve duraklat / Dizini yeniden oluştur.
+- ↑↓ Gezin · Enter Değiştir/Ekle · Delete Kaldır · Ctrl+↑↓ Sırala · F5 Yenile · Esc Geri
 
-Hyprland, varsayılan başlatıcı rofi olduğunda `argvus launcher --config <Rofi configuration>` çalıştırır, ki bu varsayılandır. Eğer varsayılan uygulamalardaki varsayılan  `rofi` `launcher` başka bir programa ayarlanmışsa, Hyprland yerine `<program> --show drun` çalıştırır. Bunu, değerini `argvus-config` içinde depolayan Kontrol Merkezi'nin varsayılan uygulamalarında ayarlayın.
+`argvus config get /launcher --effective`
 
-Yalnızca masaüstü girişi olan uygulamalar listede görünür. Hiçbir `.desktop` dosyası yüklemeyen bir uygulama burada bulunamaz.
+`$XDG_CONFIG_HOME/argvus/config/launcher.json` → `$XDG_CACHE_HOME/argvus/launcher/index.json`
+
+Quickshell: `launcher/Theme.qml` · Rofi: `launcher/theme.rasi`
+
+`--config` / Rasi: Aramayı yapılandır → `argvus control-center launcher`.
 
 ## Rofi yapılandırması ve temalar
 
@@ -414,7 +416,7 @@ Başlatıcı yapılandırması diğer paketlere ait bileşenlerle paylaşılır:
 - `/usr/share/argvus/launcher/config/`, Rofi yapılandırması ve temaları ile;
 - `/usr/share/argvus/launcher/sh/`, `cheatsheets.sh` ve `emoji-picker.sh` ile.
 
-Gerekli bağımlılıklar: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` ve `pinentry` (`pinentry-gtk` sağlar). İsteğe bağlı bağımlılıklar: `openssh`, SSH seçici ve SSH anahtar yöneticisi için; `lazygit` ve `gitui`, git TUI için.
+Gerekli bağımlılıklar: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` ve `pinentry` (`pinentry-gtk` sağlar). İsteğe bağlı bağımlılıklar: `openssh`, SSH seçici ve SSH anahtar yöneticisi için; `lazygit` ve `gitui`, git TUI için.
 
 Paketin kurulumu `$HOME` içerisine yazmaz. Kullanıcı yapılandırması, [Rofi configuration and themes](#where-the-active-configuration-lives) bölümünde açıklandığı gibi oturum başında oluşturulur.
 
@@ -422,7 +424,7 @@ Paketin kurulumu `$HOME` içerisine yazmaz. Kullanıcı yapılandırması, [Rofi
 
 | Belirti | Nedeni ve çözümü |
 | --- | --- |
-| `SUPER + D`hiçbir şey açmıyor | Kontrol et`argvus launcher` in a terminal. Confirm that `rofi`Yüklü olduğunu ve Rofi yapılandırmasının mevcut olduğunu kontrol edin. |
+| `SUPER + D`hiçbir şey açmıyor | `argvus launcher` · `argvus control-center launcher` · `quickshell` · `argvus` |
 | `SUPER + D` hiç uygulama listelemiyor | Uygulamaların masaüstü girdisi yok. Sadece ile başlayan uygulamalar `.desktop` file are shown. |
 | Menüler eski bir yazı tipini kullanıyor | `font:` satırı oturum başlangıcında yeniden yazılır. Yazı tipini değiştirdikten sonra oturumu yeniden başlatın. |
 | Tema değişikliği Rofi menülerine ulaşmıyor | `$XDG_CONFIG_HOME/argvus/data/rofi/`'daki `config.rasi` kullanıcı kopyasının hala paketlenmiş temayı gösterip göstermediğini kontrol edin. Temayı `argvus-appearance`'dan tekrar uygulayın. |
@@ -445,3 +447,8 @@ Paketin kurulumu `$HOME` içerisine yazmaz. Kullanıcı yapılandırması, [Rofi
 | `argvus` (`argvus control-center`) | Proje listesini `argvus projects` aracılığıyla düzenler. |
 
 Sticky ve Spaced modlarında Rofi bulanıklığı çubuklar ve kenarlar dahil menü monitörünün tamamını kaplar. Menü ortada kalır ve genel bulanıklık ayarına uyar.
+
+
+`/launcher/show_icons`: `true` / `false`.
+
+`/launcher/selected_category`: `""` (All), `applications`, `windows`, `settings`, `actions`, `projects`, `ssh`, `files`, `help`.

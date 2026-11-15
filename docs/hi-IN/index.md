@@ -1,9 +1,9 @@
 ---
-title: एप्लिकेशन लॉन्चर
-description: ARGVUS Rofi मेनू के माध्यम से एप्लिकेशन लॉन्च करें, प्रोजेक्ट खोलें, SSH होस्ट और स्निपेट्स, इमोजी चुनें, गणना करें, और चीटशीट पढ़ें।
+title: लॉन्चर और खोज
+description: लॉन्चर और खोज — Quickshell/QML + Rust.
 ---
 
-`argvus-launcher` वह Rofi कॉन्फ़िगरेशन, थीम और मेनू प्रदान करता है जिसका ARGVUS उपयोग करता है चीज़ें कीबोर्ड से खोलने के लिए। इसमें शामिल हैं:
+मुख्य लॉन्चर Quickshell/QML और स्थानीय Rust खोज इंजन से ऐप, विंडो, सेटिंग, कार्रवाई, प्रोजेक्ट, SSH होस्ट, फ़ाइलें और शॉर्टकट खोजता है। अनुक्रमण शुरू में बंद है; फ़ोल्डर स्पष्ट रूप से चुनें। केवल नाम और पथ अनुक्रमित होते हैं, दस्तावेज़ की सामग्री नहीं। हाल की फ़ाइलें XDG रिकॉर्ड पर निर्भर हैं। छिपी फ़ाइलें डिफ़ॉल्ट रूप से बाहर हैं और डायरेक्टरी सिमलिंक का अनुसरण नहीं होता। विशेष Rofi मेनू उपलब्ध रहते हैं।
 
 - एप्लिकेशन लॉन्चर (`SUPER + D`);
 - Rofi कॉन्फ़िगरेशन और थीम जो प्रत्येक ARGVUS Rofi मेनू द्वारा साझा की जाती हैं;
@@ -29,24 +29,26 @@ description: ARGVUS Rofi मेनू के माध्यम से एप्
 | `SUPER + SHIFT + /` | हाइप्रलैंड चीटशीट | `cheatsheets.sh hypr` | चीटशीट्स |
 | `SUPER + CTRL + /` | किटी चीटशीट | `cheatsheets.sh kitty` | चीटशीट्स |
 
-## एप्लिकेशन लॉन्चर (`SUPER + D`)
+## लॉन्चर और खोज
 
-`SUPER + D` चलाता है `argvus launcher`, जो `drun` मोड में Rofi को खोलता है। यह डेस्कटॉप एंट्री के साथ इंस्टॉल की गई ग्राफिकल एप्लिकेशन्स की सूची दिखाता है, और चुनी गई एप्लिकेशन `Enter` दबाने पर शुरू होती है।
+मुख्य लॉन्चर Quickshell/QML और स्थानीय Rust खोज इंजन से ऐप, विंडो, सेटिंग, कार्रवाई, प्रोजेक्ट, SSH होस्ट, फ़ाइलें और शॉर्टकट खोजता है। अनुक्रमण शुरू में बंद है; फ़ोल्डर स्पष्ट रूप से चुनें। केवल नाम और पथ अनुक्रमित होते हैं, दस्तावेज़ की सामग्री नहीं। हाल की फ़ाइलें XDG रिकॉर्ड पर निर्भर हैं। छिपी फ़ाइलें डिफ़ॉल्ट रूप से बाहर हैं और डायरेक्टरी सिमलिंक का अनुसरण नहीं होता। विशेष Rofi मेनू उपलब्ध रहते हैं।
 
-1. `SUPER + D` दबाएँ।
-2. एप्लिकेशन के नाम का हिस्सा टाइप करें। सूची क्रमबद्ध होती है और फ़िल्टर केस की परवाह नहीं करता।
-3. एप्लिकेशन शुरू करने के लिए `Enter` दबाएँ, या मेनू बंद करने के लिए `Esc` दबाएँ।
+`argvus launcher` · `argvus control-center launcher`
 
-```sh
-argvus launcher                  # opens the application menu
-argvus launcher --config PATH    # uses another Rofi configuration file
-```
+↑↓ नेविगेट · Enter खोलें · Esc वापस · Ctrl+F पसंदीदा
 
-कोई अन्य तर्क `rofi` को दिया जाता है। बिना मान के `--config` त्रुटि के साथ रुक जाता है।
+- खोज सेट करें: अनुप्रयोग, विंडोज, सेटिंग्स, कार्य, परियोजनाएं, SSH, फ़ाइलें, सहायता.
+- अनुक्रमित फ़ोल्डर जोड़ें / बहिष्करण जोड़ें — पूर्ण पथ.
+- अनुक्रमण रोकें / अनुक्रमणिका मिटाएँ और रोकें / अनुक्रमणिका फिर बनाएँ.
+- ↑↓ नेविगेट · Enter बदलें/जोड़ें · Delete हटाएँ · Ctrl+↑↓ क्रम · F5 ताज़ा · Esc वापस
 
-जब डिफ़ॉल्ट लॉन्चर rofi होता है, जो डिफ़ॉल्ट है, तब Hyprland `argvus launcher --config <Rofi configuration>` चलाता है। यदि डिफ़ॉल्ट एप्लिकेशन में डिफ़ॉल्ट  `rofi` `launcher` किसी अन्य प्रोग्राम पर सेट किया गया है, तो Hyprland इसके बजाय `<program> --show drun` चलाता है। इसे कंट्रोल सेंटर के डिफ़ॉल्ट एप्लिकेशन में सेट करें, जो इस मान को `argvus-config` में संग्रहीत करता है।
+`argvus config get /launcher --effective`
 
-केवल डेस्कटॉप एंट्री वाली एप्लिकेशन सूची में दिखाई देती हैं। कोई एप्लिकेशन जो कोई `.desktop` फ़ाइल इंस्टॉल नहीं करता, उसे यहाँ नहीं पाया जा सकता।
+`$XDG_CONFIG_HOME/argvus/config/launcher.json` → `$XDG_CACHE_HOME/argvus/launcher/index.json`
+
+Quickshell: `launcher/Theme.qml` · Rofi: `launcher/theme.rasi`
+
+`--config` / Rasi: खोज सेट करें → `argvus control-center launcher`.
 
 ## Rofi कॉन्फ़िगरेशन और थीम
 
@@ -404,7 +406,7 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 - `/usr/share/argvus/launcher/config/`, Rofi कॉन्फ़िगरेशन और थीम्स के साथ;
 - `/usr/share/argvus/launcher/sh/`, `cheatsheets.sh` और `emoji-picker.sh` के साथ।
 
-आवश्यक निर्भरताएँ: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` और `pinentry` (जो `pinentry-gtk` प्रदान करता है)। वैकल्पिक निर्भरताएँ: `openssh`, SSH पिकर और SSH की मैनेजर के लिए; `lazygit` और `gitui`, git TUI के लिए।
+आवश्यक निर्भरताएँ: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` और `pinentry` (जो `pinentry-gtk` प्रदान करता है)। वैकल्पिक निर्भरताएँ: `openssh`, SSH पिकर और SSH की मैनेजर के लिए; `lazygit` और `gitui`, git TUI के लिए।
 
 पैकेज इंस्टॉल करने से `$HOME` में कोई लेखन नहीं होता है। उपयोगकर्ता कॉन्फ़िगरेशन सत्र प्रारंभ में बनाया जाता है, जैसा कि [Rofi कॉन्फ़िगरेशन और थीम्स](#where-the-active-configuration-lives) में वर्णित है।
 
@@ -412,7 +414,7 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 
 | लक्षण | कारण और निवारण |
 | --- | --- |
-| `SUPER + D`कुछ भी नहीं खोलता | जाँच करें`argvus launcher`एक टर्मिनल में। पुष्टि करें कि`rofi`संस्थापित है और Rofi कॉन्फ़िगरेशन मौजूद है। |
+| `SUPER + D`कुछ भी नहीं खोलता | `argvus launcher` · `argvus control-center launcher` · `quickshell` · `argvus` |
 | `SUPER + D`कोई आवेदन सूचीबद्ध नहीं है | इन आवेदनों का डेस्कटॉप एंट्री नहीं है। केवल वे आवेदन जिनके पास`.desktop`फ़ाइल दिखाई जाती है। |
 | मेनू पुराने फॉन्ट का उपयोग करते हैं | `font:`सत्र प्रारंभ में लाइन को फिर से लिखा जाता है। फ़ॉन्ट बदलने के बाद सत्र को पुनः प्रारंभ करें। |
 | थीम परिवर्तन Rofi मेनू तक नहीं पहुंचता | जांचें कि उपयोगकर्ता प्रति की `config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/`अभी भी पैक किए गए थीम की ओर इशारा करता है। थीम को से लागू करें`argvus-appearance` again. |
@@ -435,3 +437,8 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 | `argvus` (`argvus control-center`) | `argvus projects` के माध्यम से प्रोजेक्ट सूची संपादित करता है। |
 
 Sticky और Spaced में Rofi का धुंधलापन बार और किनारों सहित मेनू वाले पूरे मॉनिटर को ढकता है। मेनू बीच में रहता है और वैश्विक धुंधलापन सेटिंग का पालन करता है।
+
+
+`/launcher/show_icons`: `true` / `false`.
+
+`/launcher/selected_category`: `""` (All), `applications`, `windows`, `settings`, `actions`, `projects`, `ssh`, `files`, `help`.

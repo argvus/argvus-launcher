@@ -1,9 +1,9 @@
 ---
-title: Trình khởi chạy ứng dụng
-description: Khởi chạy ứng dụng, mở dự án, máy chủ SSH và đoạn mã, chọn emoji, tính toán và đọc danh sách mẹo thông qua các menu Rofi của ARGVUS.
+title: Trình khởi chạy và tìm kiếm
+description: Trình khởi chạy và tìm kiếm — Quickshell/QML + Rust.
 ---
 
-`argvus-launcher` cung cấp cấu hình Rofi, các chủ đề và menu mà ARGVUS sử dụng để mở các thứ từ bàn phím. Nó bao gồm:
+Trình khởi chạy chính dùng Quickshell/QML và công cụ Rust cục bộ để tìm ứng dụng, cửa sổ, cài đặt, thao tác, dự án, máy chủ SSH, tệp và phím tắt. Lập chỉ mục ban đầu bị tắt; cần chọn thư mục rõ ràng. Chỉ tên và đường dẫn được lập chỉ mục, không đọc nội dung tài liệu. Tệp gần đây dựa vào bản ghi XDG. Tệp ẩn bị loại trừ mặc định và không đi theo liên kết tượng trưng của thư mục. Các menu Rofi chuyên dụng vẫn có sẵn.
 
 - trình khởi chạy ứng dụng (`SUPER + D`);
 - cấu hình Rofi và các chủ đề được chia sẻ bởi mọi menu Rofi của ARGVUS;
@@ -29,24 +29,26 @@ Các phím tắt được khai báo bởi `argvus-hyprland`. Gói này cung cấ
 | `SUPER + SHIFT + /` | Bảng cheat Hyprland | `cheatsheets.sh hypr` | Cheatsheet |
 | `SUPER + CTRL + /` | Áo khoác Kitty | `cheatsheets.sh kitty` | Cheatsheet |
 
-## Trình khởi chạy ứng dụng (`SUPER + D`)
+## Trình khởi chạy và tìm kiếm
 
-`SUPER + D` chạy `argvus launcher`, mở Rofi ở chế độ `drun`. Nó liệt kê các ứng dụng đồ họa đã cài đặt với một mục trình đơn, và ứng dụng được chọn sẽ khởi chạy khi bạn nhấn `Enter`.
+Trình khởi chạy chính dùng Quickshell/QML và công cụ Rust cục bộ để tìm ứng dụng, cửa sổ, cài đặt, thao tác, dự án, máy chủ SSH, tệp và phím tắt. Lập chỉ mục ban đầu bị tắt; cần chọn thư mục rõ ràng. Chỉ tên và đường dẫn được lập chỉ mục, không đọc nội dung tài liệu. Tệp gần đây dựa vào bản ghi XDG. Tệp ẩn bị loại trừ mặc định và không đi theo liên kết tượng trưng của thư mục. Các menu Rofi chuyên dụng vẫn có sẵn.
 
-1. Nhấn `SUPER + D`.
-2. Gõ một phần của tên ứng dụng. Danh sách được sắp xếp và bộ lọc không phân biệt chữ hoa chữ thường.
-3. Nhấn `Enter` để khởi động ứng dụng, hoặc `Esc` để đóng menu.
+`argvus launcher` · `argvus control-center launcher`
 
-```sh
-argvus launcher                  # opens the application menu
-argvus launcher --config PATH    # uses another Rofi configuration file
-```
+↑↓ Di chuyển · Enter Mở · Esc Quay lại · Ctrl+F Yêu thích
 
-Bất kỳ đối số nào khác sẽ được chuyển cho `rofi`. `--config` không có giá trị sẽ dừng với lỗi.
+- Cấu hình tìm kiếm: Ứng dụng, Cửa sổ, Thiết lập, Hành động, Dự án, SSH, tập tin, Trợ giúp.
+- Thêm thư mục lập chỉ mục / Thêm mục loại trừ — Đường dẫn tuyệt đối.
+- Tạm dừng lập chỉ mục / Xóa chỉ mục và tạm dừng / Tạo lại chỉ mục.
+- ↑↓ Di chuyển · Enter Đổi/Thêm · Delete Xóa · Ctrl+↑↓ Sắp xếp · F5 Làm mới · Esc Quay lại
 
-Hyprland chạy `argvus launcher --config <Rofi configuration>` khi trình khởi chạy mặc định là `rofi`, đây là mặc định. Nếu `launcher` mặc định trong các ứng dụng mặc định được đặt thành một chương trình khác, Hyprland sẽ chạy `<program> --show drun` thay thế. Đặt nó trong các ứng dụng mặc định của Trung tâm Điều khiển, nơi lưu giá trị trong `argvus-config`.
+`argvus config get /launcher --effective`
 
-Chỉ những ứng dụng có mục nhập trên máy tính để bàn mới xuất hiện trong danh sách. Một ứng dụng không cài đặt tệp `.desktop` sẽ không thể tìm thấy ở đây.
+`$XDG_CONFIG_HOME/argvus/config/launcher.json` → `$XDG_CACHE_HOME/argvus/launcher/index.json`
+
+Quickshell: `launcher/Theme.qml` · Rofi: `launcher/theme.rasi`
+
+`--config` / Rasi: Cấu hình tìm kiếm → `argvus control-center launcher`.
 
 ## Cấu hình và giao diện của Rofi
 
@@ -418,7 +420,7 @@ Gói `argvus-launcher` là không phụ thuộc kiến trúc và cài đặt:
 - `/usr/share/argvus/launcher/config/`, với cấu hình và chủ đề Rofi;
 - `/usr/share/argvus/launcher/sh/`, với `cheatsheets.sh` và `emoji-picker.sh`.
 
-Các phụ thuộc bắt buộc: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` và `pinentry` (cung cấp `pinentry-gtk`). Các phụ thuộc tùy chọn: `openssh`, cho trình chọn SSH và trình quản lý khóa SSH; `lazygit` và `gitui`, cho giao diện TUI của git.
+Các phụ thuộc bắt buộc: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` và `pinentry` (cung cấp `pinentry-gtk`). Các phụ thuộc tùy chọn: `openssh`, cho trình chọn SSH và trình quản lý khóa SSH; `lazygit` và `gitui`, cho giao diện TUI của git.
 
 Cài đặt gói không ghi vào `$HOME`. Cấu hình người dùng được tạo khi bắt đầu phiên, như được mô tả trong [Cấu hình và chủ đề Rofi](#where-the-active-configuration-lives).
 
@@ -426,7 +428,7 @@ Cài đặt gói không ghi vào `$HOME`. Cấu hình người dùng được t�
 
 | Triệu chứng | Nguyên nhân và cách khắc phục |
 | --- | --- |
-| `SUPER + D` không mở được gì | Kiểm tra `argvus launcher` trong thiết bị đầu cuối. Xác nhận rằng `rofi` đã được cài đặt và cấu hình Rofi tồn tại. |
+| `SUPER + D` không mở được gì | `argvus launcher` · `argvus control-center launcher` · `quickshell` · `argvus` |
 | `SUPER + D`không liệt kê ứng dụng nào | Các ứng dụng không có mục nhập trên máy tính để bàn. Chỉ những ứng dụng có`.desktop` file are shown. |
 | Các menu sử dụng phông chữ cũ | Dòng `font:` được viết lại khi bắt đầu phiên. Khởi động lại phiên sau khi thay đổi phông chữ. |
 | Thay đổi chủ đề không ảnh hưởng đến các menu Rofi | Kiểm tra xem bản sao của người dùng có`config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/` still points to the packaged theme. Apply the theme from `argvus-appearance` again. |
@@ -449,3 +451,8 @@ Cài đặt gói không ghi vào `$HOME`. Cấu hình người dùng được t�
 | `argvus` (`argvus control-center`) | Chỉnh sửa danh sách dự án thông qua `argvus projects`. |
 
 Trong Sticky và Spaced, hiệu ứng mờ Rofi phủ toàn bộ màn hình chứa menu, gồm thanh và lề. Menu vẫn ở giữa và tuân theo cài đặt mờ toàn cục.
+
+
+`/launcher/show_icons`: `true` / `false`.
+
+`/launcher/selected_category`: `""` (All), `applications`, `windows`, `settings`, `actions`, `projects`, `ssh`, `files`, `help`.

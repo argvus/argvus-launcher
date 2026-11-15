@@ -1,0 +1,11 @@
+id = "launcher-panel"
+template = "launcher/theme-template/Theme.qml"
+output = "launcher/Theme.qml"
+reload_stage = "build"
+
+[reload]
+kind = "command"
+argv = ["qs", "-p", "/usr/share/argvus/launcher/quickshell", "ipc", "call", "theme", "reload"]
+
+[palette]
+fg_dim = "@fg | mix(@bg, 0.25)"
