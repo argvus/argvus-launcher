@@ -18,6 +18,7 @@ PROMPT="$(argvus_tr launcher search.cheatsheet)"
 
 case "$APP" in
   hypr)
+    THEME='menu-card { width: 1050px; height: 800px;} listview { lines: 30; }'
     _generated_cheat="${ARGVUS_CONFIG_HOME:-${XDG_CONFIG_HOME:-$HOME/.config}/argvus}/data/generated/hypr/keybindings.txt"
     if [ -r "$_generated_cheat" ]; then
       CHEAT_FILE="$_generated_cheat"
@@ -26,11 +27,13 @@ case "$APP" in
     fi
     ;;
   kitty)
+    THEME='menu-card { width: 1050px; height: 600px;}'
     CHEAT_FILE="$(paths_config terminal/docs/${_language}.txt)"
     ;;
   *)
+    THEME='menu-card { width: 1050px; height: 600px;}'
     CHEAT_FILE="$(paths_config "${APP}/docs/cheatsheets/${_language}.txt")"
     ;;
 esac
 
-exec rofi -config "$(paths_config launcher/config/config.rasi)" -dmenu -p "$PROMPT" -i -theme-str 'menu-card { width: 1050px; height: 600px;}' < "$CHEAT_FILE"
+exec rofi -config "$(paths_config launcher/config/config.rasi)" -dmenu -p "$PROMPT" -i -theme-str "$THEME" < "$CHEAT_FILE"

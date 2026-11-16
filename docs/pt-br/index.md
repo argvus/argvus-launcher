@@ -379,7 +379,7 @@ O pacote do launcher fornece a configuração Rofi e depende do `rofi-calc`. O a
 
 ## Cheatsheets (`SUPER + SHIFT + /` e `SUPER + CTRL + /`)
 
-`cheatsheets.sh` mostra uma lista somente leitura de atalhos em uma janela Rofi grande. Ele recebe o nome do aplicativo como argumento:
+`cheatsheets.sh` mostra uma lista somente leitura de atalhos em uma janela Rofi. O cheatsheet do Hyprland (`SUPER + SHIFT + /`) usa 800 px de altura e exibe até 30 linhas; os demais cheatsheets mantêm 600 px e até 10 linhas. O comando recebe o nome do aplicativo como argumento:
 
 ```sh
 cheatsheets.sh hypr     # atalhos do Hyprland (SUPER + SHIFT + /)
