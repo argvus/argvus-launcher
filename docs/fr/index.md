@@ -32,6 +32,8 @@ Les raccourcis sont déclarés par `argvus-hyprland`. Ce paquet fournit les comm
 
 Le lanceur principal utilise Quickshell/QML et un moteur local en Rust. Il recherche applications, fenêtres, paramètres, actions, projets, hôtes SSH, fichiers et raccourcis. L’indexation est désactivée au départ et nécessite des dossiers choisis explicitement. Seuls les noms et chemins sont indexés, jamais le contenu. Les fichiers récents dépendent du registre XDG. Les fichiers cachés sont exclus par défaut et les liens symboliques de dossiers ne sont pas suivis. Les menus spécialisés Rofi restent disponibles.
 
+Le lanceur utilise une présentation TUI compacte : texte à chasse fixe, recherche et catégories alignées, favoris compacts et aide séparée en bas. Les bordures suivent les réglages actifs d’ARGVUS.
+
 `argvus launcher` · `argvus control-center launcher`
 
 ↑↓ Naviguer · Enter Ouvrir · Esc Retour · Ctrl+F Favori

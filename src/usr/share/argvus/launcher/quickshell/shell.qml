@@ -27,13 +27,19 @@ ShellRoot {
     property string status: ""
     property string locale: "en-US"
     readonly property string configHome: Quickshell.env("ARGVUS_CONFIG_HOME") || StandardPaths.writableLocation(StandardPaths.GenericConfigLocation)
+    readonly property string dataHome: Quickshell.env("ARGVUS_DATA_HOME") || configHome + "/argvus/data"
     readonly property string systemRoot: Quickshell.env("ARGVUS_SYSTEM_CONFIG") || "/usr/share/argvus"
     readonly property color background: themeObject ? themeObject.background : palette.window
     readonly property color foreground: themeObject ? themeObject.foreground : palette.windowText
     readonly property color muted: themeObject ? themeObject.muted : palette.placeholderText
     readonly property color accent: themeObject ? themeObject.accent : palette.highlight
     readonly property color selected: themeObject ? themeObject.selected : palette.alternateBase
-    readonly property int radius: themeObject ? themeObject.radius : 16
+    readonly property int radius: themeObject ? themeObject.radius : 0
+    readonly property int controlHeight: 40
+    readonly property int rowHeight: 48
+    readonly property string textFont: "monospace"
+    property int windowRadius: radius
+    property int borderWidth: 1
     readonly property bool home: search.text.trim() === "" && category === "" && !submenu
     SystemPalette {
         id: palette
@@ -260,6 +266,25 @@ ShellRoot {
         }
     }
     FileView {
+        id: bordersFile
+        path: root.dataHome + "/.borders"
+        printErrors: false
+        watchChanges: true
+        onFileChanged: reload()
+        onTextChanged: {
+            const settings = {};
+            for (const line of text().split(/\r?\n/)) {
+                const parts = line.split("=").map(part => part.trim());
+                if (parts.length === 2)
+                    settings[parts[0]] = parts[1];
+            }
+            const configuredRounding = Number(settings.rounding);
+            const configuredThickness = Number(settings.thickness);
+            root.windowRadius = settings.rounded === "1" ? Math.max(2, Math.min(10, Number.isFinite(configuredRounding) ? configuredRounding : root.radius)) : 0;
+            root.borderWidth = Math.max(0, Math.min(10, Number.isFinite(configuredThickness) ? configuredThickness : 1));
+        }
+    }
+    FileView {
         path: root.configHome + "/argvus/config/launcher.json"
         printErrors: false
         watchChanges: true
@@ -345,13 +370,13 @@ ShellRoot {
             id: panel
             anchors.horizontalCenter: parent.horizontalCenter
             y: Math.max(24, (overlay.height - height) * 0.35)
-            width: Math.min(760, overlay.width - 32)
-            height: Math.min(690, overlay.height - 48, Math.max(260, 180 + Math.min(root.results.length, 7) * 75 + (root.home && favoriteRepeater.count > 0 ? 100 : 0)))
+            width: Math.min(720, overlay.width - 32)
+            height: Math.min(560, overlay.height - 48)
             Keys.onEscapePressed: root.back()
-            radius: root.radius
+            radius: root.windowRadius
             color: root.background
-            border.color: root.accent
-            border.width: 1
+            border.color: root.borderWidth > 0 ? root.accent : "transparent"
+            border.width: root.borderWidth
             opacity: root.opened ? 1 : 0
             Behavior on opacity {
                 NumberAnimation {
@@ -363,19 +388,62 @@ ShellRoot {
             }
             ColumnLayout {
                 anchors.fill: parent
-                anchors.margins: 22
-                spacing: 12
+                anchors.margins: 16
+                spacing: 8
                 RowLayout {
                     Layout.fillWidth: true
+                    Label {
+                        text: "ARGVUS / " + root.tr("source_applications")
+                        color: root.accent
+                        font.family: "monospace"
+                        font.bold: true
+                        font.pixelSize: 13
+                    }
+                    Item {
+                        Layout.fillWidth: true
+                    }
+                    Button {
+                        id: configureButton
+                        text: "󰒓"
+                        Layout.preferredWidth: 28
+                        Layout.preferredHeight: 28
+                        palette.buttonText: root.foreground
+                        background: Rectangle {
+                            color: configureButton.hovered ? root.selected : "transparent"
+                            radius: root.windowRadius
+                            border.color: configureButton.activeFocus ? root.accent : "transparent"
+                        }
+                        font.family: "Symbols Nerd Font Mono"
+                        font.pixelSize: 18
+                        Accessible.name: root.tr("configure")
+                        ToolTip.visible: hovered
+                        ToolTip.text: root.tr("configure")
+                        onClicked: root.send({
+                            op: "configure"
+                        })
+                    }
+                }
+                GridLayout {
+                    Layout.fillWidth: true
+                    columns: panel.width < 640 ? 1 : 2
+                    columnSpacing: 8
+                    rowSpacing: 8
                     TextField {
                         id: search
                         Layout.fillWidth: true
-                        font.pixelSize: 23
+                        font.family: "monospace"
+                        font.pixelSize: 14
+                        Layout.preferredHeight: root.controlHeight
+                        leftPadding: 12
+                        rightPadding: 12
                         color: root.foreground
                         placeholderTextColor: root.muted
                         placeholderText: root.submenu ? root.tr("choose_device") : root.tr("placeholder")
                         background: Rectangle {
-                            color: "transparent"
+                            color: root.selected
+                            radius: root.windowRadius > 0 ? Math.min(4, root.windowRadius) : 0
+                            border.width: root.borderWidth
+                            border.color: root.accent
                         }
                         onTextChanged: {
                             root.resetSelection = true;
@@ -406,132 +474,144 @@ ShellRoot {
                             }
                         }
                     }
-                    Button {
-                        id: configureButton
-                        text: "󰒓"
-                        palette.buttonText: root.foreground
-                        background: Rectangle {
-                            color: configureButton.hovered ? root.selected : "transparent"
-                            radius: root.radius
-                            border.color: configureButton.activeFocus ? root.accent : "transparent"
-                        }
-                        font.family: "Symbols Nerd Font Mono"
-                        font.pixelSize: 22
-                        Accessible.name: root.tr("configure")
-                        ToolTip.visible: hovered
-                        ToolTip.text: root.tr("configure")
-                        onClicked: root.send({
-                            op: "configure"
-                        })
-                    }
-                }
-                ComboBox {
-                    id: categories
-                    Layout.fillWidth: true
-                    visible: !root.submenu
-                    model: [""].concat(root.preferences.sources)
-                    textRole: ""
-                    implicitHeight: Math.max(24, implicitContentHeight + topPadding + bottomPadding)
-                    Layout.minimumHeight: implicitHeight
-                    leftPadding: 8
-                    rightPadding: 24
-                    topPadding: 4
-                    bottomPadding: 4
-                    background: Rectangle {
-                        color: root.selected
-                        radius: root.radius > 0 ? 4 : 0
-                        border.color: categories.activeFocus ? root.accent : root.muted
-                    }
-                    contentItem: Text {
-                        text: categories.displayText
-                        color: root.foreground
-                        verticalAlignment: Text.AlignVCenter
-                        elide: Text.ElideRight
-                    }
-                    indicator: Text {
-                        text: "▾"
-                        color: root.foreground
-                        x: categories.width - width - 8
-                        y: (categories.height - height) / 2
-                    }
-                    popup: Popup {
-                        y: categories.height + 4
-                        width: categories.width
-                        padding: 4
-                        background: Rectangle {
-                            color: root.background
-                            radius: root.radius > 0 ? 4 : 0
-                            border.color: root.accent
-                        }
-                        contentItem: ListView {
-                            implicitHeight: Math.min(contentHeight, 320)
-                            clip: true
-                            model: categories.popup.visible ? categories.delegateModel : null
-                            currentIndex: categories.highlightedIndex
-                            ScrollBar.vertical: ScrollBar {}
-                        }
-                    }
-                    palette.window: root.background
-                    palette.base: root.background
-                    palette.button: root.selected
-                    palette.buttonText: root.foreground
-                    palette.text: root.foreground
-                    palette.highlight: root.accent
-                    palette.highlightedText: root.foreground
-                    palette.mid: root.accent
-                    palette.dark: root.background
-                    palette.light: root.selected
-                    displayText: root.category === "" ? root.tr("all") : root.tr("source_" + root.category)
-                    delegate: ItemDelegate {
-                        id: categoryDelegate
-                        required property var modelData
-                        background: Rectangle {
-                            color: categoryDelegate.hovered || categoryDelegate.highlighted ? root.selected : root.background
-                            radius: root.radius > 0 ? 4 : 0
-                        }
-                        palette.text: root.foreground
-                        palette.highlightedText: root.foreground
-                        width: categories.popup.availableWidth
-                        implicitHeight: Math.max(28, implicitContentHeight + topPadding + bottomPadding)
-                        leftPadding: 8
-                        rightPadding: 8
+                    ComboBox {
+                        id: categories
+                        font.family: root.textFont
+                        font.pixelSize: 14
+                        Layout.preferredWidth: panel.width < 640 ? -1 : 184
+                        Layout.fillWidth: panel.width < 640
+                        visible: !root.submenu
+                        model: [""].concat(root.preferences.sources)
+                        textRole: ""
+                        implicitHeight: root.controlHeight
+                        Layout.minimumHeight: implicitHeight
+                        leftPadding: 12
+                        rightPadding: 24
                         topPadding: 4
                         bottomPadding: 4
-                        text: modelData === "" ? root.tr("all") : root.tr("source_" + modelData)
-                    }
-                    onActivated: {
-                        root.category = model[currentIndex];
-                        root.send({
-                            op: "select_category",
-                            category: root.category
-                        });
-                        root.query();
-                        search.forceActiveFocus();
+                        background: Rectangle {
+                            color: root.selected
+                            radius: root.windowRadius > 0 ? Math.min(4, root.windowRadius) : 0
+                            border.width: root.borderWidth
+                            border.color: categories.activeFocus ? root.accent : root.muted
+                        }
+                        contentItem: Text {
+                            font.family: root.textFont
+                            font.pixelSize: 14
+                            text: categories.displayText
+                            color: root.foreground
+                            verticalAlignment: Text.AlignVCenter
+                            elide: Text.ElideRight
+                        }
+                        indicator: Text {
+                            text: "▾"
+                            color: root.foreground
+                            x: categories.width - width - 8
+                            y: (categories.height - height) / 2
+                        }
+                        popup: Popup {
+                            y: categories.height + 4
+                            width: categories.width
+                            padding: 4
+                            background: Rectangle {
+                                color: root.background
+                                radius: root.windowRadius > 0 ? Math.min(4, root.windowRadius) : 0
+                                border.width: root.borderWidth
+                                border.color: root.accent
+                            }
+                            contentItem: ListView {
+                                implicitHeight: Math.min(contentHeight, 320)
+                                clip: true
+                                model: categories.popup.visible ? categories.delegateModel : null
+                                currentIndex: categories.highlightedIndex
+                                ScrollBar.vertical: ScrollBar {}
+                            }
+                        }
+                        palette.window: root.background
+                        palette.base: root.background
+                        palette.button: root.selected
+                        palette.buttonText: root.foreground
+                        palette.text: root.foreground
+                        palette.highlight: root.accent
+                        palette.highlightedText: root.foreground
+                        palette.mid: root.accent
+                        palette.dark: root.background
+                        palette.light: root.selected
+                        displayText: root.category === "" ? root.tr("all") : root.tr("source_" + root.category)
+                        delegate: ItemDelegate {
+                            id: categoryDelegate
+                            required property var modelData
+                            background: Rectangle {
+                                color: categoryDelegate.hovered || categoryDelegate.highlighted ? root.selected : root.background
+                                radius: root.windowRadius > 0 ? Math.min(4, root.windowRadius) : 0
+                            }
+                            palette.text: root.foreground
+                            palette.highlightedText: root.foreground
+                            width: categories.popup.availableWidth
+                            implicitHeight: Math.max(28, implicitContentHeight + topPadding + bottomPadding)
+                            leftPadding: 12
+                            rightPadding: 8
+                            topPadding: 4
+                            bottomPadding: 4
+                            text: modelData === "" ? root.tr("all") : root.tr("source_" + modelData)
+                        }
+                        onActivated: {
+                            root.category = model[currentIndex];
+                            root.send({
+                                op: "select_category",
+                                category: root.category
+                            });
+                            root.query();
+                            search.forceActiveFocus();
+                        }
                     }
                 }
                 Label {
+                    font.family: root.textFont
                     visible: root.home && favoriteRepeater.count > 0
                     text: root.tr("favorites")
                     color: root.muted
                 }
-                Flow {
+                Flickable {
+                    id: favoritesStrip
                     visible: root.home && favoriteRepeater.count > 0
                     Layout.fillWidth: true
-                    spacing: 8
-                    Repeater {
-                        id: favoriteRepeater
-                        model: root.home ? root.results.filter(entry => root.preferences.favorites.includes(entry.id)).slice(0, 8) : []
-                        delegate: Button {
-                            required property var modelData
-                            width: Math.max(110, (panel.width - 76) / 4)
-                            height: 70
-                            text: modelData.title
-                            icon.source: root.preferences.show_icons === false ? "" : root.iconSource(modelData.icon)
-                            display: AbstractButton.TextUnderIcon
-                            onClicked: root.send({
-                                op: "activate",
-                                id: modelData.id
-                            })
+                    clip: true
+                    Layout.preferredHeight: root.controlHeight
+                    contentWidth: favoritesRow.width
+                    contentHeight: height
+                    boundsBehavior: Flickable.StopAtBounds
+                    ScrollBar.horizontal: ScrollBar {}
+                    Row {
+                        id: favoritesRow
+                        spacing: 8
+                        Repeater {
+                            id: favoriteRepeater
+                            model: root.home ? root.results.filter(entry => root.preferences.favorites.includes(entry.id)).slice(0, 8) : []
+                            delegate: Button {
+                                id: favoriteButton
+                                required property var modelData
+                                width: 200
+                                font.family: root.textFont
+                                font.pixelSize: 14
+                                palette.buttonText: root.foreground
+                                background: Rectangle {
+                                    color: favoriteButton.hovered || favoriteButton.activeFocus ? root.selected : root.background
+                                    radius: Math.min(4, root.windowRadius)
+                                    border.width: root.borderWidth
+                                    border.color: favoriteButton.activeFocus ? root.accent : root.muted
+                                }
+                                onActiveFocusChanged: if (activeFocus)
+                                    favoritesStrip.contentX = Math.max(0, Math.min(x, favoritesStrip.contentWidth - favoritesStrip.width))
+                                height: root.controlHeight
+                                text: modelData.title
+                                icon.source: root.preferences.show_icons === false ? "" : root.iconSource(modelData.icon)
+                                display: AbstractButton.TextBesideIcon
+                                onClicked: root.send({
+                                    op: "activate",
+                                    id: modelData.id
+                                })
+                            }
                         }
                     }
                 }
@@ -541,7 +621,7 @@ ShellRoot {
                     Layout.fillHeight: true
                     clip: true
                     model: root.results
-                    spacing: 3
+                    spacing: 0
                     currentIndex: 0
                     boundsBehavior: Flickable.StopAtBounds
                     ScrollBar.vertical: ScrollBar {}
@@ -551,8 +631,9 @@ ShellRoot {
                         required property var modelData
                         required property int index
                         width: view.width
-                        height: 58 + groupHeight
+                        height: root.rowHeight + groupHeight
                         Label {
+                            font.family: root.textFont
                             height: parent.groupHeight
                             visible: height > 0
                             text: root.tr("source_" + resultRow.modelData.category)
@@ -563,50 +644,66 @@ ShellRoot {
                         Rectangle {
                             anchors.fill: parent
                             anchors.topMargin: parent.groupHeight
-                            radius: 9
+                            radius: root.windowRadius > 0 ? Math.min(4, root.windowRadius) : 0
                             color: view.currentIndex === resultRow.index ? root.selected : "transparent"
-                            border.width: activeFocus ? 1 : 0
+                            border.width: 0
                             border.color: root.accent
                             RowLayout {
                                 anchors.fill: parent
-                                anchors.margins: 9
-                                spacing: 13
+                                anchors.margins: 7
+                                spacing: 10
+                                Label {
+                                    font.family: root.textFont
+                                    text: view.currentIndex === resultRow.index ? ">" : " "
+                                    color: root.accent
+                                    Layout.preferredWidth: 12
+                                }
                                 Image {
                                     id: resultIcon
                                     source: root.iconSource(resultRow.modelData.icon)
                                     visible: root.preferences.show_icons !== false && source.toString() !== "" && status !== Image.Error
-                                    sourceSize.width: 32
-                                    sourceSize.height: 32
-                                    Layout.preferredWidth: 32
-                                    Layout.preferredHeight: 32
+                                    sourceSize.width: 24
+                                    sourceSize.height: 24
+                                    Layout.preferredWidth: 24
+                                    Layout.preferredHeight: 24
                                 }
                                 Label {
                                     visible: root.preferences.show_icons !== false && !resultIcon.visible
                                     text: root.glyph(resultRow.modelData.category)
                                     font.family: "Symbols Nerd Font Mono"
-                                    font.pixelSize: 28
+                                    font.pixelSize: 24
                                     color: root.accent
-                                    Layout.preferredWidth: 32
+                                    Layout.preferredWidth: 24
                                 }
                                 ColumnLayout {
                                     Layout.fillWidth: true
                                     spacing: 2
                                     Label {
+                                        font.family: root.textFont
                                         Layout.fillWidth: true
                                         text: resultRow.modelData.title
                                         color: root.foreground
-                                        font.pixelSize: 16
+                                        font.pixelSize: 14
                                         elide: Text.ElideRight
                                     }
                                     Label {
+                                        font.family: root.textFont
                                         Layout.fillWidth: true
                                         text: resultRow.modelData.description
                                         color: root.muted
-                                        font.pixelSize: 11
+                                        font.pixelSize: 12
                                         elide: Text.ElideMiddle
                                     }
                                 }
                                 ToolButton {
+                                    id: favoriteToggle
+                                    Layout.preferredWidth: 32
+                                    Layout.preferredHeight: 32
+                                    palette.buttonText: root.foreground
+                                    background: Rectangle {
+                                        color: favoriteToggle.hovered || favoriteToggle.activeFocus ? root.selected : "transparent"
+                                        radius: Math.min(4, root.windowRadius)
+                                    }
                                     text: root.preferences.favorites.includes(resultRow.modelData.id) ? "★" : "☆"
                                     Accessible.name: root.tr("favorite")
                                     onClicked: root.send({
@@ -625,6 +722,7 @@ ShellRoot {
                         }
                     }
                     Label {
+                        font.family: root.textFont
                         anchors.centerIn: parent
                         visible: root.results.length === 0
                         text: root.ready ? root.tr("empty") : root.tr("loading")
@@ -632,16 +730,26 @@ ShellRoot {
                     }
                 }
                 Label {
+                    font.family: root.textFont
                     Layout.fillWidth: true
                     visible: root.status !== ""
                     text: root.status
                     color: root.foreground
                     wrapMode: Text.Wrap
                 }
+                Rectangle {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 1
+                    color: root.muted
+                    opacity: 0.35
+                }
                 Label {
+                    Layout.fillWidth: true
+                    wrapMode: Text.Wrap
+                    font.family: root.textFont
                     text: root.tr("hints")
                     color: root.muted
-                    font.pixelSize: 11
+                    font.pixelSize: 12
                 }
             }
         }

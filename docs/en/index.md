@@ -33,6 +33,8 @@ The shortcuts are declared by `argvus-hyprland`. This package provides the comma
 
 The main launcher uses Quickshell/QML with a local Rust search engine. It searches applications, open windows, settings, actions, projects, SSH hosts, files and shortcuts. File indexing starts disabled; select folders explicitly. Only names and paths are indexed, never document contents. Recent files depend on the XDG recent-file registry. Hidden files are excluded by default, and directory symlinks are not followed. Specialized Rofi menus remain available.
 
+The launcher uses a compact TUI layout: monospaced text, aligned search and category controls, compact favorites and a separate help footer. Border thickness and rounding follow the active ARGVUS layout settings.
+
 `argvus launcher` · `argvus control-center launcher`
 
 ↑↓ Navigate · Enter Open · Esc Back · Ctrl+F Favorite

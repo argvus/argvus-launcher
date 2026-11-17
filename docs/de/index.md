@@ -32,6 +32,8 @@ Die Tastenkombinationen werden von `argvus-hyprland` deklariert. Dieses Paket st
 
 Der Hauptstarter verwendet Quickshell/QML mit einer lokalen Rust-Suche für Apps, Fenster, Einstellungen, Aktionen, Projekte, SSH-Ziele, Dateien und Tastenkürzel. Die Indizierung ist zunächst deaktiviert; Ordner müssen ausdrücklich ausgewählt werden. Nur Namen und Pfade werden indiziert, keine Dokumentinhalte. Zuletzt verwendete Dateien stammen aus dem XDG-Verzeichnis. Versteckte Dateien sind standardmäßig ausgeschlossen; Verzeichnis-Symlinks werden nicht verfolgt. Spezialisierte Rofi-Menüs bleiben verfügbar.
 
+Der Launcher nutzt ein kompaktes TUI-Layout mit Monospace-Schrift, ausgerichteter Suche und Kategorien, kompakten Favoriten und separater Hilfe unten. Randstärke und Rundung folgen den aktiven ARGVUS-Einstellungen.
+
 `argvus launcher` · `argvus control-center launcher`
 
 ↑↓ Navigieren · Enter Öffnen · Esc Zurück · Ctrl+F Favorit

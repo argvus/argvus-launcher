@@ -33,6 +33,8 @@ Kısayollar `argvus-hyprland` tarafından beyan edilmiştir. Bu paket, komutlar�
 
 Ana başlatıcı Quickshell/QML ve yerel Rust arama motoruyla uygulama, pencere, ayar, eylem, proje, SSH sunucusu, dosya ve kısayol arar. Dizinleme başlangıçta kapalıdır; klasörleri açıkça seçin. Yalnızca adlar ve yollar dizinlenir, belge içerikleri okunmaz. Son dosyalar XDG kaydına bağlıdır. Gizli dosyalar varsayılan olarak dışlanır ve dizin sembolik bağlantıları izlenmez. Özel Rofi menüleri kullanılabilir.
 
+Başlatıcı; eş aralıklı metin, hizalanmış arama ve kategoriler, kompakt favoriler ve ayrı yardım altbilgisiyle kompakt TUI düzenini kullanır. Kenarlık kalınlığı ve yuvarlama etkin ARGVUS ayarlarını izler.
+
 `argvus launcher` · `argvus control-center launcher`
 
 ↑↓ Gezin · Enter Aç · Esc Geri · Ctrl+F Favori

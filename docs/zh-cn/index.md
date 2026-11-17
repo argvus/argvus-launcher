@@ -32,6 +32,8 @@ description: 启动器与搜索 — Quickshell/QML + Rust.
 
 主启动器采用 Quickshell/QML 和本地 Rust 搜索引擎，可查找应用、窗口、设置、操作、项目、SSH 主机、文件和快捷键。文件索引默认关闭，需明确选择文件夹。仅索引名称和路径，不读取文档内容。最近文件来自 XDG 记录。默认排除隐藏文件，不跟随目录符号链接。专用 Rofi 菜单继续可用。
 
+启动器采用紧凑的 TUI 布局：等宽文字、对齐的搜索和分类控件、紧凑的收藏及独立的帮助栏。边框粗细和圆角遵循 ARGVUS 当前布局设置。
+
 `argvus launcher` · `argvus control-center launcher`
 
 ↑↓ 导航 · Enter 打开 · Esc 返回 · Ctrl+F 收藏

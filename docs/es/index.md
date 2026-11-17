@@ -32,6 +32,8 @@ Los atajos se declaran mediante `argvus-hyprland`. Este paquete proporciona los 
 
 El lanzador principal usa Quickshell/QML con un motor local en Rust. Busca aplicaciones, ventanas, ajustes, acciones, proyectos, hosts SSH, archivos y atajos. La indexación empieza desactivada y requiere carpetas elegidas explícitamente. Solo indexa nombres y rutas, nunca el contenido. Los archivos recientes dependen del registro XDG. Excluye archivos ocultos por defecto y no sigue enlaces simbólicos de directorios. Los menús especializados de Rofi siguen disponibles.
 
+El lanzador usa un diseño TUI compacto: texto monoespaciado, búsqueda y categorías alineadas, favoritos compactos y un pie de ayuda separado. El grosor y el redondeo de los bordes siguen la configuración activa de ARGVUS.
+
 `argvus launcher` · `argvus control-center launcher`
 
 ↑↓ Navegar · Enter Abrir · Esc Volver · Ctrl+F Favorito

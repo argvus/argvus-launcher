@@ -33,6 +33,8 @@ Pintasan dideklarasikan oleh `argvus-hyprland`. Paket ini menyediakan perintah-p
 
 Peluncur utama memakai Quickshell/QML dan mesin Rust lokal untuk aplikasi, jendela, pengaturan, tindakan, proyek, host SSH, berkas, dan pintasan. Pengindeksan awalnya nonaktif; pilih folder secara eksplisit. Hanya nama dan jalur yang diindeks, bukan isi dokumen. Berkas terbaru bergantung pada catatan XDG. Berkas tersembunyi dikecualikan secara bawaan dan symlink direktori tidak diikuti. Menu khusus Rofi tetap tersedia.
 
+Launcher memakai tata letak TUI ringkas: teks monospace, pencarian dan kategori sejajar, favorit ringkas serta bantuan terpisah di bawah. Ketebalan dan lengkungan bingkai mengikuti pengaturan ARGVUS aktif.
+
 `argvus launcher` · `argvus control-center launcher`
 
 ↑↓ Navigasi · Enter Buka · Esc Kembali · Ctrl+F Favorit

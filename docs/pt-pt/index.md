@@ -34,6 +34,8 @@ Os atalhos são declarados pelo `argvus-hyprland`. Este pacote fornece os comand
 
 O launcher principal usa Quickshell/QML com um motor local de pesquisa em Rust. Pesquisa aplicações, janelas abertas, definições, ações, projetos, hosts SSH, ficheiros e atalhos. A indexação começa desativada; escolha as pastas explicitamente. Apenas nomes e caminhos são indexados, nunca o conteúdo dos documentos. Ficheiros recentes dependem do registo XDG. Ficheiros ocultos são excluídos por predefinição e ligações simbólicas de diretórios não são seguidas. Os menus especializados do Rofi continuam disponíveis.
 
+O lançador usa um layout TUI compacto: texto monoespaçado, pesquisa e categorias alinhadas, favoritos compactos e rodapé de ajuda separado. A espessura e o arredondamento das margens seguem as definições de layout ativas do ARGVUS.
+
 `argvus launcher` · `argvus control-center launcher`
 
 ↑↓ Navegar · Enter Abrir · Esc Voltar · Ctrl+F Favorito

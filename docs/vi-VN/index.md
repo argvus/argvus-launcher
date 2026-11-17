@@ -33,6 +33,8 @@ Các phím tắt được khai báo bởi `argvus-hyprland`. Gói này cung cấ
 
 Trình khởi chạy chính dùng Quickshell/QML và công cụ Rust cục bộ để tìm ứng dụng, cửa sổ, cài đặt, thao tác, dự án, máy chủ SSH, tệp và phím tắt. Lập chỉ mục ban đầu bị tắt; cần chọn thư mục rõ ràng. Chỉ tên và đường dẫn được lập chỉ mục, không đọc nội dung tài liệu. Tệp gần đây dựa vào bản ghi XDG. Tệp ẩn bị loại trừ mặc định và không đi theo liên kết tượng trưng của thư mục. Các menu Rofi chuyên dụng vẫn có sẵn.
 
+Trình khởi chạy dùng bố cục TUI gọn: chữ đơn cách, tìm kiếm và danh mục thẳng hàng, mục yêu thích gọn và phần trợ giúp riêng bên dưới. Độ dày và bo góc viền theo thiết lập ARGVUS hiện hành.
+
 `argvus launcher` · `argvus control-center launcher`
 
 ↑↓ Di chuyển · Enter Mở · Esc Quay lại · Ctrl+F Yêu thích

@@ -32,6 +32,8 @@ Le scorciatoie sono dichiarate da `argvus-hyprland`. Questo pacchetto fornisce i
 
 Il lanciatore principale usa Quickshell/QML con un motore locale Rust per applicazioni, finestre, impostazioni, azioni, progetti, host SSH, file e scorciatoie. L’indicizzazione è inizialmente disattivata e richiede cartelle scelte esplicitamente. Indicizza solo nomi e percorsi, mai il contenuto. I file recenti dipendono dal registro XDG. I file nascosti sono esclusi per impostazione predefinita e i collegamenti simbolici alle cartelle non vengono seguiti. I menu Rofi specializzati restano disponibili.
 
+Il launcher usa un layout TUI compatto: testo monospaziato, ricerca e categorie allineate, preferiti compatti e aiuto separato in basso. Spessore e arrotondamento dei bordi seguono le impostazioni attive di ARGVUS.
+
 `argvus launcher` · `argvus control-center launcher`
 
 ↑↓ Naviga · Enter Apri · Esc Indietro · Ctrl+F Preferito

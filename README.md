@@ -27,6 +27,8 @@ The engine ships in the `argvus` master package; this package supplies QML,
 the launcher entry point, theme templates and the existing specialized Rofi menus.
 Rasi `--config` overrides are no longer accepted by the main launcher.
 
+The launcher uses a compact TUI layout: monospaced text, aligned search and category controls, compact favorites and a separate help footer. Border thickness and rounding follow the active ARGVUS layout settings.
+
 ## Build and install
 
 On Arch Linux or a compatible distribution:
