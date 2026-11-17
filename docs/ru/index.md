@@ -24,7 +24,7 @@ description: Запуск и поиск — Quickshell/QML + Rust.
 | `SUPER + ALT + N` | Выбор сниппета | `argvus snippets` | Сниппеты |
 | `SUPER + ALT + G` | Выбор проекта, затем git TUI | `argvus git` | Git |
 | `SUPER + .` | Выбор эмодзи | `emoji-picker.sh` | Выбор эмодзи |
-| `SUPER + C` | Калькулятор | `rofi -show calc` | Калькулятор |
+| `SUPER + C` | Калькулятор | `argvus calculator` | Калькулятор |
 | `SUPER + SHIFT + /` | Шпаргалка Hyprland | `cheatsheets.sh hypr` | Шпаргалки |
 | `SUPER + CTRL + /` | Шпаргалка Kitty | `cheatsheets.sh kitty` | Шпаргалки |
 
@@ -362,9 +362,7 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 ## Калькулятор (`SUPER + C`)
 
-`SUPER + C` открывает режим `calc` Rofi с конфигурацией ARGVUS Rofi. Введите выражение, и список результатов обновляется по мере ввода. Выберите результат, как определяет режим `rofi-calc`.
-
-Пакет лончера предоставляет конфигурацию Rofi и зависит от `rofi-calc`. Сам ярлык объявлен `argvus-hyprland`.
+`SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
 ## Шпаргалки (`SUPER + SHIFT + /` и `SUPER + CTRL + /`)
 
@@ -398,7 +396,7 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 - `/usr/share/argvus/launcher/config/` с конфигурацией Rofi и темами;
 - `/usr/share/argvus/launcher/sh/` с `cheatsheets.sh` и `emoji-picker.sh`.
 
-Необходимые зависимости: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` и `pinentry` (который предоставляет `pinentry-gtk`). Необязательные зависимости: `openssh` для SSH-пикера и менеджера SSH-ключей; `lazygit` и `gitui` для git TUI.
+Необходимые зависимости: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` и `pinentry` (который предоставляет `pinentry-gtk`). Необязательные зависимости: `openssh` для SSH-пикера и менеджера SSH-ключей; `lazygit` и `gitui` для git TUI.
 
 Установка пакета не пишет в `$HOME`. Конфигурация пользователя создается при запуске сессии, как описано в [Конфигурация и темы Rofi](#where-the-active-configuration-lives).
 
@@ -411,7 +409,7 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 | Меню используют старый шрифт | Строка `font:` перезаписывается при запуске сессии. Перезапустите сессию после изменения шрифта. |
 | Изменение темы не влияет на меню Rofi | Проверьте, указывает ли пользовательская копия `config.rasi` в `$XDG_CONFIG_HOME/argvus/data/rofi/` по-прежнему на упакованную тему. Примените тему из `argvus-appearance` снова. |
 | `SUPER + O` сообщает, что проекты не найдены | Не настроен корень или путь, либо директории больше не существуют. Запустите `argvus projects list`. |
-| `SUPER + C` или выбор эмодзи не открывается | Установите `rofi-calc` или `rofimoji` (требуются обе зависимости). |
+| `SUPER + C` или выбор эмодзи не открывается | Установите `argvus` или `rofimoji` (требуются обе зависимости). |
 | Cheatsheet не открывается | Файл с этим именем и языком не существует. Проверьте пути, описанные в разделе Cheatsheets. |
 | `SUPER + H` ничего не показывает | История пуста или регистратор буфера обмена `argvus-session` еще ничего не сохранил. |
 

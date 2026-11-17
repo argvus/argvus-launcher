@@ -25,7 +25,7 @@ description: লঞ্চার ও অনুসন্ধান — Quickshell/Q
 | `SUPER + ALT + N` | স্নিপেট বাছাইকারী | `argvus snippets` | স্নিপেট |
 | `SUPER + ALT + G` | প্রজেক্ট পিকার, তারপর git TUI | `argvus git` | Git |
 | `SUPER + .` | ইমোজি বাছাইকারী | `emoji-picker.sh` | ইমোজি বাছাইকারী |
-| `SUPER + C` | ক্যালকুলেটর | `rofi -show calc` | ক্যালকুলেটর |
+| `SUPER + C` | ক্যালকুলেটর | `argvus calculator` | ক্যালকুলেটর |
 | `SUPER + SHIFT + /` | Hyprland চিটশীট | `cheatsheets.sh hypr` | চিটশীট |
 | `SUPER + CTRL + /` | কিটি চিটশীট | `cheatsheets.sh kitty` | চিটশীট |
 
@@ -374,9 +374,7 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 ## ক্যালকুলেটর (`SUPER + C`)
 
-`SUPER + C` ARGVUS Rofi কনফিগারেশনের সঙ্গে Rofi এর `calc` মোড খোলে। একটি এক্সপ্রেশন টাইপ করুন, এবং ফলাফলের তালিকা টাইপ করার সাথে সাথে আপডেট হয়। `rofi-calc` মোড অনুযায়ী একটি ফলাফলের নির্বাচন করুন।
-
-লঞ্চার প্যাকেজটি Rofi কনফিগারেশন প্রদান করে এবং `rofi-calc` এর উপর নির্ভর করে। শর্টকাটটি নিজেই `argvus-hyprland` দ্বারা ঘোষণা করা হয়।
+`SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
 ## চিটশিট (`SUPER + SHIFT + /` এবং `SUPER + CTRL + /`)
 
@@ -410,7 +408,7 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 - `/usr/share/argvus/launcher/config/`, Rofi কনফিগারেশন এবং থিমসহ;
 - `/usr/share/argvus/launcher/sh/`, `cheatsheets.sh` এবং `emoji-picker.sh` এর সাথে।
 
-প্রয়োজনীয় নির্ভরতা: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` এবং `pinentry` (যা `pinentry-gtk` প্রদান করে)। ঐচ্ছিক নির্ভরতা: `openssh`, SSH পিকার এবং SSH কী ম্যানেজারের জন্য; `lazygit` এবং `gitui`, git TUI-এর জন্য।
+প্রয়োজনীয় নির্ভরতা: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` এবং `pinentry` (যা `pinentry-gtk` প্রদান করে)। ঐচ্ছিক নির্ভরতা: `openssh`, SSH পিকার এবং SSH কী ম্যানেজারের জন্য; `lazygit` এবং `gitui`, git TUI-এর জন্য।
 
 প্যাকেজ ইনস্টল করা `$HOME`-এ লেখা হয় না। ব্যবহারকারীর কনফিগারেশন সেশন শুরুতে তৈরি হয়, যেমনটি [Rofi configuration and themes](#where-the-active-configuration-lives) তে বর্ণনা করা হয়েছে।
 
@@ -423,7 +421,7 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 | মেনুগুলো একটি পুরোনো ফন্ট ব্যবহার করে | `font:`সেশন শুরুতে লাইনটি পুনরায় লেখা হয়। ফন্ট পরিবর্তনের পরে সেশনটি পুনরায় শুরু করুন। |
 | একটি থিম পরিবর্তন Rofi মেনুতে পৌঁছায় না | ব্যবহারকারীর কপি পরীক্ষা করুন `config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/`এখনও প্যাকেজড থিমের দিকে নির্দেশ করছে। থিমটি থেকে প্রয়োগ করুন `argvus-appearance` again. |
 | `SUPER + O`প্রতিবেদন করে যে কোনো প্রকল্প পাওয়া যায়নি | কোনো মূল বা পথ কনফিগার করা নেই, অথবা ডিরেক্টরি আর বিদ্যমান নেই। চালান `argvus projects list`. |
-| `SUPER + C`অথবা ইমোজি পিকার খুলে না | ইনস্টল করুন`rofi-calc` or `rofimoji` (উভয়ই প্রয়োজনীয় নির্ভরতা)। |
+| `SUPER + C`অথবা ইমোজি পিকার খুলে না | ইনস্টল করুন`argvus` or `rofimoji` (উভয়ই প্রয়োজনীয় নির্ভরতা)। |
 | একটি চিটশিট খোলা যায় না | সেই নাম এবং ভাষার জন্য ফাইলটি বিদ্যমান নয়। চিটশিটস القسمে বর্ণিত পথগুলি পরীক্ষা করুন। |
 | `SUPER + H`কিছু দেখায় না | ইতিহাস খালি, বা ক্লিপবোর্ড রেকর্ডার থেকে`argvus-session`এখনও কিছু সংরক্ষণ করা হয়নি। |
 

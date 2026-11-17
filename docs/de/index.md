@@ -24,7 +24,7 @@ Die Tastenkombinationen werden von `argvus-hyprland` deklariert. Dieses Paket st
 | `SUPER + ALT + N` | Snippet-Auswahl | `argvus snippets` | Snippets |
 | `SUPER + ALT + G` | Projekt-Auswahl, dann Git TUI | `argvus git` | Git |
 | `SUPER + .` | Emoji-Auswahl | `emoji-picker.sh` | Emoji-Auswahl |
-| `SUPER + C` | Taschenrechner | `rofi -show calc` | Taschenrechner |
+| `SUPER + C` | Taschenrechner | `argvus calculator` | Taschenrechner |
 | `SUPER + SHIFT + /` | Hyprland-Spickzettel | `cheatsheets.sh hypr` | Spickzettel |
 | `SUPER + CTRL + /` | Kitty-Spickzettel | `cheatsheets.sh kitty` | Spickzettel |
 
@@ -362,9 +362,7 @@ Erfordert `rofimoji` und `wl-clipboard`.
 
 ## Rechner (`SUPER + C`)
 
-`SUPER + C` öffnet den `calc`-Modus von Rofi mit der ARGVUS-Rofi-Konfiguration. Geben Sie einen Ausdruck ein, und die Ergebnisliste wird während der Eingabe aktualisiert. Wählen Sie ein Ergebnis aus, wie es der `rofi-calc`-Modus definiert.
-
-Das Launcher-Paket stellt die Rofi-Konfiguration bereit und hängt von `rofi-calc` ab. Die Verknüpfung selbst wird von `argvus-hyprland` deklariert.
+`SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
 ## Spickzettel (`SUPER + SHIFT + /` und `SUPER + CTRL + /`)
 
@@ -398,7 +396,7 @@ Das Paket `argvus-launcher` ist architekturunabhängig und installiert:
 - `/usr/share/argvus/launcher/config/` mit der Rofi-Konfiguration und Themes;
 - `/usr/share/argvus/launcher/sh/` mit `cheatsheets.sh` und `emoji-picker.sh`.
 
-Erforderliche Abhängigkeiten: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` und `pinentry` (welches `pinentry-gtk` bereitstellt). Optionale Abhängigkeiten: `openssh`, für den SSH-Auswähler und den SSH-Schlüsselmanager; `lazygit` und `gitui`, für die git-TUI.
+Erforderliche Abhängigkeiten: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` und `pinentry` (welches `pinentry-gtk` bereitstellt). Optionale Abhängigkeiten: `openssh`, für den SSH-Auswähler und den SSH-Schlüsselmanager; `lazygit` und `gitui`, für die git-TUI.
 
 Die Installation des Pakets schreibt nicht in `$HOME`. Die Benutzerkonfiguration wird beim Start der Sitzung erstellt, wie unter [Rofi-Konfiguration und Themen](#where-the-active-configuration-lives) beschrieben.
 
@@ -411,7 +409,7 @@ Die Installation des Pakets schreibt nicht in `$HOME`. Die Benutzerkonfiguration
 | Die Menüs verwenden eine alte Schriftart | Die `font:`-Zeile wird beim Start der Sitzung neu geschrieben. Starten Sie die Sitzung nach dem Ändern der Schriftart neu. |
 | Eine Designänderung erreicht die Rofi-Menüs nicht | Überprüfen Sie, ob die Benutzerkopie von `config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/` weiterhin auf das bereitgestellte Design zeigt. Wenden Sie das Design erneut von `argvus-appearance` an. |
 | `SUPER + O` meldet, dass keine Projekte gefunden wurden | Kein Root oder Pfad ist konfiguriert oder die Verzeichnisse existieren nicht mehr. Führen Sie `argvus projects list` aus. |
-| `SUPER + C` oder der Emoji-Picker öffnet sich nicht | Installieren Sie `rofi-calc` oder `rofimoji` (beide sind erforderliche Abhängigkeiten). |
+| `SUPER + C` oder der Emoji-Picker öffnet sich nicht | Installieren Sie `argvus` oder `rofimoji` (beide sind erforderliche Abhängigkeiten). |
 | Ein Spickzettel öffnet sich nicht | Die Datei für diesen Namen und diese Sprache existiert nicht. Überprüfen Sie die in der Cheatsheets-Sektion beschriebenen Pfade. |
 | `SUPER + H` zeigt nichts an | Die Historie ist leer oder der Clipboard-Rekorder von `argvus-session` hat noch nichts gespeichert. |
 

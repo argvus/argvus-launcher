@@ -25,7 +25,7 @@ description: لانچر اور تلاش — Quickshell/QML + Rust.
 | `SUPER + ALT + N` | ٹکڑا چننے والا | `argvus snippets` | ٹکڑوں |
 | `SUPER + ALT + G` | پروجیکٹ چننے والا، پھر گٹ TUI | `argvus git` | گٹ |
 | `SUPER + .` | ایموجی چننے والا | `emoji-picker.sh` | ایموجی چننے والا |
-| `SUPER + C` | کیلکولیٹر | `rofi -show calc` | کیلکولیٹر |
+| `SUPER + C` | کیلکولیٹر | `argvus calculator` | کیلکولیٹر |
 | `SUPER + SHIFT + /` | Hyprland cheatsheet | `cheatsheets.sh hypr` | دھوکہ دہی |
 | `SUPER + CTRL + /` | کٹی چیٹ شیٹ | `cheatsheets.sh kitty` | دھوکہ دہی |
 
@@ -396,9 +396,7 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 ##                                                  (`SUPER + C`) ﺮﭩﯿﻟﻮﮑﻠﯿﮐ
 
-`SUPER + C`                                                                     ﮯﮨ ﺎﺘﻟﻮﮭﮐ`calc`ARGVUS Rofi ﮫﺗﺎﺳ ﮯﮐ ﻦﺸﯾﺮﮕﯿﻔﻨﮐ Rofi ﮧﮐ ﮯﺴﯿﺟ ﮟﯾﺮﮐ ﺐﺨﺘﻨﻣ ﮧﺠﯿﺘﻧ ﮏﯾﺍ ۔ﯽﮔ ﮯﺋﺎﺟ ﻮﮨ ﭧﯾ`rofi-calc`                                                         ۔ﮯﮨ ﺎﺗﺮﮐ ﻒﯾﺮﻌﺗ ﯽﮐ ﮈﻮﻣ
 
-                ﮯﮨ ﺎﺗﺮﮐ ﺭﺎﺼﺤﻧﺍ ﺮﭘ ﺱﺍ ﺭﻭﺍ ﮯﮨ ﺎﺗﺮﮐ ﻢﮨﺍﺮﻓ ﺐﯿﺗﺮﺗ ﯽﮐ ﯽﻓﻭﺭ ﺞﮑﯿﭘ ﺮﭽﻧﻻ﻿`rofi-calc`                                        ﮯﮨ ﺎﯿﮔ ﺎﯿﮐ ﻥﻼ﻿ﻋﺍ ﮯﻌﯾﺭﺫ ﮯﮐ ﺩﻮﺧ ﭧﮐ ﭦﺭﺎﺷ .`argvus-hyprland`.
 
 ##                            (SUPER + CTRL + / ﺭﻭﺍ `SUPER + SHIFT + /`) ﺲﭩﯿﺷ ﺲﭩﯿﭼ
 
@@ -434,7 +432,7 @@ The language is Portuguese when the system locale is `pt-BR`                    
 
 
 
-Installing the package does not write into  gitui  lazygit  openssh  pinentry-gtk  pinentry  gnupg  wtype  wl-clipboard  rofimoji  rofi-calc  rofi  libnotify  hyprland  jq  bash  argvus  argvus-appearance  `argvus-session`  `argvus-appearance`  `argvus`  `bash`  `jq`  `hyprland`  `libnotify`  `rofi`  `rofi-calc`  `rofimoji`  `wl-clipboard`  `wtype`  `gnupg`  `pinentry`  `pinentry-gtk`  `openssh`  `lazygit`  `gitui` `$HOME`. User configuration is created at session start, as described in [Rofi configuration and themes](#where-the-active-configuration-lives).
+Installing the package does not write into  gitui  lazygit  openssh  pinentry-gtk  pinentry  gnupg  wtype  wl-clipboard  rofimoji   rofi  libnotify  hyprland  jq  bash  argvus  argvus-appearance  `argvus-session`  `argvus-appearance`  `argvus`  `bash`  `jq`  `hyprland`  `libnotify`  `rofi`  `argvus calculator`  `rofimoji`  `wl-clipboard`  `wtype`  `gnupg`  `pinentry`  `pinentry-gtk`  `openssh`  `lazygit`  `gitui` `$HOME`. User configuration is created at session start, as described in [Rofi configuration and themes](#where-the-active-configuration-lives).
 
 ## خرابی کا سراغ لگانا
 
@@ -445,7 +443,7 @@ Installing the package does not write into  gitui  lazygit  openssh  pinentry-gt
                                       | ﮟﯿﮨ ﮯﺗﺮﮐ ﻝﺎﻤﻌﺘﺳﺍ ﭧﻧﻮﻓ ﺎﻧﺍﺮﭘ ﮏﯾﺍ ﻮﻨﯿﻣ |`font:`| ۔ﮟﯾﺮﮐ ﻉﻭﺮﺷ ﮦﺭﺎﺑﻭﺩ ﻮﮐ ﻦﺸﯿﺳ ﺪﻌﺑ ﮯﮐ ﮯﻧﺮﮐ ﻞﯾﺪﺒﺗ ﭧﻧﻮﻓ ۔ﮯﮨ ﯽﺗﺎﺟ ﯽﮭﮑﻟ ﮦﺭﺎﺑﻭﺩ ﻦﺋﻻ﻿ ﺮﭘ
 | A theme change does not reach the Rofi menus | Check whether the user copy of `config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/`                 ﮟﯾﺮﮐ ﻮﮔﻻ﻿ ﮯﺳ ﻮﮐ ﻢﯿﮭﺗ ۔ﮯﮨ ﺎﺗﺮﮐ ﮦﺭﺎﺷﺍ ﻑﺮﻃ ﯽﮐ ﻢﯿﮭﺗ ﮦﺪﺷ ﮏﯿﭘ ﯽﮭﺑ ﺏﺍ`argvus-appearance` again. |
 | `SUPER + O` ﮟﯿﺋﻼ﻿ﭼ ۔ﮟﯿﮨ ﮟﯿﮩﻧ ﺩﻮﺟﻮﻣ ﺏﺍ ﺰﯾﺮﭩﮑﯾﺮﺋﺍﮈ ﺎﯾ ،ﮯﮨ ﮟﯿﮩﻧ ﮧﺘﻓﺎﯾ ﺐﯿﺗﺮﺗ ﮧﺘﺳﺍﺭ ﺎﯾ ﭦﻭﺭ ﯽﺋﻮﮐ`argvus projects list`. |
-| `SUPER + C`                                        ﮟﯾﺮﮐ ﻝﺎﭩﺴﻧﺍ | ﺎﺘﻠﮭﮐ ﮟﯿﮩﻧ ﺮَﮑﭘ ﯽﺟﻮﻤﯾﺍ ﺎﯾ`rofi-calc` or `rofimoji`                                                  | .(ﮟﯿﮨ ﺭﺎﺼﺤﻧﺍ ﯼﺭﻭﺮﺿ ﮞﻮﻧﻭﺩ)
+| `SUPER + C`                                        ﮟﯾﺮﮐ ﻝﺎﭩﺴﻧﺍ | ﺎﺘﻠﮭﮐ ﮟﯿﮩﻧ ﺮَﮑﭘ ﯽﺟﻮﻤﯾﺍ ﺎﯾ`argvus` or `rofimoji`                                                  | .(ﮟﯿﮨ ﺭﺎﺼﺤﻧﺍ ﯼﺭﻭﺮﺿ ﮞﻮﻧﻭﺩ)
 | ۔ﮟﯾﺮﮐ ﭻﻧﺎﺟ ﯽﮐ ﮞﻮﺘﺳﺍﺭ ﮦﺪﺷ ﻥﺎﯿﺑ ﮟﯿﻣ ﻦﺸﮑﯿﺳ ﮯﮐ ﺲﭩﯿﺷ ﭧﯿﭼ ۔ﮯﮨ ﮟﯿﮩﻧ ﺩﻮﺟﻮﻣ ﻞﺋﺎﻓ ﮯﯿﻟ
 | `SUPER + H`                   ﮯﺳ ﺭﮈﺭﺎﮑﯾﺭ ﮈﺭﻮﺑ ﭗﻠﮐ ﺎﯾ ،ﮯﮨ ﯽﻟﺎﺧ ﺦﯾﺭﺎﺗ | ﺎﺗﺎﮭﮐﺩ ﮟﯿﮩﻧ ﯽﮭﺑ ﮫﭽﮐ`argvus-session` has not stored anything yet. |
 

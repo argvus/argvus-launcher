@@ -25,7 +25,7 @@ Các phím tắt được khai báo bởi `argvus-hyprland`. Gói này cung cấ
 | `SUPER + ALT + N` | Bộ chọn đoạn trích | `argvus snippets` | Đoạn trích |
 | `SUPER + ALT + G` | Bộ chọn dự án, sau đó git TUI | `argvus git` | Git |
 | `SUPER + .` | Bộ chọn biểu tượng cảm xúc | `emoji-picker.sh` | Bộ chọn biểu tượng cảm xúc |
-| `SUPER + C` | Máy tính | `rofi -show calc` | Máy tính |
+| `SUPER + C` | Máy tính | `argvus calculator` | Máy tính |
 | `SUPER + SHIFT + /` | Bảng cheat Hyprland | `cheatsheets.sh hypr` | Cheatsheet |
 | `SUPER + CTRL + /` | Áo khoác Kitty | `cheatsheets.sh kitty` | Cheatsheet |
 
@@ -386,9 +386,7 @@ Yêu cầu `rofimoji` và `wl-clipboard`.
 
 ## Máy tính (`SUPER + C`)
 
-`SUPER + C` mở chế độ `calc` của Rofi với cấu hình Rofi ARGVUS. Gõ một biểu thức, và danh sách kết quả sẽ được cập nhật khi bạn gõ. Chọn một kết quả như chế độ `rofi-calc` xác định.
-
-Gói khởi chạy cung cấp cấu hình Rofi và phụ thuộc vào `rofi-calc`. Chính lối tắt được khai báo bởi `argvus-hyprland`.
+`SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
 ## Bảng gian lận (`SUPER + SHIFT + /` và `SUPER + CTRL + /`)
 
@@ -422,7 +420,7 @@ Gói `argvus-launcher` là không phụ thuộc kiến trúc và cài đặt:
 - `/usr/share/argvus/launcher/config/`, với cấu hình và chủ đề Rofi;
 - `/usr/share/argvus/launcher/sh/`, với `cheatsheets.sh` và `emoji-picker.sh`.
 
-Các phụ thuộc bắt buộc: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` và `pinentry` (cung cấp `pinentry-gtk`). Các phụ thuộc tùy chọn: `openssh`, cho trình chọn SSH và trình quản lý khóa SSH; `lazygit` và `gitui`, cho giao diện TUI của git.
+Các phụ thuộc bắt buộc: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` và `pinentry` (cung cấp `pinentry-gtk`). Các phụ thuộc tùy chọn: `openssh`, cho trình chọn SSH và trình quản lý khóa SSH; `lazygit` và `gitui`, cho giao diện TUI của git.
 
 Cài đặt gói không ghi vào `$HOME`. Cấu hình người dùng được tạo khi bắt đầu phiên, như được mô tả trong [Cấu hình và chủ đề Rofi](#where-the-active-configuration-lives).
 
@@ -435,7 +433,7 @@ Cài đặt gói không ghi vào `$HOME`. Cấu hình người dùng được t�
 | Các menu sử dụng phông chữ cũ | Dòng `font:` được viết lại khi bắt đầu phiên. Khởi động lại phiên sau khi thay đổi phông chữ. |
 | Thay đổi chủ đề không ảnh hưởng đến các menu Rofi | Kiểm tra xem bản sao của người dùng có`config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/` still points to the packaged theme. Apply the theme from `argvus-appearance` again. |
 | `SUPER + O` báo cáo không tìm thấy dự án nào | Không có gốc hoặc đường dẫn nào được định cấu hình hoặc các thư mục không còn tồn tại. Chạy `argvus projects list`. |
-| `SUPER + C`hoặc bộ chọn biểu tượng cảm xúc không mở | Cài đặt`rofi-calc` or `rofimoji` (both are required dependencies). |
+| `SUPER + C`hoặc bộ chọn biểu tượng cảm xúc không mở | Cài đặt`argvus` or `rofimoji` (both are required dependencies). |
 | Một chiếc áo choàng không mở được | Tệp cho tên và ngôn ngữ đó không tồn tại. Kiểm tra các đường dẫn được mô tả trong phần Cheatsheet. |
 | `SUPER + H` không hiển thị gì | Lịch sử trống hoặc trình ghi clipboard từ `argvus-session` chưa lưu trữ bất cứ thứ gì. |
 

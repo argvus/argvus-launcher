@@ -24,7 +24,7 @@ description: 启动器与搜索 — Quickshell/QML + Rust.
 | `SUPER + ALT + N` | 代码片段选择器 | `argvus snippets` | 代码片段 |
 | `SUPER + ALT + G` | 项目选择器，然后使用 git TUI | `argvus git` | Git |
 | `SUPER + .` | 表情符号选择器 | `emoji-picker.sh` | 表情符号选择器 |
-| `SUPER + C` | 计算器 | `rofi -show calc` | 计算器 |
+| `SUPER + C` | 计算器 | `argvus calculator` | 计算器 |
 | `SUPER + SHIFT + /` | Hyprland 速查表 | `cheatsheets.sh hypr` | 速查表 |
 | `SUPER + CTRL + /` | Kitty 速查表 | `cheatsheets.sh kitty` | 速查表 |
 
@@ -362,9 +362,7 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 ## 计算器 (`SUPER + C`)
 
-`SUPER + C` 使用 ARGVUS Rofi 配置打开 Rofi 的 `calc` 模式。输入一个表达式，结果列表会在你输入时更新。根据 `rofi-calc` 模式选择一个结果。
-
-启动器包提供了 Rofi 配置，并依赖于 `rofi-calc`。快捷方式本身由 `argvus-hyprland` 声明。
+`SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
 ## 速查表 (`SUPER + SHIFT + /` 和 `SUPER + CTRL + /`)
 
@@ -398,7 +396,6 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 - `/usr/share/argvus/launcher/config/`，包含 Rofi 配置和主题；
 - `/usr/share/argvus/launcher/sh/`，包含 `cheatsheets.sh` 和 `emoji-picker.sh`。
 
-所需依赖项：`argvus-session`、`argvus-appearance`、`argvus`、`bash`、`jq`、`hyprland`、`libnotify`、`rofi`、`rofi-calc`、`rofimoji`、`wl-clipboard`、`wtype`、`gnupg` 和 `pinentry`（提供 `pinentry-gtk`）。可选依赖项：`openssh`，用于 SSH 选择器和 SSH 密钥管理器；`lazygit` 和 `gitui`，用于 git TUI。
 
 安装此软件包不会写入 `$HOME`。用户配置会在会话开始时创建，如 [Rofi 配置和主题](#where-the-active-configuration-lives) 所述。
 
@@ -411,7 +408,7 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 | 菜单使用了旧字体 | `font:` 行在会话开始时会被重写。更改字体后请重启会话。 |
 | 主题更改没有应用到 Rofi 菜单 | 检查用户副本 `config.rasi` 在 `$XDG_CONFIG_HOME/argvus/data/rofi/` 中是否仍指向打包的主题。再次应用 `argvus-appearance` 中的主题。 |
 | `SUPER + O` 报告未找到任何项目 | 没有配置根目录或路径，或者目录已不存在。运行 `argvus projects list`。 |
-| `SUPER + C` 或表情符号选择器无法打开 | 安装 `rofi-calc` 或 `rofimoji`（两者都是必需依赖）。 |
+| `SUPER + C` 或表情符号选择器无法打开 | 安装 `argvus` 或 `rofimoji`（两者都是必需依赖）。 |
 | 快捷参考表无法打开 | 该名称和语言的文件不存在。检查快捷参考表部分描述的路径。 |
 | `SUPER + H` 什么都不显示 | 历史记录为空，或者 `argvus-session` 的剪贴板记录器还没有存储任何内容。 |
 

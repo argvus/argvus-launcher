@@ -25,7 +25,7 @@ Kısayollar `argvus-hyprland` tarafından beyan edilmiştir. Bu paket, komutlar�
 | `SUPER + ALT + N` | Parçacık seçici | `argvus snippets` | Parçacıklar |
 | `SUPER + ALT + G` | Proje seçici, ardından git TUI | `argvus git` | Git |
 | `SUPER + .` | Emoji seçici | `emoji-picker.sh` | Emoji seçici |
-| `SUPER + C` | Hesap Makinesi | `rofi -show calc` | Hesap Makinesi |
+| `SUPER + C` | Hesap Makinesi | `argvus calculator` | Hesap Makinesi |
 | `SUPER + SHIFT + /` | Hyprland hile sayfası | `cheatsheets.sh hypr` | Hile Sayfaları |
 | `SUPER + CTRL + /` | Kitty hile sayfası | `cheatsheets.sh kitty` | Hile Sayfaları |
 
@@ -382,9 +382,7 @@ Seçici açıkken, oturum normalde gösterdiği klavye düzeni bildirimlerini yo
 
 ## Hesap Makinesi (`SUPER + C`)
 
-`SUPER + C` ARGVUS Rofi yapılandırması ile Rofi'nin `calc` modunu açar. Bir ifade yazın ve sonuç listesi yazdıkça güncellenir. `rofi-calc` modu tanımladığı şekilde bir sonuç seçin.
-
-Başlatıcı paketi Rofi yapılandırmasını sağlar ve `rofi-calc`'ya bağımlıdır. Kısayolun kendisi `argvus-hyprland` tarafından beyan edilir.
+`SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
 ## Hile sayfaları (`SUPER + SHIFT + /` ve `SUPER + CTRL + /`)
 
@@ -418,7 +416,7 @@ Başlatıcı yapılandırması diğer paketlere ait bileşenlerle paylaşılır:
 - `/usr/share/argvus/launcher/config/`, Rofi yapılandırması ve temaları ile;
 - `/usr/share/argvus/launcher/sh/`, `cheatsheets.sh` ve `emoji-picker.sh` ile.
 
-Gerekli bağımlılıklar: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` ve `pinentry` (`pinentry-gtk` sağlar). İsteğe bağlı bağımlılıklar: `openssh`, SSH seçici ve SSH anahtar yöneticisi için; `lazygit` ve `gitui`, git TUI için.
+Gerekli bağımlılıklar: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` ve `pinentry` (`pinentry-gtk` sağlar). İsteğe bağlı bağımlılıklar: `openssh`, SSH seçici ve SSH anahtar yöneticisi için; `lazygit` ve `gitui`, git TUI için.
 
 Paketin kurulumu `$HOME` içerisine yazmaz. Kullanıcı yapılandırması, [Rofi configuration and themes](#where-the-active-configuration-lives) bölümünde açıklandığı gibi oturum başında oluşturulur.
 
@@ -431,7 +429,7 @@ Paketin kurulumu `$HOME` içerisine yazmaz. Kullanıcı yapılandırması, [Rofi
 | Menüler eski bir yazı tipini kullanıyor | `font:` satırı oturum başlangıcında yeniden yazılır. Yazı tipini değiştirdikten sonra oturumu yeniden başlatın. |
 | Tema değişikliği Rofi menülerine ulaşmıyor | `$XDG_CONFIG_HOME/argvus/data/rofi/`'daki `config.rasi` kullanıcı kopyasının hala paketlenmiş temayı gösterip göstermediğini kontrol edin. Temayı `argvus-appearance`'dan tekrar uygulayın. |
 | `SUPER + O` hiçbir proje bulunamadığını bildiriyor | Hiçbir kök veya yol yapılandırılmamış veya dizinler artık mevcut değil. `argvus projects list`'yu çalıştırın. |
-| `SUPER + C` veya emoji seçici açılmıyor | `rofi-calc` veya `rofimoji`'yu yükleyin (her ikisi de gerekli bağımlılıklardır). |
+| `SUPER + C` veya emoji seçici açılmıyor | `argvus` veya `rofimoji`'yu yükleyin (her ikisi de gerekli bağımlılıklardır). |
 | Hile sayfası açılmıyor | Bu ismin ve dilin dosyası mevcut değil. Hile Sayfaları bölümünde açıklanan yolları kontrol edin. |
 | `SUPER + H` hiçbir şey göstermiyor | Geçmiş boş veya pano kaydedici şundan `argvus-session` has not stored anything yet. |
 

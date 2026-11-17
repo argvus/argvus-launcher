@@ -24,7 +24,7 @@ description: ランチャーと検索 — Quickshell/QML + Rust.
 | `SUPER + ALT + N` | スニペットピッカー | `argvus snippets` | スニペット |
 | `SUPER + ALT + G` | プロジェクトピッカー、その後 git TUI | `argvus git` | Git |
 | `SUPER + .` | 絵文字ピッカー | `emoji-picker.sh` | 絵文字ピッカー |
-| `SUPER + C` | 電卓 | `rofi -show calc` | 電卓 |
+| `SUPER + C` | 電卓 | `argvus calculator` | 電卓 |
 | `SUPER + SHIFT + /` | Hyprland チートシート | `cheatsheets.sh hypr` | チートシート |
 | `SUPER + CTRL + /` | Kitty チートシート | `cheatsheets.sh kitty` | チートシート |
 
@@ -362,9 +362,7 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 ## 計算機 (`SUPER + C`)
 
-`SUPER + C`はARGVUS Rofi構成で`calc`モードのRofiを開きます。式を入力すると、入力に応じて結果リストが更新されます。結果を`rofi-calc`モードの定義に従って選択します。
-
-ランチャーパッケージはRofi構成を提供し、`rofi-calc`に依存します。ショートカット自体は`argvus-hyprland`によって宣言されます。
+`SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
 ## チートシート (`SUPER + SHIFT + /`および`SUPER + CTRL + /`)
 
@@ -398,7 +396,7 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 - Rofiの設定とテーマを含む`/usr/share/argvus/launcher/config/`
 -  `/usr/share/argvus/launcher/sh/` `cheatsheets.sh`と`emoji-picker.sh`を含む/usr/share/argvus/launcher/sh/
 
-必要な依存関係: `argvus-session`、`argvus-appearance`、`argvus`、`bash`、`jq`、`hyprland`、`libnotify`、`rofi`、`rofi-calc`、`rofimoji`、`wl-clipboard`、`wtype`、`gnupg`、および`pinentry`（`pinentry-gtk`を提供）。オプションの依存関係: SSHピッカーおよびSSHキー管理用の`openssh`; git TUI用の`lazygit`および`gitui`。
+必要な依存関係: `argvus-session`、`argvus-appearance`、`argvus`、`bash`、`jq`、`hyprland`、`libnotify`、`rofi`、`rofimoji`、`wl-clipboard`、`wtype`、`gnupg`、および`pinentry`（`pinentry-gtk`を提供）。オプションの依存関係: SSHピッカーおよびSSHキー管理用の`openssh`; git TUI用の`lazygit`および`gitui`。
 
 パッケージをインストールしても`$HOME`には書き込まれません。ユーザー設定は[Rofi configuration and themes](#where-the-active-configuration-lives)に記載されているように、セッション開始時に作成されます。
 
@@ -411,7 +409,7 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 | メニューが古いフォントを使用している | セッション開始時に`font:`行が書き換えられます。フォントを変更した後、セッションを再起動してください。 |
 | テーマ変更がRofiメニューに反映されない | $XDG_CONFIG_HOME/argvus/data/rofi/内の`config.rasi`のユーザーコピーがまだパッケージ済みテーマを指しているか確認してください。 `$XDG_CONFIG_HOME/argvus/data/rofi/` `argvus-appearance`からテーマを再適用してください。 |
 | `SUPER + O`がプロジェクトが見つからないと報告する | ルートやパスが設定されていないか、ディレクトリが存在しません。`argvus projects list`を実行してください。 |
-| `SUPER + C`または絵文字ピッカーが開かない | `rofi-calc`または`rofimoji`をインストールしてください（両方とも必要な依存関係です）。 |
+| `SUPER + C`または絵文字ピッカーが開かない | `argvus`または`rofimoji`をインストールしてください（両方とも必要な依存関係です）。 |
 | チートシートが開かない | その名前と言語に対応するファイルが存在しません。チートシートのセクションに記載されているパスを確認してください。 |
 | `SUPER + H`が何も表示しない | 履歴が空であるか、`argvus-session`のクリップボードレコーダーがまだ何も保存していません。 |
 

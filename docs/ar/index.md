@@ -25,7 +25,7 @@ description: المشغّل والبحث — Quickshell/QML + Rust.
 | `SUPER + ALT + N` | منتقي المقتطفات | `argvus snippets` | مقتطفات |
 | `SUPER + ALT + G` | منتقي المشروع، ثم git TUI | `argvus git` | بوابة |
 | `SUPER + .` | منتقي الرموز التعبيرية | `emoji-picker.sh` | منتقي الرموز التعبيرية |
-| `SUPER + C` | حاسبة | `rofi -show calc` | حاسبة |
+| `SUPER + C` | حاسبة | `argvus calculator` | حاسبة |
 | `SUPER + SHIFT + /` | ورقة الغش هايبرلاند | `cheatsheets.sh hypr` | أوراق الغش |
 | `SUPER + CTRL + /` | ورقة غش كيتي | `cheatsheets.sh kitty` | أوراق الغش |
 
@@ -392,9 +392,7 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 ##                                                  ( wl-clipboard  rofimoji  Ctrl + V  `Enter`  `Ctrl + V`  `rofimoji`  `wl-clipboard` `SUPER + C`) ﺔﺒﺳﺎﺣ ﺔﻟﺁ
 
-`SUPER + C`                                                                          ﺢﺘﻔﻳ`calc`ـﻛ ﺔﺠﻴﺘﻧ ﺮﺘﺧﺍ .ﺔﺑﺎﺘﻜﻟﺍ ءﺎﻨﺛﺃ ﺞﺋﺎﺘﻨﻟﺍ ﺔﻤﺋﺎﻗ ﺙﺪﺤﺘﺗﻭ ،ﺍًﺮﻴﺒﻌﺗ ﺐﺘﻛﺍ .ARGVUS Rofi ﻦﻳ`rofi-calc`                                                                   .ﺩﺪﺤﻳ ﻊﺿﻮﻟﺍ
 
-.argvus-hyprland ﺔﻄﺳﺍﻮﺑ ﻪﺴﻔﻧ ﺭﺎﺼﺘﺧﻻ﻿ﺍ ﻦﻋ ﻥﻼ﻿ﻋﻹ﻿ﺍ ﻢﺘﻳ .`rofi-calc` ﻰﻠﻋ ﺪﻤﺘ
 
 ##                            (`argvus-hyprland` ﻭ `SUPER + SHIFT + /`) ﺶﻐﻟﺍ ﺕﺎﺼﺨﻠﻣ
 
@@ -464,9 +462,8 @@ Required dependencies:
 
 ,
 
-و`argvus-session` (الذي يوفر `argvus-appearance`). التبعيات الاختيارية: `argvus`، لمنتقي SSH ومدير مفاتيح SSH؛ `bash` و`jq` gitui Lazygit يفتح pinentry-gtk pinentry gnupg wtype wl-clipboard rofimoji rofi-calc rofi libnotify `hyprland`، لـ git TUI.
 
-Installing the package does not write into  `libnotify`  `rofi`  `rofi-calc`  `rofimoji`  `wl-clipboard`  `wtype`  `gnupg`  `pinentry`  `pinentry-gtk`  `openssh`  `lazygit`  `gitui` `$HOME`. User configuration is created at session start, as described in [Rofi configuration and themes](#where-the-active-configuration-lives).
+Installing the package does not write into  `libnotify`  `rofi`  `argvus calculator`  `rofimoji`  `wl-clipboard`  `wtype`  `gnupg`  `pinentry`  `pinentry-gtk`  `openssh`  `lazygit`  `gitui` `$HOME`. User configuration is created at session start, as described in [Rofi configuration and themes](#where-the-active-configuration-lives).
 
 ## استكشاف الأخطاء وإصلاحها
 
@@ -477,7 +474,7 @@ Installing the package does not write into  `libnotify`  `rofi`  `rofi-calc`  `r
                                               ـﻟﺍ | ﺎًﻤﻳﺪﻗ ﺎًﻄﺧ ﻡﺪﺨﺘﺴﺗ ﻢﺋﺍﻮﻘﻟﺍ |`font:`        .ﻂﺨﻟﺍ ﺮﻴﻴﻐﺗ ﺪﻌﺑ ﺔﺴﻠﺠﻟﺍ ﻞﻴﻐﺸﺗ ﺪﻋﺃ .ﺔﺴﻠﺠﻟﺍ ءﺪﺑ ﺪﻨﻋ ﺮﻄﺴﻟﺍ ﺔﺑﺎﺘﻛ ﺓﺩﺎﻋﺇ ﻢﺘﻳ
         ﻦﻣ ﻡﺪﺨﺘﺴﻤﻟﺍ ﺔﺨﺴﻧ ﻥﺎﻛ ﺍﺫﺇ ﺎﻤﻣ ﻖﻘﺤﺗ | Rofi ﻢﺋﺍﻮﻗ ﻰﻟﺇ ﻞﺼﻳ ﻻ﻿ ﺔﻤﺴﻟﺍ ﺮﻴﻴﻐﺗ |`config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/`                                    ﻦﻣ ﻖﺴﻨﻟﺍ ﻖﺒﻃ .ﺄﺒﻌﻤﻟﺍ ﻖﺴﻨﻟﺍ ﻰﻟﺇ ﺮﻴﺸﻳ ﻝﺍﺰﻳ ﻻ﻿`argvus-appearance` again. |
 | `SUPER + O`ﻞﻴﻐﺸﺘﺑ ﻢﻗ .ﺓﺩﻮﺟﻮﻣ ﺪﻌﺗ ﻢﻟ ﻞﺋﻻ﻿ﺪﻟﺍ ﻥﺃ ﻭﺃ ،ﺭﺎﺴﻤﻟﺍ ﻭﺃ ﺭﺬﺠﻟﺍ ﻦﻳﻮﻜﺗ ﻢﺘﻳ ﻢﻟ | ﻊﻳﺭﺎﺸﻣ ﻱ`argvus projects list`. |
-| `SUPER + C`                                      ﺖﻴﺒﺜﺗ | ﺔﻳﺮﻴﺒﻌﺘﻟﺍ ﺯﻮﻣﺮﻟﺍ ﺩﺪﺤﻣ ﺢﺘﻔﻳ ﻢﻟ ﻭﺃ`rofi-calc` or `rofimoji`                                             | .(ﺔﺑﻮﻠﻄﻤﻟﺍ ﺕﺎﻳﺩﺎﻤﺘﻋﻻ﻿ﺍ ﻦﻣ ﺎﻤﻫﻼ﻿ﻛ)
+| `SUPER + C`                                      ﺖﻴﺒﺜﺗ | ﺔﻳﺮﻴﺒﻌﺘﻟﺍ ﺯﻮﻣﺮﻟﺍ ﺩﺪﺤﻣ ﺢﺘﻔﻳ ﻢﻟ ﻭﺃ`argvus` or `rofimoji`                                             | .(ﺔﺑﻮﻠﻄﻤﻟﺍ ﺕﺎﻳﺩﺎﻤﺘﻋﻻ﻿ﺍ ﻦﻣ ﺎﻤﻫﻼ﻿ﻛ)
 | .ﺓﺮﺼﺘﺨﻤﻟﺍ ﻝﻭﺍﺪﺠﻟﺍ ﻢﺴﻗ ﻲﻓ ﺔﺤﺿﻮﻤﻟﺍ ﺕﺍﺭﺎﺴﻤﻟﺍ ﻦﻣ ﻖﻘﺤﺗ .ﺩﻮﺟﻮﻣ ﺮﻴﻏ ﺔﻐﻠﻟﺍﻭ ﻢﺳﻻ﻿ﺍ ﺍﺬﻬ
 | `SUPER + H`                                 ﻦﻣ ﺔﻈﻓﺎﺤﻟﺍ ﻞﺠﺴﻣ ﻭﺃ ،ﻍﺭﺎﻓ ﺦﻳﺭﺎﺘﻟﺍ | ءﻲﺷ ﺮﻬﻈﻳ ﻻ﻿`argvus-session`                                                   | .ﺪﻌﺑ ءﻲﺷ ﻱﺃ ﻦﻳﺰﺨﺘﺑ ﻢﻘﻳ ﻢﻟ
 

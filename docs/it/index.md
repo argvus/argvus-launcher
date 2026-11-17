@@ -24,7 +24,7 @@ Le scorciatoie sono dichiarate da `argvus-hyprland`. Questo pacchetto fornisce i
 | `SUPER + ALT + N` | Selettore di snippet | `argvus snippets` | Snippet |
 | `SUPER + ALT + G` | Selettore di progetto, poi Git TUI | `argvus git` | Git |
 | `SUPER + .` | Selettore di emoji | `emoji-picker.sh` | Selettore di emoji |
-| `SUPER + C` | Calcolatrice | `rofi -show calc` | Calcolatrice |
+| `SUPER + C` | Calcolatrice | `argvus calculator` | Calcolatrice |
 | `SUPER + SHIFT + /` | Cheatsheet di Hyprland | `cheatsheets.sh hypr` | Cheatsheet |
 | `SUPER + CTRL + /` | Cheatsheet di Kitty | `cheatsheets.sh kitty` | Cheatsheet |
 
@@ -362,9 +362,7 @@ Richiede `rofimoji` e `wl-clipboard`.
 
 ## Calcolatrice (`SUPER + C`)
 
-`SUPER + C` apre la modalità `calc` di Rofi con la configurazione Rofi ARGVUS. Digita un'espressione e l'elenco dei risultati si aggiorna mentre scrivi. Scegli un risultato come definito dalla modalità `rofi-calc`.
-
-Il pacchetto launcher fornisce la configurazione di Rofi e dipende da `rofi-calc`. La scorciatoia stessa è dichiarata da `argvus-hyprland`.
+`SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
 ## Cheatsheets (`SUPER + SHIFT + /` e `SUPER + CTRL + /`)
 
@@ -398,7 +396,7 @@ Il pacchetto `argvus-launcher` è indipendente dall'architettura e installa:
 - `/usr/share/argvus/launcher/config/`, con la configurazione di Rofi e i temi;
 - `/usr/share/argvus/launcher/sh/`, con `cheatsheets.sh` e `emoji-picker.sh`.
 
-Dipendenze richieste: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofi-calc`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` e `pinentry` (che fornisce `pinentry-gtk`). Dipendenze opzionali: `openssh`, per il selettore SSH e il gestore di chiavi SSH; `lazygit` e `gitui`, per il TUI di git.
+Dipendenze richieste: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` e `pinentry` (che fornisce `pinentry-gtk`). Dipendenze opzionali: `openssh`, per il selettore SSH e il gestore di chiavi SSH; `lazygit` e `gitui`, per il TUI di git.
 
 L'installazione del pacchetto non scrive in `$HOME`. La configurazione utente viene creata all'avvio della sessione, come descritto in [Rofi configuration and themes](#where-the-active-configuration-lives).
 
@@ -411,7 +409,7 @@ L'installazione del pacchetto non scrive in `$HOME`. La configurazione utente vi
 | I menu usano un font vecchio | La riga `font:` viene riscritta all'avvio della sessione. Riavvia la sessione dopo aver cambiato il font. |
 | Un cambio di tema non raggiunge i menu di Rofi | Controlla se la copia utente di `config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/` punta ancora al tema pacchettizzato. Applica di nuovo il tema da `argvus-appearance`. |
 | `SUPER + O` segnala che non sono stati trovati progetti | Nessuna root o percorso è configurato, o le directory non esistono più. Esegui `argvus projects list`. |
-| `SUPER + C` o il selezionatore di emoji non si aprono | Installa `rofi-calc` o `rofimoji` (entrambi sono dipendenze richieste). |
+| `SUPER + C` o il selezionatore di emoji non si aprono | Installa `argvus` o `rofimoji` (entrambi sono dipendenze richieste). |
 | Un cheatsheet non si apre | Il file per quel nome e lingua non esiste. Controlla i percorsi descritti nella sezione Cheatsheets. |
 | `SUPER + H` non mostra nulla | La cronologia è vuota, o il registratore degli appunti di `argvus-session` non ha ancora memorizzato nulla. |
 
