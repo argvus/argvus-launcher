@@ -444,3 +444,5 @@ Sticky ও Spaced মোডে Rofi মেনুর পুরো মনিটর
 `/launcher/show_icons`: `true` / `false`.
 
 `/launcher/selected_category`: `""` (All), `applications`, `windows`, `settings`, `actions`, `projects`, `ssh`, `files`, `help`.
+
+অ্যাপের লেখা Control Center → Appearance → Desktop Style → Fonts-এর Applications Font অনুসরণ করে। GTK অ্যাপ gtk-font-name ব্যবহার করে; সংখ্যা ও শিরোনামের আকার অপরিবর্তিত থাকে। লঞ্চার তৈরি apps_family পড়ে ও পরিবর্তন দেখে।

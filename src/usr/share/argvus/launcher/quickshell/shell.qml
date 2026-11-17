@@ -37,7 +37,7 @@ ShellRoot {
     readonly property int radius: themeObject ? themeObject.radius : 0
     readonly property int controlHeight: 40
     readonly property int rowHeight: 48
-    readonly property string textFont: "monospace"
+    property string textFont: Qt.application.font.family
     property int windowRadius: radius
     property int borderWidth: 1
     readonly property bool home: search.text.trim() === "" && category === "" && !submenu
@@ -250,6 +250,21 @@ ShellRoot {
         }
     }
     FileView {
+        path: root.dataHome + "/generated/fonts.conf"
+        printErrors: false
+        watchChanges: true
+        onFileChanged: reload()
+        onTextChanged: {
+            let family = "";
+            for (const line of text().split(/\r?\n/)) {
+                const separator = line.indexOf("=");
+                if (separator > 0 && line.slice(0, separator).trim() === "apps_family")
+                    family = line.slice(separator + 1).trim();
+            }
+            root.textFont = family || Qt.application.font.family;
+        }
+    }
+    FileView {
         id: themeFile
         path: root.configHome + "/argvus/data/generated/theme/current/launcher/Theme.qml"
         printErrors: false
@@ -395,7 +410,7 @@ ShellRoot {
                     Label {
                         text: "ARGVUS / " + root.tr("source_applications")
                         color: root.accent
-                        font.family: "monospace"
+                        font.family: root.textFont
                         font.bold: true
                         font.pixelSize: 13
                     }
@@ -431,7 +446,7 @@ ShellRoot {
                     TextField {
                         id: search
                         Layout.fillWidth: true
-                        font.family: "monospace"
+                        font.family: root.textFont
                         font.pixelSize: 14
                         Layout.preferredHeight: root.controlHeight
                         leftPadding: 12

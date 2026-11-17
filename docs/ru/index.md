@@ -432,3 +432,5 @@ Rofi размывает весь монитор меню, включая пан�
 `/launcher/show_icons`: `true` / `false`.
 
 `/launcher/selected_category`: `""` (All), `applications`, `windows`, `settings`, `actions`, `projects`, `ssh`, `files`, `help`.
+
+Текст приложений использует Applications Font в Control Center → Appearance → Desktop Style → Fonts. GTK наследует gtk-font-name; размеры цифр и заголовков сохраняются. Лаунчер читает сгенерированный apps_family и отслеживает изменения.

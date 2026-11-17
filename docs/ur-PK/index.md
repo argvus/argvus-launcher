@@ -466,3 +466,5 @@ Sticky اور Spaced میں Rofi کا دھندلاپن بار اور حاشیو�
 `/launcher/show_icons`: `true` / `false`.
 
 `/launcher/selected_category`: `""` (All), `applications`, `windows`, `settings`, `actions`, `projects`, `ssh`, `files`, `help`.
+
+ایپ کا متن Control Center → Appearance → Desktop Style → Fonts کے Applications Font کی پیروی کرتا ہے۔ GTK ایپس gtk-font-name لیتی ہیں؛ اعداد اور عنوان کے سائز برقرار رہتے ہیں۔ لانچر تیار شدہ apps_family پڑھتا اور تبدیلیاں دیکھتا ہے۔
