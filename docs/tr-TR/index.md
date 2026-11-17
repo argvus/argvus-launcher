@@ -3,7 +3,7 @@ title: Başlatıcı ve Arama
 description: Başlatıcı ve Arama — Quickshell/QML + Rust.
 ---
 
-Ana başlatıcı Quickshell/QML ve yerel Rust arama motoruyla uygulama, pencere, ayar, eylem, proje, SSH sunucusu, dosya ve kısayol arar. Dizinleme başlangıçta kapalıdır; klasörleri açıkça seçin. Yalnızca adlar ve yollar dizinlenir, belge içerikleri okunmaz. Son dosyalar XDG kaydına bağlıdır. Gizli dosyalar varsayılan olarak dışlanır ve dizin sembolik bağlantıları izlenmez. Özel Rofi menüleri kullanılabilir. Başlatıcı açıldığında açık pencereler önce “Şu anda açık” grubunda gösterilir. Kaydedilen kategori diğer sonuçları filtrelemeye devam eder; bu grubu gizlemek için arama ayarlarında Windows kaynağını kapatın.
+Ana başlatıcı Quickshell/QML ve yerel Rust arama motoruyla uygulama, pencere, ayar, eylem, proje, SSH sunucusu, dosya ve kısayol arar. Dizinleme başlangıçta kapalıdır; klasörleri açıkça seçin. Yalnızca adlar ve yollar dizinlenir, belge içerikleri okunmaz. Son dosyalar XDG kaydına bağlıdır. Gizli dosyalar varsayılan olarak dışlanır ve dizin sembolik bağlantıları izlenmez. Özel Rofi menüleri kullanılabilir. Launcher and Search bölümünde A–Z veya Son açılanlar sıralamasını seçin; varsayılan Son açılanlardır. Kaydedilen kategori diğer sonuçları filtrelemeye devam eder; bu grubu gizlemek için arama ayarlarında Windows kaynağını kapatın.
 
 - uygulama başlatıcıyı (`SUPER + D`);
 - her ARGVUS Rofi menüsü tarafından paylaşılan Rofi yapılandırması ve temaları;
@@ -31,7 +31,7 @@ Kısayollar `argvus-hyprland` tarafından beyan edilmiştir. Bu paket, komutlar�
 
 ## Başlatıcı ve Arama
 
-Ana başlatıcı Quickshell/QML ve yerel Rust arama motoruyla uygulama, pencere, ayar, eylem, proje, SSH sunucusu, dosya ve kısayol arar. Dizinleme başlangıçta kapalıdır; klasörleri açıkça seçin. Yalnızca adlar ve yollar dizinlenir, belge içerikleri okunmaz. Son dosyalar XDG kaydına bağlıdır. Gizli dosyalar varsayılan olarak dışlanır ve dizin sembolik bağlantıları izlenmez. Özel Rofi menüleri kullanılabilir. Başlatıcı açıldığında açık pencereler önce “Şu anda açık” grubunda gösterilir. Kaydedilen kategori diğer sonuçları filtrelemeye devam eder; bu grubu gizlemek için arama ayarlarında Windows kaynağını kapatın.
+Ana başlatıcı Quickshell/QML ve yerel Rust arama motoruyla uygulama, pencere, ayar, eylem, proje, SSH sunucusu, dosya ve kısayol arar. Dizinleme başlangıçta kapalıdır; klasörleri açıkça seçin. Yalnızca adlar ve yollar dizinlenir, belge içerikleri okunmaz. Son dosyalar XDG kaydına bağlıdır. Gizli dosyalar varsayılan olarak dışlanır ve dizin sembolik bağlantıları izlenmez. Özel Rofi menüleri kullanılabilir. Launcher and Search bölümünde A–Z veya Son açılanlar sıralamasını seçin; varsayılan Son açılanlardır. **Şu anda açık** varsayılan olarak kapalıdır. Arama boşken mevcut pencereleri göstermek için Control Center > Preferences > Launcher and Search bölümünden açın. Uygulama kullanım geçmişini aynı sayfadan temizleyebilirsiniz.
 
 Başlatıcı; eş aralıklı metin, hizalanmış arama ve kategoriler, kompakt favoriler ve ayrı yardım altbilgisiyle kompakt TUI düzenini kullanır. Kenarlık kalınlığı ve yuvarlama etkin ARGVUS ayarlarını izler.
 
@@ -452,5 +452,7 @@ Sticky ve Spaced modlarında Rofi bulanıklığı çubuklar ve kenarlar dahil me
 `/launcher/show_icons`: `true` / `false`.
 
 `/launcher/selected_category`: `""` (All), `applications`, `windows`, `settings`, `actions`, `projects`, `ssh`, `files`, `help`.
+
+`/launcher/application_sort`: `recent` (Son açılanlar, varsayılan) veya `alphabetical` (A–Z).
 
 Uygulama metni Control Center → Appearance → Desktop Style → Fonts içindeki Applications Font ayarını izler. GTK gtk-font-name değerini devralır; sayı ve başlık boyutları korunur. Başlatıcı üretilen apps_family değerini okur ve değişiklikleri izler.

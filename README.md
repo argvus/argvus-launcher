@@ -22,9 +22,12 @@ build it.
 actions, projects, SSH, files and shortcut help. Configure sources, priorities,
 favorites and indexing with `argvus control-center launcher`. File indexing is
 opt-in and stores names and paths only; recent files use the XDG registry.
-On an empty search, open windows appear first under **Open now**, with the
-focused window at the top. The saved category still filters other results, and
-disabling the Windows source hides this group.
+Application results can be ordered A–Z or by recent launcher activations in
+Control Center; Recently opened is the default, while typed queries keep text
+relevance as the primary ranking. **Open now** is disabled by default; enable it in Control Center to show current windows for an
+empty query. The saved category still filters other results, and disabling the
+Windows source hides this group. Application usage history is local and can be
+cleared from the same settings page.
 Preferences belong to `argvus config`, while the index is rebuildable cache.
 The engine ships in the `argvus` master package; this package supplies QML,
 the launcher entry point, theme templates and the existing specialized Rofi menus.

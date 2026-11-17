@@ -139,6 +139,7 @@ ShellRoot {
                 category: "windows",
                 keywords: [appClass],
                 is_active: window.activated,
+                usage_id: desktop ? desktop.id : "",
                 action: {
                     kind: "window",
                     value: window.address
@@ -346,7 +347,13 @@ ShellRoot {
         onExited: {
             root.ready = false;
             root.status = root.tr("engine_error");
+            engineRestart.restart();
         }
+    }
+    Timer {
+        id: engineRestart
+        interval: 1000
+        onTriggered: engine.running = true
     }
     Timer {
         interval: 1000
@@ -603,7 +610,7 @@ ShellRoot {
                             font.family: root.textFont
                             height: parent.groupHeight
                             visible: height > 0
-                            text: resultRow.modelData.category === "windows" && search.text.trim() === "" ? root.tr("open_now") : root.tr("source_" + resultRow.modelData.category)
+                            text: resultRow.modelData.category === "windows" && search.text.trim() === "" && root.preferences.show_open_now === true && root.category !== "windows" ? root.tr("open_now") : root.tr("source_" + resultRow.modelData.category)
                             color: root.muted
                             font.pixelSize: 12
                             verticalAlignment: Text.AlignVCenter

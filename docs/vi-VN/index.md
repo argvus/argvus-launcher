@@ -3,7 +3,7 @@ title: Trình khởi chạy và tìm kiếm
 description: Trình khởi chạy và tìm kiếm — Quickshell/QML + Rust.
 ---
 
-Trình khởi chạy chính dùng Quickshell/QML và công cụ Rust cục bộ để tìm ứng dụng, cửa sổ, cài đặt, thao tác, dự án, máy chủ SSH, tệp và phím tắt. Lập chỉ mục ban đầu bị tắt; cần chọn thư mục rõ ràng. Chỉ tên và đường dẫn được lập chỉ mục, không đọc nội dung tài liệu. Tệp gần đây dựa vào bản ghi XDG. Tệp ẩn bị loại trừ mặc định và không đi theo liên kết tượng trưng của thư mục. Các menu Rofi chuyên dụng vẫn có sẵn. Khi mở launcher, các cửa sổ đang mở được hiển thị đầu tiên trong nhóm “Đang mở”. Danh mục đã lưu tiếp tục lọc các kết quả khác; hãy tắt nguồn Windows trong cài đặt tìm kiếm để ẩn nhóm này.
+Trình khởi chạy chính dùng Quickshell/QML và công cụ Rust cục bộ để tìm ứng dụng, cửa sổ, cài đặt, thao tác, dự án, máy chủ SSH, tệp và phím tắt. Lập chỉ mục ban đầu bị tắt; cần chọn thư mục rõ ràng. Chỉ tên và đường dẫn được lập chỉ mục, không đọc nội dung tài liệu. Tệp gần đây dựa vào bản ghi XDG. Tệp ẩn bị loại trừ mặc định và không đi theo liên kết tượng trưng của thư mục. Các menu Rofi chuyên dụng vẫn có sẵn. Trong Launcher and Search, chọn thứ tự A–Z hoặc Mở gần đây; Mở gần đây là mặc định. Danh mục đã lưu tiếp tục lọc các kết quả khác; hãy tắt nguồn Windows trong cài đặt tìm kiếm để ẩn nhóm này.
 
 - trình khởi chạy ứng dụng (`SUPER + D`);
 - cấu hình Rofi và các chủ đề được chia sẻ bởi mọi menu Rofi của ARGVUS;
@@ -31,7 +31,7 @@ Các phím tắt được khai báo bởi `argvus-hyprland`. Gói này cung cấ
 
 ## Trình khởi chạy và tìm kiếm
 
-Trình khởi chạy chính dùng Quickshell/QML và công cụ Rust cục bộ để tìm ứng dụng, cửa sổ, cài đặt, thao tác, dự án, máy chủ SSH, tệp và phím tắt. Lập chỉ mục ban đầu bị tắt; cần chọn thư mục rõ ràng. Chỉ tên và đường dẫn được lập chỉ mục, không đọc nội dung tài liệu. Tệp gần đây dựa vào bản ghi XDG. Tệp ẩn bị loại trừ mặc định và không đi theo liên kết tượng trưng của thư mục. Các menu Rofi chuyên dụng vẫn có sẵn. Khi mở launcher, các cửa sổ đang mở được hiển thị đầu tiên trong nhóm “Đang mở”. Danh mục đã lưu tiếp tục lọc các kết quả khác; hãy tắt nguồn Windows trong cài đặt tìm kiếm để ẩn nhóm này.
+Trình khởi chạy chính dùng Quickshell/QML và công cụ Rust cục bộ để tìm ứng dụng, cửa sổ, cài đặt, thao tác, dự án, máy chủ SSH, tệp và phím tắt. Lập chỉ mục ban đầu bị tắt; cần chọn thư mục rõ ràng. Chỉ tên và đường dẫn được lập chỉ mục, không đọc nội dung tài liệu. Tệp gần đây dựa vào bản ghi XDG. Tệp ẩn bị loại trừ mặc định và không đi theo liên kết tượng trưng của thư mục. Các menu Rofi chuyên dụng vẫn có sẵn. Trong Launcher and Search, chọn thứ tự A–Z hoặc Mở gần đây; Mở gần đây là mặc định. **Đang mở** mặc định bị tắt. Bật tùy chọn này trong Control Center > Preferences > Launcher and Search để hiển thị các cửa sổ hiện tại khi ô tìm kiếm trống. Bạn cũng có thể xóa lịch sử sử dụng ứng dụng tại trang đó.
 
 Trình khởi chạy dùng bố cục TUI gọn: chữ đơn cách, tìm kiếm và danh mục thẳng hàng, mục yêu thích gọn và phần trợ giúp riêng bên dưới. Độ dày và bo góc viền theo thiết lập ARGVUS hiện hành.
 
@@ -456,5 +456,7 @@ Trong Sticky và Spaced, hiệu ứng mờ Rofi phủ toàn bộ màn hình ch�
 `/launcher/show_icons`: `true` / `false`.
 
 `/launcher/selected_category`: `""` (All), `applications`, `windows`, `settings`, `actions`, `projects`, `ssh`, `files`, `help`.
+
+`/launcher/application_sort`: `recent` (Mở gần đây, mặc định) hoặc `alphabetical` (A–Z).
 
 Văn bản ứng dụng theo Applications Font trong Control Center → Appearance → Desktop Style → Fonts. GTK kế thừa gtk-font-name, giữ kích thước số và tiêu đề. Trình khởi chạy đọc apps_family được tạo và theo dõi thay đổi.

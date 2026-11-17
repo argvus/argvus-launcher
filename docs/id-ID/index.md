@@ -3,7 +3,7 @@ title: Peluncur dan Pencarian
 description: Peluncur dan Pencarian — Quickshell/QML + Rust.
 ---
 
-Peluncur utama memakai Quickshell/QML dan mesin Rust lokal untuk aplikasi, jendela, pengaturan, tindakan, proyek, host SSH, berkas, dan pintasan. Pengindeksan awalnya nonaktif; pilih folder secara eksplisit. Hanya nama dan jalur yang diindeks, bukan isi dokumen. Berkas terbaru bergantung pada catatan XDG. Berkas tersembunyi dikecualikan secara bawaan dan symlink direktori tidak diikuti. Menu khusus Rofi tetap tersedia. Saat launcher dibuka, jendela yang terbuka ditampilkan lebih dahulu di bagian “Terbuka sekarang”. Kategori tersimpan tetap memfilter hasil lainnya; nonaktifkan sumber Windows di pengaturan pencarian untuk menyembunyikan grup ini.
+Peluncur utama memakai Quickshell/QML dan mesin Rust lokal untuk aplikasi, jendela, pengaturan, tindakan, proyek, host SSH, berkas, dan pintasan. Pengindeksan awalnya nonaktif; pilih folder secara eksplisit. Hanya nama dan jalur yang diindeks, bukan isi dokumen. Berkas terbaru bergantung pada catatan XDG. Berkas tersembunyi dikecualikan secara bawaan dan symlink direktori tidak diikuti. Menu khusus Rofi tetap tersedia. Di Launcher and Search, pilih urutan A–Z atau Baru dibuka; Baru dibuka menjadi pilihan bawaan. Kategori tersimpan tetap memfilter hasil lainnya; nonaktifkan sumber Windows di pengaturan pencarian untuk menyembunyikan grup ini.
 
 - peluncur aplikasi (`SUPER + D`);
 - konfigurasi dan tema Rofi yang dibagikan oleh setiap menu Rofi ARGVUS;
@@ -31,7 +31,7 @@ Pintasan dideklarasikan oleh `argvus-hyprland`. Paket ini menyediakan perintah-p
 
 ## Peluncur dan Pencarian
 
-Peluncur utama memakai Quickshell/QML dan mesin Rust lokal untuk aplikasi, jendela, pengaturan, tindakan, proyek, host SSH, berkas, dan pintasan. Pengindeksan awalnya nonaktif; pilih folder secara eksplisit. Hanya nama dan jalur yang diindeks, bukan isi dokumen. Berkas terbaru bergantung pada catatan XDG. Berkas tersembunyi dikecualikan secara bawaan dan symlink direktori tidak diikuti. Menu khusus Rofi tetap tersedia. Saat launcher dibuka, jendela yang terbuka ditampilkan lebih dahulu di bagian “Terbuka sekarang”. Kategori tersimpan tetap memfilter hasil lainnya; nonaktifkan sumber Windows di pengaturan pencarian untuk menyembunyikan grup ini.
+Peluncur utama memakai Quickshell/QML dan mesin Rust lokal untuk aplikasi, jendela, pengaturan, tindakan, proyek, host SSH, berkas, dan pintasan. Pengindeksan awalnya nonaktif; pilih folder secara eksplisit. Hanya nama dan jalur yang diindeks, bukan isi dokumen. Berkas terbaru bergantung pada catatan XDG. Berkas tersembunyi dikecualikan secara bawaan dan symlink direktori tidak diikuti. Menu khusus Rofi tetap tersedia. Di Launcher and Search, pilih urutan A–Z atau Baru dibuka; Baru dibuka menjadi pilihan bawaan. **Sedang dibuka** nonaktif secara default; aktifkan di Control Center > Preferences > Launcher and Search untuk menampilkan jendela saat ini ketika kueri kosong. Riwayat penggunaan aplikasi dapat dihapus dari halaman yang sama.
 
 Launcher memakai tata letak TUI ringkas: teks monospace, pencarian dan kategori sejajar, favorit ringkas serta bantuan terpisah di bawah. Ketebalan dan lengkungan bingkai mengikuti pengaturan ARGVUS aktif.
 
@@ -466,5 +466,7 @@ Dalam Sticky dan Spaced, blur Rofi mencakup seluruh monitor menu, termasuk bilah
 `/launcher/show_icons`: `true` / `false`.
 
 `/launcher/selected_category`: `""` (All), `applications`, `windows`, `settings`, `actions`, `projects`, `ssh`, `files`, `help`.
+
+`/launcher/application_sort`: `recent` (Baru dibuka, bawaan) atau `alphabetical` (A–Z).
 
 Teks aplikasi mengikuti Applications Font di Control Center → Appearance → Desktop Style → Fonts. GTK mewarisi gtk-font-name; ukuran angka dan judul dipertahankan. Peluncur membaca apps_family yang dihasilkan dan memantau perubahan.

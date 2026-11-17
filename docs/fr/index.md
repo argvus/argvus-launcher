@@ -2,7 +2,7 @@
 title: Lanceur et recherche
 description: Lanceur et recherche — Quickshell/QML + Rust.
 ---
-Le lanceur principal utilise Quickshell/QML et un moteur local en Rust. Il recherche applications, fenêtres, paramètres, actions, projets, hôtes SSH, fichiers et raccourcis. L’indexation est désactivée au départ et nécessite des dossiers choisis explicitement. Seuls les noms et chemins sont indexés, jamais le contenu. Les fichiers récents dépendent du registre XDG. Les fichiers cachés sont exclus par défaut et les liens symboliques de dossiers ne sont pas suivis. Les menus spécialisés Rofi restent disponibles. À l’ouverture du lanceur, les fenêtres ouvertes apparaissent en premier sous « Ouvertes maintenant ». La catégorie enregistrée continue de filtrer les autres résultats ; désactivez la source Windows dans les paramètres de recherche pour masquer ce groupe.
+Le lanceur principal utilise Quickshell/QML et un moteur local en Rust. Il recherche applications, fenêtres, paramètres, actions, projets, hôtes SSH, fichiers et raccourcis. L’indexation est désactivée au départ et nécessite des dossiers choisis explicitement. Seuls les noms et chemins sont indexés, jamais le contenu. Les fichiers récents dépendent du registre XDG. Les fichiers cachés sont exclus par défaut et les liens symboliques de dossiers ne sont pas suivis. Les menus spécialisés Rofi restent disponibles. Dans Launcher and Search, choisissez l’ordre A–Z ou Récemment ouvertes ; Récemment ouvertes est le réglage par défaut. La catégorie enregistrée continue de filtrer les autres résultats ; désactivez la source Windows dans les paramètres de recherche pour masquer ce groupe.
 
 - le lanceur d'applications (`SUPER + D`) ;
 - la configuration et les thèmes de Rofi partagés par tous les menus Rofi d'ARGVUS ;
@@ -30,7 +30,11 @@ Les raccourcis sont déclarés par `argvus-hyprland`. Ce paquet fournit les comm
 
 ## Lanceur et recherche
 
-Le lanceur principal utilise Quickshell/QML et un moteur local en Rust. Il recherche applications, fenêtres, paramètres, actions, projets, hôtes SSH, fichiers et raccourcis. L’indexation est désactivée au départ et nécessite des dossiers choisis explicitement. Seuls les noms et chemins sont indexés, jamais le contenu. Les fichiers récents dépendent du registre XDG. Les fichiers cachés sont exclus par défaut et les liens symboliques de dossiers ne sont pas suivis. Les menus spécialisés Rofi restent disponibles. À l’ouverture du lanceur, les fenêtres ouvertes apparaissent en premier sous « Ouvertes maintenant ». La catégorie enregistrée continue de filtrer les autres résultats ; désactivez la source Windows dans les paramètres de recherche pour masquer ce groupe.
+Le lanceur principal utilise Quickshell/QML et un moteur local en Rust. Il recherche applications, fenêtres, paramètres, actions, projets, hôtes SSH, fichiers et raccourcis. L’indexation est désactivée au départ et nécessite des dossiers choisis explicitement. Seuls les noms et chemins sont indexés, jamais le contenu. Les fichiers récents dépendent du registre XDG. Les fichiers cachés sont exclus par défaut et les liens symboliques de dossiers ne sont pas suivis. Les menus spécialisés Rofi restent disponibles. ---
+title: Lanceur et recherche
+description: Lanceur et recherche — Quickshell/QML + Rust.
+---
+Le lanceur principal utilise Quickshell/QML et un moteur local en Rust. Il recherche applications, fenêtres, paramètres, actions, projets, hôtes SSH, fichiers et raccourcis. L’indexation est désactivée au départ et nécessite des dossiers choisis explicitement. Seuls les noms et chemins sont indexés, jamais le contenu. Les fichiers récents dépendent du registre XDG. Les fichiers cachés sont exclus par défaut et les liens symboliques de dossiers ne sont pas suivis. Les menus spécialisés Rofi restent disponibles. Dans Launcher and Search, choisissez l’ordre A–Z ou Récemment ouvertes ; Récemment ouvertes est le réglage par défaut. **Ouvertes maintenant** est désactivé par défaut ; activez cette option dans Control Center > Preferences > Launcher and Search pour afficher les fenêtres ouvertes lorsque la recherche est vide. Vous pouvez aussi effacer l’historique d’utilisation sur cette page.
 
 Le lanceur utilise une présentation TUI compacte : texte à chasse fixe, recherche et catégories alignées, favoris compacts et aide séparée en bas. Les bordures suivent les réglages actifs d’ARGVUS.
 
@@ -432,5 +436,7 @@ Rofi floute tout le moniteur du menu, barres et marges comprises, en Sticky et S
 `/launcher/show_icons`: `true` / `false`.
 
 `/launcher/selected_category`: `""` (All), `applications`, `windows`, `settings`, `actions`, `projects`, `ssh`, `files`, `help`.
+
+`/launcher/application_sort` : `recent` (Récemment ouvertes, par défaut) ou `alphabetical` (A–Z).
 
 Le texte suit Applications Font dans Control Center → Appearance → Desktop Style → Fonts. Les applications GTK héritent de gtk-font-name ; les tailles des nombres et titres sont conservées. Le lanceur lit apps_family généré et suit les modifications.

@@ -2,7 +2,7 @@
 title: Starter und Suche
 description: Starter und Suche — Quickshell/QML + Rust.
 ---
-Der Hauptstarter verwendet Quickshell/QML mit einer lokalen Rust-Suche für Apps, Fenster, Einstellungen, Aktionen, Projekte, SSH-Ziele, Dateien und Tastenkürzel. Die Indizierung ist zunächst deaktiviert; Ordner müssen ausdrücklich ausgewählt werden. Nur Namen und Pfade werden indiziert, keine Dokumentinhalte. Zuletzt verwendete Dateien stammen aus dem XDG-Verzeichnis. Versteckte Dateien sind standardmäßig ausgeschlossen; Verzeichnis-Symlinks werden nicht verfolgt. Spezialisierte Rofi-Menüs bleiben verfügbar. Beim Öffnen des Launchers erscheinen offene Fenster zuerst unter „Jetzt geöffnet“. Die gespeicherte Kategorie filtert weiterhin die übrigen Ergebnisse; deaktivieren Sie die Quelle Windows in den Sucheinstellungen, um diese Gruppe auszublenden.
+Der Hauptstarter verwendet Quickshell/QML mit einer lokalen Rust-Suche für Apps, Fenster, Einstellungen, Aktionen, Projekte, SSH-Ziele, Dateien und Tastenkürzel. Die Indizierung ist zunächst deaktiviert; Ordner müssen ausdrücklich ausgewählt werden. Nur Namen und Pfade werden indiziert, keine Dokumentinhalte. Zuletzt verwendete Dateien stammen aus dem XDG-Verzeichnis. Versteckte Dateien sind standardmäßig ausgeschlossen; Verzeichnis-Symlinks werden nicht verfolgt. Spezialisierte Rofi-Menüs bleiben verfügbar. Unter Launcher and Search lässt sich die Sortierung auf A–Z oder zuletzt geöffnet setzen; zuletzt geöffnet ist die Standardeinstellung. Die gespeicherte Kategorie filtert weiterhin die übrigen Ergebnisse; deaktivieren Sie die Quelle Windows in den Sucheinstellungen, um diese Gruppe auszublenden.
 
 - den Anwendungsstarter (`SUPER + D`);
 - die Rofi-Konfiguration und Themen, die von jedem ARGVUS Rofi-Menü gemeinsam genutzt werden;
@@ -30,7 +30,11 @@ Die Tastenkombinationen werden von `argvus-hyprland` deklariert. Dieses Paket st
 
 ## Starter und Suche
 
-Der Hauptstarter verwendet Quickshell/QML mit einer lokalen Rust-Suche für Apps, Fenster, Einstellungen, Aktionen, Projekte, SSH-Ziele, Dateien und Tastenkürzel. Die Indizierung ist zunächst deaktiviert; Ordner müssen ausdrücklich ausgewählt werden. Nur Namen und Pfade werden indiziert, keine Dokumentinhalte. Zuletzt verwendete Dateien stammen aus dem XDG-Verzeichnis. Versteckte Dateien sind standardmäßig ausgeschlossen; Verzeichnis-Symlinks werden nicht verfolgt. Spezialisierte Rofi-Menüs bleiben verfügbar. Beim Öffnen des Launchers erscheinen offene Fenster zuerst unter „Jetzt geöffnet“. Die gespeicherte Kategorie filtert weiterhin die übrigen Ergebnisse; deaktivieren Sie die Quelle Windows in den Sucheinstellungen, um diese Gruppe auszublenden.
+Der Hauptstarter verwendet Quickshell/QML mit einer lokalen Rust-Suche für Apps, Fenster, Einstellungen, Aktionen, Projekte, SSH-Ziele, Dateien und Tastenkürzel. Die Indizierung ist zunächst deaktiviert; Ordner müssen ausdrücklich ausgewählt werden. Nur Namen und Pfade werden indiziert, keine Dokumentinhalte. Zuletzt verwendete Dateien stammen aus dem XDG-Verzeichnis. Versteckte Dateien sind standardmäßig ausgeschlossen; Verzeichnis-Symlinks werden nicht verfolgt. Spezialisierte Rofi-Menüs bleiben verfügbar. ---
+title: Starter und Suche
+description: Starter und Suche — Quickshell/QML + Rust.
+---
+Der Hauptstarter verwendet Quickshell/QML mit einer lokalen Rust-Suche für Apps, Fenster, Einstellungen, Aktionen, Projekte, SSH-Ziele, Dateien und Tastenkürzel. Die Indizierung ist zunächst deaktiviert; Ordner müssen ausdrücklich ausgewählt werden. Nur Namen und Pfade werden indiziert, keine Dokumentinhalte. Zuletzt verwendete Dateien stammen aus dem XDG-Verzeichnis. Versteckte Dateien sind standardmäßig ausgeschlossen; Verzeichnis-Symlinks werden nicht verfolgt. Spezialisierte Rofi-Menüs bleiben verfügbar. Unter Launcher and Search lässt sich die Sortierung auf A–Z oder zuletzt geöffnet setzen; zuletzt geöffnet ist die Standardeinstellung. „Jetzt geöffnet“ ist standardmäßig deaktiviert. Aktivieren Sie die Option unter Control Center > Preferences > Launcher and Search, um bei leerer Suche offene Fenster anzuzeigen. Dort können Sie auch den App-Nutzungsverlauf löschen.
 
 Der Launcher nutzt ein kompaktes TUI-Layout mit Monospace-Schrift, ausgerichteter Suche und Kategorien, kompakten Favoriten und separater Hilfe unten. Randstärke und Rundung folgen den aktiven ARGVUS-Einstellungen.
 
@@ -432,5 +436,7 @@ Rofi verwischt im Sticky- und Spaced-Modus den gesamten Menümonitor einschließ
 `/launcher/show_icons`: `true` / `false`.
 
 `/launcher/selected_category`: `""` (All), `applications`, `windows`, `settings`, `actions`, `projects`, `ssh`, `files`, `help`.
+
+`/launcher/application_sort`: `recent` (zuletzt geöffnet, Standard) oder `alphabetical` (A–Z).
 
 Anwendungstexte folgen Applications Font unter Control Center → Appearance → Desktop Style → Fonts. GTK-Anwendungen erben gtk-font-name; Größen für Zahlen und Überschriften bleiben erhalten. Der Launcher liest das erzeugte apps_family und verfolgt Änderungen.

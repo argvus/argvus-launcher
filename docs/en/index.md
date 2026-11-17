@@ -3,7 +3,7 @@ title: Launcher and Search
 description: Launcher and Search — Quickshell/QML + Rust.
 ---
 
-The main launcher uses Quickshell/QML with a local Rust search engine. It searches applications, open windows, settings, actions, projects, SSH hosts, files and shortcuts. File indexing starts disabled; select folders explicitly. Only names and paths are indexed, never document contents. Recent files depend on the XDG recent-file registry. Hidden files are excluded by default, and directory symlinks are not followed. Specialized Rofi menus remain available. When the launcher opens, open windows appear first under “Open now.” The saved category continues to filter other results; disable the Windows source in search settings to hide this group.
+The main launcher uses Quickshell/QML with a local Rust search engine. It searches applications, open windows, settings, actions, projects, SSH hosts, files and shortcuts. File indexing starts disabled; select folders explicitly. Only names and paths are indexed, never document contents. Recent files depend on the XDG recent-file registry. Hidden files are excluded by default, and directory symlinks are not followed. Specialized Rofi menus remain available. In Launcher and Search, choose A–Z or Recently opened; Recently opened is the default. The saved category continues to filter other results; disable the Windows source in search settings to hide this group.
 
 - the application launcher (`SUPER + D`);
 - the Rofi configuration and themes shared by every ARGVUS Rofi menu;
@@ -31,7 +31,7 @@ The shortcuts are declared by `argvus-hyprland`. This package provides the comma
 
 ## Launcher and Search
 
-The main launcher uses Quickshell/QML with a local Rust search engine. It searches applications, open windows, settings, actions, projects, SSH hosts, files and shortcuts. File indexing starts disabled; select folders explicitly. Only names and paths are indexed, never document contents. Recent files depend on the XDG recent-file registry. Hidden files are excluded by default, and directory symlinks are not followed. Specialized Rofi menus remain available. When the launcher opens, open windows appear first under “Open now.” The saved category continues to filter other results; disable the Windows source in search settings to hide this group.
+The main launcher uses Quickshell/QML with a local Rust search engine. It searches applications, open windows, settings, actions, projects, SSH hosts, files and shortcuts. File indexing starts disabled; select folders explicitly. Only names and paths are indexed, never document contents. Recent files depend on the XDG recent-file registry. Hidden files are excluded by default, and directory symlinks are not followed. Specialized Rofi menus remain available. In Launcher and Search, choose A–Z or Recently opened; Recently opened is the default. **Open now** is off by default; enable it in Control Center > Preferences > Launcher and Search to show current windows when the query is empty. Clear application usage history from the same page.
 
 The launcher uses a compact TUI layout: monospaced text, aligned search and category controls, compact favorites and a separate help footer. Border thickness and rounding follow the active ARGVUS layout settings.
 
@@ -444,5 +444,7 @@ Rofi uses a fullscreen transparent surface: blur covers the entire menu monitor,
 `/launcher/show_icons`: `true` / `false`.
 
 `/launcher/selected_category`: `""` (All), `applications`, `windows`, `settings`, `actions`, `projects`, `ssh`, `files`, `help`.
+
+`/launcher/application_sort`: `recent` (Recently opened, default) or `alphabetical` (A–Z).
 
 Application text follows Applications Font in Control Center → Appearance → Desktop Style → Fonts. GTK applications inherit gtk-font-name; local sizes for numbers and headings remain. The launcher reads the generated apps_family and watches for changes.

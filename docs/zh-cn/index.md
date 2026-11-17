@@ -2,7 +2,7 @@
 title: 启动器与搜索
 description: 启动器与搜索 — Quickshell/QML + Rust.
 ---
-主启动器采用 Quickshell/QML 和本地 Rust 搜索引擎，可查找应用、窗口、设置、操作、项目、SSH 主机、文件和快捷键。文件索引默认关闭，需明确选择文件夹。仅索引名称和路径，不读取文档内容。最近文件来自 XDG 记录。默认排除隐藏文件，不跟随目录符号链接。专用 Rofi 菜单继续可用。 打开启动器时，已打开的窗口会优先显示在“当前打开”分组中。已保存的类别仍会筛选其他结果；如要隐藏此分组，请在搜索设置中关闭 Windows 来源。
+主启动器采用 Quickshell/QML 和本地 Rust 搜索引擎，可查找应用、窗口、设置、操作、项目、SSH 主机、文件和快捷键。文件索引默认关闭，需明确选择文件夹。仅索引名称和路径，不读取文档内容。最近文件来自 XDG 记录。默认排除隐藏文件，不跟随目录符号链接。专用 Rofi 菜单继续可用。 在 Launcher and Search 中可选择按 A–Z 或最近打开排序；默认使用最近打开。已保存的类别仍会筛选其他结果；如要隐藏此分组，请在搜索设置中关闭 Windows 来源。
 
 - 应用启动器（`SUPER + D`）；
 - 每个 ARGVUS Rofi 菜单共享的 Rofi 配置和主题；
@@ -30,7 +30,11 @@ description: 启动器与搜索 — Quickshell/QML + Rust.
 
 ## 启动器与搜索
 
-主启动器采用 Quickshell/QML 和本地 Rust 搜索引擎，可查找应用、窗口、设置、操作、项目、SSH 主机、文件和快捷键。文件索引默认关闭，需明确选择文件夹。仅索引名称和路径，不读取文档内容。最近文件来自 XDG 记录。默认排除隐藏文件，不跟随目录符号链接。专用 Rofi 菜单继续可用。 打开启动器时，已打开的窗口会优先显示在“当前打开”分组中。已保存的类别仍会筛选其他结果；如要隐藏此分组，请在搜索设置中关闭 Windows 来源。
+主启动器采用 Quickshell/QML 和本地 Rust 搜索引擎，可查找应用、窗口、设置、操作、项目、SSH 主机、文件和快捷键。文件索引默认关闭，需明确选择文件夹。仅索引名称和路径，不读取文档内容。最近文件来自 XDG 记录。默认排除隐藏文件，不跟随目录符号链接。专用 Rofi 菜单继续可用。 ---
+title: 启动器与搜索
+description: 启动器与搜索 — Quickshell/QML + Rust.
+---
+主启动器采用 Quickshell/QML 和本地 Rust 搜索引擎，可查找应用、窗口、设置、操作、项目、SSH 主机、文件和快捷键。文件索引默认关闭，需明确选择文件夹。仅索引名称和路径，不读取文档内容。最近文件来自 XDG 记录。默认排除隐藏文件，不跟随目录符号链接。专用 Rofi 菜单继续可用。 在 Launcher and Search 中可选择按 A–Z 或最近打开排序；默认使用最近打开。**当前打开**默认关闭。在 Control Center > Preferences > Launcher and Search 中启用后，空查询时会显示当前窗口。你也可以在同一页面清除应用使用记录。
 
 启动器采用紧凑的 TUI 布局：等宽文字、对齐的搜索和分类控件、紧凑的收藏及独立的帮助栏。边框粗细和圆角遵循 ARGVUS 当前布局设置。
 
@@ -431,5 +435,7 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 `/launcher/show_icons`: `true` / `false`.
 
 `/launcher/selected_category`: `""` (All), `applications`, `windows`, `settings`, `actions`, `projects`, `ssh`, `files`, `help`.
+
+`/launcher/application_sort`：`recent`（最近打开，默认）或 `alphabetical`（A–Z）。
 
 应用文本使用 Control Center → Appearance → Desktop Style → Fonts 中的 Applications Font。GTK 应用继承 gtk-font-name，保留数字和标题的独立字号。启动器读取生成的 apps_family 并监听更改。
