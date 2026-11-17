@@ -129,6 +129,10 @@ ShellRoot {
             });
         }
         for (const window of Hyprland.toplevels.values) {
+            // The window service expects the 0x prefix used by Hyprland IPC.
+            const address = window.address.replace(/^0x/, "");
+            if (!/^[0-9a-fA-F]{1,16}$/.test(address))
+                continue;
             const appClass = window.lastIpcObject.class || "";
             const desktop = DesktopEntries.heuristicLookup(appClass);
             entries.push({
@@ -142,7 +146,7 @@ ShellRoot {
                 usage_id: desktop ? desktop.id : "",
                 action: {
                     kind: "window",
-                    value: window.address
+                    value: "0x" + address
                 }
             });
         }
@@ -199,9 +203,10 @@ ShellRoot {
             query();
         } else if (message.event === "close")
             close();
-        else if (message.event === "error")
+        else if (message.event === "error") {
             status = message.message;
-        else if (message.event === "activate") {
+            synchronizeClients();
+        } else if (message.event === "activate") {
             const action = message.action;
             if (action.kind === "application") {
                 const app = DesktopEntries.byId(action.value);
@@ -211,7 +216,7 @@ ShellRoot {
                 } else
                     status = tr("action_error");
             } else if (action.kind === "window") {
-                const window = Hyprland.toplevels.values.find(window => window.address === action.value);
+                const window = Hyprland.toplevels.values.find(window => window.address.replace(/^0x/, "") === action.value.replace(/^0x/, ""));
                 if (window && window.wayland) {
                     window.wayland.activate();
                     close();
