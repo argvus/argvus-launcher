@@ -4,7 +4,7 @@ description: Launcher e Pesquisa — Quickshell/QML + Rust.
 slug: de/argvus-launcher/docs/pt-pt/index.md
 ---
 
-O launcher principal usa Quickshell/QML com um motor local de pesquisa em Rust. Pesquisa aplicações, janelas abertas, definições, ações, projetos, hosts SSH, ficheiros e atalhos. A indexação começa desativada; escolha as pastas explicitamente. Apenas nomes e caminhos são indexados, nunca o conteúdo dos documentos. Ficheiros recentes dependem do registo XDG. Ficheiros ocultos são excluídos por predefinição e ligações simbólicas de diretórios não são seguidas. Os menus especializados do Rofi continuam disponíveis.
+O launcher principal usa Quickshell/QML com um motor local de pesquisa em Rust. Pesquisa aplicações, janelas abertas, definições, ações, projetos, hosts SSH, ficheiros e atalhos. A indexação começa desativada; escolha as pastas explicitamente. Apenas nomes e caminhos são indexados, nunca o conteúdo dos documentos. Ficheiros recentes dependem do registo XDG. Ficheiros ocultos são excluídos por predefinição e ligações simbólicas de diretórios não são seguidas. Os menus especializados do Rofi continuam disponíveis. Ao abrir o launcher, as janelas abertas surgem primeiro em “Abertas agora”. A categoria guardada continua a filtrar os restantes resultados; desative a origem Windows nas definições de pesquisa para ocultar este grupo.
 
 - o lançador de aplicações (`SUPER + D`);
 - a configuração e os temas do Rofi, compartilhados por todos os menus Rofi do ARGVUS;
@@ -32,7 +32,7 @@ Os atalhos são declarados pelo `argvus-hyprland`. Este pacote fornece os comand
 
 ## Launcher e Pesquisa
 
-O launcher principal usa Quickshell/QML com um motor local de pesquisa em Rust. Pesquisa aplicações, janelas abertas, definições, ações, projetos, hosts SSH, ficheiros e atalhos. A indexação começa desativada; escolha as pastas explicitamente. Apenas nomes e caminhos são indexados, nunca o conteúdo dos documentos. Ficheiros recentes dependem do registo XDG. Ficheiros ocultos são excluídos por predefinição e ligações simbólicas de diretórios não são seguidas. Os menus especializados do Rofi continuam disponíveis.
+O launcher principal usa Quickshell/QML com um motor local de pesquisa em Rust. Pesquisa aplicações, janelas abertas, definições, ações, projetos, hosts SSH, ficheiros e atalhos. A indexação começa desativada; escolha as pastas explicitamente. Apenas nomes e caminhos são indexados, nunca o conteúdo dos documentos. Ficheiros recentes dependem do registo XDG. Ficheiros ocultos são excluídos por predefinição e ligações simbólicas de diretórios não são seguidas. Os menus especializados do Rofi continuam disponíveis. Ao abrir o launcher, as janelas abertas surgem primeiro em “Abertas agora”. A categoria guardada continua a filtrar os restantes resultados; desative a origem Windows nas definições de pesquisa para ocultar este grupo.
 
 O lançador usa um layout TUI compacto: texto monoespaçado, pesquisa e categorias alinhadas, favoritos compactos e rodapé de ajuda separado. A espessura e o arredondamento das margens seguem as definições de layout ativas do ARGVUS.
 

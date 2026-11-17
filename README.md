@@ -22,6 +22,9 @@ build it.
 actions, projects, SSH, files and shortcut help. Configure sources, priorities,
 favorites and indexing with `argvus control-center launcher`. File indexing is
 opt-in and stores names and paths only; recent files use the XDG registry.
+On an empty search, open windows appear first under **Open now**, with the
+focused window at the top. The saved category still filters other results, and
+disabling the Windows source hides this group.
 Preferences belong to `argvus config`, while the index is rebuildable cache.
 The engine ships in the `argvus` master package; this package supplies QML,
 the launcher entry point, theme templates and the existing specialized Rofi menus.

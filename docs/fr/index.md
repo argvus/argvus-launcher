@@ -2,7 +2,7 @@
 title: Lanceur et recherche
 description: Lanceur et recherche — Quickshell/QML + Rust.
 ---
-Le lanceur principal utilise Quickshell/QML et un moteur local en Rust. Il recherche applications, fenêtres, paramètres, actions, projets, hôtes SSH, fichiers et raccourcis. L’indexation est désactivée au départ et nécessite des dossiers choisis explicitement. Seuls les noms et chemins sont indexés, jamais le contenu. Les fichiers récents dépendent du registre XDG. Les fichiers cachés sont exclus par défaut et les liens symboliques de dossiers ne sont pas suivis. Les menus spécialisés Rofi restent disponibles.
+Le lanceur principal utilise Quickshell/QML et un moteur local en Rust. Il recherche applications, fenêtres, paramètres, actions, projets, hôtes SSH, fichiers et raccourcis. L’indexation est désactivée au départ et nécessite des dossiers choisis explicitement. Seuls les noms et chemins sont indexés, jamais le contenu. Les fichiers récents dépendent du registre XDG. Les fichiers cachés sont exclus par défaut et les liens symboliques de dossiers ne sont pas suivis. Les menus spécialisés Rofi restent disponibles. À l’ouverture du lanceur, les fenêtres ouvertes apparaissent en premier sous « Ouvertes maintenant ». La catégorie enregistrée continue de filtrer les autres résultats ; désactivez la source Windows dans les paramètres de recherche pour masquer ce groupe.
 
 - le lanceur d'applications (`SUPER + D`) ;
 - la configuration et les thèmes de Rofi partagés par tous les menus Rofi d'ARGVUS ;
@@ -30,7 +30,7 @@ Les raccourcis sont déclarés par `argvus-hyprland`. Ce paquet fournit les comm
 
 ## Lanceur et recherche
 
-Le lanceur principal utilise Quickshell/QML et un moteur local en Rust. Il recherche applications, fenêtres, paramètres, actions, projets, hôtes SSH, fichiers et raccourcis. L’indexation est désactivée au départ et nécessite des dossiers choisis explicitement. Seuls les noms et chemins sont indexés, jamais le contenu. Les fichiers récents dépendent du registre XDG. Les fichiers cachés sont exclus par défaut et les liens symboliques de dossiers ne sont pas suivis. Les menus spécialisés Rofi restent disponibles.
+Le lanceur principal utilise Quickshell/QML et un moteur local en Rust. Il recherche applications, fenêtres, paramètres, actions, projets, hôtes SSH, fichiers et raccourcis. L’indexation est désactivée au départ et nécessite des dossiers choisis explicitement. Seuls les noms et chemins sont indexés, jamais le contenu. Les fichiers récents dépendent du registre XDG. Les fichiers cachés sont exclus par défaut et les liens symboliques de dossiers ne sont pas suivis. Les menus spécialisés Rofi restent disponibles. À l’ouverture du lanceur, les fenêtres ouvertes apparaissent en premier sous « Ouvertes maintenant ». La catégorie enregistrée continue de filtrer les autres résultats ; désactivez la source Windows dans les paramètres de recherche pour masquer ce groupe.
 
 Le lanceur utilise une présentation TUI compacte : texte à chasse fixe, recherche et catégories alignées, favoris compacts et aide séparée en bas. Les bordures suivent les réglages actifs d’ARGVUS.
 

@@ -3,7 +3,7 @@ title: Başlatıcı ve Arama
 description: Başlatıcı ve Arama — Quickshell/QML + Rust.
 ---
 
-Ana başlatıcı Quickshell/QML ve yerel Rust arama motoruyla uygulama, pencere, ayar, eylem, proje, SSH sunucusu, dosya ve kısayol arar. Dizinleme başlangıçta kapalıdır; klasörleri açıkça seçin. Yalnızca adlar ve yollar dizinlenir, belge içerikleri okunmaz. Son dosyalar XDG kaydına bağlıdır. Gizli dosyalar varsayılan olarak dışlanır ve dizin sembolik bağlantıları izlenmez. Özel Rofi menüleri kullanılabilir.
+Ana başlatıcı Quickshell/QML ve yerel Rust arama motoruyla uygulama, pencere, ayar, eylem, proje, SSH sunucusu, dosya ve kısayol arar. Dizinleme başlangıçta kapalıdır; klasörleri açıkça seçin. Yalnızca adlar ve yollar dizinlenir, belge içerikleri okunmaz. Son dosyalar XDG kaydına bağlıdır. Gizli dosyalar varsayılan olarak dışlanır ve dizin sembolik bağlantıları izlenmez. Özel Rofi menüleri kullanılabilir. Başlatıcı açıldığında açık pencereler önce “Şu anda açık” grubunda gösterilir. Kaydedilen kategori diğer sonuçları filtrelemeye devam eder; bu grubu gizlemek için arama ayarlarında Windows kaynağını kapatın.
 
 - uygulama başlatıcıyı (`SUPER + D`);
 - her ARGVUS Rofi menüsü tarafından paylaşılan Rofi yapılandırması ve temaları;
@@ -31,7 +31,7 @@ Kısayollar `argvus-hyprland` tarafından beyan edilmiştir. Bu paket, komutlar�
 
 ## Başlatıcı ve Arama
 
-Ana başlatıcı Quickshell/QML ve yerel Rust arama motoruyla uygulama, pencere, ayar, eylem, proje, SSH sunucusu, dosya ve kısayol arar. Dizinleme başlangıçta kapalıdır; klasörleri açıkça seçin. Yalnızca adlar ve yollar dizinlenir, belge içerikleri okunmaz. Son dosyalar XDG kaydına bağlıdır. Gizli dosyalar varsayılan olarak dışlanır ve dizin sembolik bağlantıları izlenmez. Özel Rofi menüleri kullanılabilir.
+Ana başlatıcı Quickshell/QML ve yerel Rust arama motoruyla uygulama, pencere, ayar, eylem, proje, SSH sunucusu, dosya ve kısayol arar. Dizinleme başlangıçta kapalıdır; klasörleri açıkça seçin. Yalnızca adlar ve yollar dizinlenir, belge içerikleri okunmaz. Son dosyalar XDG kaydına bağlıdır. Gizli dosyalar varsayılan olarak dışlanır ve dizin sembolik bağlantıları izlenmez. Özel Rofi menüleri kullanılabilir. Başlatıcı açıldığında açık pencereler önce “Şu anda açık” grubunda gösterilir. Kaydedilen kategori diğer sonuçları filtrelemeye devam eder; bu grubu gizlemek için arama ayarlarında Windows kaynağını kapatın.
 
 Başlatıcı; eş aralıklı metin, hizalanmış arama ve kategoriler, kompakt favoriler ve ayrı yardım altbilgisiyle kompakt TUI düzenini kullanır. Kenarlık kalınlığı ve yuvarlama etkin ARGVUS ayarlarını izler.
 

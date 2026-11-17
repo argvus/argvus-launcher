@@ -138,6 +138,7 @@ ShellRoot {
                 icon: desktop ? desktop.icon : "application-x-executable",
                 category: "windows",
                 keywords: [appClass],
+                is_active: window.activated,
                 action: {
                     kind: "window",
                     value: window.address
@@ -581,55 +582,6 @@ ShellRoot {
                         }
                     }
                 }
-                Label {
-                    font.family: root.textFont
-                    visible: root.home && favoriteRepeater.count > 0
-                    text: root.tr("favorites")
-                    color: root.muted
-                }
-                Flickable {
-                    id: favoritesStrip
-                    visible: root.home && favoriteRepeater.count > 0
-                    Layout.fillWidth: true
-                    clip: true
-                    Layout.preferredHeight: root.controlHeight
-                    contentWidth: favoritesRow.width
-                    contentHeight: height
-                    boundsBehavior: Flickable.StopAtBounds
-                    ScrollBar.horizontal: ScrollBar {}
-                    Row {
-                        id: favoritesRow
-                        spacing: 8
-                        Repeater {
-                            id: favoriteRepeater
-                            model: root.home ? root.results.filter(entry => root.preferences.favorites.includes(entry.id)).slice(0, 8) : []
-                            delegate: Button {
-                                id: favoriteButton
-                                required property var modelData
-                                width: 200
-                                font.family: root.textFont
-                                font.pixelSize: 14
-                                palette.buttonText: root.foreground
-                                background: Rectangle {
-                                    color: favoriteButton.hovered || favoriteButton.activeFocus ? root.selected : root.background
-                                    radius: Math.min(4, root.windowRadius)
-                                    border.width: root.borderWidth
-                                    border.color: favoriteButton.activeFocus ? root.accent : root.muted
-                                }
-                                onActiveFocusChanged: if (activeFocus)
-                                    favoritesStrip.contentX = Math.max(0, Math.min(x, favoritesStrip.contentWidth - favoritesStrip.width))
-                                height: root.controlHeight
-                                text: modelData.title
-                                icon.source: root.preferences.show_icons === false ? "" : root.iconSource(modelData.icon)
-                                display: AbstractButton.TextBesideIcon
-                                onClicked: root.send({
-                                    op: "activate",
-                                    id: modelData.id
-                                })
-                            }
-                        }
-                    }
-                }
                 ListView {
                     id: view
                     Layout.fillWidth: true
@@ -651,7 +603,7 @@ ShellRoot {
                             font.family: root.textFont
                             height: parent.groupHeight
                             visible: height > 0
-                            text: root.tr("source_" + resultRow.modelData.category)
+                            text: resultRow.modelData.category === "windows" && search.text.trim() === "" ? root.tr("open_now") : root.tr("source_" + resultRow.modelData.category)
                             color: root.muted
                             font.pixelSize: 12
                             verticalAlignment: Text.AlignVCenter
@@ -742,6 +694,55 @@ ShellRoot {
                         visible: root.results.length === 0
                         text: root.ready ? root.tr("empty") : root.tr("loading")
                         color: root.muted
+                    }
+                }
+                Label {
+                    font.family: root.textFont
+                    visible: root.home && favoriteRepeater.count > 0
+                    text: root.tr("favorites")
+                    color: root.muted
+                }
+                Flickable {
+                    id: favoritesStrip
+                    visible: root.home && favoriteRepeater.count > 0
+                    Layout.fillWidth: true
+                    clip: true
+                    Layout.preferredHeight: root.controlHeight
+                    contentWidth: favoritesRow.width
+                    contentHeight: height
+                    boundsBehavior: Flickable.StopAtBounds
+                    ScrollBar.horizontal: ScrollBar {}
+                    Row {
+                        id: favoritesRow
+                        spacing: 8
+                        Repeater {
+                            id: favoriteRepeater
+                            model: root.home ? root.results.filter(entry => root.preferences.favorites.includes(entry.id)).slice(0, 8) : []
+                            delegate: Button {
+                                id: favoriteButton
+                                required property var modelData
+                                width: 200
+                                font.family: root.textFont
+                                font.pixelSize: 14
+                                palette.buttonText: root.foreground
+                                background: Rectangle {
+                                    color: favoriteButton.hovered || favoriteButton.activeFocus ? root.selected : root.background
+                                    radius: Math.min(4, root.windowRadius)
+                                    border.width: root.borderWidth
+                                    border.color: favoriteButton.activeFocus ? root.accent : root.muted
+                                }
+                                onActiveFocusChanged: if (activeFocus)
+                                    favoritesStrip.contentX = Math.max(0, Math.min(x, favoritesStrip.contentWidth - favoritesStrip.width))
+                                height: root.controlHeight
+                                text: modelData.title
+                                icon.source: root.preferences.show_icons === false ? "" : root.iconSource(modelData.icon)
+                                display: AbstractButton.TextBesideIcon
+                                onClicked: root.send({
+                                    op: "activate",
+                                    id: modelData.id
+                                })
+                            }
+                        }
                     }
                 }
                 Label {

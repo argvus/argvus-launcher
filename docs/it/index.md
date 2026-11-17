@@ -2,7 +2,7 @@
 title: Lanciatore e ricerca
 description: Lanciatore e ricerca — Quickshell/QML + Rust.
 ---
-Il lanciatore principale usa Quickshell/QML con un motore locale Rust per applicazioni, finestre, impostazioni, azioni, progetti, host SSH, file e scorciatoie. L’indicizzazione è inizialmente disattivata e richiede cartelle scelte esplicitamente. Indicizza solo nomi e percorsi, mai il contenuto. I file recenti dipendono dal registro XDG. I file nascosti sono esclusi per impostazione predefinita e i collegamenti simbolici alle cartelle non vengono seguiti. I menu Rofi specializzati restano disponibili.
+Il lanciatore principale usa Quickshell/QML con un motore locale Rust per applicazioni, finestre, impostazioni, azioni, progetti, host SSH, file e scorciatoie. L’indicizzazione è inizialmente disattivata e richiede cartelle scelte esplicitamente. Indicizza solo nomi e percorsi, mai il contenuto. I file recenti dipendono dal registro XDG. I file nascosti sono esclusi per impostazione predefinita e i collegamenti simbolici alle cartelle non vengono seguiti. I menu Rofi specializzati restano disponibili. All’apertura del launcher, le finestre aperte vengono mostrate per prime nella sezione “Aperte ora”. La categoria salvata continua a filtrare gli altri risultati; disattiva la sorgente Windows nelle impostazioni di ricerca per nascondere questo gruppo.
 
 - il launcher delle applicazioni (`SUPER + D`);
 - la configurazione di Rofi e i temi condivisi da ogni menu Rofi di ARGVUS;
@@ -30,7 +30,7 @@ Le scorciatoie sono dichiarate da `argvus-hyprland`. Questo pacchetto fornisce i
 
 ## Lanciatore e ricerca
 
-Il lanciatore principale usa Quickshell/QML con un motore locale Rust per applicazioni, finestre, impostazioni, azioni, progetti, host SSH, file e scorciatoie. L’indicizzazione è inizialmente disattivata e richiede cartelle scelte esplicitamente. Indicizza solo nomi e percorsi, mai il contenuto. I file recenti dipendono dal registro XDG. I file nascosti sono esclusi per impostazione predefinita e i collegamenti simbolici alle cartelle non vengono seguiti. I menu Rofi specializzati restano disponibili.
+Il lanciatore principale usa Quickshell/QML con un motore locale Rust per applicazioni, finestre, impostazioni, azioni, progetti, host SSH, file e scorciatoie. L’indicizzazione è inizialmente disattivata e richiede cartelle scelte esplicitamente. Indicizza solo nomi e percorsi, mai il contenuto. I file recenti dipendono dal registro XDG. I file nascosti sono esclusi per impostazione predefinita e i collegamenti simbolici alle cartelle non vengono seguiti. I menu Rofi specializzati restano disponibili. All’apertura del launcher, le finestre aperte vengono mostrate per prime nella sezione “Aperte ora”. La categoria salvata continua a filtrare gli altri risultati; disattiva la sorgente Windows nelle impostazioni di ricerca per nascondere questo gruppo.
 
 Il launcher usa un layout TUI compatto: testo monospaziato, ricerca e categorie allineate, preferiti compatti e aiuto separato in basso. Spessore e arrotondamento dei bordi seguono le impostazioni attive di ARGVUS.
 

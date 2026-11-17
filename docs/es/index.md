@@ -2,7 +2,7 @@
 title: Lanzador y búsqueda
 description: Lanzador y búsqueda — Quickshell/QML + Rust.
 ---
-El lanzador principal usa Quickshell/QML con un motor local en Rust. Busca aplicaciones, ventanas, ajustes, acciones, proyectos, hosts SSH, archivos y atajos. La indexación empieza desactivada y requiere carpetas elegidas explícitamente. Solo indexa nombres y rutas, nunca el contenido. Los archivos recientes dependen del registro XDG. Excluye archivos ocultos por defecto y no sigue enlaces simbólicos de directorios. Los menús especializados de Rofi siguen disponibles.
+El lanzador principal usa Quickshell/QML con un motor local en Rust. Busca aplicaciones, ventanas, ajustes, acciones, proyectos, hosts SSH, archivos y atajos. La indexación empieza desactivada y requiere carpetas elegidas explícitamente. Solo indexa nombres y rutas, nunca el contenido. Los archivos recientes dependen del registro XDG. Excluye archivos ocultos por defecto y no sigue enlaces simbólicos de directorios. Los menús especializados de Rofi siguen disponibles. Al abrir el lanzador, las ventanas abiertas aparecen primero en «Abiertas ahora». La categoría guardada sigue filtrando los demás resultados; desactiva la fuente Windows en la configuración de búsqueda para ocultar este grupo.
 
 - el lanzador de aplicaciones (`SUPER + D`);
 - la configuración de Rofi y los temas compartidos por todos los menús de Rofi de ARGVUS;
@@ -30,7 +30,7 @@ Los atajos se declaran mediante `argvus-hyprland`. Este paquete proporciona los 
 
 ## Lanzador y búsqueda
 
-El lanzador principal usa Quickshell/QML con un motor local en Rust. Busca aplicaciones, ventanas, ajustes, acciones, proyectos, hosts SSH, archivos y atajos. La indexación empieza desactivada y requiere carpetas elegidas explícitamente. Solo indexa nombres y rutas, nunca el contenido. Los archivos recientes dependen del registro XDG. Excluye archivos ocultos por defecto y no sigue enlaces simbólicos de directorios. Los menús especializados de Rofi siguen disponibles.
+El lanzador principal usa Quickshell/QML con un motor local en Rust. Busca aplicaciones, ventanas, ajustes, acciones, proyectos, hosts SSH, archivos y atajos. La indexación empieza desactivada y requiere carpetas elegidas explícitamente. Solo indexa nombres y rutas, nunca el contenido. Los archivos recientes dependen del registro XDG. Excluye archivos ocultos por defecto y no sigue enlaces simbólicos de directorios. Los menús especializados de Rofi siguen disponibles. Al abrir el lanzador, las ventanas abiertas aparecen primero en «Abiertas ahora». La categoría guardada sigue filtrando los demás resultados; desactiva la fuente Windows en la configuración de búsqueda para ocultar este grupo.
 
 El lanzador usa un diseño TUI compacto: texto monoespaciado, búsqueda y categorías alineadas, favoritos compactos y un pie de ayuda separado. El grosor y el redondeo de los bordes siguen la configuración activa de ARGVUS.
 
