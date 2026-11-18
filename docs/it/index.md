@@ -9,7 +9,7 @@ Il lanciatore principale usa Quickshell/QML con un motore locale Rust per applic
 - il selettore di progetti, il selettore SSH e il selettore di snippet (`argvus projects`, `argvus ssh`, `argvus snippets`);
 - il gestore delle chiavi SSH (`argvus keys`), che crea, elenca, carica ed elimina coppie di chiavi;
 - il gestore delle chiavi GPG (`argvus gpg`), che elenca, crea ed esporta le chiavi e configura pinentry-gtk per gpg-agent;
-- il selettore di emoji, il visualizzatore di cheatsheet e il menu della calcolatrice.
+- il selettore di emoji e il menu della calcolatrice.
 
 Le scorciatoie sono dichiarate da `argvus-hyprland`. Questo pacchetto fornisce i comandi e i menu associati.
 
@@ -25,8 +25,6 @@ Le scorciatoie sono dichiarate da `argvus-hyprland`. Questo pacchetto fornisce i
 | `SUPER + ALT + G` | Selettore di progetto, poi Git TUI | `argvus git` | Git |
 | `SUPER + .` | Selettore di emoji | `emoji-picker.sh` | Selettore di emoji |
 | `SUPER + C` | Calcolatrice | `argvus calculator` | Calcolatrice |
-| `SUPER + SHIFT + /` | Cheatsheet di Hyprland | `cheatsheets.sh hypr` | Cheatsheet |
-| `SUPER + CTRL + /` | Cheatsheet di Kitty | `cheatsheets.sh kitty` | Cheatsheet |
 
 ## Lanciatore e ricerca
 
@@ -370,22 +368,6 @@ Richiede `rofimoji` e `wl-clipboard`.
 
 `SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
-## Cheatsheets (`SUPER + SHIFT + /` e `SUPER + CTRL + /`)
-
-`cheatsheets.sh` mostra un elenco di scorciatoie in sola lettura in una grande finestra di Rofi. Prende il nome dell'applicazione come suo argomento:
-
-```sh
-cheatsheets.sh hypr     # Hyprland shortcuts (SUPER + SHIFT + /)
-cheatsheets.sh kitty    # terminal shortcuts (SUPER + CTRL + /)
-cheatsheets.sh <name>   # any other application with a cheatsheet
-```
-
-- `hypr` utilizza `data/generated/hypr/keybindings.txt` dalla configurazione ARGVUS dell'utente quando quel file esiste. Altrimenti utilizza il cheatsheet di Hyprland fornito con `argvus-hyprland`.
-- `kitty` utilizza il cheatsheet del terminale fornito con `argvus`.
-- Qualsiasi altro nome legge `<name>/docs/cheatsheets/<language>.txt`. Se quel file non esiste, non si apre alcuna finestra.
-
-La lingua è il portoghese quando la localizzazione di sistema è `pt-BR`, e l'inglese altrimenti. `Esc` chiude la finestra. Selezionare una riga la chiude solo; nulla viene eseguito.
-
 ## Altri menu che utilizzano la configurazione Rofi
 
 La configurazione del launcher è condivisa con componenti appartenenti ad altri pacchetti:
@@ -400,7 +382,6 @@ Il pacchetto `argvus-launcher` è indipendente dall'architettura e installa:
 
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` e `argvus-git`, nella stessa directory;
 - `/usr/share/argvus/launcher/config/`, con la configurazione di Rofi e i temi;
-- `/usr/share/argvus/launcher/sh/`, con `cheatsheets.sh` e `emoji-picker.sh`.
 
 Dipendenze richieste: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` e `pinentry` (che fornisce `pinentry-gtk`). Dipendenze opzionali: `openssh`, per il selettore SSH e il gestore di chiavi SSH; `lazygit` e `gitui`, per il TUI di git.
 
@@ -416,7 +397,6 @@ L'installazione del pacchetto non scrive in `$HOME`. La configurazione utente vi
 | Un cambio di tema non raggiunge i menu di Rofi | Controlla se la copia utente di `config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/` punta ancora al tema pacchettizzato. Applica di nuovo il tema da `argvus-appearance`. |
 | `SUPER + O` segnala che non sono stati trovati progetti | Nessuna root o percorso è configurato, o le directory non esistono più. Esegui `argvus projects list`. |
 | `SUPER + C` o il selezionatore di emoji non si aprono | Installa `argvus` o `rofimoji` (entrambi sono dipendenze richieste). |
-| Un cheatsheet non si apre | Il file per quel nome e lingua non esiste. Controlla i percorsi descritti nella sezione Cheatsheets. |
 | `SUPER + H` non mostra nulla | La cronologia è vuota, o il registratore degli appunti di `argvus-session` non ha ancora memorizzato nulla. |
 
 ## Componenti correlati

@@ -25,8 +25,6 @@ description: 启动器与搜索 — Quickshell/QML + Rust.
 | `SUPER + ALT + G` | 项目选择器，然后使用 git TUI | `argvus git` | Git |
 | `SUPER + .` | 表情符号选择器 | `emoji-picker.sh` | 表情符号选择器 |
 | `SUPER + C` | 计算器 | `argvus calculator` | 计算器 |
-| `SUPER + SHIFT + /` | Hyprland 速查表 | `cheatsheets.sh hypr` | 速查表 |
-| `SUPER + CTRL + /` | Kitty 速查表 | `cheatsheets.sh kitty` | 速查表 |
 
 ## 启动器与搜索
 
@@ -370,22 +368,6 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 `SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
-## 速查表 (`SUPER + SHIFT + /` 和 `SUPER + CTRL + /`)
-
-`cheatsheets.sh` 在一个大型 Rofi 窗口中显示只读快捷方式列表。它将应用程序名称作为参数:
-
-```sh
-cheatsheets.sh hypr     # Hyprland shortcuts (SUPER + SHIFT + /)
-cheatsheets.sh kitty    # terminal shortcuts (SUPER + CTRL + /)
-cheatsheets.sh <name>   # any other application with a cheatsheet
-```
-
-- `hypr` 在该文件存在时使用用户的 ARGVUS 配置中的 `data/generated/hypr/keybindings.txt`。否则，它使用随 `argvus-hyprland` 提供的 Hyprland 备忘单。
-- `kitty` 使用随 `argvus` 提供的终端备忘单。
-- 任何其他名称都会读取 `<name>/docs/cheatsheets/<language>.txt`。如果该文件不存在，则不会打开窗口。
-
-当系统区域设置为 `pt-BR` 时，语言为葡萄牙语，否则为英语。`Esc` 关闭窗口。选择一行仅会关闭它；不会执行任何操作。
-
 ## 使用 Rofi 配置的其他菜单
 
 启动器配置与其他软件包拥有的组件共享：
@@ -400,7 +382,6 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 
 - `argvus launcher`、`argvus-snippets`、`argvus-ssh` 和 `argvus-git`，在同一目录下；
 - `/usr/share/argvus/launcher/config/`，包含 Rofi 配置和主题；
-- `/usr/share/argvus/launcher/sh/`，包含 `cheatsheets.sh` 和 `emoji-picker.sh`。
 
 
 安装此软件包不会写入 `$HOME`。用户配置会在会话开始时创建，如 [Rofi 配置和主题](#where-the-active-configuration-lives) 所述。

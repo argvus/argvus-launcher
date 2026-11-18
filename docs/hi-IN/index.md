@@ -26,8 +26,6 @@ description: लॉन्चर और खोज — Quickshell/QML + Rust.
 | `SUPER + ALT + G` | प्रोजेक्ट पिकर, फिर गिट टीयूआई | `argvus git` | गिट |
 | `SUPER + .` | इमोजी पिकर | `emoji-picker.sh` | इमोजी पिकर |
 | `SUPER + C` | कैलकुलेटर | `argvus calculator` | कैलकुलेटर |
-| `SUPER + SHIFT + /` | हाइप्रलैंड चीटशीट | `cheatsheets.sh hypr` | चीटशीट्स |
-| `SUPER + CTRL + /` | किटी चीटशीट | `cheatsheets.sh kitty` | चीटशीट्स |
 
 ## लॉन्चर और खोज
 
@@ -376,22 +374,6 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 `SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
-## चीटशीट्स (`SUPER + SHIFT + /` और `SUPER + CTRL + /`)
-
-`cheatsheets.sh` एक बड़े Rofi विंडो में शॉर्टकट्स की केवल-पढ़ने योग्य सूची दिखाता है। यह अपना तर्क के रूप में एप्लिकेशन का नाम लेता है:
-
-```sh
-cheatsheets.sh hypr     # Hyprland shortcuts (SUPER + SHIFT + /)
-cheatsheets.sh kitty    # terminal shortcuts (SUPER + CTRL + /)
-cheatsheets.sh <name>   # any other application with a cheatsheet
-```
-
-- `hypr` उपयोगकर्ता की ARGVUS कॉन्फ़िगरेशन से `data/generated/hypr/keybindings.txt` का उपयोग करता है जब वह फ़ाइल मौजूद हो। अन्यथा यह `argvus-hyprland` के साथ शिप किए गए Hyprland चीटशीट का उपयोग करता है।
-- `kitty` `argvus` के साथ भेजी गई टर्मिनल चीटशीट का उपयोग करता है।
-- किसी अन्य नाम से `<name>/docs/cheatsheets/<language>.txt` पढ़ता है। यदि वह फ़ाइल मौजूद नहीं है, तो कोई विंडो नहीं खुलती।
-
-जब सिस्टम लोकल `pt-BR` होता है तो भाषा पुर्तगाली होती है, अन्यथा अंग्रेज़ी होती है। `Esc` विंडो बंद करता है। किसी पंक्ति का चयन केवल उसे बंद करता है; कुछ भी निष्पादित नहीं होता।
-
 ## अन्य मेनू जो Rofi कॉन्फ़िगरेशन का उपयोग करते हैं
 
 लॉन्चर कॉन्फ़िगरेशन अन्य पैकेजों के स्वामित्व वाले घटकों के साथ साझा किया गया है:
@@ -406,7 +388,6 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` और `argvus-git`, एक ही निर्देशिका के अंतर्गत;
 - `/usr/share/argvus/launcher/config/`, Rofi कॉन्फ़िगरेशन और थीम्स के साथ;
-- `/usr/share/argvus/launcher/sh/`, `cheatsheets.sh` और `emoji-picker.sh` के साथ।
 
 आवश्यक निर्भरताएँ: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` और `pinentry` (जो `pinentry-gtk` प्रदान करता है)। वैकल्पिक निर्भरताएँ: `openssh`, SSH पिकर और SSH की मैनेजर के लिए; `lazygit` और `gitui`, git TUI के लिए।
 

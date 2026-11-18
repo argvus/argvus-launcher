@@ -10,7 +10,7 @@ Peluncur utama memakai Quickshell/QML dan mesin Rust lokal untuk aplikasi, jende
 - pengalih proyek, pemilih SSH dan pemilih snippet (`argvus projects`, `argvus ssh`, `argvus snippets`);
 - pengelola kunci SSH (`argvus keys`), yang membuat, mencantumkan, memuat dan menghapus pasangan kunci;
 - pengelola kunci GPG (`argvus gpg`), yang mencantumkan, membuat dan mengekspor kunci serta mengatur pinentry-gtk untuk gpg-agent;
-- pemilih emoji, penampil cheatsheet dan menu kalkulator.
+- pemilih emoji dan menu kalkulator.
 
 Pintasan dideklarasikan oleh `argvus-hyprland`. Paket ini menyediakan perintah-perintah dan menu di belakangnya.
 
@@ -26,8 +26,6 @@ Pintasan dideklarasikan oleh `argvus-hyprland`. Paket ini menyediakan perintah-p
 | `SUPER + ALT + G` | Pemilih proyek, lalu git TUI | `argvus git` | Git |
 | `SUPER + .` | Pemilih emoji | `emoji-picker.sh` | Pemilih emoji |
 | `SUPER + C` | Kalkulator | `argvus calculator` | Kalkulator |
-| `SUPER + SHIFT + /` | Lembar contekan Hyprland | `cheatsheets.sh hypr` | Lembar Cheat |
-| `SUPER + CTRL + /` | Lembar contekan kucing | `cheatsheets.sh kitty` | Lembar Cheat |
 
 ## Peluncur dan Pencarian
 
@@ -400,22 +398,6 @@ Memerlukan `rofimoji` dan `wl-clipboard`.
 
 `SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
-## Cheatsheets (`SUPER + SHIFT + /` dan `SUPER + CTRL + /`)
-
-`cheatsheets.sh` menampilkan daftar pintasan hanya-baca di jendela Rofi besar. Ini mengambil nama aplikasi sebagai argumennya:
-
-```sh
-cheatsheets.sh hypr     # Hyprland shortcuts (SUPER + SHIFT + /)
-cheatsheets.sh kitty    # terminal shortcuts (SUPER + CTRL + /)
-cheatsheets.sh <name>   # any other application with a cheatsheet
-```
-
-- `hypr` menggunakan `data/generated/hypr/keybindings.txt` dari konfigurasi ARGVUS pengguna ketika file tersebut ada. Jika tidak, itu menggunakan cheatsheet Hyprland yang disertakan dengan `argvus-hyprland`.
-- `kitty` menggunakan lembar contekan terminal yang dikirim dengan `argvus`.
-- Nama lain membaca `<name>/docs/cheatsheets/<language>.txt`. Jika file itu tidak ada, tidak ada jendela yang dibuka.
-
-Bahasanya adalah Portugis ketika lokal sistem adalah `pt-BR`, dan Inggris jika tidak. `Esc` menutup jendela. Memilih satu baris hanya menutupnya; tidak ada yang dieksekusi.
-
 ## Menu lain yang menggunakan konfigurasi Rofi
 
 Konfigurasi peluncur dibagikan dengan komponen yang dimiliki oleh paket lain:
@@ -430,7 +412,6 @@ Paket `argvus-launcher` bersifat independen terhadap arsitektur dan menginstal:
 
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` dan `argvus-git`, di bawah direktori yang sama;
 - `/usr/share/argvus/launcher/config/`, dengan konfigurasi dan tema Rofi;
-- `/usr/share/argvus/launcher/sh/`, dengan `cheatsheets.sh` dan `emoji-picker.sh`.
 
 Dependensi yang dibutuhkan: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` dan `pinentry` (yang menyediakan `pinentry-gtk`). Dependensi opsional: `openssh`, untuk pemilih SSH dan manajer kunci SSH; `lazygit` dan `gitui`, untuk TUI git.
 

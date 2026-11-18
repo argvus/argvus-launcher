@@ -9,7 +9,7 @@ Le lanceur principal utilise Quickshell/QML et un moteur local en Rust. Il reche
 - le sélecteur de projet, le sélecteur SSH et le sélecteur de snippets (`argvus projects`, `argvus ssh`, `argvus snippets`) ;
 - le gestionnaire de clés SSH (`argvus keys`), qui crée, liste, charge et supprime des paires de clés ;
 - le gestionnaire de clés GPG (`argvus gpg`), qui liste, crée et exporte des clés et configure pinentry-gtk pour gpg-agent ;
-- le sélecteur d'emoji, le visualiseur de cheatsheet et le menu de calculatrice.
+- le sélecteur d’emoji et le menu de calculatrice.
 
 Les raccourcis sont déclarés par `argvus-hyprland`. Ce paquet fournit les commandes et les menus qui les accompagnent.
 
@@ -25,8 +25,6 @@ Les raccourcis sont déclarés par `argvus-hyprland`. Ce paquet fournit les comm
 | `SUPER + ALT + G` | Sélecteur de projet, puis TUI git | `argvus git` | Git |
 | `SUPER + .` | Sélecteur d'émoji | `emoji-picker.sh` | Sélecteur d'émoji |
 | `SUPER + C` | Calculatrice | `argvus calculator` | Calculatrice |
-| `SUPER + SHIFT + /` | Fiche de référence Hyprland | `cheatsheets.sh hypr` | Fiches de référence |
-| `SUPER + CTRL + /` | Fiche de référence Kitty | `cheatsheets.sh kitty` | Fiches de référence |
 
 ## Lanceur et recherche
 
@@ -370,22 +368,6 @@ Nécessite `rofimoji` et `wl-clipboard`.
 
 `SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
-## Fiches de référence (`SUPER + SHIFT + /` et `SUPER + CTRL + /`)
-
-`cheatsheets.sh` affiche une liste en lecture seule de raccourcis dans une grande fenêtre Rofi. Il prend le nom de l'application comme argument :
-
-```sh
-cheatsheets.sh hypr     # Hyprland shortcuts (SUPER + SHIFT + /)
-cheatsheets.sh kitty    # terminal shortcuts (SUPER + CTRL + /)
-cheatsheets.sh <name>   # any other application with a cheatsheet
-```
-
-- `hypr` utilise `data/generated/hypr/keybindings.txt` à partir de la configuration ARGVUS de l'utilisateur lorsque ce fichier existe. Sinon, il utilise la fiche de référence Hyprland fournie avec `argvus-hyprland`.
-- `kitty` utilise la fiche de référence du terminal fournie avec `argvus`.
-- Tout autre nom lit `<name>/docs/cheatsheets/<language>.txt`. Si ce fichier n'existe pas, aucune fenêtre ne s'ouvre.
-
-La langue est le portugais lorsque la locale du système est `pt-BR`, et l'anglais sinon. `Esc` ferme la fenêtre. Sélectionner une ligne ne fait que la fermer ; rien n'est exécuté.
-
 ## Autres menus qui utilisent la configuration Rofi
 
 La configuration du lanceur est partagée avec des composants appartenant à d'autres paquets :
@@ -400,7 +382,6 @@ Le paquet `argvus-launcher` est indépendant de l'architecture et installe :
 
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` et `argvus-git`, dans le même répertoire ;  
 - `/usr/share/argvus/launcher/config/`, avec la configuration et les thèmes de Rofi ;  
-- `/usr/share/argvus/launcher/sh/`, avec `cheatsheets.sh` et `emoji-picker.sh`.
 
 Dépendances requises : `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` et `pinentry` (qui fournit `pinentry-gtk`). Dépendances optionnelles : `openssh`, pour le sélecteur SSH et le gestionnaire de clés SSH ; `lazygit` et `gitui`, pour le TUI git.
 

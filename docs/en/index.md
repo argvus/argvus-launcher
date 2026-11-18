@@ -10,7 +10,7 @@ The main launcher uses Quickshell/QML with a local Rust search engine. It search
 - the project switcher, SSH picker and snippet picker (`argvus projects`, `argvus ssh`, `argvus snippets`);
 - the SSH key manager (`argvus keys`), which creates, lists, loads and deletes key pairs;
 - the GPG key manager (`argvus gpg`), which lists, creates and exports keys and sets up pinentry-gtk for gpg-agent;
-- the emoji picker, the cheatsheet viewer and the calculator menu.
+- the emoji picker and calculator menu.
 
 The shortcuts are declared by `argvus-hyprland`. This package provides the commands and the menus behind them.
 
@@ -26,8 +26,6 @@ The shortcuts are declared by `argvus-hyprland`. This package provides the comma
 | `SUPER + ALT + G` | Project picker, then git TUI | `argvus git` | Git |
 | `SUPER + .` | Emoji picker | `emoji-picker.sh` | Emoji picker |
 | `SUPER + C` | Calculator | `argvus calculator` | Calculator |
-| `SUPER + SHIFT + /` | Hyprland cheatsheet | `cheatsheets.sh hypr` | Cheatsheets |
-| `SUPER + CTRL + /` | Kitty cheatsheet | `cheatsheets.sh kitty` | Cheatsheets |
 
 ## Launcher and Search
 
@@ -378,22 +376,6 @@ Requires `rofimoji` and `wl-clipboard`.
 
 `SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
-## Cheatsheets (`SUPER + SHIFT + /` and `SUPER + CTRL + /`)
-
-`cheatsheets.sh` shows a read-only list of shortcuts in a large Rofi window. It takes the application name as its argument:
-
-```sh
-cheatsheets.sh hypr     # Hyprland shortcuts (SUPER + SHIFT + /)
-cheatsheets.sh kitty    # terminal shortcuts (SUPER + CTRL + /)
-cheatsheets.sh <name>   # any other application with a cheatsheet
-```
-
-- `hypr` uses `data/generated/hypr/keybindings.txt` from the user's ARGVUS configuration when that file exists. Otherwise it uses the Hyprland cheatsheet shipped with `argvus-hyprland`.
-- `kitty` uses the terminal cheatsheet shipped with `argvus`.
-- Any other name reads `<name>/docs/cheatsheets/<language>.txt`. If that file does not exist, no window opens.
-
-The language is Portuguese when the system locale is `pt-BR`, and English otherwise. `Esc` closes the window. Selecting a line only closes it; nothing is executed.
-
 ## Other menus that use the Rofi configuration
 
 The launcher configuration is shared with components owned by other packages:
@@ -408,7 +390,6 @@ The package `argvus-launcher` is architecture-independent and installs:
 
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` and `argvus-git`, under the same directory;
 - `/usr/share/argvus/launcher/config/`, with the Rofi configuration and themes;
-- `/usr/share/argvus/launcher/sh/`, with `cheatsheets.sh` and `emoji-picker.sh`.
 
 Required dependencies: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` and `pinentry` (which provides `pinentry-gtk`). Optional dependencies: `openssh`, for the SSH picker and the SSH key manager; `lazygit` and `gitui`, for the git TUI.
 
@@ -424,7 +405,6 @@ Installing the package does not write into `$HOME`. User configuration is create
 | A theme change does not reach the Rofi menus | Check whether the user copy of `config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/` still points to the packaged theme. Apply the theme from `argvus-appearance` again. |
 | `SUPER + O` reports that no projects were found | No root or path is configured, or the directories no longer exist. Run `argvus projects list`. |
 | `SUPER + C` or the emoji picker does not open | Install `argvus` or `rofimoji` (both are required dependencies). |
-| A cheatsheet does not open | The file for that name and language does not exist. Check the paths described in the Cheatsheets section. |
 | `SUPER + H` shows nothing | The history is empty, or the clipboard recorder from `argvus-session` has not stored anything yet. |
 
 ## Related components

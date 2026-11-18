@@ -26,8 +26,6 @@ description: المشغّل والبحث — Quickshell/QML + Rust.
 | `SUPER + ALT + G` | منتقي المشروع، ثم git TUI | `argvus git` | بوابة |
 | `SUPER + .` | منتقي الرموز التعبيرية | `emoji-picker.sh` | منتقي الرموز التعبيرية |
 | `SUPER + C` | حاسبة | `argvus calculator` | حاسبة |
-| `SUPER + SHIFT + /` | ورقة الغش هايبرلاند | `cheatsheets.sh hypr` | أوراق الغش |
-| `SUPER + CTRL + /` | ورقة غش كيتي | `cheatsheets.sh kitty` | أوراق الغش |
 
 ## المشغّل والبحث
 
@@ -396,22 +394,6 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 
 
-##                            (`argvus-hyprland` ﻭ `SUPER + SHIFT + /`) ﺶﻐﻟﺍ ﺕﺎﺼﺨﻠﻣ
-
- `SUPER + CTRL + /` `cheatsheets.sh`:ﻪﻟ ﻂﻴﺳﻮﻛ ﻖﻴﺒﻄﺘﻟﺍ ﻢﺳﺍ ﺬﺧﺄﻳ .ﺓﺮﻴﺒﻛ Rofi ﺓﺬﻓﺎﻧ ﻲﻓ ﺕﺍﺭﺎﺼﺘﺧﻻ﻿ﺎﺑ ﻂﻘﻓ ﺽﺮﻌﻠﻟ ﺔﻤﺋﺎﻗ ﺽﺮﻌ
-
-```sh
-cheatsheets.sh hypr     # Hyprland shortcuts (SUPER + SHIFT + /)
-cheatsheets.sh kitty    # terminal shortcuts (SUPER + CTRL + /)
-cheatsheets.sh <name>   # any other application with a cheatsheet
-```
-
-- `hypr` uses `data/generated/hypr/keybindings.txt`ﻊﻣ ﻖﻓﺮﻤﻟﺍ Hyprland ـﺑ ﺹﺎﺨﻟﺍ ﺶﻐﻟﺍ ﻞﻴﻟﺩ ﻡﺪﺨﺘﺴﻳ ﻪﻧﺈﻓ ﻻ﻿ﺇﻭ .ﺍًﺩﻮﺟﻮﻣ ﻒﻠﻤﻟﺍ ﺍﺬﻫ ﻥﻮﻜﻳ ﺎ`argvus-hyprland`.
-- `kitty` ﻊﻣ ﻖﻓﺮﻤﻟﺍ ﻲﻓﺮﻄﻟﺍ ﺶﻐﻟﺍ ﻞﻴﻟﺩ ﻡﺪﺨﺘﺴﻳ `argvus`.
-- .ﺓﺬﻓﺎﻧ ﻱﺃ ﺢﺘﻔﻳ ﻦﻠﻓ ،ﺍًﺩﻮﺟﻮﻣ ﻒﻠﻤﻟﺍ ﺍﺬﻫ ﻦﻜﻳ ﻢﻟ ﺍﺫﺇ .`<name>/docs/cheatsheets/<language>.txt` ﺃﺮﻘﻳ ﺮﺧﺁ ﻢﺳ
-
-                       ﻡﺎﻈﻨﻠﻟ ﺔﻴﻤﻴﻠﻗﻹ﻿ﺍ ﺕﺍﺩﺍﺪﻋﻹ﻿ﺍ ﻥﻮﻜﺗ ﺎﻣﺪﻨﻋ ﺔﻴﻟﺎﻐﺗﺮﺒﻟﺍ ﻲﻫ ﺔﻐﻠﻟﺍ`pt-BR`                                                       .ﻚﻟﺫ ﻑﻼ﻿ﺨﺑ ﺔﻳﺰﻴﻠﺠﻧﻹ﻿ﺎﺑﻭ ،`Esc`                  . ءﻲﺷ ﻱﺃ ﺬﻴﻔﻨﺗ ﻢﺘﻳ ﻻ﻿ ؛ﻂﻘﻓ ﻪﻘﻠﻐﻳ ﺪﺣﺍﻭ ﺮﻄﺳ ﺭﺎﻴﺘﺧﺍ .ﺓﺬﻓﺎﻨﻟﺍ ﻖﻠﻐﻳ
-
 ##                                         Rofi ﺕﺍﺩﺍﺪﻋﺇ ﻡﺪﺨﺘﺴﺗ ﻲﺘﻟﺍ ﻯﺮﺧﻷ﻿ﺍ ﻢﺋﺍﻮﻘﻟﺍ
 
                      :ﻯﺮﺧﺃ ﻡﺰﺣ ﺎﻬﻜﻠﻤﺗ ﻲﺘﻟﺍ ﺕﺎﻧﻮﻜﻤﻟﺍ ﻊﻣ ﻞﻐﺸﻤﻟﺍ ﻦﻳﻮﻜﺗ ﺔﻛﺭﺎﺸﻣ ﻢﺘﺗ
@@ -436,7 +418,6 @@ The package
 
 -   `SUPER + H`  `SUPER + SHIFT + H`  `argvus-hyprland`  `cliphist`  `cliphist`  `argvus-session`  `argvus`  `argvus-appearance`  `config.rasi` `argvus-launcher`  `rofi`  `argvus-launcher`  config.rasi  argvus-appearance  argvus  argvus-session  cliphist  cliphist  argvus-hyprland  SUPER + SHIFT + H  SUPER + H `argvus launcher` ﻭ `argvus-snippets` ﻭ `argvus-ssh` ﻭ `argvus-git`،
 - `/usr/share/argvus/launcher/config/`، ﺕﺎﻤﺳﻭ ﺕﺍﺩﺍﺪﻋﺇ ﻊﻣ Rofi؛
-- `/usr/share/argvus/launcher/sh/`، ﻊﻣ `cheatsheets.sh` ﻭ `emoji-picker.sh`.
 
 Required dependencies:
 

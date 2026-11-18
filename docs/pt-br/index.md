@@ -11,7 +11,7 @@ O launcher principal usa Quickshell/QML com um motor local de busca em Rust. Pes
 - o seletor de projetos, o seletor de hosts SSH e o seletor de snippets (`argvus projects`, `argvus ssh`, `argvus snippets`);
 - o gerenciador de chaves SSH (`argvus keys`), que cria, lista, carrega e apaga pares de chaves;
 - o gerenciador de chaves GPG (`argvus gpg`), que lista, cria e exporta chaves e configura o pinentry-gtk para o gpg-agent;
-- o seletor de emojis, o visualizador de cheatsheets e o menu da calculadora.
+- o seletor de emojis e o menu da calculadora.
 
 Os atalhos são declarados pelo `argvus-hyprland`. Este pacote fornece os comandos e os menus por trás deles.
 
@@ -27,8 +27,6 @@ Os atalhos são declarados pelo `argvus-hyprland`. Este pacote fornece os comand
 | `SUPER + ALT + G` | Seletor de projetos, depois a TUI de git | `argvus git` | Git |
 | `SUPER + .` | Seletor de emojis | `emoji-picker.sh` | Seletor de emojis |
 | `SUPER + C` | Calculadora | `argvus calculator` | Calculadora |
-| `SUPER + SHIFT + /` | Cheatsheet do Hyprland | `cheatsheets.sh hypr` | Cheatsheets |
-| `SUPER + CTRL + /` | Cheatsheet do Kitty | `cheatsheets.sh kitty` | Cheatsheets |
 
 ## Launcher e Pesquisa
 
@@ -379,22 +377,6 @@ Requer `rofimoji` e `wl-clipboard`.
 
 `SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
-## Cheatsheets (`SUPER + SHIFT + /` e `SUPER + CTRL + /`)
-
-`cheatsheets.sh` mostra uma lista somente leitura de atalhos em uma janela Rofi. O cheatsheet do Hyprland (`SUPER + SHIFT + /`) usa 800 px de altura e exibe até 30 linhas; os demais cheatsheets mantêm 600 px e até 10 linhas. O comando recebe o nome do aplicativo como argumento:
-
-```sh
-cheatsheets.sh hypr     # atalhos do Hyprland (SUPER + SHIFT + /)
-cheatsheets.sh kitty    # atalhos do terminal (SUPER + CTRL + /)
-cheatsheets.sh <nome>   # qualquer outro aplicativo com cheatsheet
-```
-
-- `hypr` usa `data/generated/hypr/keybindings.txt` da configuração ARGVUS do usuário quando esse arquivo existe. Caso contrário, usa o cheatsheet do Hyprland distribuído com o `argvus-hyprland`.
-- `kitty` usa o cheatsheet do terminal distribuído com o `argvus terminal`.
-- Qualquer outro nome lê `<nome>/docs/cheatsheets/<idioma>.txt`. Se esse arquivo não existir, nenhuma janela é aberta.
-
-O idioma é português quando o locale do sistema é `pt-BR`, e inglês nos demais casos. `Esc` fecha a janela. Selecionar uma linha apenas fecha a janela; nada é executado.
-
 ## Outros menus que usam a configuração Rofi
 
 A configuração do launcher é compartilhada com componentes de outros pacotes:
@@ -409,7 +391,6 @@ O pacote `argvus-launcher` é independente de arquitetura e instala:
 
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` e `argvus-git`, no mesmo diretório;
 - `/usr/share/argvus/launcher/config/`, com a configuração e os temas do Rofi;
-- `/usr/share/argvus/launcher/sh/`, com `cheatsheets.sh` e `emoji-picker.sh`.
 
 Dependências obrigatórias: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` e `pinentry` (que fornece o `pinentry-gtk`). Dependências opcionais: `openssh`, para o seletor SSH e o gerenciador de chaves; `lazygit` e `gitui`, para a TUI de git.
 
@@ -425,7 +406,6 @@ A instalação do pacote não grava nada em `$HOME`. A configuração do usuári
 | Uma troca de tema não chega aos menus Rofi | Verifique se a cópia do usuário do `config.rasi`, em `$XDG_CONFIG_HOME/argvus/data/rofi/`, ainda aponta para o tema empacotado. Aplique o tema de novo pelo `argvus-appearance`. |
 | `SUPER + O` informa que nenhum projeto foi encontrado | Nenhuma raiz ou caminho está configurado, ou os diretórios não existem mais. Rode `argvus projects list`. |
 | `SUPER + C` ou o seletor de emojis não abre | Instale `argvus` ou `rofimoji` (ambos são dependências obrigatórias). |
-| Um cheatsheet não abre | O arquivo desse nome e idioma não existe. Confira os caminhos descritos na seção Cheatsheets. |
 | `SUPER + H` não mostra nada | O histórico está vazio, ou o gravador da área de transferência do `argvus-session` ainda não guardou nada. |
 
 ## Componentes relacionados

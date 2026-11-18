@@ -25,8 +25,6 @@ description: ランチャーと検索 — Quickshell/QML + Rust.
 | `SUPER + ALT + G` | プロジェクトピッカー、その後 git TUI | `argvus git` | Git |
 | `SUPER + .` | 絵文字ピッカー | `emoji-picker.sh` | 絵文字ピッカー |
 | `SUPER + C` | 電卓 | `argvus calculator` | 電卓 |
-| `SUPER + SHIFT + /` | Hyprland チートシート | `cheatsheets.sh hypr` | チートシート |
-| `SUPER + CTRL + /` | Kitty チートシート | `cheatsheets.sh kitty` | チートシート |
 
 ## ランチャーと検索
 
@@ -370,22 +368,6 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 `SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
-## チートシート (`SUPER + SHIFT + /`および`SUPER + CTRL + /`)
-
-`cheatsheets.sh`は大きなRofiウィンドウでショートカットの読み取り専用リストを表示します。引数としてアプリケーション名を取ります:
-
-```sh
-cheatsheets.sh hypr     # Hyprland shortcuts (SUPER + SHIFT + /)
-cheatsheets.sh kitty    # terminal shortcuts (SUPER + CTRL + /)
-cheatsheets.sh <name>   # any other application with a cheatsheet
-```
-
-- `hypr` は、そのファイルが存在する場合にユーザーの ARGVUS 設定から `data/generated/hypr/keybindings.txt` を使用します。存在しない場合は、`argvus-hyprland` に付属の Hyprland チートシートを使用します。
-- `kitty` は、`argvus` に付属のターミナルチートシートを使用します。
-- その他の名前は `<name>/docs/cheatsheets/<language>.txt` を読み込みます。そのファイルが存在しない場合、ウィンドウは開きません。
-
-言語は、システムロケールが `pt-BR` の場合はポルトガル語、それ以外の場合は英語です。`Esc` はウィンドウを閉じます。行を選択するだけで閉じるだけで、何も実行されません。
-
 ## Rofi 設定を使用する他のメニュー
 
 ランチャー設定は、他のパッケージが所有するコンポーネントと共有されています：
@@ -400,7 +382,6 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 
 - 同じディレクトリに`argvus launcher`、`argvus-snippets`、`argvus-ssh`、`argvus-git`
 - Rofiの設定とテーマを含む`/usr/share/argvus/launcher/config/`
--  `/usr/share/argvus/launcher/sh/` `cheatsheets.sh`と`emoji-picker.sh`を含む/usr/share/argvus/launcher/sh/
 
 必要な依存関係: `argvus-session`、`argvus-appearance`、`argvus`、`bash`、`jq`、`hyprland`、`libnotify`、`rofi`、`rofimoji`、`wl-clipboard`、`wtype`、`gnupg`、および`pinentry`（`pinentry-gtk`を提供）。オプションの依存関係: SSHピッカーおよびSSHキー管理用の`openssh`; git TUI用の`lazygit`および`gitui`。
 

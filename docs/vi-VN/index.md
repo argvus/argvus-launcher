@@ -26,8 +26,6 @@ Các phím tắt được khai báo bởi `argvus-hyprland`. Gói này cung cấ
 | `SUPER + ALT + G` | Bộ chọn dự án, sau đó git TUI | `argvus git` | Git |
 | `SUPER + .` | Bộ chọn biểu tượng cảm xúc | `emoji-picker.sh` | Bộ chọn biểu tượng cảm xúc |
 | `SUPER + C` | Máy tính | `argvus calculator` | Máy tính |
-| `SUPER + SHIFT + /` | Bảng cheat Hyprland | `cheatsheets.sh hypr` | Cheatsheet |
-| `SUPER + CTRL + /` | Áo khoác Kitty | `cheatsheets.sh kitty` | Cheatsheet |
 
 ## Trình khởi chạy và tìm kiếm
 
@@ -390,22 +388,6 @@ Yêu cầu `rofimoji` và `wl-clipboard`.
 
 `SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
-## Bảng gian lận (`SUPER + SHIFT + /` và `SUPER + CTRL + /`)
-
-`cheatsheets.sh` hiển thị danh sách chỉ đọc các phím tắt trong một cửa sổ Rofi lớn. Nó lấy tên ứng dụng làm đối số:
-
-```sh
-cheatsheets.sh hypr     # Hyprland shortcuts (SUPER + SHIFT + /)
-cheatsheets.sh kitty    # terminal shortcuts (SUPER + CTRL + /)
-cheatsheets.sh <name>   # any other application with a cheatsheet
-```
-
-- `hypr` sử dụng `data/generated/hypr/keybindings.txt` từ cấu hình ARGVUS của người dùng khi tệp đó tồn tại. Nếu không, nó sử dụng bảng gian lận Hyprland được cung cấp cùng với `argvus-hyprland`.
-- `kitty` sử dụng bảng gian lận terminal đi kèm với `argvus`.
-- Bất kỳ tên nào khác đọc `<name>/docs/cheatsheets/<language>.txt`. Nếu tệp đó không tồn tại, không cửa sổ nào mở ra.
-
-Ngôn ngữ là tiếng Bồ Đào Nha khi vùng cài đặt hệ thống là `pt-BR`, và tiếng Anh trong các trường hợp khác. `Esc` đóng cửa sổ. Chọn một dòng chỉ đóng nó; không có gì được thực thi.
-
 ## Các menu khác sử dụng cấu hình Rofi
 
 Cấu hình khởi chạy được chia sẻ với các thành phần thuộc sở hữu của các gói khác:
@@ -420,7 +402,6 @@ Gói `argvus-launcher` là không phụ thuộc kiến trúc và cài đặt:
 
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` và `argvus-git`, trong cùng một thư mục;
 - `/usr/share/argvus/launcher/config/`, với cấu hình và chủ đề Rofi;
-- `/usr/share/argvus/launcher/sh/`, với `cheatsheets.sh` và `emoji-picker.sh`.
 
 Các phụ thuộc bắt buộc: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` và `pinentry` (cung cấp `pinentry-gtk`). Các phụ thuộc tùy chọn: `openssh`, cho trình chọn SSH và trình quản lý khóa SSH; `lazygit` và `gitui`, cho giao diện TUI của git.
 
@@ -436,7 +417,6 @@ Cài đặt gói không ghi vào `$HOME`. Cấu hình người dùng được t�
 | Thay đổi chủ đề không ảnh hưởng đến các menu Rofi | Kiểm tra xem bản sao của người dùng có`config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/` still points to the packaged theme. Apply the theme from `argvus-appearance` again. |
 | `SUPER + O` báo cáo không tìm thấy dự án nào | Không có gốc hoặc đường dẫn nào được định cấu hình hoặc các thư mục không còn tồn tại. Chạy `argvus projects list`. |
 | `SUPER + C`hoặc bộ chọn biểu tượng cảm xúc không mở | Cài đặt`argvus` or `rofimoji` (both are required dependencies). |
-| Một chiếc áo choàng không mở được | Tệp cho tên và ngôn ngữ đó không tồn tại. Kiểm tra các đường dẫn được mô tả trong phần Cheatsheet. |
 | `SUPER + H` không hiển thị gì | Lịch sử trống hoặc trình ghi clipboard từ `argvus-session` chưa lưu trữ bất cứ thứ gì. |
 
 ## Các thành phần liên quan

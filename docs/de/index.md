@@ -9,7 +9,7 @@ Der Hauptstarter verwendet Quickshell/QML mit einer lokalen Rust-Suche für Apps
 - den Projektschalter, SSH-Auswähler und Snippet-Auswähler (`argvus projects`, `argvus ssh`, `argvus snippets`);
 - den SSH-Schlüsselmanager (`argvus keys`), der Schlüsselpaar erstellt, auflistet, lädt und löscht;
 - den GPG-Schlüsselmanager (`argvus gpg`), der Schlüssel auflistet, erstellt und exportiert und pinentry-gtk für gpg-agent einrichtet;
-- den Emoji-Auswähler, den Cheatsheet-Betrachter und das Taschenrechner-Menü.
+- den Emoji-Auswähler und das Taschenrechner-Menü.
 
 Die Tastenkombinationen werden von `argvus-hyprland` deklariert. Dieses Paket stellt die Befehle und die dahinterliegenden Menüs bereit.
 
@@ -25,8 +25,6 @@ Die Tastenkombinationen werden von `argvus-hyprland` deklariert. Dieses Paket st
 | `SUPER + ALT + G` | Projekt-Auswahl, dann Git TUI | `argvus git` | Git |
 | `SUPER + .` | Emoji-Auswahl | `emoji-picker.sh` | Emoji-Auswahl |
 | `SUPER + C` | Taschenrechner | `argvus calculator` | Taschenrechner |
-| `SUPER + SHIFT + /` | Hyprland-Spickzettel | `cheatsheets.sh hypr` | Spickzettel |
-| `SUPER + CTRL + /` | Kitty-Spickzettel | `cheatsheets.sh kitty` | Spickzettel |
 
 ## Starter und Suche
 
@@ -370,22 +368,6 @@ Erfordert `rofimoji` und `wl-clipboard`.
 
 `SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
-## Spickzettel (`SUPER + SHIFT + /` und `SUPER + CTRL + /`)
-
-`cheatsheets.sh` zeigt eine schreibgeschützte Liste von Verknüpfungen in einem großen Rofi-Fenster an. Es nimmt den Anwendungsnamen als Argument:
-
-```sh
-cheatsheets.sh hypr     # Hyprland shortcuts (SUPER + SHIFT + /)
-cheatsheets.sh kitty    # terminal shortcuts (SUPER + CTRL + /)
-cheatsheets.sh <name>   # any other application with a cheatsheet
-```
-
-- `hypr` verwendet `data/generated/hypr/keybindings.txt` aus der ARGVUS-Konfiguration des Benutzers, wenn diese Datei existiert. Andernfalls wird das mit `argvus-hyprland` gelieferte Hyprland-Spickzettel verwendet.
-- `kitty` verwendet das mit `argvus` gelieferte Terminal-Spickzettel.
-- Jeder andere Name liest `<name>/docs/cheatsheets/<language>.txt`. Wenn diese Datei nicht existiert, wird kein Fenster geöffnet.
-
-Die Sprache ist Portugiesisch, wenn das Systemgebietsschema `pt-BR` ist, und ansonsten Englisch. `Esc` schließt das Fenster. Das Auswählen einer Zeile schließt es nur; nichts wird ausgeführt.
-
 ## Andere Menüs, die die Rofi-Konfiguration verwenden
 
 Die Launcher-Konfiguration wird mit Komponenten geteilt, die anderen Paketen gehören:
@@ -400,7 +382,6 @@ Das Paket `argvus-launcher` ist architekturunabhängig und installiert:
 
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` und `argvus-git` im gleichen Verzeichnis;
 - `/usr/share/argvus/launcher/config/` mit der Rofi-Konfiguration und Themes;
-- `/usr/share/argvus/launcher/sh/` mit `cheatsheets.sh` und `emoji-picker.sh`.
 
 Erforderliche Abhängigkeiten: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` und `pinentry` (welches `pinentry-gtk` bereitstellt). Optionale Abhängigkeiten: `openssh`, für den SSH-Auswähler und den SSH-Schlüsselmanager; `lazygit` und `gitui`, für die git-TUI.
 
@@ -416,7 +397,6 @@ Die Installation des Pakets schreibt nicht in `$HOME`. Die Benutzerkonfiguration
 | Eine Designänderung erreicht die Rofi-Menüs nicht | Überprüfen Sie, ob die Benutzerkopie von `config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/` weiterhin auf das bereitgestellte Design zeigt. Wenden Sie das Design erneut von `argvus-appearance` an. |
 | `SUPER + O` meldet, dass keine Projekte gefunden wurden | Kein Root oder Pfad ist konfiguriert oder die Verzeichnisse existieren nicht mehr. Führen Sie `argvus projects list` aus. |
 | `SUPER + C` oder der Emoji-Picker öffnet sich nicht | Installieren Sie `argvus` oder `rofimoji` (beide sind erforderliche Abhängigkeiten). |
-| Ein Spickzettel öffnet sich nicht | Die Datei für diesen Namen und diese Sprache existiert nicht. Überprüfen Sie die in der Cheatsheets-Sektion beschriebenen Pfade. |
 | `SUPER + H` zeigt nichts an | Die Historie ist leer oder der Clipboard-Rekorder von `argvus-session` hat noch nichts gespeichert. |
 
 ## Zugehörige Komponenten

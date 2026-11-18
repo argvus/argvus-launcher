@@ -26,8 +26,6 @@ description: লঞ্চার ও অনুসন্ধান — Quickshell/Q
 | `SUPER + ALT + G` | প্রজেক্ট পিকার, তারপর git TUI | `argvus git` | Git |
 | `SUPER + .` | ইমোজি বাছাইকারী | `emoji-picker.sh` | ইমোজি বাছাইকারী |
 | `SUPER + C` | ক্যালকুলেটর | `argvus calculator` | ক্যালকুলেটর |
-| `SUPER + SHIFT + /` | Hyprland চিটশীট | `cheatsheets.sh hypr` | চিটশীট |
-| `SUPER + CTRL + /` | কিটি চিটশীট | `cheatsheets.sh kitty` | চিটশীট |
 
 ## লঞ্চার ও অনুসন্ধান
 
@@ -378,22 +376,6 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 `SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
-## চিটশিট (`SUPER + SHIFT + /` এবং `SUPER + CTRL + /`)
-
-`cheatsheets.sh` একটি বড় Rofi উইন্ডোতে শর্টকাটের রিড-অনলি লিস্ট দেখায়। এটি তার আর্গুমেন্ট হিসাবে অ্যাপ্লিকেশন নাম নেয়:
-
-```sh
-cheatsheets.sh hypr     # Hyprland shortcuts (SUPER + SHIFT + /)
-cheatsheets.sh kitty    # terminal shortcuts (SUPER + CTRL + /)
-cheatsheets.sh <name>   # any other application with a cheatsheet
-```
-
-- `hypr` ব্যবহারকারীর ARGVUS কনফিগারেশন থেকে `data/generated/hypr/keybindings.txt` ব্যবহার করে যখন সেই ফাইলটি উপস্থিত থাকে। অন্যথায় এটি `argvus-hyprland` সহ পাঠানো Hyprland চিটশিট ব্যবহার করে।
-- `kitty` `argvus` এর সাথে সরবরাহিত টার্মিনাল চিটশিট ব্যবহার করে।
-- অন্য যে কোনো নাম `<name>/docs/cheatsheets/<language>.txt` পড়ে। যদি সেই ফাইলটি না থাকে, কোনো উইন্ডো খোলা হয় না।
-
-সিস্টেম লোকেল `pt-BR` হলে ভাষা পর্তুগিজ হয়, এবং অন্যথায় ইংরেজি। `Esc` উইন্ডো বন্ধ করে। একটি লাইন নির্বাচন করলে সেটি কেবল বন্ধ হয়; কিছু চালানো হয় না।
-
 ## অন্যান্য মেনু যা Rofi কনফিগারেশন ব্যবহার করে
 
 লঞ্চার কনফিগারেশনটি অন্যান্য প্যাকেজের মালিকানাধীন উপাদানের সাথে ভাগ করা হয়:
@@ -408,7 +390,6 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` এবং `argvus-git`, একই ডিরেক্টরির অধীনে;
 - `/usr/share/argvus/launcher/config/`, Rofi কনফিগারেশন এবং থিমসহ;
-- `/usr/share/argvus/launcher/sh/`, `cheatsheets.sh` এবং `emoji-picker.sh` এর সাথে।
 
 প্রয়োজনীয় নির্ভরতা: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` এবং `pinentry` (যা `pinentry-gtk` প্রদান করে)। ঐচ্ছিক নির্ভরতা: `openssh`, SSH পিকার এবং SSH কী ম্যানেজারের জন্য; `lazygit` এবং `gitui`, git TUI-এর জন্য।
 

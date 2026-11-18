@@ -26,8 +26,6 @@ description: لانچر اور تلاش — Quickshell/QML + Rust.
 | `SUPER + ALT + G` | پروجیکٹ چننے والا، پھر گٹ TUI | `argvus git` | گٹ |
 | `SUPER + .` | ایموجی چننے والا | `emoji-picker.sh` | ایموجی چننے والا |
 | `SUPER + C` | کیلکولیٹر | `argvus calculator` | کیلکولیٹر |
-| `SUPER + SHIFT + /` | Hyprland cheatsheet | `cheatsheets.sh hypr` | دھوکہ دہی |
-| `SUPER + CTRL + /` | کٹی چیٹ شیٹ | `cheatsheets.sh kitty` | دھوکہ دہی |
 
 ## لانچر اور تلاش
 
@@ -400,22 +398,6 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 
 
-##                            (SUPER + CTRL + / ﺭﻭﺍ `SUPER + SHIFT + /`) ﺲﭩﯿﺷ ﺲﭩﯿﭼ
-
- `SUPER + CTRL + /` `cheatsheets.sh` ﮮﮍﺑ ﮏﯾﺍ Rofi ﮯﮨ ﺎﺘﯿﻟ ﺮﭘ ﺭﻮﻃ ﮯﮐ ﻞﺋﻻ﻿ﺩ ﮯﻨﭘﺍ ﻮﮐ ﻡﺎﻧ ﮯﮐ ﻦﺸﯿﮑﯿﻠﭙﯾﺍ
-
-```sh
-cheatsheets.sh hypr     # Hyprland shortcuts (SUPER + SHIFT + /)
-cheatsheets.sh kitty    # terminal shortcuts (SUPER + CTRL + /)
-cheatsheets.sh <name>   # any other application with a cheatsheet
-```
-
-- `hypr` uses `data/generated/hypr/keybindings.txt`ﮯﮨ ﯽﺗﻮﮨ ﯽﺋﺁ ﮫﺗﺎﺳ ﻮﺟ ﮯﮨ ﺎﺗﺮﮐ ﻝﺎﻤﻌﺘﺳﺍ ﭧﯿﺷ ﺲﭩﯿﭼ Hyprland ﮧﯾ ﮧﻧﺭﻭ ۔ﮯﺳ ﺐﯿﺗﺮﺗ ARGVUS`argvus-hyprland`.
-- `kitty` `argvus` ۔ﮯﮨ ﺎﺗﺮﮐ ﻝﺎﻤﻌﺘﺳﺍ ﺎﮐ ﭧﯿﺷ ﺲﭩﯿﭼ ﻞﻨﯿﻣﺮﭨ ﮯﺌﮔ ﮯﺠ
-- ۔ﯽﺘﻠﮭﮐ ﮟﯿﮩﻧ ﻭﮉﻧﻭ ﯽﺋﻮﮐ ﻮﺗ ،ﻮﮨ ﮧﻧ ﺩﻮﺟﻮﻣ ﻞﺋﺎﻓ ﮦﻭ ﺮﮔﺍ ۔ﮯﮨ ﺎﺘﮬﮍﭘ `<name>/docs/cheatsheets/<language>.txt`
-
-The language is Portuguese when the system locale is `pt-BR`                                                     ۔ﯼﺰﯾﺮﮕﻧﺍ ﺮﮕﯾﺩ ﺕﺭﻮﺼﺑ ﺭﻭﺍ ،`Esc`۔ﺎﺗﺁ ﮟﯿﮩﻧ ﮟﯿﻣ ﻞﻤﻋ ﯽﮭﺑ ﮫﭽﮐ ؛ﮯﮨ ﯽﺗﻮﮨ ﺪﻨﺑ ﮦﻭ ﻑﺮﺻ ﮯﺳ ﮯﻧﺮﮐ ﺐﺨﺘﻨﻣ ﻮﮐ ﻦﺋﻻ﻿ ﯽﺴﮐ ۔ﮯﮨ ﺎﺗﺮ
-
 ##                                    ﮟﯿﮨ ﮯﺗﺮﮐ ﻝﺎﻤﻌﺘﺳﺍ ﺐﯿﺗﺮﺗ ﯽﮐ ﯽﻓﻭﺭ ﻮﺟ ﻮﻨﯿﻣ ﺮﮕﯾﺩ
 
           :ﮯﮨ ﯽﺗﺎﺟ ﯽﮐ ﺮﺌﯿﺷ ﮫﺗﺎﺳ ﮯﮐ ءﺍﺰﺟﺍ ﺖﯿﮑﻠﻣ ﺮﯾﺯ ﮯﮐ ﺰﺠﮑﯿﭘ ﺮﮕﯾﺩ ﺐﯿﺗﺮﺗ ﯽﮐ ﺮﭽﻧﻻ﻿
@@ -430,7 +412,6 @@ The language is Portuguese when the system locale is `pt-BR`                    
 
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` ﺭﻭﺍ `argvus-git`،
 - `/usr/share/argvus/launcher/config/`، Rofi ؛ﮫﺗﺎﺳ ﮯﮐ ﻢﯿﮭﺗ ﺭﻭﺍ ﺐﯿﺗﺮﺗ ﯽﮐ
-- `/usr/share/argvus/launcher/sh/`، `cheatsheets.sh` ﺭﻭﺍ `emoji-picker.sh` ۔ﮫﺗﺎﺳ ﮯﮐ
 
 
 

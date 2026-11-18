@@ -25,8 +25,6 @@ description: Запуск и поиск — Quickshell/QML + Rust.
 | `SUPER + ALT + G` | Выбор проекта, затем git TUI | `argvus git` | Git |
 | `SUPER + .` | Выбор эмодзи | `emoji-picker.sh` | Выбор эмодзи |
 | `SUPER + C` | Калькулятор | `argvus calculator` | Калькулятор |
-| `SUPER + SHIFT + /` | Шпаргалка Hyprland | `cheatsheets.sh hypr` | Шпаргалки |
-| `SUPER + CTRL + /` | Шпаргалка Kitty | `cheatsheets.sh kitty` | Шпаргалки |
 
 ## Запуск и поиск
 
@@ -370,22 +368,6 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 `SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
-## Шпаргалки (`SUPER + SHIFT + /` и `SUPER + CTRL + /`)
-
-`cheatsheets.sh` показывает список ярлыков только для чтения в большом окне Rofi. Он принимает имя приложения в качестве аргумента:
-
-```sh
-cheatsheets.sh hypr     # Hyprland shortcuts (SUPER + SHIFT + /)
-cheatsheets.sh kitty    # terminal shortcuts (SUPER + CTRL + /)
-cheatsheets.sh <name>   # any other application with a cheatsheet
-```
-
-- `hypr` использует `data/generated/hypr/keybindings.txt` из конфигурации ARGVUS пользователя, если этот файл существует. В противном случае используется шпаргалка Hyprland, поставляемая с `argvus-hyprland`.
-- `kitty` использует терминальную шпаргалку, поставляемую с `argvus`.
-- Любое другое имя читает `<name>/docs/cheatsheets/<language>.txt`. Если этого файла нет, окно не открывается.
-
-Язык — португальский, если системная локаль `pt-BR`, и английский в противном случае. `Esc` закрывает окно. Выбор строки только закрывает его; ничего не выполняется.
-
 ## Другие меню, использующие конфигурацию Rofi
 
 Конфигурация лаунчера разделяется с компонентами, принадлежащими другим пакетам:
@@ -400,7 +382,6 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` и `argvus-git` в одной и той же директории;
 - `/usr/share/argvus/launcher/config/` с конфигурацией Rofi и темами;
-- `/usr/share/argvus/launcher/sh/` с `cheatsheets.sh` и `emoji-picker.sh`.
 
 Необходимые зависимости: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` и `pinentry` (который предоставляет `pinentry-gtk`). Необязательные зависимости: `openssh` для SSH-пикера и менеджера SSH-ключей; `lazygit` и `gitui` для git TUI.
 
@@ -416,7 +397,6 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 | Изменение темы не влияет на меню Rofi | Проверьте, указывает ли пользовательская копия `config.rasi` в `$XDG_CONFIG_HOME/argvus/data/rofi/` по-прежнему на упакованную тему. Примените тему из `argvus-appearance` снова. |
 | `SUPER + O` сообщает, что проекты не найдены | Не настроен корень или путь, либо директории больше не существуют. Запустите `argvus projects list`. |
 | `SUPER + C` или выбор эмодзи не открывается | Установите `argvus` или `rofimoji` (требуются обе зависимости). |
-| Cheatsheet не открывается | Файл с этим именем и языком не существует. Проверьте пути, описанные в разделе Cheatsheets. |
 | `SUPER + H` ничего не показывает | История пуста или регистратор буфера обмена `argvus-session` еще ничего не сохранил. |
 
 ## Связанные компоненты

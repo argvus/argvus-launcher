@@ -25,8 +25,6 @@ Los atajos se declaran mediante `argvus-hyprland`. Este paquete proporciona los 
 | `SUPER + ALT + G` | Selector de proyectos, luego TUI de git | `argvus git` | Git |
 | `SUPER + .` | Selector de emojis | `emoji-picker.sh` | Selector de emojis |
 | `SUPER + C` | Calculadora | `argvus calculator` | Calculadora |
-| `SUPER + SHIFT + /` | Hoja de trucos de Hyprland | `cheatsheets.sh hypr` | Hojas de trucos |
-| `SUPER + CTRL + /` | Hoja de trucos de Kitty | `cheatsheets.sh kitty` | Hojas de trucos |
 
 ## Lanzador y búsqueda
 
@@ -371,22 +369,6 @@ Requiere `rofimoji` y `wl-clipboard`.
 
 `SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
-## Hojas de trucos (`SUPER + SHIFT + /` y `SUPER + CTRL + /`)
-
-`cheatsheets.sh` muestra una lista de solo lectura de accesos directos en una ventana grande de Rofi. Toma el nombre de la aplicación como su argumento:
-
-```sh
-cheatsheets.sh hypr     # Hyprland shortcuts (SUPER + SHIFT + /)
-cheatsheets.sh kitty    # terminal shortcuts (SUPER + CTRL + /)
-cheatsheets.sh <name>   # any other application with a cheatsheet
-```
-
-- `hypr` utiliza `data/generated/hypr/keybindings.txt` de la configuración ARGVUS del usuario cuando ese archivo existe. De lo contrario, utiliza la hoja de trucos de Hyprland incluida con `argvus-hyprland`.
-- `kitty` utiliza la hoja de trucos del terminal incluida con `argvus`.
-- Cualquier otro nombre lee `<name>/docs/cheatsheets/<language>.txt`. Si ese archivo no existe, no se abre ninguna ventana.
-
-El idioma es portugués cuando la configuración regional del sistema es `pt-BR`, y inglés de lo contrario. `Esc` cierra la ventana. Seleccionar una línea solo la cierra; no se ejecuta nada.
-
 ## Otros menús que usan la configuración de Rofi
 
 La configuración del lanzador se comparte con componentes propiedad de otros paquetes:
@@ -401,7 +383,6 @@ El paquete `argvus-launcher` es independiente de la arquitectura e instala:
 
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` y `argvus-git`, bajo el mismo directorio;
 - `/usr/share/argvus/launcher/config/`, con la configuración de Rofi y los temas;
-- `/usr/share/argvus/launcher/sh/`, con `cheatsheets.sh` y `emoji-picker.sh`.
 
 Dependencias requeridas: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` y `pinentry` (que proporciona `pinentry-gtk`). Dependencias opcionales: `openssh`, para el selector SSH y el gestor de claves SSH; `lazygit` y `gitui`, para la interfaz TUI de git.
 

@@ -26,8 +26,6 @@ Kısayollar `argvus-hyprland` tarafından beyan edilmiştir. Bu paket, komutlar�
 | `SUPER + ALT + G` | Proje seçici, ardından git TUI | `argvus git` | Git |
 | `SUPER + .` | Emoji seçici | `emoji-picker.sh` | Emoji seçici |
 | `SUPER + C` | Hesap Makinesi | `argvus calculator` | Hesap Makinesi |
-| `SUPER + SHIFT + /` | Hyprland hile sayfası | `cheatsheets.sh hypr` | Hile Sayfaları |
-| `SUPER + CTRL + /` | Kitty hile sayfası | `cheatsheets.sh kitty` | Hile Sayfaları |
 
 ## Başlatıcı ve Arama
 
@@ -386,22 +384,6 @@ Seçici açıkken, oturum normalde gösterdiği klavye düzeni bildirimlerini yo
 
 `SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
-## Hile sayfaları (`SUPER + SHIFT + /` ve `SUPER + CTRL + /`)
-
-`cheatsheets.sh`, büyük bir Rofi penceresinde salt okunur kısayol listesini gösterir. Argümanı olarak uygulama adını alır:
-
-```sh
-cheatsheets.sh hypr     # Hyprland shortcuts (SUPER + SHIFT + /)
-cheatsheets.sh kitty    # terminal shortcuts (SUPER + CTRL + /)
-cheatsheets.sh <name>   # any other application with a cheatsheet
-```
-
-- `hypr`, dosya mevcut olduğunda kullanıcının ARGVUS yapılandırmasından `data/generated/hypr/keybindings.txt` kullanır. Aksi takdirde `argvus-hyprland` ile birlikte gelen Hyprland hile sayfasını kullanır.
-- `kitty`, `argvus` ile birlikte sağlanan terminal hile sayfasını kullanır.
-- Diğer herhangi bir isim `<name>/docs/cheatsheets/<language>.txt` dosyasını okur. Eğer bu dosya mevcut değilse, hiçbir pencere açılmaz.
-
-Sistem yerel ayarı `pt-BR` olduğunda dil Portekizce, aksi takdirde İngilizcedir. `Esc` pencereyi kapatır. Bir satırı seçmek sadece pencereyi kapatır; hiçbir şey çalıştırılmaz.
-
 ## Diğer menüler Rofi yapılandırmasını kullanır
 
 Başlatıcı yapılandırması diğer paketlere ait bileşenlerle paylaşılır:
@@ -416,7 +398,6 @@ Başlatıcı yapılandırması diğer paketlere ait bileşenlerle paylaşılır:
 
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` ve `argvus-git`, aynı dizin altında;
 - `/usr/share/argvus/launcher/config/`, Rofi yapılandırması ve temaları ile;
-- `/usr/share/argvus/launcher/sh/`, `cheatsheets.sh` ve `emoji-picker.sh` ile.
 
 Gerekli bağımlılıklar: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` ve `pinentry` (`pinentry-gtk` sağlar). İsteğe bağlı bağımlılıklar: `openssh`, SSH seçici ve SSH anahtar yöneticisi için; `lazygit` ve `gitui`, git TUI için.
 

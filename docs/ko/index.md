@@ -25,8 +25,6 @@ description: 실행기 및 검색 — Quickshell/QML + Rust.
 | `SUPER + ALT + G` | 프로젝트 선택기, 그 다음 git TUI | `argvus git` | Git |
 | `SUPER + .` | 이모지 선택기 | `emoji-picker.sh` | 이모지 선택기 |
 | `SUPER + C` | 계산기 | `argvus calculator` | 계산기 |
-| `SUPER + SHIFT + /` | Hyprland 치트시트 | `cheatsheets.sh hypr` | 치트시트 |
-| `SUPER + CTRL + /` | Kitty 치트시트 | `cheatsheets.sh kitty` | 치트시트 |
 
 ## 실행기 및 검색
 
@@ -370,22 +368,6 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 `SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
-## 치트시트 (`SUPER + SHIFT + /` 및 `SUPER + CTRL + /`)
-
-`cheatsheets.sh`는 큰 Rofi 창에서 단축키의 읽기 전용 목록을 표시합니다. 인수로 응용 프로그램 이름을 받습니다:
-
-```sh
-cheatsheets.sh hypr     # Hyprland shortcuts (SUPER + SHIFT + /)
-cheatsheets.sh kitty    # terminal shortcuts (SUPER + CTRL + /)
-cheatsheets.sh <name>   # any other application with a cheatsheet
-```
-
-- `hypr`는 파일이 존재할 경우 사용자의 ARGVUS 구성에서 `data/generated/hypr/keybindings.txt`를 사용합니다. 파일이 없으면 `argvus-hyprland`와 함께 제공되는 Hyprland 치트시트를 사용합니다.
-- `kitty`는 `argvus`와 함께 제공되는 터미널 치트시트를 사용합니다.
-- 다른 이름은 `<name>/docs/cheatsheets/<language>.txt`를 읽습니다. 해당 파일이 존재하지 않으면 창이 열리지 않습니다.
-
-시스템 로케일이 `pt-BR`일 때 언어는 포르투갈어이고, 그 외에는 영어입니다. `Esc`는 창을 닫습니다. 줄을 선택하면 단지 닫기만 하고 아무 것도 실행되지 않습니다.
-
 ## Rofi 구성을 사용하는 다른 메뉴들
 
 런처 구성은 다른 패키지가 소유한 구성 요소와 공유됩니다:
@@ -400,7 +382,6 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 
 - 동일한 디렉토리 아래의 `argvus launcher`, `argvus-snippets`, `argvus-ssh` 및 `argvus-git`;
 - Rofi 구성과 테마가 포함된 `/usr/share/argvus/launcher/config/`;
--  `/usr/share/argvus/launcher/sh/` `cheatsheets.sh` 및 `emoji-picker.sh`가 포함된 /usr/share/argvus/launcher/sh/.
 
 필수 종속성: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` 및 `pinentry` (이것은 `pinentry-gtk`를 제공합니다). 선택적 종속성: `openssh`, SSH 선택기 및 SSH 키 관리자를 위해; `lazygit` 및 `gitui`, git TUI용.
 
@@ -416,7 +397,6 @@ cheatsheets.sh <name>   # any other application with a cheatsheet
 | 테마 변경이 Rofi 메뉴에 적용되지 않음 | $XDG_CONFIG_HOME/argvus/data/rofi/에 있는 사용자 복사본 `config.rasi`가 여전히 패키지된 테마를 가리키는지 확인하세요.  `$XDG_CONFIG_HOME/argvus/data/rofi/` `argvus-appearance`에서 테마를 다시 적용하세요. |
 | `SUPER + O`이 프로젝트를 찾지 못함 | 루트 또는 경로가 설정되지 않았거나, 디렉터리가 더 이상 존재하지 않습니다. `argvus projects list`를 실행하세요. |
 | `SUPER + C` 또는 이모지 선택기가 열리지 않음 | `argvus` 또는 `rofimoji`를 설치하세요(둘 다 필요 의존성입니다). |
-| 치트시트가 열리지 않음 | 해당 이름과 언어에 대한 파일이 존재하지 않습니다. Cheatsheets 섹션에 설명된 경로를 확인하세요. |
 | `SUPER + H`이 아무것도 표시하지 않음 | 기록이 비어 있거나 `argvus-session`의 클립보드 기록기가 아직 아무것도 저장하지 않았습니다. |
 
 ## 관련 구성 요소
