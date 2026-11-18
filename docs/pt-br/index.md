@@ -36,6 +36,8 @@ O launcher principal usa Quickshell/QML com um motor local de busca em Rust. Pes
 
 O launcher usa um layout TUI compacto: texto monoespaçado, busca e categorias alinhadas, favoritos compactos e rodapé de ajuda separado. A espessura e o arredondamento das bordas seguem as configurações de layout ativas do ARGVUS.
 
+O launcher segue o idioma da interface do ARGVUS escolhido no Control Center.
+
 `argvus launcher` · `argvus control-center launcher`
 
 ↑↓ Navegar · Enter Abrir · Esc Voltar · Ctrl+F Favorito

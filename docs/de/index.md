@@ -38,6 +38,8 @@ Der Hauptstarter verwendet Quickshell/QML mit einer lokalen Rust-Suche für Apps
 
 Der Launcher nutzt ein kompaktes TUI-Layout mit Monospace-Schrift, ausgerichteter Suche und Kategorien, kompakten Favoriten und separater Hilfe unten. Randstärke und Rundung folgen den aktiven ARGVUS-Einstellungen.
 
+Der Launcher folgt der im Control Center gewählten ARGVUS-Oberflächensprache.
+
 `argvus launcher` · `argvus control-center launcher`
 
 ↑↓ Navigieren · Enter Öffnen · Esc Zurück · Ctrl+F Favorit

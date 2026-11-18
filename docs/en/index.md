@@ -35,6 +35,8 @@ The main launcher uses Quickshell/QML with a local Rust search engine. It search
 
 The launcher uses a compact TUI layout: monospaced text, aligned search and category controls, compact favorites and a separate help footer. Border thickness and rounding follow the active ARGVUS layout settings.
 
+The launcher follows the ARGVUS interface language selected in Control Center.
+
 `argvus launcher` · `argvus control-center launcher`
 
 ↑↓ Navigate · Enter Open · Esc Back · Ctrl+F Favorite

@@ -26,6 +26,8 @@ ShellRoot {
     property var themeObject: null
     property string status: ""
     property string locale: "en-US"
+    property bool rightToLeft: false
+    readonly property string catalogRoot: Quickshell.env("ARGVUS_I18N_DIR") || "/usr/share/argvus/i18n"
     readonly property string configHome: Quickshell.env("ARGVUS_CONFIG_HOME") || StandardPaths.writableLocation(StandardPaths.GenericConfigLocation)
     readonly property string dataHome: Quickshell.env("ARGVUS_DATA_HOME") || configHome + "/argvus/data"
     readonly property string systemRoot: Quickshell.env("ARGVUS_SYSTEM_CONFIG") || "/usr/share/argvus"
@@ -156,6 +158,8 @@ ShellRoot {
         });
     }
     function loadCatalog(name, contents) {
+        if (!contents.trim())
+            return;
         try {
             const catalogs = Object.assign({}, I18n.catalogs);
             catalogs[name + "/launcher"] = JSON.parse(contents);
@@ -170,6 +174,9 @@ ShellRoot {
             if (!ready && status === tr("engine_error"))
                 status = "";
             ready = true;
+            root.locale = message.locale || "en-US";
+            root.rightToLeft = message.rtl === true;
+            I18n.locale = root.locale;
             preferences = message.settings;
             const saved = preferences.selected_category || "";
             root.category = preferences.sources.includes(saved) ? saved : "";
@@ -319,22 +326,12 @@ ShellRoot {
             });
         }
     }
-    Process {
-        command: ["argvus", "i18n", "locale"]
-        running: true
-        stdout: StdioCollector {
-            onStreamFinished: {
-                root.locale = text.trim() || "en-US";
-                I18n.locale = root.locale;
-            }
-        }
-    }
     FileView {
-        path: root.systemRoot + "/i18n/en-US/launcher.json"
+        path: root.catalogRoot + "/en-US/launcher.json"
         onTextChanged: root.loadCatalog("en-US", text())
     }
     FileView {
-        path: root.systemRoot + "/i18n/" + root.locale + "/launcher.json"
+        path: root.catalogRoot + "/" + root.locale + "/launcher.json"
         onTextChanged: root.loadCatalog(root.locale, text())
     }
     Process {
@@ -398,6 +395,8 @@ ShellRoot {
         }
         Rectangle {
             id: panel
+            LayoutMirroring.enabled: root.rightToLeft
+            LayoutMirroring.childrenInherit: true
             anchors.horizontalCenter: parent.horizontalCenter
             y: Math.max(24, (overlay.height - height) * 0.35)
             width: Math.min(720, overlay.width - 32)

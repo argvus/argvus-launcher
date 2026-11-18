@@ -38,6 +38,8 @@ description: ランチャーと検索 — Quickshell/QML + Rust.
 
 ランチャーは等幅フォント、整列した検索とカテゴリ、コンパクトなお気に入り、独立したヘルプ欄を備えたTUI風レイアウトを使用します。枠線の太さと角丸はARGVUSの現在の設定に従います。
 
+ランチャーはコントロールセンターで選択した ARGVUS の表示言語を使用します。
+
 `argvus launcher` · `argvus control-center launcher`
 
 ↑↓ 移動 · Enter 開く · Esc 戻る · Ctrl+F お気に入り

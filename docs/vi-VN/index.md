@@ -35,6 +35,8 @@ Trình khởi chạy chính dùng Quickshell/QML và công cụ Rust cục bộ 
 
 Trình khởi chạy dùng bố cục TUI gọn: chữ đơn cách, tìm kiếm và danh mục thẳng hàng, mục yêu thích gọn và phần trợ giúp riêng bên dưới. Độ dày và bo góc viền theo thiết lập ARGVUS hiện hành.
 
+Trình khởi chạy dùng ngôn ngữ giao diện ARGVUS được chọn trong Trung tâm điều khiển.
+
 `argvus launcher` · `argvus control-center launcher`
 
 ↑↓ Di chuyển · Enter Mở · Esc Quay lại · Ctrl+F Yêu thích

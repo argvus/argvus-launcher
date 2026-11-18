@@ -35,6 +35,8 @@ Peluncur utama memakai Quickshell/QML dan mesin Rust lokal untuk aplikasi, jende
 
 Launcher memakai tata letak TUI ringkas: teks monospace, pencarian dan kategori sejajar, favorit ringkas serta bantuan terpisah di bawah. Ketebalan dan lengkungan bingkai mengikuti pengaturan ARGVUS aktif.
 
+Peluncur menggunakan bahasa antarmuka ARGVUS yang dipilih di Pusat Kontrol.
+
 `argvus launcher` · `argvus control-center launcher`
 
 ↑↓ Navigasi · Enter Buka · Esc Kembali · Ctrl+F Favorit

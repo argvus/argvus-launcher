@@ -38,6 +38,8 @@ El lanzador principal usa Quickshell/QML con un motor local en Rust. Busca aplic
 
 El lanzador usa un diseño TUI compacto: texto monoespaciado, búsqueda y categorías alineadas, favoritos compactos y un pie de ayuda separado. El grosor y el redondeo de los bordes siguen la configuración activa de ARGVUS.
 
+El lanzador utiliza el idioma de interfaz de ARGVUS elegido en el Centro de control.
+
 `argvus launcher` · `argvus control-center launcher`
 
 ↑↓ Navegar · Enter Abrir · Esc Volver · Ctrl+F Favorito

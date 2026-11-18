@@ -38,6 +38,8 @@ description: 启动器与搜索 — Quickshell/QML + Rust.
 
 启动器采用紧凑的 TUI 布局：等宽文字、对齐的搜索和分类控件、紧凑的收藏及独立的帮助栏。边框粗细和圆角遵循 ARGVUS 当前布局设置。
 
+启动器使用在控制中心选择的 ARGVUS 界面语言。
+
 `argvus launcher` · `argvus control-center launcher`
 
 ↑↓ 导航 · Enter 打开 · Esc 返回 · Ctrl+F 收藏

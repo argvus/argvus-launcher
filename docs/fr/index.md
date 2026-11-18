@@ -38,6 +38,8 @@ Le lanceur principal utilise Quickshell/QML et un moteur local en Rust. Il reche
 
 Le lanceur utilise une présentation TUI compacte : texte à chasse fixe, recherche et catégories alignées, favoris compacts et aide séparée en bas. Les bordures suivent les réglages actifs d’ARGVUS.
 
+Le lanceur utilise la langue d’interface d’ARGVUS choisie dans le Centre de contrôle.
+
 `argvus launcher` · `argvus control-center launcher`
 
 ↑↓ Naviguer · Enter Ouvrir · Esc Retour · Ctrl+F Favori

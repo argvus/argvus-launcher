@@ -35,6 +35,8 @@ description: المشغّل والبحث — Quickshell/QML + Rust.
 
 يستخدم المشغّل تخطيط TUI مدمجًا بخط ثابت العرض وبحث وفئات متراصة ومفضلة مدمجة وتذييل مساعدة منفصل. تتبع سماكة الحدود واستدارتها إعدادات ARGVUS الحالية.
 
+يتبع المشغّل لغة واجهة ARGVUS المختارة في مركز التحكم.
+
 `argvus launcher` · `argvus control-center launcher`
 
 ↑↓ تنقل · Enter فتح · Esc رجوع · Ctrl+F مفضلة

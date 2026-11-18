@@ -38,6 +38,8 @@ description: 실행기 및 검색 — Quickshell/QML + Rust.
 
 런처는 고정폭 글꼴, 정렬된 검색 및 범주, 간결한 즐겨찾기와 별도 도움말 영역으로 구성된 TUI 레이아웃을 사용합니다. 테두리 두께와 모서리는 현재 ARGVUS 설정을 따릅니다.
 
+런처는 제어 센터에서 선택한 ARGVUS 인터페이스 언어를 사용합니다.
+
 `argvus launcher` · `argvus control-center launcher`
 
 ↑↓ 이동 · Enter 열기 · Esc 뒤로 · Ctrl+F 즐겨찾기

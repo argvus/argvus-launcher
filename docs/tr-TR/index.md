@@ -35,6 +35,8 @@ Ana başlatıcı Quickshell/QML ve yerel Rust arama motoruyla uygulama, pencere,
 
 Başlatıcı; eş aralıklı metin, hizalanmış arama ve kategoriler, kompakt favoriler ve ayrı yardım altbilgisiyle kompakt TUI düzenini kullanır. Kenarlık kalınlığı ve yuvarlama etkin ARGVUS ayarlarını izler.
 
+Başlatıcı, Denetim Merkezi’nde seçilen ARGVUS arayüz dilini kullanır.
+
 `argvus launcher` · `argvus control-center launcher`
 
 ↑↓ Gezin · Enter Aç · Esc Geri · Ctrl+F Favori
