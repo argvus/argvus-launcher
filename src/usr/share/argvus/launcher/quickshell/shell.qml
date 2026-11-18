@@ -167,6 +167,8 @@ ShellRoot {
     }
     function receive(message) {
         if (message.event === "ready") {
+            if (!ready && status === tr("engine_error"))
+                status = "";
             ready = true;
             preferences = message.settings;
             const saved = preferences.selected_category || "";
