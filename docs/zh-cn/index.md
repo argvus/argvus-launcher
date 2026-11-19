@@ -17,7 +17,7 @@ description: 启动器与搜索 — Quickshell/QML + Rust.
 
 | 快捷键 | 操作 | 命令 | 部分 |
 | --- | --- | --- | --- |
-| `SUPER + D` | 应用启动器 | `argvus launcher` | 应用启动器 |
+| `SUPER + D` | ARGVUS Launcher | `argvus launcher` | 应用启动器 |
 | `SUPER + O` | 项目切换器 | `argvus projects` | 项目切换器 |
 | `SUPER + ALT + 1` 到 `9` | 打开该位置的项目 | `argvus projects open N` | 项目切换器 |
 | `SUPER + ALT + S` | SSH 主机选择器 | `argvus ssh` | SSH |

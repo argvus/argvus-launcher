@@ -17,7 +17,7 @@ Le scorciatoie sono dichiarate da `argvus-hyprland`. Questo pacchetto fornisce i
 
 | Scorciatoia | Azione | Comando | Sezione |
 | --- | --- | --- | --- |
-| `SUPER + D` | Avviatore dell'applicazione | `argvus launcher` | Avviatore dell'applicazione |
+| `SUPER + D` | ARGVUS Launcher | `argvus launcher` | Avviatore dell'applicazione |
 | `SUPER + O` | Selettore di progetto | `argvus projects` | Selettore di progetto |
 | `SUPER + ALT + 1` a `9` | Apri il progetto in quella posizione | `argvus projects open N` | Selettore di progetto |
 | `SUPER + ALT + S` | Selettore host SSH | `argvus ssh` | SSH |

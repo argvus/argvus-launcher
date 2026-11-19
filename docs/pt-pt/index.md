@@ -19,7 +19,7 @@ Os atalhos são declarados pelo `argvus-hyprland`. Este pacote fornece os comand
 
 | Atalho | Ação | Comando | Seção |
 | --- | --- | --- | --- |
-| `SUPER + D` | Lançador de aplicações | `argvus launcher` | Lançador de aplicações |
+| `SUPER + D` | ARGVUS Launcher | `argvus launcher` | Lançador de aplicações |
 | `SUPER + O` | Seletor de projetos | `argvus projects` | Seletor de projetos |
 | `SUPER + ALT + 1` a `9` | Abre o projeto nessa posição | `argvus projects open N` | Seletor de projetos |
 | `SUPER + ALT + S` | Seletor de hosts SSH | `argvus ssh` | SSH |

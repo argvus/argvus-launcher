@@ -1,6 +1,6 @@
 # argvus-launcher
 
-Universal Quickshell launcher with a local Rust search engine, themes and specialized Rofi menus for the ARGVUS desktop.
+**ARGVUS Launcher** is a universal Quickshell launcher with a local Rust search engine, themes and specialized Rofi menus for the ARGVUS desktop.
 
 [![CI](https://github.com/argvus/argvus-launcher/actions/workflows/ci.yml/badge.svg)](https://github.com/argvus/argvus-launcher/actions/workflows/ci.yml)
 [![Release](https://github.com/argvus/argvus-launcher/actions/workflows/release.yml/badge.svg)](https://github.com/argvus/argvus-launcher/actions/workflows/release.yml)

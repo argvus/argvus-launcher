@@ -17,7 +17,7 @@ Die Tastenkombinationen werden von `argvus-hyprland` deklariert. Dieses Paket st
 
 | Shortcut | Aktion | Befehl | Abschnitt |
 | --- | --- | --- | --- |
-| `SUPER + D` | Anwendungsstarter | `argvus launcher` | Anwendungsstarter |
+| `SUPER + D` | ARGVUS Launcher | `argvus launcher` | Anwendungsstarter |
 | `SUPER + O` | Projektwechsler | `argvus projects` | Projektwechsler |
 | `SUPER + ALT + 1` bis `9` | Öffne das Projekt an dieser Position | `argvus projects open N` | Projektwechsler |
 | `SUPER + ALT + S` | SSH-Host-Auswahl | `argvus ssh` | SSH |

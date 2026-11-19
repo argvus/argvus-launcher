@@ -18,7 +18,7 @@ The shortcuts are declared by `argvus-hyprland`. This package provides the comma
 
 | Shortcut | Action | Command | Section |
 | --- | --- | --- | --- |
-| `SUPER + D` | Application launcher | `argvus launcher` | Application launcher |
+| `SUPER + D` | ARGVUS Launcher | `argvus launcher` | Application launcher |
 | `SUPER + O` | Project switcher | `argvus projects` | Project switcher |
 | `SUPER + ALT + 1` to `9` | Open the project in that position | `argvus projects open N` | Project switcher |
 | `SUPER + ALT + S` | SSH host picker | `argvus ssh` | SSH |

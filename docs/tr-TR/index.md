@@ -18,7 +18,7 @@ Kısayollar `argvus-hyprland` tarafından beyan edilmiştir. Bu paket, komutlar�
 
 | Kısayol | Eylem | Komut | Bölüm |
 | --- | --- | --- | --- |
-| `SUPER + D` | Uygulama başlatıcısı | `argvus launcher` | Uygulama başlatıcısı |
+| `SUPER + D` | ARGVUS Launcher | `argvus launcher` | Uygulama başlatıcısı |
 | `SUPER + O` | Proje değiştirici | `argvus projects` | Proje değiştirici |
 | `SUPER + ALT + 1` - `9` | Projeyi bu konumda açın | `argvus projects open N` | Proje değiştirici |
 | `SUPER + ALT + S` | SSH ana bilgisayar seçici | `argvus ssh` | SSH |

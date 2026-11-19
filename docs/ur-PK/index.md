@@ -18,7 +18,7 @@ description: لانچر اور تلاش — Quickshell/QML + Rust.
 
 | شارٹ کٹ | ایکشن | کمانڈ | سیکشن |
 | --- | --- | --- | --- |
-| `SUPER + D` | ایپلیکیشن لانچر | `argvus launcher` | ایپلیکیشن لانچر |
+| `SUPER + D` | ARGVUS Launcher | `argvus launcher` | ایپلیکیشن لانچر |
 | `SUPER + O` | پروجیکٹ سوئچر | `argvus projects` | پروجیکٹ سوئچر |
 | `SUPER + ALT + 1` to `9`                                                 | ﮟﯿﻟﻮﮭﮐ ﮧﺑﻮﺼﻨﻣ ﺮﭘ ﻡﺎﻘﻣ ﺱﺍ | `argvus projects open N`                                                            | ﺮﭽﺋﻮﺳ ﭧﮑﯿﺟﻭﺮﭘ |
 | `SUPER + ALT + S` | SSH میزبان چننے والا | `argvus ssh` | SSH |

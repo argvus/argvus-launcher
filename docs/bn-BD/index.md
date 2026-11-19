@@ -18,7 +18,7 @@ description: লঞ্চার ও অনুসন্ধান — Quickshell/Q
 
 | শর্টকাট | কর্ম | আদেশ | বিভাগ |
 | --- | --- | --- | --- |
-| `SUPER + D` | অ্যাপ্লিকেশন লঞ্চার | `argvus launcher` | অ্যাপ্লিকেশন লঞ্চার |
+| `SUPER + D` | ARGVUS Launcher | `argvus launcher` | অ্যাপ্লিকেশন লঞ্চার |
 | `SUPER + O` | প্রজেক্ট সুইচার | `argvus projects` | প্রজেক্ট সুইচার |
 | `SUPER + ALT + 1` to `9` | প্রকল্পটি সেই অবস্থানে খুলুন | `argvus projects open N` | প্রজেক্ট সুইচার |
 | `SUPER + ALT + S` | SSH হোস্ট পিকার | `argvus ssh` | SSH |

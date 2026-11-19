@@ -17,7 +17,7 @@ description: ランチャーと検索 — Quickshell/QML + Rust.
 
 | ショートカット | アクション | コマンド | セクション |
 | --- | --- | --- | --- |
-| `SUPER + D` | アプリケーションランチャー | `argvus launcher` | アプリケーションランチャー |
+| `SUPER + D` | ARGVUS Launcher | `argvus launcher` | アプリケーションランチャー |
 | `SUPER + O` | プロジェクト切り替え | `argvus projects` | プロジェクト切り替え |
 | `SUPER + ALT + 1` から `9` | その位置のプロジェクトを開く | `argvus projects open N` | プロジェクト切り替え |
 | `SUPER + ALT + S` | SSHホストピッカー | `argvus ssh` | SSH |

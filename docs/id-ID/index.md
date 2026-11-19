@@ -18,7 +18,7 @@ Pintasan dideklarasikan oleh `argvus-hyprland`. Paket ini menyediakan perintah-p
 
 | Pintasan | Aksi | Perintah | Bagian |
 | --- | --- | --- | --- |
-| `SUPER + D` | Peluncur aplikasi | `argvus launcher` | Peluncur aplikasi |
+| `SUPER + D` | ARGVUS Launcher | `argvus launcher` | Peluncur aplikasi |
 | `SUPER + O` | Pengalih proyek | `argvus projects` | Pengalih proyek |
 | `SUPER + ALT + 1` to `9` | Buka proyek di posisi itu | `argvus projects open N` | Pengalih proyek |
 | `SUPER + ALT + S` | Pemilih host SSH | `argvus ssh` | SSH |

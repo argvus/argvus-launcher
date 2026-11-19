@@ -18,7 +18,7 @@ description: المشغّل والبحث — Quickshell/QML + Rust.
 
 | الاختصار | العمل | الأمر | القسم |
 | --- | --- | --- | --- |
-| `SUPER + D` | مشغل التطبيقات | `argvus launcher` | مشغل التطبيقات |
+| `SUPER + D` | ARGVUS Launcher | `argvus launcher` | مشغل التطبيقات |
 | `SUPER + O` | مشروع الجلاد | `argvus projects` | مشروع الجلاد |
 | `SUPER + ALT + 1` to `9`                                               | ﻊﺿﻮﻤﻟﺍ ﻚﻟﺫ ﻲﻓ ﻉﻭﺮﺸﻤﻟﺍ ﺢﺘﻓﺍ | `argvus projects open N`                                                             | ﻉﻭﺮﺸﻤﻟﺍ ﻝّﺪﺒﻣ |
 | `SUPER + ALT + S` | منتقي مضيف SSH | `argvus ssh` | سش |

@@ -17,7 +17,7 @@ description: 실행기 및 검색 — Quickshell/QML + Rust.
 
 | 바로가기 | 동작 | 명령 | 섹션 |
 | --- | --- | --- | --- |
-| `SUPER + D` | 애플리케이션 실행기 | `argvus launcher` | 애플리케이션 실행기 |
+| `SUPER + D` | ARGVUS Launcher | `argvus launcher` | 애플리케이션 실행기 |
 | `SUPER + O` | 프로젝트 전환기 | `argvus projects` | 프로젝트 전환기 |
 | `SUPER + ALT + 1` ~ `9` | 해당 위치의 프로젝트 열기 | `argvus projects open N` | 프로젝트 전환기 |
 | `SUPER + ALT + S` | SSH 호스트 선택기 | `argvus ssh` | SSH |

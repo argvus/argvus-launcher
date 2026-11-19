@@ -18,7 +18,7 @@ description: लॉन्चर और खोज — Quickshell/QML + Rust.
 
 | शॉर्टकट | कार्रवाई | आदेश | धारा |
 | --- | --- | --- | --- |
-| `SUPER + D` | एप्लिकेशन लॉन्चर | `argvus launcher` | एप्लिकेशन लॉन्चर |
+| `SUPER + D` | ARGVUS Launcher | `argvus launcher` | एप्लिकेशन लॉन्चर |
 | `SUPER + O` | प्रोजेक्ट स्विचर | `argvus projects` | प्रोजेक्ट स्विचर |
 | `SUPER + ALT + 1` to `9`उस स्थिति में प्रोजेक्ट खोलें`argvus projects open N` | प्रोजेक्ट स्विचर |
 | `SUPER + ALT + S` | SSH होस्ट पिकर | `argvus ssh` | एसएसएच |

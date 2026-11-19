@@ -17,7 +17,7 @@ Los atajos se declaran mediante `argvus-hyprland`. Este paquete proporciona los 
 
 | Atajo | Acción | Comando | Sección |
 | --- | --- | --- | --- |
-| `SUPER + D` | Lanzador de aplicaciones | `argvus launcher` | Lanzador de aplicaciones |
+| `SUPER + D` | ARGVUS Launcher | `argvus launcher` | Lanzador de aplicaciones |
 | `SUPER + O` | Cambiador de proyectos | `argvus projects` | Cambiador de proyectos |
 | `SUPER + ALT + 1` a `9` | Abrir el proyecto en esa posición | `argvus projects open N` | Cambiador de proyectos |
 | `SUPER + ALT + S` | Selector de host SSH | `argvus ssh` | SSH |

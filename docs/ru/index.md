@@ -17,7 +17,7 @@ description: Запуск и поиск — Quickshell/QML + Rust.
 
 | Ярлык | Действие | Команда | Раздел |
 | --- | --- | --- | --- |
-| `SUPER + D` | Запуск приложений | `argvus launcher` | Запуск приложений |
+| `SUPER + D` | ARGVUS Launcher | `argvus launcher` | Запуск приложений |
 | `SUPER + O` | Переключение проекта | `argvus projects` | Переключение проекта |
 | `SUPER + ALT + 1` до `9` | Открыть проект в этой позиции | `argvus projects open N` | Переключение проекта |
 | `SUPER + ALT + S` | Выбор SSH-хоста | `argvus ssh` | SSH |

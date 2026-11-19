@@ -421,15 +421,37 @@ ShellRoot {
                 spacing: 8
                 RowLayout {
                     Layout.fillWidth: true
-                    Label {
-                        text: "ARGVUS / " + root.tr("source_applications")
-                        color: root.accent
-                        font.family: root.textFont
-                        font.bold: true
-                        font.pixelSize: 13
-                    }
-                    Item {
+                    Layout.bottomMargin: 4
+                    RowLayout {
                         Layout.fillWidth: true
+                        layoutDirection: Qt.LeftToRight
+                        LayoutMirroring.enabled: false
+                        spacing: 14
+
+                        Label {
+                            text: "ARGVUS"
+                            color: 0.299 * root.accent.r + 0.587 * root.accent.g + 0.114 * root.accent.b >= 128 / 255 ? "black" : "white"
+                            font.family: "monospace"
+                            font.bold: true
+                            font.pixelSize: 21
+                            leftPadding: 10
+                            rightPadding: 10
+                            topPadding: 2
+                            bottomPadding: 2
+                            background: Rectangle {
+                                color: root.accent
+                            }
+                        }
+                        Label {
+                            Layout.fillWidth: true
+                            Layout.minimumWidth: 0
+                            text: "Launcher"
+                            color: root.foreground
+                            font.family: "monospace"
+                            font.bold: true
+                            font.pixelSize: 24
+                            elide: Text.ElideRight
+                        }
                     }
                     Button {
                         id: configureButton

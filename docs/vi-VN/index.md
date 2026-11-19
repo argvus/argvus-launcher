@@ -18,7 +18,7 @@ Các phím tắt được khai báo bởi `argvus-hyprland`. Gói này cung cấ
 
 | Phím tắt | Hành động | Lệnh | Phần |
 | --- | --- | --- | --- |
-| `SUPER + D` | Trình khởi chạy ứng dụng | `argvus launcher` | Trình khởi chạy ứng dụng |
+| `SUPER + D` | ARGVUS Launcher | `argvus launcher` | Trình khởi chạy ứng dụng |
 | `SUPER + O` | Chuyển đổi dự án | `argvus projects` | Chuyển đổi dự án |
 | `SUPER + ALT + 1` to `9` | Mở dự án ở vị trí đó | `argvus projects open N` | Project switcher |
 | `SUPER + ALT + S` | Bộ chọn máy chủ SSH | `argvus ssh` | SSH |

@@ -17,7 +17,7 @@ Les raccourcis sont déclarés par `argvus-hyprland`. Ce paquet fournit les comm
 
 | Raccourci | Action | Commande | Section |
 | --- | --- | --- | --- |
-| `SUPER + D` | Lanceur d'application | `argvus launcher` | Lanceur d'application |
+| `SUPER + D` | ARGVUS Launcher | `argvus launcher` | Lanceur d'application |
 | `SUPER + O` | Sélecteur de projet | `argvus projects` | Sélecteur de projet |
 | `SUPER + ALT + 1` à `9` | Ouvrir le projet à cette position | `argvus projects open N` | Sélecteur de projet |
 | `SUPER + ALT + S` | Sélecteur d'hôte SSH | `argvus ssh` | SSH |
