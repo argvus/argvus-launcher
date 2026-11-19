@@ -19,8 +19,8 @@ require_command shellcheck
 
 cd "$ROOT_DIR"
 
-shellcheck tools/sh/*.sh packaging/arch/common/*.sh src/usr/bin/argvus-launcher src/usr/share/argvus/launcher/sh/*.sh
-bash -n tools/sh/*.sh packaging/arch/common/*.sh src/usr/bin/argvus-launcher src/usr/share/argvus/launcher/sh/*.sh
+shellcheck tools/sh/*.sh packaging/arch/common/*.sh src/usr/bin/argvus-launcher
+bash -n tools/sh/*.sh packaging/arch/common/*.sh src/usr/bin/argvus-launcher
 shellcheck src/usr/bin/argvus-snippets src/usr/bin/argvus-ssh src/usr/bin/argvus-git tests/config-bin.sh tests/git.sh
 bash tests/config-bin.sh
 bash tests/git.sh

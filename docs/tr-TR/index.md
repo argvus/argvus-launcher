@@ -24,7 +24,7 @@ Kısayollar `argvus-hyprland` tarafından beyan edilmiştir. Bu paket, komutlar�
 | `SUPER + ALT + S` | SSH ana bilgisayar seçici | `argvus ssh` | SSH |
 | `SUPER + ALT + N` | Parçacık seçici | `argvus snippets` | Parçacıklar |
 | `SUPER + ALT + G` | Proje seçici, ardından git TUI | `argvus git` | Git |
-| `SUPER + .` | Emoji seçici | `emoji-picker.sh` | Emoji seçici |
+| `SUPER + .` | ARGVUS Emoji | `argvus emoji-picker` | ARGVUS Emoji |
 | `SUPER + C` | Hesap Makinesi | `argvus calculator` | Hesap Makinesi |
 
 ## Başlatıcı ve Arama
@@ -374,11 +374,9 @@ Değişken, betiği çalıştıran komutun ortamından okunur. ARGVUS yapıland�
 
 ## Emoji seçici (`SUPER + .`)
 
-`SUPER + .`, ARGVUS Rofi yapılandırması ile `rofimoji`'yi açar. Bir emojiyi adına göre arayın, `Enter`'ye basın ve emoji panoya kopyalanır. `Ctrl + V` ile istediğiniz uygulamaya yapıştırın.
+`SUPER + .` → **ARGVUS Emoji** (`argvus emoji-picker`). ←↑↓→  Tab   / Ada veya anahtar sözcüğe göre ara   Enter Ekle   Ctrl+C Kopyala   Ctrl+D Favoriler   Esc.
 
-Seçici açıkken, oturum normalde gösterdiği klavye düzeni bildirimlerini yok sayar. Başlatıcı, ARGVUS önbellek dizininde kısa ömürlü bir işaretçi yazar ve seçici kapandıktan yaklaşık bir saniye sonra bunu kaldırır.
-
-`rofimoji` ve `wl-clipboard` gerektirir.
+Seçici Tümü sekmesinde açılır. Tab kategoriler arasında geçiş yapar, ok tuşları emoji ızgarasında gezinir.
 
 ## Hesap Makinesi (`SUPER + C`)
 
@@ -399,7 +397,7 @@ Başlatıcı yapılandırması diğer paketlere ait bileşenlerle paylaşılır:
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` ve `argvus-git`, aynı dizin altında;
 - `/usr/share/argvus/launcher/config/`, Rofi yapılandırması ve temaları ile;
 
-Gerekli bağımlılıklar: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` ve `pinentry` (`pinentry-gtk` sağlar). İsteğe bağlı bağımlılıklar: `openssh`, SSH seçici ve SSH anahtar yöneticisi için; `lazygit` ve `gitui`, git TUI için.
+Gerekli bağımlılıklar: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `wl-clipboard`, `wtype`, `gnupg` ve `pinentry` (`pinentry-gtk` sağlar). İsteğe bağlı bağımlılıklar: `openssh`, SSH seçici ve SSH anahtar yöneticisi için; `lazygit` ve `gitui`, git TUI için.
 
 Paketin kurulumu `$HOME` içerisine yazmaz. Kullanıcı yapılandırması, [Rofi configuration and themes](#where-the-active-configuration-lives) bölümünde açıklandığı gibi oturum başında oluşturulur.
 
@@ -412,7 +410,7 @@ Paketin kurulumu `$HOME` içerisine yazmaz. Kullanıcı yapılandırması, [Rofi
 | Menüler eski bir yazı tipini kullanıyor | `font:` satırı oturum başlangıcında yeniden yazılır. Yazı tipini değiştirdikten sonra oturumu yeniden başlatın. |
 | Tema değişikliği Rofi menülerine ulaşmıyor | `$XDG_CONFIG_HOME/argvus/data/rofi/`'daki `config.rasi` kullanıcı kopyasının hala paketlenmiş temayı gösterip göstermediğini kontrol edin. Temayı `argvus-appearance`'dan tekrar uygulayın. |
 | `SUPER + O` hiçbir proje bulunamadığını bildiriyor | Hiçbir kök veya yol yapılandırılmamış veya dizinler artık mevcut değil. `argvus projects list`'yu çalıştırın. |
-| `SUPER + C` veya emoji seçici açılmıyor | `argvus` veya `rofimoji`'yu yükleyin (her ikisi de gerekli bağımlılıklardır). |
+| `SUPER + C` / `SUPER + .` | `argvus`, `wl-clipboard`, `wtype` |
 | Hile sayfası açılmıyor | Bu ismin ve dilin dosyası mevcut değil. Hile Sayfaları bölümünde açıklanan yolları kontrol edin. |
 | `SUPER + H` hiçbir şey göstermiyor | Geçmiş boş veya pano kaydedici şundan `argvus-session` has not stored anything yet. |
 

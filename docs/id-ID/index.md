@@ -24,7 +24,7 @@ Pintasan dideklarasikan oleh `argvus-hyprland`. Paket ini menyediakan perintah-p
 | `SUPER + ALT + S` | Pemilih host SSH | `argvus ssh` | SSH |
 | `SUPER + ALT + N` | Pemilih cuplikan | `argvus snippets` | Cuplikan |
 | `SUPER + ALT + G` | Pemilih proyek, lalu git TUI | `argvus git` | Git |
-| `SUPER + .` | Pemilih emoji | `emoji-picker.sh` | Pemilih emoji |
+| `SUPER + .` | ARGVUS Emoji | `argvus emoji-picker` | ARGVUS Emoji |
 | `SUPER + C` | Kalkulator | `argvus calculator` | Kalkulator |
 
 ## Peluncur dan Pencarian
@@ -388,11 +388,9 @@ Variabel ini dibaca dari lingkungan perintah yang menjalankan skrip. Ini tidak d
 
 ## Pemilih emoji (`SUPER + .`)
 
-`SUPER + .` membuka `rofimoji` dengan konfigurasi Rofi ARGVUS. Cari emoji berdasarkan nama, tekan `Enter`, dan emoji akan disalin ke clipboard. Tempelkan dengan `Ctrl + V` di aplikasi yang Anda inginkan.
+`SUPER + .` → **ARGVUS Emoji** (`argvus emoji-picker`). ←↑↓→  Tab   / Cari berdasarkan nama atau kata kunci   Enter Sisipkan   Ctrl+C Salin   Ctrl+D Favorit   Esc.
 
-Saat pemilih terbuka, sesi mengabaikan notifikasi tata letak keyboard yang seharusnya ditampilkan. Peluncur menulis penanda sementara di direktori cache ARGVUS dan menghapusnya sekitar satu detik setelah pemilih ditutup.
-
-Memerlukan `rofimoji` dan `wl-clipboard`.
+Pemilih dibuka pada tab Semua. Tab berpindah kategori dan tombol panah menavigasi kisi emoji.
 
 ## Kalkulator (`SUPER + C`)
 
@@ -413,7 +411,7 @@ Paket `argvus-launcher` bersifat independen terhadap arsitektur dan menginstal:
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` dan `argvus-git`, di bawah direktori yang sama;
 - `/usr/share/argvus/launcher/config/`, dengan konfigurasi dan tema Rofi;
 
-Dependensi yang dibutuhkan: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` dan `pinentry` (yang menyediakan `pinentry-gtk`). Dependensi opsional: `openssh`, untuk pemilih SSH dan manajer kunci SSH; `lazygit` dan `gitui`, untuk TUI git.
+Dependensi yang dibutuhkan: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `wl-clipboard`, `wtype`, `gnupg` dan `pinentry` (yang menyediakan `pinentry-gtk`). Dependensi opsional: `openssh`, untuk pemilih SSH dan manajer kunci SSH; `lazygit` dan `gitui`, untuk TUI git.
 
 Menginstal paket tidak menulis ke `$HOME`. Konfigurasi pengguna dibuat saat sesi dimulai, seperti yang dijelaskan dalam [Konfigurasi dan tema Rofi](#where-the-active-configuration-lives).
 
@@ -426,7 +424,7 @@ Menginstal paket tidak menulis ke `$HOME`. Konfigurasi pengguna dibuat saat sesi
 | Menu menggunakan font lama | The `font:`baris ditulis ulang saat sesi dimulai. Mulai ulang sesi setelah mengganti font. |
 | Perubahan tema tidak mencapai menu Rofi | Periksa apakah salinan pengguna dari `config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/`masih mengarah ke tema yang dikemas. Terapkan tema dari`argvus-appearance` again. |
 | `SUPER + O`melaporkan bahwa tidak ada proyek yang ditemukan | Tidak ada root atau jalur yang dikonfigurasi, atau direktori sudah tidak ada. Jalankan `argvus projects list`. |
-| `SUPER + C`atau pemilih emoji tidak terbuka | Instal`argvus` or `rofimoji`(keduanya adalah dependensi yang diperlukan). |
+| `SUPER + C` / `SUPER + .` | `argvus`, `wl-clipboard`, `wtype` |
 | Panduan cepat tidak terbuka | File dengan nama dan bahasa tersebut tidak ada. Periksa jalur yang dijelaskan di bagian Panduan Cepat. |
 | `SUPER + H`menunjukkan tidak ada | Riwayat kosong, atau perekam papan klip dari`argvus-session`belum menyimpan apa pun.
 

@@ -24,7 +24,7 @@ description: لانچر اور تلاش — Quickshell/QML + Rust.
 | `SUPER + ALT + S` | SSH میزبان چننے والا | `argvus ssh` | SSH |
 | `SUPER + ALT + N` | ٹکڑا چننے والا | `argvus snippets` | ٹکڑوں |
 | `SUPER + ALT + G` | پروجیکٹ چننے والا، پھر گٹ TUI | `argvus git` | گٹ |
-| `SUPER + .` | ایموجی چننے والا | `emoji-picker.sh` | ایموجی چننے والا |
+| `SUPER + .` | ARGVUS Emoji | `argvus emoji-picker` | ARGVUS Emoji |
 | `SUPER + C` | کیلکولیٹر | `argvus calculator` | کیلکولیٹر |
 
 ## لانچر اور تلاش
@@ -386,17 +386,15 @@ ARGVUS_GIT_TUI=gitui argvus git
               ﮟﯿﮨ ﮟﯿﮩﻧ ﺩﻮﺟﻮﻣ ﺕﻻ﻿ﺁ ﮞﻮﻧﻭﺩ | "ﮟﯾﺮﮐ ﻝﺎﭩﺴﻧﺍ gitui ﺎﯾ lazygit" ﻉﻼ﻿ﻃﺍ |`PATH`                                                | ۔ﮟﯾﺮﮐ ﻝﺎﭩﺴﻧﺍ ﮏﯾﺍ ﮯﺳ ﮟﯿﻣ ﻥﺍ ۔
  ﮟﯾﺮﮐ ﻝﺎﻤﻌﺘﺳﺍ ۔ﺎﯿﮔ ﺎﯿﮐ ﮟﯿﮩﻧ ﻞﻣﺎﺷ ﭧﮑﯿﺟﻭﺮﭘ ﯽﺋﻮﮐ | ﺎﺗﺎﮭﮐﺩ ﮟﯿﮩﻧ ﺲﭩﮑﯿﺟﻭﺮﭘ ﯽﺋﻮﮐ ﺮﮑﭘ `argvus projects add`. |
 
-##                                            (`SUPER + .`) ﻻ﻿ﺍﻭ ﮯﻨﻨﭼ ﯽﺟﻮﻤﯾﺍ
+## ARGVUS Emoji (`SUPER + .`)
 
-`SUPER + .` opens `rofimoji`ARGVUS Rofi ﮟﯿﺋﺎﺑﺩ ،ﮟﯾﺮﮐ ﺵﻼ﻿ﺗ ﯽﺟﻮﻤﯾﺍ ﮯﺳ ﻡﺎﻧ ۔ﮫﺗﺎﺳ ﮯﮐ ﺐﯿﺗﺮﺗ ﯽﮐ `Enter`                ﮟﯾﺮﮐ ﭧﺴﯿﭘ ﮫﺗﺎﺳ ﮯﮐ ﮯﺳﺍ ۔ﮯﮨ ﯽﺌﮔ ﻮﮨ ﯽﭘﺎﮐ ﺮﭘ ﮈﺭﻮﺑ ﭗﻠﮐ ﯽﺟﻮﻤﯾﺍ ﺭﻭﺍ ،`Ctrl + V`                                                  ۔ﮟﯿﮨ ﮯﺘﮨﺎﭼ ﭖﺁ ﻮﺟ ﮟﯿﻣ ﺖﺳﺍﻮﺧﺭﺩ
+`SUPER + .` → **ARGVUS Emoji** (`argvus emoji-picker`). ←↑↓→  Tab   / نام یا کلیدی لفظ سے تلاش کریں   Enter داخل کریں   Ctrl+C نقل کریں   Ctrl+D پسندیدہ   Esc.
 
-۔ﮯﮨ ﺎﺘﯾﺩ ﺎﭩﮨ ﮯﺳﺍ ﺪﻌﺑ ﮉﻨﮑﯿﺳ ﮏﯾﺍ ًﺎﺒﯾﺮﻘﺗ ﮯﮐ ﮯﻧﻮﮨ ﺪﻨﺑ ﮦﺪﻨﻨﮐ ﺐﺨﺘﻨﻣ ﺭﻭﺍ ﮯﮨ ﺎﺘﮭﮑﻟ ﻥﺎﺸ
+منتخب کنندہ تمام کے ٹیب پر کھلتا ہے۔ Tab سے زمرے بدلیں اور تیر والے بٹنوں سے ایموجی منتخب کریں۔
 
-`rofimoji` ﺭﻭﺍ `wl-clipboard` ۔ﮯﮨ ﺕﺭﻭﺮﺿ ﯽﮐ
+## کیلکولیٹر (`SUPER + C`)
 
-##                                                  (`SUPER + C`) ﺮﭩﯿﻟﻮﮑﻠﯿﮐ
-
-
+`SUPER + C` سے کیلکولیٹر (`argvus calculator`) کھلتا ہے۔
 
 ##                                    ﮟﯿﮨ ﮯﺗﺮﮐ ﻝﺎﻤﻌﺘﺳﺍ ﺐﯿﺗﺮﺗ ﯽﮐ ﯽﻓﻭﺭ ﻮﺟ ﻮﻨﯿﻣ ﺮﮕﯾﺩ
 
@@ -415,7 +413,7 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 
 
-Installing the package does not write into  gitui  lazygit  openssh  pinentry-gtk  pinentry  gnupg  wtype  wl-clipboard  rofimoji   rofi  libnotify  hyprland  jq  bash  argvus  argvus-appearance  `argvus-session`  `argvus-appearance`  `argvus`  `bash`  `jq`  `hyprland`  `libnotify`  `rofi`  `argvus calculator`  `rofimoji`  `wl-clipboard`  `wtype`  `gnupg`  `pinentry`  `pinentry-gtk`  `openssh`  `lazygit`  `gitui` `$HOME`. User configuration is created at session start, as described in [Rofi configuration and themes](#where-the-active-configuration-lives).
+Installing the package does not write into  gitui  lazygit  openssh  pinentry-gtk  pinentry  gnupg  wtype  wl-clipboard     rofi  libnotify  hyprland  jq  bash  argvus  argvus-appearance  `argvus-session`  `argvus-appearance`  `argvus`  `bash`  `jq`  `hyprland`  `libnotify`  `rofi`  `argvus calculator`  `wl-clipboard`  `wtype`  `gnupg`  `pinentry`  `pinentry-gtk`  `openssh`  `lazygit`  `gitui` `$HOME`. User configuration is created at session start, as described in [Rofi configuration and themes](#where-the-active-configuration-lives).
 
 ## خرابی کا سراغ لگانا
 
@@ -426,7 +424,7 @@ Installing the package does not write into  gitui  lazygit  openssh  pinentry-gt
                                       | ﮟﯿﮨ ﮯﺗﺮﮐ ﻝﺎﻤﻌﺘﺳﺍ ﭧﻧﻮﻓ ﺎﻧﺍﺮﭘ ﮏﯾﺍ ﻮﻨﯿﻣ |`font:`| ۔ﮟﯾﺮﮐ ﻉﻭﺮﺷ ﮦﺭﺎﺑﻭﺩ ﻮﮐ ﻦﺸﯿﺳ ﺪﻌﺑ ﮯﮐ ﮯﻧﺮﮐ ﻞﯾﺪﺒﺗ ﭧﻧﻮﻓ ۔ﮯﮨ ﯽﺗﺎﺟ ﯽﮭﮑﻟ ﮦﺭﺎﺑﻭﺩ ﻦﺋﻻ﻿ ﺮﭘ
 | A theme change does not reach the Rofi menus | Check whether the user copy of `config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/`                 ﮟﯾﺮﮐ ﻮﮔﻻ﻿ ﮯﺳ ﻮﮐ ﻢﯿﮭﺗ ۔ﮯﮨ ﺎﺗﺮﮐ ﮦﺭﺎﺷﺍ ﻑﺮﻃ ﯽﮐ ﻢﯿﮭﺗ ﮦﺪﺷ ﮏﯿﭘ ﯽﮭﺑ ﺏﺍ`argvus-appearance` again. |
 | `SUPER + O` ﮟﯿﺋﻼ﻿ﭼ ۔ﮟﯿﮨ ﮟﯿﮩﻧ ﺩﻮﺟﻮﻣ ﺏﺍ ﺰﯾﺮﭩﮑﯾﺮﺋﺍﮈ ﺎﯾ ،ﮯﮨ ﮟﯿﮩﻧ ﮧﺘﻓﺎﯾ ﺐﯿﺗﺮﺗ ﮧﺘﺳﺍﺭ ﺎﯾ ﭦﻭﺭ ﯽﺋﻮﮐ`argvus projects list`. |
-| `SUPER + C`                                        ﮟﯾﺮﮐ ﻝﺎﭩﺴﻧﺍ | ﺎﺘﻠﮭﮐ ﮟﯿﮩﻧ ﺮَﮑﭘ ﯽﺟﻮﻤﯾﺍ ﺎﯾ`argvus` or `rofimoji`                                                  | .(ﮟﯿﮨ ﺭﺎﺼﺤﻧﺍ ﯼﺭﻭﺮﺿ ﮞﻮﻧﻭﺩ)
+| `SUPER + C` / `SUPER + .` | `argvus`, `wl-clipboard`, `wtype` |
 | ۔ﮟﯾﺮﮐ ﭻﻧﺎﺟ ﯽﮐ ﮞﻮﺘﺳﺍﺭ ﮦﺪﺷ ﻥﺎﯿﺑ ﮟﯿﻣ ﻦﺸﮑﯿﺳ ﮯﮐ ﺲﭩﯿﺷ ﭧﯿﭼ ۔ﮯﮨ ﮟﯿﮩﻧ ﺩﻮﺟﻮﻣ ﻞﺋﺎﻓ ﮯﯿﻟ
 | `SUPER + H`                   ﮯﺳ ﺭﮈﺭﺎﮑﯾﺭ ﮈﺭﻮﺑ ﭗﻠﮐ ﺎﯾ ،ﮯﮨ ﯽﻟﺎﺧ ﺦﯾﺭﺎﺗ | ﺎﺗﺎﮭﮐﺩ ﮟﯿﮩﻧ ﯽﮭﺑ ﮫﭽﮐ`argvus-session` has not stored anything yet. |
 

@@ -17,7 +17,6 @@ depends=(
   'quickshell'
   'qt6-declarative'
   'rofi'
-  'rofimoji'
   'wl-clipboard'
   'wtype'
   'gnupg'

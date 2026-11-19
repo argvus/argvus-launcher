@@ -23,7 +23,7 @@ description: 启动器与搜索 — Quickshell/QML + Rust.
 | `SUPER + ALT + S` | SSH 主机选择器 | `argvus ssh` | SSH |
 | `SUPER + ALT + N` | 代码片段选择器 | `argvus snippets` | 代码片段 |
 | `SUPER + ALT + G` | 项目选择器，然后使用 git TUI | `argvus git` | Git |
-| `SUPER + .` | 表情符号选择器 | `emoji-picker.sh` | 表情符号选择器 |
+| `SUPER + .` | ARGVUS Emoji | `argvus emoji-picker` | ARGVUS Emoji |
 | `SUPER + C` | 计算器 | `argvus calculator` | 计算器 |
 
 ## 启动器与搜索
@@ -358,11 +358,9 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 ## 表情符号选择器 (`SUPER + .`)
 
-`SUPER + .` 使用 ARGVUS Rofi 配置打开 `rofimoji`。通过名称搜索表情符号，按 `Enter`，然后表情符号将被复制到剪贴板。在需要的应用程序中使用 `Ctrl + V` 粘贴。
+`SUPER + .` → **ARGVUS Emoji** (`argvus emoji-picker`). ←↑↓→  Tab   / 按名称或关键词搜索   Enter 插入   Ctrl+C 复制   Ctrl+D 收藏   Esc.
 
-当选择器打开时，会话会忽略它本应显示的键盘布局通知。启动器会在 ARGVUS 缓存目录中写入一个短期存在的标记，并在选择器关闭约一秒后将其移除。
-
-需要 `rofimoji` 和 `wl-clipboard`。
+选择器默认打开“全部”标签页。用 Tab 循环切换类别，用方向键浏览表情网格。
 
 ## 计算器 (`SUPER + C`)
 
@@ -395,7 +393,7 @@ ARGVUS_GIT_TUI=gitui argvus git
 | 菜单使用了旧字体 | `font:` 行在会话开始时会被重写。更改字体后请重启会话。 |
 | 主题更改没有应用到 Rofi 菜单 | 检查用户副本 `config.rasi` 在 `$XDG_CONFIG_HOME/argvus/data/rofi/` 中是否仍指向打包的主题。再次应用 `argvus-appearance` 中的主题。 |
 | `SUPER + O` 报告未找到任何项目 | 没有配置根目录或路径，或者目录已不存在。运行 `argvus projects list`。 |
-| `SUPER + C` 或表情符号选择器无法打开 | 安装 `argvus` 或 `rofimoji`（两者都是必需依赖）。 |
+| `SUPER + C` / `SUPER + .` | `argvus`, `wl-clipboard`, `wtype` |
 | 快捷参考表无法打开 | 该名称和语言的文件不存在。检查快捷参考表部分描述的路径。 |
 | `SUPER + H` 什么都不显示 | 历史记录为空，或者 `argvus-session` 的剪贴板记录器还没有存储任何内容。 |
 

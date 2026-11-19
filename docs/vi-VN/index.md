@@ -24,7 +24,7 @@ Các phím tắt được khai báo bởi `argvus-hyprland`. Gói này cung cấ
 | `SUPER + ALT + S` | Bộ chọn máy chủ SSH | `argvus ssh` | SSH |
 | `SUPER + ALT + N` | Bộ chọn đoạn trích | `argvus snippets` | Đoạn trích |
 | `SUPER + ALT + G` | Bộ chọn dự án, sau đó git TUI | `argvus git` | Git |
-| `SUPER + .` | Bộ chọn biểu tượng cảm xúc | `emoji-picker.sh` | Bộ chọn biểu tượng cảm xúc |
+| `SUPER + .` | ARGVUS Emoji | `argvus emoji-picker` | ARGVUS Emoji |
 | `SUPER + C` | Máy tính | `argvus calculator` | Máy tính |
 
 ## Trình khởi chạy và tìm kiếm
@@ -378,11 +378,9 @@ Biến này được đọc từ môi trường của lệnh chạy tập lệnh
 
 ## Trình chọn biểu tượng cảm xúc (`SUPER + .`)
 
-`SUPER + .` mở `rofimoji` với cấu hình ARGVUS Rofi. Tìm kiếm một biểu tượng cảm xúc theo tên, nhấn `Enter`, và biểu tượng cảm xúc sẽ được sao chép vào bảng tạm. Dán nó bằng `Ctrl + V` trong ứng dụng bạn muốn.
+`SUPER + .` → **ARGVUS Emoji** (`argvus emoji-picker`). ←↑↓→  Tab   / Tìm theo tên hoặc từ khóa   Enter Chèn   Ctrl+C Sao chép   Ctrl+D Yêu thích   Esc.
 
-Khi bộ chọn đang mở, phiên làm việc sẽ bỏ qua các thông báo về bố cục bàn phím mà nó sẽ hiển thị. Trình khởi chạy ghi một đánh dấu ngắn hạn trong thư mục bộ nhớ đệm ARGVUS và xóa nó khoảng một giây sau khi bộ chọn đóng.
-
-Yêu cầu `rofimoji` và `wl-clipboard`.
+Trình chọn mở ở mục Tất cả. Tab chuyển danh mục và các phím mũi tên di chuyển trong lưới emoji.
 
 ## Máy tính (`SUPER + C`)
 
@@ -403,7 +401,7 @@ Gói `argvus-launcher` là không phụ thuộc kiến trúc và cài đặt:
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` và `argvus-git`, trong cùng một thư mục;
 - `/usr/share/argvus/launcher/config/`, với cấu hình và chủ đề Rofi;
 
-Các phụ thuộc bắt buộc: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` và `pinentry` (cung cấp `pinentry-gtk`). Các phụ thuộc tùy chọn: `openssh`, cho trình chọn SSH và trình quản lý khóa SSH; `lazygit` và `gitui`, cho giao diện TUI của git.
+Các phụ thuộc bắt buộc: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `wl-clipboard`, `wtype`, `gnupg` và `pinentry` (cung cấp `pinentry-gtk`). Các phụ thuộc tùy chọn: `openssh`, cho trình chọn SSH và trình quản lý khóa SSH; `lazygit` và `gitui`, cho giao diện TUI của git.
 
 Cài đặt gói không ghi vào `$HOME`. Cấu hình người dùng được tạo khi bắt đầu phiên, như được mô tả trong [Cấu hình và chủ đề Rofi](#where-the-active-configuration-lives).
 
@@ -416,7 +414,7 @@ Cài đặt gói không ghi vào `$HOME`. Cấu hình người dùng được t�
 | Các menu sử dụng phông chữ cũ | Dòng `font:` được viết lại khi bắt đầu phiên. Khởi động lại phiên sau khi thay đổi phông chữ. |
 | Thay đổi chủ đề không ảnh hưởng đến các menu Rofi | Kiểm tra xem bản sao của người dùng có`config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/` still points to the packaged theme. Apply the theme from `argvus-appearance` again. |
 | `SUPER + O` báo cáo không tìm thấy dự án nào | Không có gốc hoặc đường dẫn nào được định cấu hình hoặc các thư mục không còn tồn tại. Chạy `argvus projects list`. |
-| `SUPER + C`hoặc bộ chọn biểu tượng cảm xúc không mở | Cài đặt`argvus` or `rofimoji` (both are required dependencies). |
+| `SUPER + C` / `SUPER + .` | `argvus`, `wl-clipboard`, `wtype` |
 | `SUPER + H` không hiển thị gì | Lịch sử trống hoặc trình ghi clipboard từ `argvus-session` chưa lưu trữ bất cứ thứ gì. |
 
 ## Các thành phần liên quan

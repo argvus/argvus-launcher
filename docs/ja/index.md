@@ -23,7 +23,7 @@ description: ランチャーと検索 — Quickshell/QML + Rust.
 | `SUPER + ALT + S` | SSHホストピッカー | `argvus ssh` | SSH |
 | `SUPER + ALT + N` | スニペットピッカー | `argvus snippets` | スニペット |
 | `SUPER + ALT + G` | プロジェクトピッカー、その後 git TUI | `argvus git` | Git |
-| `SUPER + .` | 絵文字ピッカー | `emoji-picker.sh` | 絵文字ピッカー |
+| `SUPER + .` | ARGVUS Emoji | `argvus emoji-picker` | ARGVUS Emoji |
 | `SUPER + C` | 電卓 | `argvus calculator` | 電卓 |
 
 ## ランチャーと検索
@@ -358,11 +358,9 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 ## 絵文字ピッカー (`SUPER + .`)
 
-`SUPER + .`はARGVUS Rofi構成で`rofimoji`を開きます。名前で絵文字を検索し、`Enter`を押すと絵文字がクリップボードにコピーされます。`Ctrl + V`で使用したいアプリケーションに貼り付けてください。
+`SUPER + .` → **ARGVUS Emoji** (`argvus emoji-picker`). ←↑↓→  Tab   / 名前またはキーワードで検索   Enter 挿入   Ctrl+C コピー   Ctrl+D お気に入り   Esc.
 
-ピッカーが開いている間、セッションは通常表示されるキーボードレイアウトの通知を無視します。ランチャーはARGVUSキャッシュディレクトリに短期間のマーカーを書き込み、ピッカーが閉じた約1秒後にそれを削除します。
-
-`rofimoji`および`wl-clipboard`が必要です。
+最初は「すべて」が選択されます。Tab でカテゴリを切り替え、矢印キーで絵文字を選択します。
 
 ## 計算機 (`SUPER + C`)
 
@@ -383,7 +381,7 @@ ARGVUS_GIT_TUI=gitui argvus git
 - 同じディレクトリに`argvus launcher`、`argvus-snippets`、`argvus-ssh`、`argvus-git`
 - Rofiの設定とテーマを含む`/usr/share/argvus/launcher/config/`
 
-必要な依存関係: `argvus-session`、`argvus-appearance`、`argvus`、`bash`、`jq`、`hyprland`、`libnotify`、`rofi`、`rofimoji`、`wl-clipboard`、`wtype`、`gnupg`、および`pinentry`（`pinentry-gtk`を提供）。オプションの依存関係: SSHピッカーおよびSSHキー管理用の`openssh`; git TUI用の`lazygit`および`gitui`。
+必要な依存関係: `argvus-session`、`argvus-appearance`、`argvus`、`bash`、`jq`、`hyprland`、`libnotify`、`rofi`、`wl-clipboard`、`wtype`、`gnupg`、および`pinentry`（`pinentry-gtk`を提供）。オプションの依存関係: SSHピッカーおよびSSHキー管理用の`openssh`; git TUI用の`lazygit`および`gitui`。
 
 パッケージをインストールしても`$HOME`には書き込まれません。ユーザー設定は[Rofi configuration and themes](#where-the-active-configuration-lives)に記載されているように、セッション開始時に作成されます。
 
@@ -396,7 +394,7 @@ ARGVUS_GIT_TUI=gitui argvus git
 | メニューが古いフォントを使用している | セッション開始時に`font:`行が書き換えられます。フォントを変更した後、セッションを再起動してください。 |
 | テーマ変更がRofiメニューに反映されない | $XDG_CONFIG_HOME/argvus/data/rofi/内の`config.rasi`のユーザーコピーがまだパッケージ済みテーマを指しているか確認してください。 `$XDG_CONFIG_HOME/argvus/data/rofi/` `argvus-appearance`からテーマを再適用してください。 |
 | `SUPER + O`がプロジェクトが見つからないと報告する | ルートやパスが設定されていないか、ディレクトリが存在しません。`argvus projects list`を実行してください。 |
-| `SUPER + C`または絵文字ピッカーが開かない | `argvus`または`rofimoji`をインストールしてください（両方とも必要な依存関係です）。 |
+| `SUPER + C` / `SUPER + .` | `argvus`, `wl-clipboard`, `wtype` |
 | チートシートが開かない | その名前と言語に対応するファイルが存在しません。チートシートのセクションに記載されているパスを確認してください。 |
 | `SUPER + H`が何も表示しない | 履歴が空であるか、`argvus-session`のクリップボードレコーダーがまだ何も保存していません。 |
 

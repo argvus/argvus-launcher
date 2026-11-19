@@ -23,7 +23,7 @@ Le scorciatoie sono dichiarate da `argvus-hyprland`. Questo pacchetto fornisce i
 | `SUPER + ALT + S` | Selettore host SSH | `argvus ssh` | SSH |
 | `SUPER + ALT + N` | Selettore di snippet | `argvus snippets` | Snippet |
 | `SUPER + ALT + G` | Selettore di progetto, poi Git TUI | `argvus git` | Git |
-| `SUPER + .` | Selettore di emoji | `emoji-picker.sh` | Selettore di emoji |
+| `SUPER + .` | ARGVUS Emoji | `argvus emoji-picker` | ARGVUS Emoji |
 | `SUPER + C` | Calcolatrice | `argvus calculator` | Calcolatrice |
 
 ## Lanciatore e ricerca
@@ -358,11 +358,9 @@ La variabile viene letta dall'ambiente del comando che esegue lo script. Non è 
 
 ## Selettore di emoji (`SUPER + .`)
 
-`SUPER + .` apre `rofimoji` con la configurazione ARGVUS di Rofi. Cerca un'emoji per nome, premi `Enter`, e l'emoji viene copiata negli appunti. Incollala con `Ctrl + V` nell'applicazione desiderata.
+`SUPER + .` → **ARGVUS Emoji** (`argvus emoji-picker`). ←↑↓→  Tab   / Cerca per nome o parola chiave   Enter Inserisci   Ctrl+C Copia   Ctrl+D Preferiti   Esc.
 
-Mentre il selezionatore è aperto, la sessione ignora le notifiche della disposizione della tastiera che altrimenti mostrerebbe. Il launcher scrive un marcatore a breve durata nella directory della cache ARGVUS e lo rimuove circa un secondo dopo la chiusura del selezionatore.
-
-Richiede `rofimoji` e `wl-clipboard`.
+Il selettore si apre su Tutti. Tab cambia categoria e le frecce si spostano nella griglia.
 
 ## Calcolatrice (`SUPER + C`)
 
@@ -383,7 +381,7 @@ Il pacchetto `argvus-launcher` è indipendente dall'architettura e installa:
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` e `argvus-git`, nella stessa directory;
 - `/usr/share/argvus/launcher/config/`, con la configurazione di Rofi e i temi;
 
-Dipendenze richieste: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` e `pinentry` (che fornisce `pinentry-gtk`). Dipendenze opzionali: `openssh`, per il selettore SSH e il gestore di chiavi SSH; `lazygit` e `gitui`, per il TUI di git.
+Dipendenze richieste: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `wl-clipboard`, `wtype`, `gnupg` e `pinentry` (che fornisce `pinentry-gtk`). Dipendenze opzionali: `openssh`, per il selettore SSH e il gestore di chiavi SSH; `lazygit` e `gitui`, per il TUI di git.
 
 L'installazione del pacchetto non scrive in `$HOME`. La configurazione utente viene creata all'avvio della sessione, come descritto in [Rofi configuration and themes](#where-the-active-configuration-lives).
 
@@ -396,7 +394,7 @@ L'installazione del pacchetto non scrive in `$HOME`. La configurazione utente vi
 | I menu usano un font vecchio | La riga `font:` viene riscritta all'avvio della sessione. Riavvia la sessione dopo aver cambiato il font. |
 | Un cambio di tema non raggiunge i menu di Rofi | Controlla se la copia utente di `config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/` punta ancora al tema pacchettizzato. Applica di nuovo il tema da `argvus-appearance`. |
 | `SUPER + O` segnala che non sono stati trovati progetti | Nessuna root o percorso è configurato, o le directory non esistono più. Esegui `argvus projects list`. |
-| `SUPER + C` o il selezionatore di emoji non si aprono | Installa `argvus` o `rofimoji` (entrambi sono dipendenze richieste). |
+| `SUPER + C` / `SUPER + .` | `argvus`, `wl-clipboard`, `wtype` |
 | `SUPER + H` non mostra nulla | La cronologia è vuota, o il registratore degli appunti di `argvus-session` non ha ancora memorizzato nulla. |
 
 ## Componenti correlati

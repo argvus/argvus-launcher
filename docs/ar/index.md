@@ -24,7 +24,7 @@ description: المشغّل والبحث — Quickshell/QML + Rust.
 | `SUPER + ALT + S` | منتقي مضيف SSH | `argvus ssh` | سش |
 | `SUPER + ALT + N` | منتقي المقتطفات | `argvus snippets` | مقتطفات |
 | `SUPER + ALT + G` | منتقي المشروع، ثم git TUI | `argvus git` | بوابة |
-| `SUPER + .` | منتقي الرموز التعبيرية | `emoji-picker.sh` | منتقي الرموز التعبيرية |
+| `SUPER + .` | ARGVUS Emoji | `argvus emoji-picker` | ARGVUS Emoji |
 | `SUPER + C` | حاسبة | `argvus calculator` | حاسبة |
 
 ## المشغّل والبحث
@@ -382,17 +382,15 @@ ARGVUS_GIT_TUI=gitui argvus git
               ﻰﻠﻋ ﺓﺩﻮﺟﻮﻣ ﺕﺍﻭﺩﻷ﻿ﺍ ﻦﻣ ﻱﺃ ﻻ﻿ | "gitui ﻭﺃ lazygit ﺖﻴﺒﺜﺘﺑ ﻢﻗ" ﺭﺎﻌﺷﺇ |`PATH`                                                          | .ﺎﻫﺪﺣﺃ ﺖﻴﺒﺜﺘﺑ ﻢﻗ .
                ﻡﺪﺨﺘﺳﺍ .ﻉﻭﺮﺸﻣ ﻱﺃ ﺔﻓﺎﺿﺇ ﻢﺘﻳ ﻢﻟ | ﻊﻳﺭﺎﺸﻣ ﻱﺃ ﺽﺮﻌﻳ ﻻ﻿ ﺭﺎﻴﺘﺧﻻ﻿ﺍ ﺽﺭﺎﻋ |`argvus projects add`. |
 
-## (`SUPER + .`) ﺔﻳﺮﻴﺒﻌﺘﻟﺍ ﺯﻮﻣﺮﻟﺍ ﻲﻘﺘﻨﻣ
+## ARGVUS Emoji (`SUPER + .`)
 
+`SUPER + .` → **ARGVUS Emoji** (`argvus emoji-picker`). ←↑↓→  Tab   / ابحث بالاسم أو بالكلمة المفتاحية   Enter إدراج   Ctrl+C نسخ   Ctrl+D المفضلة   Esc.
 
+يبدأ على «الكل». للتبديل بين الفئات استخدم Tab، وللتنقل بين الرموز استخدم الأسهم.
 
-.ﺓﺭﺎﺘﺨﻤﻟﺍ ﺓﺍﺩﻷ﻿ﺍ ﻕﻼ﻿ﻏﺇ ﻦﻣ ﺓﺪﺣﺍﻭ ﺔﻴﻧﺎﺛ ﻲﻟﺍﻮﺣ ﺪﻌﺑ ﺎﻬﻠﻳﺰﻳﻭ ARGVUS ﺖﻗﺆﻤﻟﺍ ﻦﻳﺰﺨﺘﻟﺍ ﺓﺮ
+## الحاسبة (`SUPER + C`)
 
-                                  .`SUPER + .` ﻭ `rofimoji` ﺐﻠﻄﺘﻳ
-
-##                                                  ( wl-clipboard  rofimoji  Ctrl + V  `Enter`  `Ctrl + V`  `rofimoji`  `wl-clipboard` `SUPER + C`) ﺔﺒﺳﺎﺣ ﺔﻟﺁ
-
-
+يفتح الاختصار `SUPER + C` الحاسبة (`argvus calculator`).
 
 ##                                         Rofi ﺕﺍﺩﺍﺪﻋﺇ ﻡﺪﺨﺘﺴﺗ ﻲﺘﻟﺍ ﻯﺮﺧﻷ﻿ﺍ ﻢﺋﺍﻮﻘﻟﺍ
 
@@ -446,7 +444,7 @@ Required dependencies:
 ,
 
 
-Installing the package does not write into  `libnotify`  `rofi`  `argvus calculator`  `rofimoji`  `wl-clipboard`  `wtype`  `gnupg`  `pinentry`  `pinentry-gtk`  `openssh`  `lazygit`  `gitui` `$HOME`. User configuration is created at session start, as described in [Rofi configuration and themes](#where-the-active-configuration-lives).
+Installing the package does not write into  `libnotify`  `rofi`  `argvus calculator`  `wl-clipboard`  `wtype`  `gnupg`  `pinentry`  `pinentry-gtk`  `openssh`  `lazygit`  `gitui` `$HOME`. User configuration is created at session start, as described in [Rofi configuration and themes](#where-the-active-configuration-lives).
 
 ## استكشاف الأخطاء وإصلاحها
 
@@ -457,7 +455,7 @@ Installing the package does not write into  `libnotify`  `rofi`  `argvus calcula
                                               ـﻟﺍ | ﺎًﻤﻳﺪﻗ ﺎًﻄﺧ ﻡﺪﺨﺘﺴﺗ ﻢﺋﺍﻮﻘﻟﺍ |`font:`        .ﻂﺨﻟﺍ ﺮﻴﻴﻐﺗ ﺪﻌﺑ ﺔﺴﻠﺠﻟﺍ ﻞﻴﻐﺸﺗ ﺪﻋﺃ .ﺔﺴﻠﺠﻟﺍ ءﺪﺑ ﺪﻨﻋ ﺮﻄﺴﻟﺍ ﺔﺑﺎﺘﻛ ﺓﺩﺎﻋﺇ ﻢﺘﻳ
         ﻦﻣ ﻡﺪﺨﺘﺴﻤﻟﺍ ﺔﺨﺴﻧ ﻥﺎﻛ ﺍﺫﺇ ﺎﻤﻣ ﻖﻘﺤﺗ | Rofi ﻢﺋﺍﻮﻗ ﻰﻟﺇ ﻞﺼﻳ ﻻ﻿ ﺔﻤﺴﻟﺍ ﺮﻴﻴﻐﺗ |`config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/`                                    ﻦﻣ ﻖﺴﻨﻟﺍ ﻖﺒﻃ .ﺄﺒﻌﻤﻟﺍ ﻖﺴﻨﻟﺍ ﻰﻟﺇ ﺮﻴﺸﻳ ﻝﺍﺰﻳ ﻻ﻿`argvus-appearance` again. |
 | `SUPER + O`ﻞﻴﻐﺸﺘﺑ ﻢﻗ .ﺓﺩﻮﺟﻮﻣ ﺪﻌﺗ ﻢﻟ ﻞﺋﻻ﻿ﺪﻟﺍ ﻥﺃ ﻭﺃ ،ﺭﺎﺴﻤﻟﺍ ﻭﺃ ﺭﺬﺠﻟﺍ ﻦﻳﻮﻜﺗ ﻢﺘﻳ ﻢﻟ | ﻊﻳﺭﺎﺸﻣ ﻱ`argvus projects list`. |
-| `SUPER + C`                                      ﺖﻴﺒﺜﺗ | ﺔﻳﺮﻴﺒﻌﺘﻟﺍ ﺯﻮﻣﺮﻟﺍ ﺩﺪﺤﻣ ﺢﺘﻔﻳ ﻢﻟ ﻭﺃ`argvus` or `rofimoji`                                             | .(ﺔﺑﻮﻠﻄﻤﻟﺍ ﺕﺎﻳﺩﺎﻤﺘﻋﻻ﻿ﺍ ﻦﻣ ﺎﻤﻫﻼ﻿ﻛ)
+| `SUPER + C` / `SUPER + .` | `argvus`, `wl-clipboard`, `wtype` |
 | .ﺓﺮﺼﺘﺨﻤﻟﺍ ﻝﻭﺍﺪﺠﻟﺍ ﻢﺴﻗ ﻲﻓ ﺔﺤﺿﻮﻤﻟﺍ ﺕﺍﺭﺎﺴﻤﻟﺍ ﻦﻣ ﻖﻘﺤﺗ .ﺩﻮﺟﻮﻣ ﺮﻴﻏ ﺔﻐﻠﻟﺍﻭ ﻢﺳﻻ﻿ﺍ ﺍﺬﻬ
 | `SUPER + H`                                 ﻦﻣ ﺔﻈﻓﺎﺤﻟﺍ ﻞﺠﺴﻣ ﻭﺃ ،ﻍﺭﺎﻓ ﺦﻳﺭﺎﺘﻟﺍ | ءﻲﺷ ﺮﻬﻈﻳ ﻻ﻿`argvus-session`                                                   | .ﺪﻌﺑ ءﻲﺷ ﻱﺃ ﻦﻳﺰﺨﺘﺑ ﻢﻘﻳ ﻢﻟ
 

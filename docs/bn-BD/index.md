@@ -24,7 +24,7 @@ description: লঞ্চার ও অনুসন্ধান — Quickshell/Q
 | `SUPER + ALT + S` | SSH হোস্ট পিকার | `argvus ssh` | SSH |
 | `SUPER + ALT + N` | স্নিপেট বাছাইকারী | `argvus snippets` | স্নিপেট |
 | `SUPER + ALT + G` | প্রজেক্ট পিকার, তারপর git TUI | `argvus git` | Git |
-| `SUPER + .` | ইমোজি বাছাইকারী | `emoji-picker.sh` | ইমোজি বাছাইকারী |
+| `SUPER + .` | ARGVUS Emoji | `argvus emoji-picker` | ARGVUS Emoji |
 | `SUPER + C` | ক্যালকুলেটর | `argvus calculator` | ক্যালকুলেটর |
 
 ## লঞ্চার ও অনুসন্ধান
@@ -366,11 +366,9 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 ## ইমোজি পিকার (`SUPER + .`)
 
-`SUPER + .` ARGVUS Rofi কনফিগারেশনের সঙ্গে `rofimoji` খুলে। নাম দ্বারা একটি ইমোজি খুঁজুন, `Enter` চাপুন, এবং ইমোজিটি ক্লিপবোর্ডে কপি করা হয়। আপনি যে অ্যাপ্লিকেশনে চান সেখানে `Ctrl + V` দিয়ে এটিকে পেস্ট করুন।
+`SUPER + .` → **ARGVUS Emoji** (`argvus emoji-picker`). ←↑↓→  Tab   / নাম বা কীওয়ার্ড দিয়ে খুঁজুন   Enter সন্নিবেশ   Ctrl+C কপি   Ctrl+D প্রিয়   Esc.
 
-যখন পিকার খোলা থাকে, সেশন কীবোর্ড-লেআউট বিজ্ঞপ্তিগুলি উপেক্ষা করে যা এটি সাধারণত দেখাবে। লঞ্চার ARGVUS ক্যাশে ডিরেক্টরিতে একটি স্বল্পকালীন মার্কার লিখে এবং পিকার বন্ধ হওয়ার প্রায় এক সেকেন্ড পরে এটি মুছে দেয়।
-
--এর জন্য `rofimoji` এবং `wl-clipboard` প্রয়োজন।
+শুরুতে সব ট্যাব খোলে। Tab দিয়ে বিভাগ এবং তীরচিহ্ন দিয়ে ইমোজি বদলান।
 
 ## ক্যালকুলেটর (`SUPER + C`)
 
@@ -391,7 +389,7 @@ ARGVUS_GIT_TUI=gitui argvus git
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` এবং `argvus-git`, একই ডিরেক্টরির অধীনে;
 - `/usr/share/argvus/launcher/config/`, Rofi কনফিগারেশন এবং থিমসহ;
 
-প্রয়োজনীয় নির্ভরতা: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` এবং `pinentry` (যা `pinentry-gtk` প্রদান করে)। ঐচ্ছিক নির্ভরতা: `openssh`, SSH পিকার এবং SSH কী ম্যানেজারের জন্য; `lazygit` এবং `gitui`, git TUI-এর জন্য।
+প্রয়োজনীয় নির্ভরতা: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `wl-clipboard`, `wtype`, `gnupg` এবং `pinentry` (যা `pinentry-gtk` প্রদান করে)। ঐচ্ছিক নির্ভরতা: `openssh`, SSH পিকার এবং SSH কী ম্যানেজারের জন্য; `lazygit` এবং `gitui`, git TUI-এর জন্য।
 
 প্যাকেজ ইনস্টল করা `$HOME`-এ লেখা হয় না। ব্যবহারকারীর কনফিগারেশন সেশন শুরুতে তৈরি হয়, যেমনটি [Rofi configuration and themes](#where-the-active-configuration-lives) তে বর্ণনা করা হয়েছে।
 
@@ -404,7 +402,7 @@ ARGVUS_GIT_TUI=gitui argvus git
 | মেনুগুলো একটি পুরোনো ফন্ট ব্যবহার করে | `font:`সেশন শুরুতে লাইনটি পুনরায় লেখা হয়। ফন্ট পরিবর্তনের পরে সেশনটি পুনরায় শুরু করুন। |
 | একটি থিম পরিবর্তন Rofi মেনুতে পৌঁছায় না | ব্যবহারকারীর কপি পরীক্ষা করুন `config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/`এখনও প্যাকেজড থিমের দিকে নির্দেশ করছে। থিমটি থেকে প্রয়োগ করুন `argvus-appearance` again. |
 | `SUPER + O`প্রতিবেদন করে যে কোনো প্রকল্প পাওয়া যায়নি | কোনো মূল বা পথ কনফিগার করা নেই, অথবা ডিরেক্টরি আর বিদ্যমান নেই। চালান `argvus projects list`. |
-| `SUPER + C`অথবা ইমোজি পিকার খুলে না | ইনস্টল করুন`argvus` or `rofimoji` (উভয়ই প্রয়োজনীয় নির্ভরতা)। |
+| `SUPER + C` / `SUPER + .` | `argvus`, `wl-clipboard`, `wtype` |
 | একটি চিটশিট খোলা যায় না | সেই নাম এবং ভাষার জন্য ফাইলটি বিদ্যমান নয়। চিটশিটস القسمে বর্ণিত পথগুলি পরীক্ষা করুন। |
 | `SUPER + H`কিছু দেখায় না | ইতিহাস খালি, বা ক্লিপবোর্ড রেকর্ডার থেকে`argvus-session`এখনও কিছু সংরক্ষণ করা হয়নি। |
 

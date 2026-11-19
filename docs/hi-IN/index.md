@@ -24,7 +24,7 @@ description: लॉन्चर और खोज — Quickshell/QML + Rust.
 | `SUPER + ALT + S` | SSH होस्ट पिकर | `argvus ssh` | एसएसएच |
 | `SUPER + ALT + N` | स्निपेट पिकर | `argvus snippets` | स्निपेट्स |
 | `SUPER + ALT + G` | प्रोजेक्ट पिकर, फिर गिट टीयूआई | `argvus git` | गिट |
-| `SUPER + .` | इमोजी पिकर | `emoji-picker.sh` | इमोजी पिकर |
+| `SUPER + .` | ARGVUS Emoji | `argvus emoji-picker` | ARGVUS Emoji |
 | `SUPER + C` | कैलकुलेटर | `argvus calculator` | कैलकुलेटर |
 
 ## लॉन्चर और खोज
@@ -364,11 +364,9 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 ## इमोजी पिकर (`SUPER + .`)\n
 
-`SUPER + .` ARGVUS Rofi कॉन्फ़िगरेशन के साथ `rofimoji` खोलता है। नाम से एक इमोजी खोजें, `Enter` दबाएँ, और इमोजी क्लिपबोर्ड में कॉपी हो जाएगा। इसे उस एप्लिकेशन में `Ctrl + V` के साथ पेस्ट करें जिसे आप चाहते हैं।
+`SUPER + .` → **ARGVUS Emoji** (`argvus emoji-picker`). ←↑↓→  Tab   / नाम या खोजशब्द से खोजें   Enter सम्मिलित करें   Ctrl+C कॉपी करें   Ctrl+D पसंदीदा   Esc.
 
-जब पिकर खुला होता है, सत्र उस कीबोर्ड-लेआउट सूचनाओं की अनदेखी करता है जो यह अन्यथा दिखाता। लॉन्चर ARGVUS कैश निर्देशिका में एक अल्पकालिक मार्कर लिखता है और पिकर बंद होने के लगभग एक सेकंड बाद इसे हटा देता है।
-
-को `rofimoji` और `wl-clipboard` की आवश्यकता है।
+चयनकर्ता सभी टैब पर खुलता है। Tab श्रेणियाँ बदलता है और तीर कुंजियाँ इमोजी चुनती हैं।
 
 ## कैलकुलेटर (`SUPER + C`)
 
@@ -389,7 +387,7 @@ ARGVUS_GIT_TUI=gitui argvus git
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` और `argvus-git`, एक ही निर्देशिका के अंतर्गत;
 - `/usr/share/argvus/launcher/config/`, Rofi कॉन्फ़िगरेशन और थीम्स के साथ;
 
-आवश्यक निर्भरताएँ: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` और `pinentry` (जो `pinentry-gtk` प्रदान करता है)। वैकल्पिक निर्भरताएँ: `openssh`, SSH पिकर और SSH की मैनेजर के लिए; `lazygit` और `gitui`, git TUI के लिए।
+आवश्यक निर्भरताएँ: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `wl-clipboard`, `wtype`, `gnupg` और `pinentry` (जो `pinentry-gtk` प्रदान करता है)। वैकल्पिक निर्भरताएँ: `openssh`, SSH पिकर और SSH की मैनेजर के लिए; `lazygit` और `gitui`, git TUI के लिए।
 
 पैकेज इंस्टॉल करने से `$HOME` में कोई लेखन नहीं होता है। उपयोगकर्ता कॉन्फ़िगरेशन सत्र प्रारंभ में बनाया जाता है, जैसा कि [Rofi कॉन्फ़िगरेशन और थीम्स](#where-the-active-configuration-lives) में वर्णित है।
 
@@ -402,7 +400,7 @@ ARGVUS_GIT_TUI=gitui argvus git
 | मेनू पुराने फॉन्ट का उपयोग करते हैं | `font:`सत्र प्रारंभ में लाइन को फिर से लिखा जाता है। फ़ॉन्ट बदलने के बाद सत्र को पुनः प्रारंभ करें। |
 | थीम परिवर्तन Rofi मेनू तक नहीं पहुंचता | जांचें कि उपयोगकर्ता प्रति की `config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/`अभी भी पैक किए गए थीम की ओर इशारा करता है। थीम को से लागू करें`argvus-appearance` again. |
 | `SUPER + O`रिपोर्ट करता है कि कोई परियोजनाएँ नहीं मिलीं | कोई रूट या पथ कॉन्फ़िगर नहीं है, या निर्देशिकाएँ अब मौजूद नहीं हैं। चलाएँ`argvus projects list`. |
-| `SUPER + C`या इमोजी पिकर नहीं खुलता | इंस्टॉल करें`argvus` or `rofimoji` (दोनों आवश्यक निर्भरता हैं)। |
+| `SUPER + C` / `SUPER + .` | `argvus`, `wl-clipboard`, `wtype` |
 | एक चीटशीट नहीं खुलती | उस नाम और भाषा के लिए फ़ाइल मौजूद नहीं है। चीटशीट्स अनुभाग में वर्णित पथों की जाँच करें। |
 | `SUPER + H`कुछ भी नहीं दिखाता | इतिहास खाली है, या क्लिपबोर्ड रिकॉर्डर से `argvus-session`ने अभी तक कुछ भी संग्रहित नहीं किया है। |
 

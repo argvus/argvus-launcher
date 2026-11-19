@@ -23,7 +23,7 @@ description: Запуск и поиск — Quickshell/QML + Rust.
 | `SUPER + ALT + S` | Выбор SSH-хоста | `argvus ssh` | SSH |
 | `SUPER + ALT + N` | Выбор сниппета | `argvus snippets` | Сниппеты |
 | `SUPER + ALT + G` | Выбор проекта, затем git TUI | `argvus git` | Git |
-| `SUPER + .` | Выбор эмодзи | `emoji-picker.sh` | Выбор эмодзи |
+| `SUPER + .` | ARGVUS Emoji | `argvus emoji-picker` | ARGVUS Emoji |
 | `SUPER + C` | Калькулятор | `argvus calculator` | Калькулятор |
 
 ## Запуск и поиск
@@ -358,11 +358,9 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 ## Выбор эмоций (`SUPER + .`)
 
-`SUPER + .` открывает `rofimoji` с конфигурацией ARGVUS Rofi. Найдите эмоцию по имени, нажмите `Enter`, и эмоция копируется в буфер обмена. Вставьте её с помощью `Ctrl + V` в нужное приложение.
+`SUPER + .` → **ARGVUS Emoji** (`argvus emoji-picker`). ←↑↓→  Tab   / Поиск по названию или ключевому слову   Enter Вставить   Ctrl+C Копировать   Ctrl+D Избранное   Esc.
 
-Пока открыто окно выбора, сеанс игнорирует уведомления о раскладке клавиатуры, которые он обычно показывает. Лончер записывает краткоживущий маркер в каталог кеша ARGVUS и удаляет его примерно через одну секунду после закрытия окна выбора.
-
-Требуются `rofimoji` и `wl-clipboard`.
+При открытии выбрана вкладка «Все». Tab переключает категории, а стрелки перемещают выбор по сетке.
 
 ## Калькулятор (`SUPER + C`)
 
@@ -383,7 +381,7 @@ ARGVUS_GIT_TUI=gitui argvus git
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` и `argvus-git` в одной и той же директории;
 - `/usr/share/argvus/launcher/config/` с конфигурацией Rofi и темами;
 
-Необходимые зависимости: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` и `pinentry` (который предоставляет `pinentry-gtk`). Необязательные зависимости: `openssh` для SSH-пикера и менеджера SSH-ключей; `lazygit` и `gitui` для git TUI.
+Необходимые зависимости: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `wl-clipboard`, `wtype`, `gnupg` и `pinentry` (который предоставляет `pinentry-gtk`). Необязательные зависимости: `openssh` для SSH-пикера и менеджера SSH-ключей; `lazygit` и `gitui` для git TUI.
 
 Установка пакета не пишет в `$HOME`. Конфигурация пользователя создается при запуске сессии, как описано в [Конфигурация и темы Rofi](#where-the-active-configuration-lives).
 
@@ -396,7 +394,7 @@ ARGVUS_GIT_TUI=gitui argvus git
 | Меню используют старый шрифт | Строка `font:` перезаписывается при запуске сессии. Перезапустите сессию после изменения шрифта. |
 | Изменение темы не влияет на меню Rofi | Проверьте, указывает ли пользовательская копия `config.rasi` в `$XDG_CONFIG_HOME/argvus/data/rofi/` по-прежнему на упакованную тему. Примените тему из `argvus-appearance` снова. |
 | `SUPER + O` сообщает, что проекты не найдены | Не настроен корень или путь, либо директории больше не существуют. Запустите `argvus projects list`. |
-| `SUPER + C` или выбор эмодзи не открывается | Установите `argvus` или `rofimoji` (требуются обе зависимости). |
+| `SUPER + C` / `SUPER + .` | `argvus`, `wl-clipboard`, `wtype` |
 | `SUPER + H` ничего не показывает | История пуста или регистратор буфера обмена `argvus-session` еще ничего не сохранил. |
 
 ## Связанные компоненты

@@ -23,7 +23,7 @@ Los atajos se declaran mediante `argvus-hyprland`. Este paquete proporciona los 
 | `SUPER + ALT + S` | Selector de host SSH | `argvus ssh` | SSH |
 | `SUPER + ALT + N` | Selector de fragmentos | `argvus snippets` | Fragmentos |
 | `SUPER + ALT + G` | Selector de proyectos, luego TUI de git | `argvus git` | Git |
-| `SUPER + .` | Selector de emojis | `emoji-picker.sh` | Selector de emojis |
+| `SUPER + .` | ARGVUS Emoji | `argvus emoji-picker` | ARGVUS Emoji |
 | `SUPER + C` | Calculadora | `argvus calculator` | Calculadora |
 
 ## Lanzador y búsqueda
@@ -359,11 +359,9 @@ La variable se lee desde el entorno del comando que ejecuta el script. No se alm
 
 ## Selector de emojis (`SUPER + .`)
 
-`SUPER + .` abre `rofimoji` con la configuración de Rofi de ARGVUS. Busca un emoji por nombre, presiona `Enter`, y el emoji se copia al portapapeles. Pégalo con `Ctrl + V` en la aplicación que desees.
+`SUPER + .` → **ARGVUS Emoji** (`argvus emoji-picker`). ←↑↓→  Tab   / Busca por nombre o palabra clave   Enter Insertar   Ctrl+C Copiar   Ctrl+D Favoritos   Esc.
 
-Mientras el selector está abierto, la sesión ignora las notificaciones de disposición del teclado que de otro modo mostraría. El lanzador escribe un marcador de corta duración en el directorio de caché ARGVUS y lo elimina aproximadamente un segundo después de que el selector se cierre.
-
-Requiere `rofimoji` y `wl-clipboard`.
+El selector se abre en Todos. Tab recorre las categorías y las flechas recorren la cuadrícula.
 
 ## Calculadora (`SUPER + C`)
 
@@ -384,7 +382,7 @@ El paquete `argvus-launcher` es independiente de la arquitectura e instala:
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` y `argvus-git`, bajo el mismo directorio;
 - `/usr/share/argvus/launcher/config/`, con la configuración de Rofi y los temas;
 
-Dependencias requeridas: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `rofimoji`, `wl-clipboard`, `wtype`, `gnupg` y `pinentry` (que proporciona `pinentry-gtk`). Dependencias opcionales: `openssh`, para el selector SSH y el gestor de claves SSH; `lazygit` y `gitui`, para la interfaz TUI de git.
+Dependencias requeridas: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `wl-clipboard`, `wtype`, `gnupg` y `pinentry` (que proporciona `pinentry-gtk`). Dependencias opcionales: `openssh`, para el selector SSH y el gestor de claves SSH; `lazygit` y `gitui`, para la interfaz TUI de git.
 
 La instalación del paquete no escribe en `$HOME`. La configuración del usuario se crea al iniciar la sesión, como se describe en [Configuración y temas de Rofi](#where-the-active-configuration-lives).
 
@@ -397,7 +395,7 @@ La instalación del paquete no escribe en `$HOME`. La configuración del usuario
 | Los menús usan una fuente antigua | La línea `font:` se reescribe al iniciar la sesión. Reinicie la sesión después de cambiar la fuente. |
 | Un cambio de tema no se refleja en los menús de Rofi | Verifique si la copia de usuario de `config.rasi` en `$XDG_CONFIG_HOME/argvus/data/rofi/` todavía apunta al tema empaquetado. Aplique el tema desde `argvus-appearance` nuevamente. |
 | `SUPER + O` indica que no se encontraron proyectos | No se ha configurado ninguna raíz o ruta, o los directorios ya no existen. Ejecute `argvus projects list`. |
-| `SUPER + C` o el selector de emojis no se abre | Instale `argvus` o `rofimoji` (ambos son dependencias requeridas). |
+| `SUPER + C` / `SUPER + .` | `argvus`, `wl-clipboard`, `wtype` |
 | Una chuleta no se abre | El archivo con ese nombre y idioma no existe. Verifique las rutas descritas en la sección de Chuletas. |
 | `SUPER + H` no muestra nada | El historial está vacío, o el grabador de portapapeles de `argvus-session` aún no ha almacenado nada. |
 
