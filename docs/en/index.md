@@ -6,7 +6,6 @@ description: Launcher and Search — Quickshell/QML + Rust.
 The main launcher uses Quickshell/QML with a local Rust search engine. It searches applications, open windows, settings, actions, projects, SSH hosts, files and shortcuts. File indexing starts disabled; select folders explicitly. Only names and paths are indexed, never document contents. Recent files depend on the XDG recent-file registry. Hidden files are excluded by default, and directory symlinks are not followed. SSH and Snippets use GTK 4. In Launcher and Search, choose A–Z or Recently opened; Recently opened is the default. The saved category continues to filter other results; disable the Windows source in search settings to hide this group.
 
 - the application launcher (`SUPER + D`);
-- the Rofi configuration and themes shared by every ARGVUS Rofi menu;
 - the project switcher, SSH picker and snippet picker (`argvus projects`, `argvus ssh`, `argvus snippets`);
 - the SSH key manager (`argvus keys`), which creates, lists, loads and deletes key pairs;
 - the GPG key manager (`argvus gpg`), which lists, creates and exports keys and sets up pinentry-gtk for gpg-agent;
@@ -48,37 +47,9 @@ The launcher follows the ARGVUS interface language selected in Control Center.
 
 `$XDG_CONFIG_HOME/argvus/config/launcher.json` → `$XDG_CACHE_HOME/argvus/launcher/index.json`
 
-Quickshell: `launcher/Theme.qml` · Rofi: `launcher/theme.rasi`
+Quickshell: `launcher/Theme.qml`
 
-`--config` / Rasi: Configure search → `argvus control-center launcher`.
-
-## Rofi configuration and themes
-
-The package installs the Rofi configuration under `/usr/share/argvus/launcher/config/`:
-
-| File | Role |
-| --- | --- |
-| `config.rasi` | Entry point used by every ARGVUS menu. Sets the Rofi `configuration` (font, no icons, sorted list, case-insensitive matching) and imports `theme.rasi`. |
-| `theme.rasi` | Colors and layout of the window, input bar and list. Imports one theme and the mode file. |
-| `mode.rasi` | Mode override. The packaged file has no overrides and keeps the Dark mode. |
-| `themes/<family>/theme.rasi` | Palette of a theme family, for example `argvus-dark` or `tokyo-night`. |
-| `themes/<family>-spaced/theme.rasi` | Spaced variant of the same family. |
-
-The package provides 22 families, and each has a `-spaced` variant. The packaged `theme.rasi` imports `argvus-dark`.
-
-### Where the active configuration lives
-
-ARGVUS resolves each Rofi file through `paths_config`. The first existing file among the user overrides, the user copy, the legacy locations and the generated tree wins; otherwise the packaged file under `/usr/share/argvus/launcher/config/` is used. The user copy of a file is `$XDG_CONFIG_HOME/argvus/data/rofi/<file>`: the `launcher/config/` prefix is stored under `rofi/`.
-
-ARGVUS creates a user copy the first time an ARGVUS script changes that file; `argvus-appearance` does this for theme, accent and mode changes. Files that were never changed keep being read from the package, and a user copy takes precedence over the packaged file.
-
-When `argvus-session` applies the font at session start, it rewrites the `font:` line of `config.rasi` from the ARGVUS font setting. That edit only reaches the user copy. Until the copy exists, the packaged file is the one found, and users cannot write to it, so the font change takes effect once the first appearance change has created the copy.
-
-### Changing the theme
-
-`argvus-appearance` owns theme changes. When the theme changes, it rewrites the user copies so that `config.rasi` points at the new `theme.rasi`, and `theme.rasi` imports the launcher palette of the theme build (`~/.config/argvus/data/generated/theme/current/launcher/theme.rasi`), which has the active family, layout and highlight colour. Without a theme build it imports the family copy, and the Spaced layout selects the `-spaced` variant of the active family. Theme pickers such as the theme menu and the layout menu read the same `config.rasi`, so they use the active style too.
-
-Do not edit the files under `/usr/share/argvus/launcher/`; they are replaced on package upgrade. Make changes in the user copy, under `$XDG_CONFIG_HOME/argvus/data/rofi/`.
+Configure search → `argvus control-center launcher`.
 
 ## Project switcher (`SUPER + O`)
 
@@ -378,23 +349,14 @@ All is selected on open. Tab cycles through categories and the arrow keys move t
 
 `SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
-## Other menus that use the Rofi configuration
-
-The launcher configuration is shared with components owned by other packages:
-
-- Theme, accent and layout pickers in `argvus-appearance` open Rofi with `config.rasi`.
-- The Hyprland window rules recognize the `argvus-launcher` and `rofi` namespaces, so the menus receive the launcher surface treatment.
-
 ## Packaging and dependencies
 
 The package `argvus-launcher` is architecture-independent and installs:
 
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` and `argvus-git`, under the same directory;
-- `/usr/share/argvus/launcher/config/`, with the Rofi configuration and themes;
 
 Required dependencies: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `wl-clipboard`, `wtype`, `gnupg` and `pinentry` (which provides `pinentry-gtk`). Optional dependencies: `openssh`, for the SSH picker and the SSH key manager; `lazygit` and `gitui`, for the git TUI.
 
-Installing the package does not write into `$HOME`. User configuration is created at session start, as described in [Rofi configuration and themes](#where-the-active-configuration-lives).
 
 ## Troubleshooting
 
@@ -403,7 +365,6 @@ Installing the package does not write into `$HOME`. User configuration is create
 | `SUPER + D` opens nothing | `argvus launcher` · `argvus control-center launcher` · `quickshell` · `argvus` |
 | `SUPER + D` lists no applications | The applications have no desktop entry. Only applications with a `.desktop` file are shown. |
 | The menus use an old font | The `font:` line is rewritten at session start. Restart the session after changing the font. |
-| A theme change does not reach the Rofi menus | Check whether the user copy of `config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/` still points to the packaged theme. Apply the theme from `argvus-appearance` again. |
 | `SUPER + O` reports that no projects were found | No root or path is configured, or the directories no longer exist. Run `argvus projects list`. |
 | `SUPER + C` / `SUPER + .` | `argvus`, `wl-clipboard`, `wtype` |
 | `SUPER + H` shows nothing | The history is empty, or the clipboard recorder from `argvus-session` has not stored anything yet. |
@@ -413,15 +374,12 @@ Installing the package does not write into `$HOME`. User configuration is create
 | Component | Responsibility |
 | --- | --- |
 | `argvus-hyprland` | Declares the shortcuts and the Hyprland window rules for the menus. |
-| `argvus-appearance` | Changes the active theme, accent and layout, and rewrites the Rofi theme references. |
 | `argvus` (`argvus config`) | Stores the projects, the snippets and the default launcher setting. |
-| `argvus-session` | Copies the initial Rofi configuration and sets its font at session start. |
 | `argvus` (`argvus terminal`) | Opens SSH sessions, project terminals and the passphrase prompts of `argvus keys`. |
 | `argvus` (`argvus widget-telemetry`) | Reads the active project written by `argvus projects`. |
 | `argvus` (`argvus i18n`) | Provides the translated messages used by the launcher scripts. |
 | `argvus` (`argvus control-center`) | Edits the project list through `argvus projects`. |
 
-Rofi uses a fullscreen transparent surface: blur covers the entire menu monitor, including bars and margins, in Sticky and Spaced. The menu stays centered; global blur settings still apply.
 
 
 `/launcher/show_icons`: `true` / `false`.

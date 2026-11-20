@@ -3,10 +3,8 @@ title: لانچر اور تلاش
 description: لانچر اور تلاش — Quickshell/QML + Rust.
 ---
 
-مرکزی لانچر Quickshell/QML اور مقامی Rust سرچ انجن سے ایپس، ونڈوز، ترتیبات، کارروائیاں، منصوبے، SSH میزبان، فائلیں اور شارٹ کٹس تلاش کرتا ہے۔ اشاریہ سازی شروع میں بند ہے؛ فولڈر واضح طور پر منتخب کریں۔ صرف نام اور راستے شامل ہوتے ہیں، دستاویز کا مواد نہیں۔ حالیہ فائلیں XDG ریکارڈ پر منحصر ہیں۔ پوشیدہ فائلیں بطورِ طے شدہ خارج ہیں اور ڈائریکٹری سم لنکس کی پیروی نہیں ہوتی۔ مخصوص Rofi مینو دستیاب رہتے ہیں۔ Launcher and Search میں A–Z یا حال ہی میں کھولی گئی ایپس کی ترتیب منتخب کریں؛ طے شدہ ترتیب حال ہی میں کھولی گئی ایپس ہے۔ محفوظ کردہ زمرہ باقی نتائج کو فلٹر کرتا رہتا ہے؛ اس گروپ کو چھپانے کے لیے تلاش کی ترتیبات میں Windows ماخذ بند کریں۔
 
 -                                            ;(`SUPER + D`) ﺮﭽﻧﻻ﻿ ﻦﺸﯿﮑﯿﻠﭙﯾﺍ
-- Rofi ﺮﮨ ﻮﺟ ﺰﻤﯿﮭﺗ ﺭﻭﺍ ﺐﯿﺗﺮﺗ ﯽﮐ ARGVUS Rofi ؛ﮟﯿﮨ ﯽﺗﺎﺟ ﯽﮐ ﺮﺌﯿﺷ ﮯﻌﯾﺭﺫ ﮯﮐ ﻮﻨﯿﻣ
 - ;(`argvus projects`, `argvus ssh`, `argvus snippets`) ﺮﮑﯿﭘ ﭦﺎﺷ ﭗﯿﻨﺳﺍ ﺭﻭﺍ
 -                                                         ) ﺮﺠﯿﻨﻣ ﯽﮐ ﭻﯾﺍ ﺲﯾﺍ ﺲﯾﺍ`argvus keys`          ؛ﮯﮨ ﺎﺗﺮﮐ ﻑﺬﺣ ﺭﻭﺍ ﮯﮨ ﺎﺗﺮﮐ ﮈﻮﻟ ،ﮯﮨ ﺎﺗﺎﻨﺑ ﺖﺳﺮﮩﻓ ،ﮯﮨ ﺎﺗﺎﻨﺑ ﺯﺮﺌﯿﭘ ﯽﮐ ﻮﺟ ،
 -                                                            ) ﺮﺠﯿﻨﻣ ﯽﮐ ﯽﺟ ﯽﭘ ﯽﺟ`argvus gpg`؛ﮯﮨ ﺎﺗﺮﮐ ﭧﯿﺳ ﻮﮐ pinentry-gtk ﮯﯿﻟ ﮯﮐ gpg-agent ﺭﻭﺍ ﮯﮨ ﺎﺗﺮﮐ ﺪﻣﺁﺮﺑ ﺭﻭﺍ ﮯﮨ ﺎﺗﺮﮐ ﻖﯿ
@@ -29,7 +27,6 @@ description: لانچر اور تلاش — Quickshell/QML + Rust.
 
 ## لانچر اور تلاش
 
-مرکزی لانچر Quickshell/QML اور مقامی Rust سرچ انجن سے ایپس، ونڈوز، ترتیبات، کارروائیاں، منصوبے، SSH میزبان، فائلیں اور شارٹ کٹس تلاش کرتا ہے۔ اشاریہ سازی شروع میں بند ہے؛ فولڈر واضح طور پر منتخب کریں۔ صرف نام اور راستے شامل ہوتے ہیں، دستاویز کا مواد نہیں۔ حالیہ فائلیں XDG ریکارڈ پر منحصر ہیں۔ پوشیدہ فائلیں بطورِ طے شدہ خارج ہیں اور ڈائریکٹری سم لنکس کی پیروی نہیں ہوتی۔ مخصوص Rofi مینو دستیاب رہتے ہیں۔ Launcher and Search میں A–Z یا حال ہی میں کھولی گئی ایپس کی ترتیب منتخب کریں؛ طے شدہ ترتیب حال ہی میں کھولی گئی ایپس ہے۔ **ابھی کھلی ہوئی** بطورِ طے شدہ بند ہے۔ خالی تلاش پر موجودہ ونڈوز دکھانے کے لیے Control Center > Preferences > Launcher and Search میں اسے فعال کریں۔ اسی صفحے سے ایپ کے استعمال کی تاریخ صاف کی جا سکتی ہے۔
 
 لانچر میں یکساں چوڑائی کا متن، ہم آہنگ تلاش اور زمرے، مختصر پسندیدہ بٹن اور الگ مدد کا فوٹر والا مختصر TUI لے آؤٹ ہے۔ سرحد کی موٹائی اور گولائی موجودہ ARGVUS ترتیبات کے مطابق ہیں۔
 
@@ -48,37 +45,9 @@ description: لانچر اور تلاش — Quickshell/QML + Rust.
 
 `$XDG_CONFIG_HOME/argvus/config/launcher.json` → `$XDG_CACHE_HOME/argvus/launcher/index.json`
 
-Quickshell: `launcher/Theme.qml` · Rofi: `launcher/theme.rasi`
+Quickshell: `launcher/Theme.qml`
 
-`--config` / Rasi: تلاش ترتیب دیں → `argvus control-center launcher`.
-
-## Rofi ﺰﻤﯿﮭﺗ ﺭﻭﺍ ﺐﯿﺗﺮﺗ ﯽﮐ
-
-            :ﮯﮨ ﺎﺗﺮﮐ ﻝﺎﭩﺴﻧﺍ ﺖﺤﺗ ﮯﮐ `/usr/share/argvus/launcher/config/` ﻮﮐ ﻦﺸﯾﺮﮕﯿﻔﻨﮐ ﯽﮐ Rofi ﺞﮑﯿﭘ
-
-| فائل | کردار |
-| --- | --- |
-| `config.rasi`  ﮯﮨ ﺎﺗﺮﮐ ﭧﯿﺳ ﻮﮐ Rofi ۔ﮧﻄﻘﻧ ﯽﻠﺧﺍﺩ ﻻ﻿ﺍﻭ ﮯﻧﻮﮨ ﻝﺎﻤﻌﺘﺳﺍ ﮯﺳ ﺐﻧﺎﺟ ﯽﮐ ﻮﻨﯿﻣ ARGVUS ﺮﮨ |`configuration`    ﺕﺍﺪﻣﺁﺭﺩ ﺭﻭﺍ (ﭖﻼ﻿ﻣ ﺱﺎﺴﺣ ﺮﯿﻏ ﮯﺳ ﺲﯿﮐ ،ﺖﺳﺮﮩﻓ ﮦﺪﺷ ﺐﺗﺮﻣ ،ﮟﯿﮩﻧ ﺰﻨﮑﯿﺋﺁ ﯽﺋﻮﮐ ،ﭧﻧﻮﻓ) `theme.rasi`. |
-| `theme.rasi`| ۔ﮯﮨ ﺎﺗﺮﮐ ﺪﻣﺁﺭﺩ ﻞﺋﺎﻓ ﮈﻮﻣ ﺭﻭﺍ ﻢﯿﮭﺗ ﮏﯾﺍ ۔ﺐﯿﺗﺮﺗ ﺭﻭﺍ ﮓﻧﺭ ﮯﮐ ﭧﺴﻟ ﺭﻭﺍ ﺭﺎﺑ ﭧﭘ ﻥﺍ ،ﻭﮉ
-| `mode.rasi`| ۔ﮯﮨ ﯽﺘﮭﮐﺭ ﺭﺍﺮﻗﺮﺑ ﮈﻮﻣ ﮎﺭﺍﮈ ﮧﯾ ﺭﻭﺍ ﮯﮨ ﮟﯿﮩﻧ ﮉﯿﺋﺍﺭﺭﻭﻭﺍ ﯽﺋﻮﮐ ﮟﯿﻣ ﻞﺋﺎﻓ ﮦﺪﺷ ﺞﮑﯿﭘ ۔ﮉ
-| `themes/<family>/theme.rasi` | تھیم فیملی کا پیلیٹ، مثال کے طور پر `argvus-dark` یا `tokyo-night`۔ |
-| `themes/<family>-spaced/theme.rasi` | ایک ہی خاندان کا فاصلاتی شکل۔ |
-
-۔ﮯﮨ ﺎﺗﺮﮐ ﺪﻣﺁﺭﺩ
-
-### ﮯﮨ ﺩﻮﺟﻮﻣ ﻦﺸﯾﺮﮕﯿﻔﻨﮐ ﻝﺎﻌﻓ ﮞﺎﮩﺟ
-
-ARGVUS ہر Rofi فائل کو argvus-dark theme.rasi `-spaced` `theme.rasi` `argvus-dark` `paths_config` کے ذریعے حل کرتا ہے۔ صارف کے درمیان پہلی موجودہ فائل اوور رائیڈز، یوزر کاپی، لیگیسی لوکیشنز اور جنریٹڈ ٹری جیت؛ بصورت دیگر `/usr/share/argvus/launcher/config/` کے تحت پیکیجڈ فائل استعمال کی جاتی ہے۔ فائل کی صارف کاپی `$XDG_CONFIG_HOME/argvus/data/rofi/<file>` ہے: `launcher/config/` کا سابقہ ​​`rofi/` کے تحت محفوظ ہے۔
-
-ARGVUS ﺐﺟ ﮯﮨ ﺎﺗﺎﻨﺑ ﯽﭘﺎﮐ ﯽﮐ ﻑﺭﺎﺻ ﮏﯾﺍ ﺭﺎﺑ ﯽﻠﮩﭘ ARGVUS ؛ﮯﮨ ﺎﺘﻟﺪﺑ ﻮﮐ ﻞﺋﺎﻓ ﺱﺍ ﭧﭘﺮﮑﺳ`argvus-appearance`۔ﮯﮨ ﯽﺘﮭﮐﺭ ﺖﯿﻗﻮﻓ ﺮﭘ ﻞﺋﺎﻓ ﮦﺪﺷ ﺞﯿﮑﯿﭘ ﯽﭘﺎﮐ ﯽﮐ ﻑﺭﺎﺻ ﺭﻭﺍ ،ﮟﯿﮨ ﯽﺘﮨﺭ ﯽﺘﮬﮍﭘ ﮯﺳ ﺞﯿﮑﯿﭘ ،ﮟ
-
-۔ﻮﮨ ﯼﺩ ﺎﻨﺑ ﻞﻘﻧ ﮯﻧ ﯽﻠﯾﺪﺒﺗ ﯼﺮﮨ
-
-### ﺎﻧﺮﮐ ﻞﯾﺪﺒﺗ ﻢﯿﮭﺗ
-
- config.rasi  font:  `argvus-session`  `font:`  `config.rasi` `argvus-appearance`ﮧﮐﺎﺗ ﮯﮨ ﺎﺘﯾﺩ ﮫﮑﻟ ﮦﺭﺎﺑﻭﺩ ﮞﺎﯿﭘﺎﮐ ﯽﮐ ﻑﺭﺎﺻ ﮧﯾ ﻮﺗ ،ﮯﮨ ﺎﺘﻟﺪﺑ ﻉﻮﺿﻮﻣ ﺐﺟ ۔ﮯﮨ ﮏﻟﺎﻣ ﺎﮐ ﮞﻮ`config.rasi`                                                      ﮯﮨ ﺎﺗﺮﮐ ﺕﺭﺎﺷﺍ ﻑﺮﻃ ﯽﮐ ﮯﺌﻧ`theme.rasi`, and `theme.rasi`                                        ) ﮯﮨ ﺎﺗﺮﮐ ﺪﻣﺁﺭﺩ ﭧﯿﻠﯿﭘ ﺮﭽﻧﻻ﻿ ﺎﮐ ﮉﻠﺑ ﻢﯿﮭﺗ`~/.config/argvus/data/generated/theme/current/launcher/theme.rasi`ﮯﮨ ﺎﺗﺮﮐ ﺐﺨﺘﻨﻣ ﻮﮐ ﭦﺅﺁ ﮯﻟ ﮉﺴﯿﭙﺳﺍ ﺭﻭﺍ ،ﮯﮨ ﺎﺗﺮﮐ ﭦﺭﻮﭙﻣﺍ ﯽﭘﺎﮐ ﺎﮐ ﯽﻠﻤﯿﻓ ﮧﯾ ﮯﮐ ﻢﯿﮭﺗ ﺮﯿ`-spaced`ﮟﯿﮨ ﮯﺘﮬﮍﭘ ﺡﺮﻃ ﯽﮨ ﮏﯾﺍ ﻮﻨﯿﻣ ﭦﺅﺁ ﮯﻟ ﺭﻭﺍ ﻮﻨﯿﻣ ﻢﯿﮭﺗ ﮧﮐ ﮯﺴﯿﺟ ﺯﺮﮑﯿﭘ ﻢﯿﮭﺗ ۔ﻢﺴﻗ ﻒﻠﺘﺨﻣ ﮏ`config.rasi`                                    ۔ﮟﯿﮨ ﮯﺗﺮﮐ ﻝﺎﻤﻌﺘﺳﺍ ﯽﮭﺑ ﺯﺍﺪﻧﺍ ﻝﺎﻌﻓ ﮦﻭ ﺍﺬﮩﻟ ،
-
-                                            ﮟﯾﺮﮐ ﮧﻧ ﻢﯿﻣﺮﺗ ﮟﯿﻣ ﺰﻠﺋﺎﻓ ﺩﻮﺟﻮﻣ ﮯﭽﯿﻧ`/usr/share/argvus/launcher/` ﺖﺤﺗ ﮯﮐ ،ﮟﯾﺮﮐ ﯽﻠﯾﺪﺒﺗ ﮟﯿﻣ ﯽﭘﺎﮐ ﯽﮐ ﻑﺭﺎﺻ ۔ﮟﯿﮨ ﮯﺗﺎﺟ ﻮﮨ ﻞﯾﺪﺒﺗ ﺮﭘ ﮉﯾﺮﮔ ﭖﺍ ﺞﯿﮑﯿﭘ ﮧﯾ ;`$XDG_CONFIG_HOME/argvus/data/rofi/`.
+تلاش ترتیب دیں → `argvus control-center launcher`.
 
 ##                                              (`SUPER + O`) ﺮﭽﺋﻮﺳ ﭧﮑﯿﺟﻭﺮﭘ
 
@@ -405,18 +374,15 @@ ARGVUS_GIT_TUI=gitui argvus git
           :ﮯﮨ ﯽﺗﺎﺟ ﯽﮐ ﺮﺌﯿﺷ ﮫﺗﺎﺳ ﮯﮐ ءﺍﺰﺟﺍ ﺖﯿﮑﻠﻣ ﺮﯾﺯ ﮯﮐ ﺰﺠﮑﯿﭘ ﺮﮕﯾﺩ ﺐﯿﺗﺮﺗ ﯽﮐ ﺮﭽﻧﻻ﻿
 
 -
--                                          ﮟﯿﮨ ﮯﺗﺮﮐ ﻢﯿﻠﺴﺗ ﻮﮐ ﺰﻟﻭﺭ ﻭﮉﻧﻭ ﮉﻨﯿﻟﺮﭙﺋﺎﮨ`argvus-launcher` and `rofi`                     ۔ﮟﯾﺮﮐ ﻞﺻﺎﺣ ﻮﮐ ﺝﻼ﻿ﻋ ﮯﮐ ﺢﻄﺳ ﯽﮐ ﺮﭽﻧﻻ﻿ ﺯﻮﯿﻨﯿﻣ ﮧﮐﺎﺗ ،ﺰﺴﯿﭙﺳﺍ ﻢﯿﯿﻧ
 
 ##                                                            ﺕﺍﺭﺎﺼﺤﻧﺍ ﺭﻭﺍ ﮓﻨﺠﮑﯿﭘ
 
                :ﮯﮨ ﺎﺗﺮﮐ ﺐﺼﻧ ﮧﯾ ﺭﻭﺍ ﮯﮨ ﺩﺍﺯﺁ ﮯﺳ ﺮﯿﻤﻌﺗ ﻦﻓ `argvus-launcher` ﺞﯿﮑﯿﭘ
 
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` ﺭﻭﺍ `argvus-git`،
-- `/usr/share/argvus/launcher/config/`، Rofi ؛ﮫﺗﺎﺳ ﮯﮐ ﻢﯿﮭﺗ ﺭﻭﺍ ﺐﯿﺗﺮﺗ ﯽﮐ
 
 
 
-Installing the package does not write into  gitui  lazygit  openssh  pinentry-gtk  pinentry  gnupg  wtype  wl-clipboard     rofi  libnotify  hyprland  jq  bash  argvus  argvus-appearance  `argvus-session`  `argvus-appearance`  `argvus`  `bash`  `jq`  `hyprland`  `libnotify`  `argvus calculator`  `wl-clipboard`  `wtype`  `gnupg`  `pinentry`  `pinentry-gtk`  `openssh`  `lazygit`  `gitui` `$HOME`. User configuration is created at session start, as described in [Rofi configuration and themes](#where-the-active-configuration-lives).
 
 ## خرابی کا سراغ لگانا
 
@@ -425,7 +391,6 @@ Installing the package does not write into  gitui  lazygit  openssh  pinentry-gt
 | `SUPER + D`                                                    ﮟﯾﺮﮐ ﮏﯿﭼ | `argvus launcher` · `argvus control-center launcher` · `quickshell` · `argvus` |
 | `SUPER + D` ﺱﺎﭘ ﮯﮐ ﻦﺟ ﮟﯿﺘﺳﺍﻮﺧﺭﺩ ﮦﻭ ﻑﺮﺻ ۔ﮯﮨ ﮟﯿﮩﻧ ﯼﺮﭩﻧﺍ ﭖﺎﭨ ﮏﺴﯾﮈ ﯽﺋﻮﮐ ﺎﮐ ﮞﻮﺘﺳﺍﻮﺧﺭﺩ | ﮟﯿﮨ ﮟﯿ`.desktop`                                                         | ۔ﮯﮨ ﯽﺌﮔ ﯽﺋﺎﮭﮐﺩ ﻞﺋﺎﻓ
                                       | ﮟﯿﮨ ﮯﺗﺮﮐ ﻝﺎﻤﻌﺘﺳﺍ ﭧﻧﻮﻓ ﺎﻧﺍﺮﭘ ﮏﯾﺍ ﻮﻨﯿﻣ |`font:`| ۔ﮟﯾﺮﮐ ﻉﻭﺮﺷ ﮦﺭﺎﺑﻭﺩ ﻮﮐ ﻦﺸﯿﺳ ﺪﻌﺑ ﮯﮐ ﮯﻧﺮﮐ ﻞﯾﺪﺒﺗ ﭧﻧﻮﻓ ۔ﮯﮨ ﯽﺗﺎﺟ ﯽﮭﮑﻟ ﮦﺭﺎﺑﻭﺩ ﻦﺋﻻ﻿ ﺮﭘ
-| A theme change does not reach the Rofi menus | Check whether the user copy of `config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/`                 ﮟﯾﺮﮐ ﻮﮔﻻ﻿ ﮯﺳ ﻮﮐ ﻢﯿﮭﺗ ۔ﮯﮨ ﺎﺗﺮﮐ ﮦﺭﺎﺷﺍ ﻑﺮﻃ ﯽﮐ ﻢﯿﮭﺗ ﮦﺪﺷ ﮏﯿﭘ ﯽﮭﺑ ﺏﺍ`argvus-appearance` again. |
 | `SUPER + O` ﮟﯿﺋﻼ﻿ﭼ ۔ﮟﯿﮨ ﮟﯿﮩﻧ ﺩﻮﺟﻮﻣ ﺏﺍ ﺰﯾﺮﭩﮑﯾﺮﺋﺍﮈ ﺎﯾ ،ﮯﮨ ﮟﯿﮩﻧ ﮧﺘﻓﺎﯾ ﺐﯿﺗﺮﺗ ﮧﺘﺳﺍﺭ ﺎﯾ ﭦﻭﺭ ﯽﺋﻮﮐ`argvus projects list`. |
 | `SUPER + C` / `SUPER + .` | `argvus`, `wl-clipboard`, `wtype` |
 | ۔ﮟﯾﺮﮐ ﭻﻧﺎﺟ ﯽﮐ ﮞﻮﺘﺳﺍﺭ ﮦﺪﺷ ﻥﺎﯿﺑ ﮟﯿﻣ ﻦﺸﮑﯿﺳ ﮯﮐ ﺲﭩﯿﺷ ﭧﯿﭼ ۔ﮯﮨ ﮟﯿﮩﻧ ﺩﻮﺟﻮﻣ ﻞﺋﺎﻓ ﮯﯿﻟ
@@ -436,15 +401,12 @@ Installing the package does not write into  gitui  lazygit  openssh  pinentry-gt
 | جزو | ذمہ داری |
 | --- | --- |
 | `argvus-hyprland` | مینو کے لیے شارٹ کٹس اور Hyprland ونڈو کے قوانین کا اعلان کرتا ہے۔ |
-| `argvus-appearance` | فعال تھیم، لہجہ اور لے آؤٹ کو تبدیل کرتا ہے، اور Rofi تھیم کے حوالوں کو دوبارہ لکھتا ہے۔ |
 | `argvus` (`argvus config`) | پروجیکٹس، اسنیپٹس اور ڈیفالٹ لانچر سیٹنگ کو اسٹور کرتا ہے۔ |
-| `argvus-session`| ۔ﮯﮨ ﺎﺗﺮﮐ ﺭﺮﻘﻣ ﭧﻧﻮﻓ ﺎﮐ ﺱﺍ ﮟﯿﻣ ﺯﺎﻏﺁ ﮯﮐ ﻦﺸﯿﺳ ﺭﻭﺍ ﮯﮨ ﺎﺗﺮﮐ ﻞﻘﻧ ﯽﮐ ﺐﯿﺗﺮﺗ ﯽﮐ Rofi ﯽ
 | `argvus` (`argvus terminal`         ﮯﮨ ﺎﺘﻟﻮﮭﮐ ﺲﭩﭙﻣﺍﺮﭘ ﺰﯾﺮﻓ ﺱﺎﭘ ﺭﻭﺍ ﺰﻠﻨﯿﻣﺮﭨ ﭧﮑﯿﺟﻭﺮﭘ ،ﺰﻨﺸﯿﺳ ﭻﯾﺍ ﺲﯾﺍ ﺲﯾﺍ | (`argvus keys`. |
 | `argvus` (`argvus widget-telemetry`) | `argvus projects` کا لکھا ہوا ایکٹو پروجیکٹ پڑھتا ہے۔ |
 | `argvus` (`argvus i18n`) | لانچر اسکرپٹس کے ذریعہ استعمال کردہ ترجمہ شدہ پیغامات فراہم کرتا ہے۔ |
 | `argvus` (`argvus control-center`) | `argvus projects` کے ذریعے پروجیکٹ کی فہرست میں ترمیم کرتا ہے۔ |
 
-Sticky اور Spaced میں Rofi کا دھندلاپن بار اور حاشیوں سمیت مینو کے پورے مانیٹر پر ہوتا ہے۔ مینو درمیان میں رہتا ہے اور عمومی دھندلاپن کی ترتیب پر عمل کرتا ہے۔
 
 
 `/launcher/show_icons`: `true` / `false`.

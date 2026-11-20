@@ -29,8 +29,6 @@ arch_check_launcher_payload() {
 	local source_root="${srcdir}/${pkgname}-${pkgver}"
 
 	test -x "${source_root}/src/usr/bin/argvus-launcher"
-	test -f "${source_root}/src/usr/share/argvus/launcher/config/config.rasi"
-	test -f "${source_root}/src/usr/share/argvus/launcher/config/theme.rasi"
 	while IFS= read -r -d '' script; do
 		sh -n "$script"
 	done < <(find "${source_root}/src" -type f -name '*.sh' -print0)

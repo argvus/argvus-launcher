@@ -3,10 +3,8 @@ title: Trình khởi chạy và tìm kiếm
 description: Trình khởi chạy và tìm kiếm — Quickshell/QML + Rust.
 ---
 
-Trình khởi chạy chính dùng Quickshell/QML và công cụ Rust cục bộ để tìm ứng dụng, cửa sổ, cài đặt, thao tác, dự án, máy chủ SSH, tệp và phím tắt. Lập chỉ mục ban đầu bị tắt; cần chọn thư mục rõ ràng. Chỉ tên và đường dẫn được lập chỉ mục, không đọc nội dung tài liệu. Tệp gần đây dựa vào bản ghi XDG. Tệp ẩn bị loại trừ mặc định và không đi theo liên kết tượng trưng của thư mục. Các menu Rofi chuyên dụng vẫn có sẵn. Trong Launcher and Search, chọn thứ tự A–Z hoặc Mở gần đây; Mở gần đây là mặc định. Danh mục đã lưu tiếp tục lọc các kết quả khác; hãy tắt nguồn Windows trong cài đặt tìm kiếm để ẩn nhóm này.
 
 - trình khởi chạy ứng dụng (`SUPER + D`);
-- cấu hình Rofi và các chủ đề được chia sẻ bởi mọi menu Rofi của ARGVUS;
 - trình chuyển đổi dự án, trình chọn SSH và trình chọn đoạn mã (`argvus projects`, `argvus ssh`, `argvus snippets`);
 - trình quản lý khóa SSH (`argvus keys`), tạo, liệt kê, tải và xóa các cặp khóa;
 - trình quản lý khóa GPG (`argvus gpg`), liệt kê, tạo và xuất khóa và thiết lập pinentry-gtk cho gpg-agent;
@@ -29,7 +27,6 @@ Các phím tắt được khai báo bởi `argvus-hyprland`. Gói này cung cấ
 
 ## Trình khởi chạy và tìm kiếm
 
-Trình khởi chạy chính dùng Quickshell/QML và công cụ Rust cục bộ để tìm ứng dụng, cửa sổ, cài đặt, thao tác, dự án, máy chủ SSH, tệp và phím tắt. Lập chỉ mục ban đầu bị tắt; cần chọn thư mục rõ ràng. Chỉ tên và đường dẫn được lập chỉ mục, không đọc nội dung tài liệu. Tệp gần đây dựa vào bản ghi XDG. Tệp ẩn bị loại trừ mặc định và không đi theo liên kết tượng trưng của thư mục. Các menu Rofi chuyên dụng vẫn có sẵn. Trong Launcher and Search, chọn thứ tự A–Z hoặc Mở gần đây; Mở gần đây là mặc định. **Đang mở** mặc định bị tắt. Bật tùy chọn này trong Control Center > Preferences > Launcher and Search để hiển thị các cửa sổ hiện tại khi ô tìm kiếm trống. Bạn cũng có thể xóa lịch sử sử dụng ứng dụng tại trang đó.
 
 Trình khởi chạy dùng bố cục TUI gọn: chữ đơn cách, tìm kiếm và danh mục thẳng hàng, mục yêu thích gọn và phần trợ giúp riêng bên dưới. Độ dày và bo góc viền theo thiết lập ARGVUS hiện hành.
 
@@ -48,37 +45,9 @@ Trình khởi chạy dùng ngôn ngữ giao diện ARGVUS được chọn trong 
 
 `$XDG_CONFIG_HOME/argvus/config/launcher.json` → `$XDG_CACHE_HOME/argvus/launcher/index.json`
 
-Quickshell: `launcher/Theme.qml` · Rofi: `launcher/theme.rasi`
+Quickshell: `launcher/Theme.qml`
 
-`--config` / Rasi: Cấu hình tìm kiếm → `argvus control-center launcher`.
-
-## Cấu hình và giao diện của Rofi
-
-Gói cài đặt cấu hình Rofi dưới `/usr/share/argvus/launcher/config/`:
-
-| Tập tin | Vai trò |
-| --- | --- |
-| `config.rasi` | Điểm vào được mọi menu ARGVUS sử dụng. Đặt Rofi `configuration` (phông chữ, không có biểu tượng, danh sách được sắp xếp, khớp không phân biệt chữ hoa chữ thường) và nhập `theme.rasi`. |
-| `theme.rasi` | Màu sắc và bố cục của cửa sổ, thanh nhập liệu và danh sách. Nhập một chủ đề và tệp chế độ. |
-| `mode.rasi` | Ghi đè chế độ. Tệp được đóng gói không có ghi đè và giữ chế độ Tối. |
-| `themes/<family>/theme.rasi` | Bảng màu của nhóm chủ đề, ví dụ `argvus-dark` hoặc `tokyo-night`. |
-| `themes/<family>-spaced/theme.rasi` | Biến thể cách nhau của cùng một gia đình. |
-
-Gói cung cấp 22 họ, và mỗi họ có một biến thể `-spaced`. Gói `theme.rasi` nhập `argvus-dark`.
-
-### Nơi cấu hình đang hoạt động tồn tại
-
-ARGVUS giải quyết từng tệp Rofi thông qua `paths_config`. Tệp tồn tại đầu tiên trong số các ghi đè của người dùng, bản sao của người dùng, các vị trí cũ và cây được tạo sẽ thắng; nếu không, tệp được đóng gói dưới `/usr/share/argvus/launcher/config/` sẽ được sử dụng. Bản sao của người dùng của một tệp là `$XDG_CONFIG_HOME/argvus/data/rofi/<file>`: tiền tố `launcher/config/` được lưu dưới `rofi/`.
-
-ARGVUS tạo một bản sao cho người dùng lần đầu tiên một script ARGVUS thay đổi tệp đó; `argvus-appearance` thực hiện điều này cho các thay đổi về chủ đề, màu sắc và chế độ. Các tệp chưa bao giờ bị thay đổi tiếp tục được đọc từ gói, và bản sao của người dùng được ưu tiên hơn tệp trong gói.
-
-Khi `argvus-session` áp dụng phông chữ vào lúc bắt đầu phiên, nó sẽ ghi lại dòng `font:` của `config.rasi` từ cài đặt phông chữ ARGVUS. Việc chỉnh sửa đó chỉ ảnh hưởng đến bản sao của người dùng. Cho đến khi bản sao tồn tại, tệp đã đóng gói là tệp được tìm thấy, và người dùng không thể ghi vào nó, vì vậy thay đổi phông chữ có hiệu lực khi thay đổi xuất hiện đầu tiên đã tạo ra bản sao.
-
-### Thay đổi chủ đề
-
-`argvus-appearance` sở hữu các thay đổi giao diện. Khi giao diện thay đổi, nó viết lại các bản sao người dùng để `config.rasi` trỏ tới `theme.rasi` mới, và `theme.rasi` nhập bảng màu trình khởi chạy của bản dựng giao diện (`~/.config/argvus/data/generated/theme/current/launcher/theme.rasi`), bao gồm gia đình, bố cục và màu nổi bật đang hoạt động. Nếu không có bản dựng giao diện, nó nhập bản sao gia đình, và bố cục Spaced chọn biến thể `-spaced` của gia đình đang hoạt động. Các trình chọn giao diện như menu giao diện và menu bố cục đọc cùng `config.rasi`, nên chúng cũng sử dụng kiểu đang hoạt động.
-
-Không chỉnh sửa các tệp dưới `/usr/share/argvus/launcher/`; chúng sẽ bị thay thế khi nâng cấp gói. Thực hiện các thay đổi trong bản sao người dùng, dưới `$XDG_CONFIG_HOME/argvus/data/rofi/`.
+Cấu hình tìm kiếm → `argvus control-center launcher`.
 
 ## Bộ chuyển đổi dự án (`SUPER + O`)
 
@@ -390,23 +359,14 @@ Trình chọn mở ở mục Tất cả. Tab chuyển danh mục và các phím 
 
 `SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
-## Các menu khác sử dụng cấu hình Rofi
-
-Cấu hình khởi chạy được chia sẻ với các thành phần thuộc sở hữu của các gói khác:
-
-- Trình chọn chủ đề, giọng điệu và bố cục trong `argvus-appearance` mở Rofi với `config.rasi`.
-- Các quy tắc cửa sổ của Hyprland nhận diện các không gian tên `argvus-launcher` và `rofi`, vì vậy các menu nhận được xử lý bề mặt trình khởi chạy.
-
 ## Đóng gói và các phụ thuộc
 
 Gói `argvus-launcher` là không phụ thuộc kiến trúc và cài đặt:
 
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` và `argvus-git`, trong cùng một thư mục;
-- `/usr/share/argvus/launcher/config/`, với cấu hình và chủ đề Rofi;
 
 Các phụ thuộc bắt buộc: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `wl-clipboard`, `wtype`, `gnupg` và `pinentry` (cung cấp `pinentry-gtk`). Các phụ thuộc tùy chọn: `openssh`, cho trình chọn SSH và trình quản lý khóa SSH; `lazygit` và `gitui`, cho giao diện TUI của git.
 
-Cài đặt gói không ghi vào `$HOME`. Cấu hình người dùng được tạo khi bắt đầu phiên, như được mô tả trong [Cấu hình và chủ đề Rofi](#where-the-active-configuration-lives).
 
 ## Khắc phục sự cố
 
@@ -415,7 +375,6 @@ Cài đặt gói không ghi vào `$HOME`. Cấu hình người dùng được t�
 | `SUPER + D` không mở được gì | `argvus launcher` · `argvus control-center launcher` · `quickshell` · `argvus` |
 | `SUPER + D`không liệt kê ứng dụng nào | Các ứng dụng không có mục nhập trên máy tính để bàn. Chỉ những ứng dụng có`.desktop` file are shown. |
 | Các menu sử dụng phông chữ cũ | Dòng `font:` được viết lại khi bắt đầu phiên. Khởi động lại phiên sau khi thay đổi phông chữ. |
-| Thay đổi chủ đề không ảnh hưởng đến các menu Rofi | Kiểm tra xem bản sao của người dùng có`config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/` still points to the packaged theme. Apply the theme from `argvus-appearance` again. |
 | `SUPER + O` báo cáo không tìm thấy dự án nào | Không có gốc hoặc đường dẫn nào được định cấu hình hoặc các thư mục không còn tồn tại. Chạy `argvus projects list`. |
 | `SUPER + C` / `SUPER + .` | `argvus`, `wl-clipboard`, `wtype` |
 | `SUPER + H` không hiển thị gì | Lịch sử trống hoặc trình ghi clipboard từ `argvus-session` chưa lưu trữ bất cứ thứ gì. |
@@ -425,15 +384,12 @@ Cài đặt gói không ghi vào `$HOME`. Cấu hình người dùng được t�
 | Thành phần | Trách nhiệm |
 | --- | --- |
 | `argvus-hyprland` | Khai báo các phím tắt và quy tắc cửa sổ Hyprland cho các menu. |
-| `argvus-appearance` | Thay đổi chủ đề đang hoạt động, điểm nhấn và bố cục, và viết lại các tham chiếu chủ đề Rofi. |
 | `argvus` (`argvus config`) | Lưu trữ các dự án, đoạn mã và cài đặt trình khởi chạy mặc định. |
-| `argvus-session` | Sao chép cấu hình Rofi ban đầu và đặt phông chữ của nó khi bắt đầu phiên. |
 | `argvus` (`argvus terminal`) | Mở phiên SSH, thiết bị đầu cuối dự án và lời nhắc cụm mật khẩu của `argvus keys`. |
 | `argvus` (`argvus widget-telemetry`) | Đọc dự án đang hoạt động được viết bởi `argvus projects`. |
 | `argvus` (`argvus i18n`) | Cung cấp các thông báo đã dịch được sử dụng bởi tập lệnh khởi chạy. |
 | `argvus` (`argvus control-center`) | Chỉnh sửa danh sách dự án thông qua `argvus projects`. |
 
-Trong Sticky và Spaced, hiệu ứng mờ Rofi phủ toàn bộ màn hình chứa menu, gồm thanh và lề. Menu vẫn ở giữa và tuân theo cài đặt mờ toàn cục.
 
 
 `/launcher/show_icons`: `true` / `false`.

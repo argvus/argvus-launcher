@@ -51,15 +51,7 @@ FAKE
 # Fake lazygit: only has to exist on PATH for the tool selection.
 printf '#!/bin/sh\nexit 0\n' > "$FAKEBIN/lazygit"
 
-# Fake rofi: picks index 0, or cancels with status 1 when FAKE_ROFI=cancel.
-cat > "$FAKEBIN/rofi" <<'FAKE'
-#!/bin/sh
-cat >/dev/null
-[ "${FAKE_ROFI:-select}" = cancel ] && exit 1
-printf '0\n'
-FAKE
-
-chmod 755 "$FAKEBIN/argvus" "$FAKEBIN/lazygit" "$FAKEBIN/rofi"
+chmod 755 "$FAKEBIN/argvus" "$FAKEBIN/lazygit"
 
 run_git() {
   env -i PATH="$FAKEBIN:$TOOLS" HOME="$WORK" \

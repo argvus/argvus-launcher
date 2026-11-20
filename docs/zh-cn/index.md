@@ -2,10 +2,8 @@
 title: 启动器与搜索
 description: 启动器与搜索 — Quickshell/QML + Rust.
 ---
-主启动器采用 Quickshell/QML 和本地 Rust 搜索引擎，可查找应用、窗口、设置、操作、项目、SSH 主机、文件和快捷键。文件索引默认关闭，需明确选择文件夹。仅索引名称和路径，不读取文档内容。最近文件来自 XDG 记录。默认排除隐藏文件，不跟随目录符号链接。专用 Rofi 菜单继续可用。 在 Launcher and Search 中可选择按 A–Z 或最近打开排序；默认使用最近打开。已保存的类别仍会筛选其他结果；如要隐藏此分组，请在搜索设置中关闭 Windows 来源。
 
 - 应用启动器（`SUPER + D`）；
-- 每个 ARGVUS Rofi 菜单共享的 Rofi 配置和主题；
 - 项目切换器、SSH 选择器和代码片段选择器（`argvus projects`、`argvus ssh`、`argvus snippets`）；
 - SSH 密钥管理器（`argvus keys`），用于创建、列出、加载和删除密钥对；
 - GPG 密钥管理器（`argvus gpg`），用于列出、创建和导出密钥，并为 gpg-agent 设置 pinentry-gtk；
@@ -28,11 +26,9 @@ description: 启动器与搜索 — Quickshell/QML + Rust.
 
 ## 启动器与搜索
 
-主启动器采用 Quickshell/QML 和本地 Rust 搜索引擎，可查找应用、窗口、设置、操作、项目、SSH 主机、文件和快捷键。文件索引默认关闭，需明确选择文件夹。仅索引名称和路径，不读取文档内容。最近文件来自 XDG 记录。默认排除隐藏文件，不跟随目录符号链接。专用 Rofi 菜单继续可用。 ---
 title: 启动器与搜索
 description: 启动器与搜索 — Quickshell/QML + Rust.
 ---
-主启动器采用 Quickshell/QML 和本地 Rust 搜索引擎，可查找应用、窗口、设置、操作、项目、SSH 主机、文件和快捷键。文件索引默认关闭，需明确选择文件夹。仅索引名称和路径，不读取文档内容。最近文件来自 XDG 记录。默认排除隐藏文件，不跟随目录符号链接。专用 Rofi 菜单继续可用。 在 Launcher and Search 中可选择按 A–Z 或最近打开排序；默认使用最近打开。**当前打开**默认关闭。在 Control Center > Preferences > Launcher and Search 中启用后，空查询时会显示当前窗口。你也可以在同一页面清除应用使用记录。
 
 启动器采用紧凑的 TUI 布局：等宽文字、对齐的搜索和分类控件、紧凑的收藏及独立的帮助栏。边框粗细和圆角遵循 ARGVUS 当前布局设置。
 
@@ -51,37 +47,9 @@ description: 启动器与搜索 — Quickshell/QML + Rust.
 
 `$XDG_CONFIG_HOME/argvus/config/launcher.json` → `$XDG_CACHE_HOME/argvus/launcher/index.json`
 
-Quickshell: `launcher/Theme.qml` · Rofi: `launcher/theme.rasi`
+Quickshell: `launcher/Theme.qml`
 
-`--config` / Rasi: 配置搜索 → `argvus control-center launcher`.
-
-## Rofi 配置和主题
-
-该软件包将 Rofi 配置安装在 `/usr/share/argvus/launcher/config/` 下：
-
-| 文件 | 角色 |
-| --- | --- |
-| `config.rasi` | 每个 ARGVUS 菜单使用的入口点。设置 Rofi `configuration`（字体，无图标，排序列表，大小写不敏感匹配）并导入 `theme.rasi`。 |
-| `theme.rasi` | 窗口、输入栏和列表的颜色和布局。导入一个主题和模式文件。 |
-| `mode.rasi` | 模式覆盖。打包文件没有覆盖，保持暗模式。 |
-| `themes/<family>/theme.rasi` | 主题家族的调色板，例如 `argvus-dark` 或 `tokyo-night`。 |
-| `themes/<family>-spaced/theme.rasi` | 同一主题家族的间距变体。 |
-
-该软件包提供 22 个家族，每个家族都有一个 `-spaced` 变体。打包的 `theme.rasi` 导入 `argvus-dark`。
-
-### 活跃配置存放位置
-
-ARGVUS 通过 `paths_config` 解析每个 Rofi 文件。在用户覆盖、用户副本、旧有位置和生成的树中，第一个存在的文件优先；否则使用 `/usr/share/argvus/launcher/config/` 下的打包文件。文件的用户副本是 `$XDG_CONFIG_HOME/argvus/data/rofi/<file>`：`launcher/config/` 前缀存储在 `rofi/` 下。
-
-ARGVUS 在 ARGVUS 脚本第一次更改该文件时创建用户副本；`argvus-appearance` 处理主题、强调色和模式的更改。未被更改的文件继续从包中读取，而用户副本优先于打包文件。
-
-当 `argvus-session` 在会话开始时应用字体时，它会根据 ARGVUS 字体设置重写 config.rasi 的 `font:` 行。该编辑仅影响用户副本。在副本存在之前，找到的是打包文件，用户无法写入，因此字体更改在首次外观更改创建副本后才生效。
-
-### 更改主题
-
- `config.rasi` `argvus-appearance` 拥有主题更改功能。当主题更改时，它会重写用户副本，使 `config.rasi` 指向新的 `theme.rasi`，并且 `theme.rasi` 导入主题构建（`~/.config/argvus/data/generated/theme/current/launcher/theme.rasi`）的启动器调色板，该调色板包含活动的字体、布局和高亮颜色。如果没有主题构建，它会导入字体副本，而间隔布局会选择活动字体的 `-spaced` 变体。主题选择器，例如主题菜单和布局菜单，读取相同的 `config.rasi`，因此它们也使用活动样式。
-
-不要编辑 `/usr/share/argvus/launcher/` 下的文件；它们会在软件包升级时被替换。在用户副本中进行更改，路径为 `$XDG_CONFIG_HOME/argvus/data/rofi/`。
+配置搜索 → `argvus control-center launcher`.
 
 ## 项目切换器（`SUPER + O`）
 
@@ -370,22 +338,13 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 `SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
-## 使用 Rofi 配置的其他菜单
-
-启动器配置与其他软件包拥有的组件共享：
-
-- `argvus-appearance` 中的主题、强调色和布局选择器会使用 `config.rasi` 打开 Rofi。
-- Hyprland 窗口规则识别 `argvus-launcher` 和 `rofi` 命名空间，因此菜单会获得启动器表面处理。
-
 ## 打包和依赖关系
 
 包 `argvus-launcher` 与架构无关，并安装：
 
 - `argvus launcher`、`argvus-snippets`、`argvus-ssh` 和 `argvus-git`，在同一目录下；
-- `/usr/share/argvus/launcher/config/`，包含 Rofi 配置和主题；
 
 
-安装此软件包不会写入 `$HOME`。用户配置会在会话开始时创建，如 [Rofi 配置和主题](#where-the-active-configuration-lives) 所述。
 
 ## 故障排解
 
@@ -394,7 +353,6 @@ ARGVUS_GIT_TUI=gitui argvus git
 | `SUPER + D` 什么也没打开 | `argvus launcher` · `argvus control-center launcher` · `quickshell` · `argvus` |
 | `SUPER + D` 未列出应用程序 | 应用程序没有桌面条目。只有具有 `.desktop` 文件的应用程序会显示。 |
 | 菜单使用了旧字体 | `font:` 行在会话开始时会被重写。更改字体后请重启会话。 |
-| 主题更改没有应用到 Rofi 菜单 | 检查用户副本 `config.rasi` 在 `$XDG_CONFIG_HOME/argvus/data/rofi/` 中是否仍指向打包的主题。再次应用 `argvus-appearance` 中的主题。 |
 | `SUPER + O` 报告未找到任何项目 | 没有配置根目录或路径，或者目录已不存在。运行 `argvus projects list`。 |
 | `SUPER + C` / `SUPER + .` | `argvus`, `wl-clipboard`, `wtype` |
 | 快捷参考表无法打开 | 该名称和语言的文件不存在。检查快捷参考表部分描述的路径。 |
@@ -405,15 +363,12 @@ ARGVUS_GIT_TUI=gitui argvus git
 | 组件 | 职责 |
 | --- | --- |
 | `argvus-hyprland` | 声明菜单的快捷方式和 Hyprland 窗口规则。 |
-| `argvus-appearance` | 更改活动主题、强调色和布局，并重写 Rofi 主题引用。 |
 | `argvus` (`argvus config`) | 存储项目、代码片段和默认启动器设置。 |
-| `argvus-session` | 复制初始 Rofi 配置并在会话开始时设置其字体。 |
 | `argvus` (`argvus terminal`) | 打开 SSH 会话、项目终端以及 `argvus keys` 的密码提示。 |
 | `argvus` (`argvus widget-telemetry`) | 读取由 `argvus projects` 写入的活动项目。 |
 | `argvus` (`argvus i18n`) | 提供启动器脚本使用的已翻译消息。 |
 | `argvus` (`argvus control-center`) | 通过 `argvus projects` 编辑项目列表。 |
 
-在 Sticky 和 Spaced 模式下，Rofi 模糊覆盖菜单所在的整个显示器，包括栏和边距。菜单保持居中，并遵循全局模糊设置。
 
 
 `/launcher/show_icons`: `true` / `false`.

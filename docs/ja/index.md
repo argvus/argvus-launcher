@@ -2,10 +2,8 @@
 title: ランチャーと検索
 description: ランチャーと検索 — Quickshell/QML + Rust.
 ---
-メインランチャーは Quickshell/QML とローカルの Rust 検索エンジンを使用し、アプリ、ウィンドウ、設定、操作、プロジェクト、SSH ホスト、ファイル、ショートカットを検索します。索引化は初期状態で無効で、対象フォルダーの明示的な選択が必要です。名前とパスのみを索引化し、文書の内容は読み取りません。最近のファイルは XDG の履歴に依存します。隠しファイルは標準で除外し、ディレクトリーのシンボリックリンクはたどりません。専用の Rofi メニューも引き続き利用できます。 Launcher and Search で A–Z または最近開いた順を選択できます。既定は最近開いた順です。既定は最近開いた順です。保存済みのカテゴリはほかの結果の絞り込みに引き続き使われます。このグループを非表示にするには、検索設定で Windows ソースを無効にします。
 
 - アプリケーションランチャー（`SUPER + D`）；
-- すべてのARGVUS Rofiメニューで共有されるRofiの設定およびテーマ；
 - プロジェクトスイッチャー、SSHピッカー、およびスニペットピッカー（`argvus projects`、`argvus ssh`、`argvus snippets`）；
 - SSHキー管理者（`argvus keys`）、キー ペアの作成、リスト、ロード、削除を行う；
 - GPGキー管理者（`argvus gpg`）、キーのリスト作成、エクスポートを行い、gpg-agentのためにpinentry-gtkを設定する；
@@ -28,11 +26,9 @@ description: ランチャーと検索 — Quickshell/QML + Rust.
 
 ## ランチャーと検索
 
-メインランチャーは Quickshell/QML とローカルの Rust 検索エンジンを使用し、アプリ、ウィンドウ、設定、操作、プロジェクト、SSH ホスト、ファイル、ショートカットを検索します。索引化は初期状態で無効で、対象フォルダーの明示的な選択が必要です。名前とパスのみを索引化し、文書の内容は読み取りません。最近のファイルは XDG の履歴に依存します。隠しファイルは標準で除外し、ディレクトリーのシンボリックリンクはたどりません。専用の Rofi メニューも引き続き利用できます。 ---
 title: ランチャーと検索
 description: ランチャーと検索 — Quickshell/QML + Rust.
 ---
-メインランチャーは Quickshell/QML とローカルの Rust 検索エンジンを使用し、アプリ、ウィンドウ、設定、操作、プロジェクト、SSH ホスト、ファイル、ショートカットを検索します。索引化は初期状態で無効で、対象フォルダーの明示的な選択が必要です。名前とパスのみを索引化し、文書の内容は読み取りません。最近のファイルは XDG の履歴に依存します。隠しファイルは標準で除外し、ディレクトリーのシンボリックリンクはたどりません。専用の Rofi メニューも引き続き利用できます。 Launcher and Search で A–Z または最近開いた順を選択できます。既定は最近開いた順です。**現在開いている**は既定でオフです。空の検索で現在のウィンドウを表示するには、Control Center > Preferences > Launcher and Search で有効にしてください。同じページからアプリの使用履歴を消去できます。
 
 ランチャーは等幅フォント、整列した検索とカテゴリ、コンパクトなお気に入り、独立したヘルプ欄を備えたTUI風レイアウトを使用します。枠線の太さと角丸はARGVUSの現在の設定に従います。
 
@@ -51,37 +47,8 @@ description: ランチャーと検索 — Quickshell/QML + Rust.
 
 `$XDG_CONFIG_HOME/argvus/config/launcher.json` → `$XDG_CACHE_HOME/argvus/launcher/index.json`
 
-Quickshell: `launcher/Theme.qml` · Rofi: `launcher/theme.rasi`
+Quickshell: `launcher/Theme.qml`
 
-`--config` / Rasi: 検索を設定 → `argvus control-center launcher`.
-
-## Rofiの設定とテーマ
-
-パッケージは`/usr/share/argvus/launcher/config/`の下にRofiの設定をインストールします:
-
-| ファイル | 役割 |
-| --- | --- |
-| `config.rasi` | すべてのARGVUSメニューで使用されるエントリーポイント。Rofi `configuration`（フォント、アイコンなし、ソート済みリスト、大文字小文字を区別しない一致）を設定し、`theme.rasi`をインポートします。 |
-| `theme.rasi` | ウィンドウ、入力バー、リストの色とレイアウト。1つのテーマとモードファイルをインポートします。 |
-| `mode.rasi` | モードの上書き。パッケージ化されたファイルには上書きがなく、ダークモードを維持します。 |
-| `themes/<family>/theme.rasi` | テーマファミリーのパレット。例えば、`argvus-dark`や`tokyo-night`など。 |
-| `themes/<family>-spaced/theme.rasi` | 同じファミリーのスペース付きバリエーション。 |
-
-このパッケージには22のファミリーがあり、それぞれに`-spaced`のバリアントがあります。パッケージ化された`theme.rasi`は`argvus-dark`をインポートします。
-
-### アクティブな設定が存在する場所
-
-ARGVUSは各Rofiファイルを`paths_config`を通じて解決します。ユーザーオーバーライド、ユーザーコピー、レガシーの場所、生成されたツリーの中で最初に存在するファイルが優先されます。それ以外の場合は、`/usr/share/argvus/launcher/config/`配下のパッケージファイルが使用されます。ファイルのユーザーコピーは`$XDG_CONFIG_HOME/argvus/data/rofi/<file>`であり、`launcher/config/`プレフィックスは`rofi/`に格納されます。
-
-ARGVUSは初めてARGVUSスクリプトがそのファイルを変更するときにユーザーコピーを作成します。`argvus-appearance`はテーマ、アクセント、モードの変更に対応します。一度も変更されなかったファイルは引き続きパッケージから読み込まれ、ユーザーコピーはパッケージファイルよりも優先されます。
-
-`argvus-session` がセッション開始時にフォントを適用すると、ARGVUS フォント設定から config.rasi の `font:` 行を書き換えます。その編集はユーザーコピーにのみ反映されます。コピーが存在するまでは、パッケージ化されたファイルが使用され、ユーザーはそれに書き込むことができないため、最初の外観変更でコピーが作成された後にフォントの変更が有効になります。
-
-### テーマの変更
-
- `config.rasi` `argvus-appearance` はテーマの変更を管理します。テーマが変更されると、ユーザーコピーを書き換えて `config.rasi` が新しい `theme.rasi` を指すようにし、`theme.rasi` はテーマビルド（`~/.config/argvus/data/generated/theme/current/launcher/theme.rasi`）のランチャーパレットをインポートします。このランチャーパレットにはアクティブなファミリー、レイアウト、ハイライトカラーが含まれています。テーマビルドがない場合は、ファミリーのコピーをインポートし、Spaced レイアウトはアクティブファミリーの `-spaced` バリアントを選択します。テーマメニューやレイアウトメニューなどのテーマピッカーも同じ `config.rasi` を読み取るため、アクティブスタイルが使用されます。
-
-`/usr/share/argvus/launcher/` の下のファイルは編集しないでください。これらはパッケージアップグレード時に置き換えられます。変更は `$XDG_CONFIG_HOME/argvus/data/rofi/` のユーザーコピーで行ってください。
 
 ## プロジェクトスイッチャー (`SUPER + O`)
 
@@ -370,23 +337,14 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 `SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
-## Rofi 設定を使用する他のメニュー
-
-ランチャー設定は、他のパッケージが所有するコンポーネントと共有されています：
-
-- `argvus-appearance`のテーマ、アクセント、レイアウトピッカーは、`config.rasi`でRofiを開きます。
-- Hyprlandのウィンドウルールは`argvus-launcher`と`rofi`の名前空間を認識するため、メニューはランチャーサーフェスの処理を受けます。
-
 ## パッケージングと依存関係
 
 パッケージ`argvus-launcher`はアーキテクチャに依存せず、以下をインストールします：
 
 - 同じディレクトリに`argvus launcher`、`argvus-snippets`、`argvus-ssh`、`argvus-git`
-- Rofiの設定とテーマを含む`/usr/share/argvus/launcher/config/`
 
 必要な依存関係: `argvus-session`、`argvus-appearance`、`argvus`、`bash`、`jq`、`hyprland`、`libnotify`、`wl-clipboard`、`wtype`、`gnupg`、および`pinentry`（`pinentry-gtk`を提供）。オプションの依存関係: SSHピッカーおよびSSHキー管理用の`openssh`; git TUI用の`lazygit`および`gitui`。
 
-パッケージをインストールしても`$HOME`には書き込まれません。ユーザー設定は[Rofi configuration and themes](#where-the-active-configuration-lives)に記載されているように、セッション開始時に作成されます。
 
 ## トラブルシューティング
 
@@ -395,7 +353,6 @@ ARGVUS_GIT_TUI=gitui argvus git
 | `SUPER + D`が何も開かない | `argvus launcher` · `argvus control-center launcher` · `quickshell` · `argvus` |
 | `SUPER + D`がアプリケーションを表示しない | アプリケーションにデスクトップエントリがありません。`.desktop`ファイルを持つアプリケーションのみが表示されます。 |
 | メニューが古いフォントを使用している | セッション開始時に`font:`行が書き換えられます。フォントを変更した後、セッションを再起動してください。 |
-| テーマ変更がRofiメニューに反映されない | $XDG_CONFIG_HOME/argvus/data/rofi/内の`config.rasi`のユーザーコピーがまだパッケージ済みテーマを指しているか確認してください。 `$XDG_CONFIG_HOME/argvus/data/rofi/` `argvus-appearance`からテーマを再適用してください。 |
 | `SUPER + O`がプロジェクトが見つからないと報告する | ルートやパスが設定されていないか、ディレクトリが存在しません。`argvus projects list`を実行してください。 |
 | `SUPER + C` / `SUPER + .` | `argvus`, `wl-clipboard`, `wtype` |
 | チートシートが開かない | その名前と言語に対応するファイルが存在しません。チートシートのセクションに記載されているパスを確認してください。 |
@@ -406,15 +363,12 @@ ARGVUS_GIT_TUI=gitui argvus git
 | コンポーネント | 役割 |
 | --- | --- |
 | `argvus-hyprland` | メニュー用のショートカットとHyprlandウィンドウルールを宣言します。 |
-| `argvus-appearance` | アクティブテーマ、アクセント、レイアウトを変更し、Rofiテーマの参照を書き換えます。 |
 | `argvus` (`argvus config`) | プロジェクト、スニペット、デフォルトランチャー設定を保存します。 |
-| `argvus-session` | 初期Rofi設定をコピーし、セッション開始時にフォントを設定します。 |
 | `argvus` (`argvus terminal`) | SSHセッション、プロジェクトターミナル、`argvus keys`のパスフレーズプロンプトを開きます。 |
 | `argvus` (`argvus widget-telemetry`) | `argvus projects`によって書き込まれたアクティブプロジェクトを読み取ります。 |
 | `argvus` (`argvus i18n`) | ランチャースクリプトで使用される翻訳済みメッセージを提供します。 |
 | `argvus` (`argvus control-center`) | `argvus projects`を通じてプロジェクトリストを編集します。 |
 
-Sticky と Spaced では、Rofi のぼかしがバーや余白を含むメニューのモニター全体を覆います。メニューは中央に表示され、ぼかしの全体設定に従います。
 
 
 `/launcher/show_icons`: `true` / `false`.

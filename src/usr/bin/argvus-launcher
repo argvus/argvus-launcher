@@ -13,10 +13,6 @@ if [ "$#" -gt 0 ]; then
       launcher_tr universal.cli_help
       exit 0
       ;;
-    --config)
-      launcher_tr universal.rasi_unsupported >&2
-      exit 2
-      ;;
     *)
       launcher_tr universal.argument_unsupported >&2
       exit 2

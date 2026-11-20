@@ -3,10 +3,8 @@ title: المشغّل والبحث
 description: المشغّل والبحث — Quickshell/QML + Rust.
 ---
 
-يستخدم المشغّل الرئيسي Quickshell/QML ومحرك بحث محليًا بلغة Rust للتطبيقات والنوافذ والإعدادات والإجراءات والمشاريع ومضيفي SSH والملفات والاختصارات. الفهرسة معطّلة افتراضيًا وتتطلب اختيار المجلدات صراحةً. تُفهرس الأسماء والمسارات فقط دون محتوى المستندات. تعتمد الملفات الحديثة على سجل XDG. تُستبعد الملفات المخفية افتراضيًا ولا تُتبع روابط المجلدات الرمزية. تبقى قوائم Rofi المتخصصة متاحة. يمكن ضبط ترتيب التطبيقات على «أبجديًا» أو «الأحدث فتحًا» من صفحة Launcher and Search؛ ويكون «الأحدث فتحًا» هو الافتراضي. تظل الفئة المحفوظة لتصفية بقية النتائج؛ عطّل مصدر Windows في إعدادات البحث لإخفاء هذه المجموعة.
 
 -                                            ؛(`SUPER + D`) ﺕﺎﻘﻴﺒﻄﺘﻟﺍ ﻞﻐﺸﻣ
--                    ؛ARGVUS ﻦﻣ Rofi ﺔﻤﺋﺎﻗ ﻞﻛ ﺔﻄﺳﺍﻮﺑ ﺔﻛﺮﺘﺸﻤﻟﺍ ﺕﺎﻤﺴﻟﺍﻭ Rofi ﻦﻳﻮﻜﺗ
 - ;(`argvus projects`، `argvus ssh`، `argvus snippets`) ﺕﺎﺻﺎﺼﻘﻟﺍ ﻲﻘﺘﻨﻣﻭ SSH
 - ؛ﺢﻴﺗﺎﻔﻤﻟﺍ ﺝﺍﻭﺯﺃ ﻑﺬﺤﻳﻭ ﻞّﻤﺤﻳﻭ ﺽﺮﻌﻳﻭ ﺊﺸﻨﻳ ﻱﺬﻟﺍ ،SSH (`argvus keys`) ﺢﻴﺗﺎﻔﻣ ﺮﻳ
 -                                                              ) GPG ﺢﻴﺗﺎﻔﻣ ﺮﻳﺪﻣ`argvus gpg`                ;gpg ﻞﻴﻛﻮﻟ pinentry-gtk ﺪﻌﻳﻭ ﺢﻴﺗﺎﻔﻤﻟﺍ ﺭﺪﺼﻳﻭ ﺊﺸﻨﻳﻭ ﺩﺮﺴﻳ ﻱﺬﻟﺍ ,(
@@ -29,7 +27,6 @@ description: المشغّل والبحث — Quickshell/QML + Rust.
 
 ## المشغّل والبحث
 
-يستخدم المشغّل الرئيسي Quickshell/QML ومحرك بحث محليًا بلغة Rust للتطبيقات والنوافذ والإعدادات والإجراءات والمشاريع ومضيفي SSH والملفات والاختصارات. الفهرسة معطّلة افتراضيًا وتتطلب اختيار المجلدات صراحةً. تُفهرس الأسماء والمسارات فقط دون محتوى المستندات. تعتمد الملفات الحديثة على سجل XDG. تُستبعد الملفات المخفية افتراضيًا ولا تُتبع روابط المجلدات الرمزية. تبقى قوائم Rofi المتخصصة متاحة. يمكن ضبط ترتيب التطبيقات على «أبجديًا» أو «الأحدث فتحًا» من صفحة Launcher and Search؛ ويكون «الأحدث فتحًا» هو الافتراضي. خيار «مفتوحة الآن» معطّل افتراضيًا؛ فعّله من Control Center > Preferences > Launcher and Search لعرض النوافذ المفتوحة عند خلو البحث. ويمكن مسح سجل استخدام التطبيقات من الصفحة نفسها.
 
 يستخدم المشغّل تخطيط TUI مدمجًا بخط ثابت العرض وبحث وفئات متراصة ومفضلة مدمجة وتذييل مساعدة منفصل. تتبع سماكة الحدود واستدارتها إعدادات ARGVUS الحالية.
 
@@ -48,27 +45,19 @@ description: المشغّل والبحث — Quickshell/QML + Rust.
 
 `$XDG_CONFIG_HOME/argvus/config/launcher.json` → `$XDG_CACHE_HOME/argvus/launcher/index.json`
 
-Quickshell: `launcher/Theme.qml` · Rofi: `launcher/theme.rasi`
+Quickshell: `launcher/Theme.qml`
 
-`--config` / Rasi: إعداد البحث → `argvus control-center launcher`.
+إعداد البحث → `argvus control-center launcher`.
 
 ##                                                            ﻲﻓﻭﺭ ﺕﺎﻤﻴﺛﻭ ﺕﺍﺩﺍﺪﻋﺇ
 
-                        :`/usr/share/argvus/launcher/config/` ﺖﺤﺗ Rofi ﺕﺍﺩﺍﺪﻋﺇ ﺖﻴﺒﺜﺘﺑ ﺔﻣﺰﺤﻟﺍ ﻡﻮﻘﻳ
 
 | ملف | الدور |
 | --- | --- |
-| `config.rasi`                    Rofi ﻂﺒﻀﻳ .ARGVUS ﺔﻤﺋﺎﻗ ﻞﻛ ﻞﺒﻗ ﻦﻣ ﺔﻣﺪﺨﺘﺴﻤﻟﺍ ﻝﻮﺧﺪﻟﺍ ﺔﻄﻘﻧ | `configuration`   ﺕﺍﺩﺍﺮﻴﺘﺳﻻ﻿ﺍﻭ (ﻑﺮﺣﻷ﻿ﺍ ﺔﻟﺎﺤﻟ ﺔﺳﺎﺴﺣ ﺮﻴﻏ ﺔﻘﺑﺎﻄﻣ ،ﺔﺒﺗﺮﻣ ﺔﻤﺋﺎﻗ ،ﺕﺎﻧﻮﻘﻳﺃ ﻥﻭﺪﺑ ،ﻂﺨﻟﺍ)`theme.rasi`. |
-| `theme.rasi` | .ﻊﺿﻮﻟﺍ ﻒﻠﻣﻭ ﺓﺪﺣﺍﻭ ﺔﻤﺳ ﺩﺭﻮﺘﺴﻳ .ﺔﻤﺋﺎﻘﻟﺍﻭ ﻝﺎﺧﺩﻹ﻿ﺍ ﻂﻳﺮﺷ ،ﺓﺬﻓﺎﻨﻟﺍ ﻂﻴﻄﺨﺗﻭ ﻥﺍﻮﻟﺃ |
-| `mode.rasi`      | .ﻡﻼ﻿ﻈﻟﺍ ﻊﺿﻮﺑ ﻆﻔﺘﺤﻳﻭ ﺕﺍﺯﻭﺎﺠﺗ ﻱﺃ ﻰﻠﻋ ﻱﻮﺘﺤﻳ ﻻ﻿ ﺄﺒﻌﻤﻟﺍ ﻒﻠﻤﻟﺍ .ﻊﺿﻮﻟﺍ ﺯﻭﺎﺠﺗ |
-| `themes/<family>/theme.rasi` | لوحة الألوان لعائلة السمات، على سبيل المثال `argvus-dark` أو `tokyo-night`. |
-| `themes/<family>-spaced/theme.rasi` | نسخة متباعدة من نفس العائلة. |
 
 ﺩ
 
-### ﺔﻄﺸﻨﻟﺍ ﺔﺌﻴﻬﺘﻟﺍ ﺶﻴﻌﺗ ﺚﻴﺣ  theme.rasi  `-spaced` argvus-dark.
 
- launcher/config/  $XDG_CONFIG_HOME/argvus/data/rofi/<file>  /usr/share/argvus/launcher/config/  paths_config rofi/.
 
 
 
@@ -78,7 +67,6 @@ Quickshell: `launcher/Theme.qml` · Rofi: `launcher/theme.rasi`
 
 
 
-Do not edit the files under  config.rasi  -spaced  ~/.config/argvus/data/generated/theme/current/launcher/theme.rasi  `theme.rasi`  `argvus-dark` `paths_config`  `/usr/share/argvus/launcher/config/`  `$XDG_CONFIG_HOME/argvus/data/rofi/<file>`  `launcher/config/`  `rofi/`  `argvus-appearance`  `argvus-session`  `font:`   `config.rasi`  `argvus-appearance`  `config.rasi`  `theme.rasi`  `theme.rasi`  `~/.config/argvus/data/generated/theme/current/launcher/theme.rasi` `-spaced`  `config.rasi`  `/usr/share/argvus/launcher/`; they are replaced on package upgrade. Make changes in the user copy, under `$XDG_CONFIG_HOME/argvus/data/rofi/`.
 
 ##                                               (`SUPER + O`) ﻉﻭﺮﺸﻤﻟﺍ ﻝﺪﺒﻣ
 
@@ -396,29 +384,12 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 يفتح الاختصار `SUPER + C` الحاسبة (`argvus calculator`).
 
-##                                         Rofi ﺕﺍﺩﺍﺪﻋﺇ ﻡﺪﺨﺘﺴﺗ ﻲﺘﻟﺍ ﻯﺮﺧﻷ﻿ﺍ ﻢﺋﺍﻮﻘﻟﺍ
-
-                     :ﻯﺮﺧﺃ ﻡﺰﺣ ﺎﻬﻜﻠﻤﺗ ﻲﺘﻟﺍ ﺕﺎﻧﻮﻜﻤﻟﺍ ﻊﻣ ﻞﻐﺸﻤﻟﺍ ﻦﻳﻮﻜﺗ ﺔﻛﺭﺎﺸﻣ ﻢﺘﺗ
-
--
-- Theme, accent and layout pickers in
-
- open Rofi with
-
-.
-- The Hyprland window rules recognize the
-
- and
-
- مساحات الأسماء، وبالتالي تتلقى القوائم المعالجة السطحية للمشغل.
-
 ## ﺕﺎﻴﻌﺒﺘﻟﺍﻭ ﻒﻴﻠﻐﺘﻟﺍ
 
 The package
 
  is architecture-independent and installs:
 
-- `/usr/share/argvus/launcher/config/`، ﺕﺎﻤﺳﻭ ﺕﺍﺩﺍﺪﻋﺇ ﻊﻣ Rofi؛
 
 Required dependencies:
 
@@ -447,16 +418,13 @@ Required dependencies:
 ,
 
 
-Installing the package does not write into  `libnotify`  `argvus calculator`  `wl-clipboard`  `wtype`  `gnupg`  `pinentry`  `pinentry-gtk`  `openssh`  `lazygit`  `gitui` `$HOME`. User configuration is created at session start, as described in [Rofi configuration and themes](#where-the-active-configuration-lives).
 
 ## استكشاف الأخطاء وإصلاحها
 
 | العَرَض | السبب والإصلاح |
 | --- | --- |
-| `SUPER + D`                                                          ﻖﻘﺤﺗ | ءﻲﺷ ﻱﺃ ﺢﺘﻔﻳ ﻻ﻿`argvus launcher`                                                        ﻥﺃ ﻦﻣ ﺪﻛﺄﺗ .ﺔﻴﻓﺮﻄﻟﺍ ﻲﻓ`rofi`                                               .ﺩﻮﺟﻮﻣ Rofi ﻦﻳﻮﻜﺗ ﻥﺃﻭ ﻪﺘﻴﺒﺜﺗ ﻢﺗ
 | `SUPER + D`ﺎﻬﻟ ﻲﺘﻟﺍ ﺕﺎﻘﻴﺒﻄﺘﻟﺍ ﻂﻘﻓ .ﺐﺘﻜﻤﻟﺍ ﺢﻄﺳ ﻰﻠﻋ ﻝﺎﺧﺩﺇ ﺎﻬﻳﺪﻟ ﺲﻴﻟ ﺕﺎﻘﻴﺒﻄﺘﻟﺍ | ﺕﺎﻘﻴﺒﻄﺗ ﻱﺃ `.desktop`                                                              | .ﻒﻠﻤﻟﺍ ﺽﺮﻋ ﻢﺘﻳ
                                               ـﻟﺍ | ﺎًﻤﻳﺪﻗ ﺎًﻄﺧ ﻡﺪﺨﺘﺴﺗ ﻢﺋﺍﻮﻘﻟﺍ |`font:`        .ﻂﺨﻟﺍ ﺮﻴﻴﻐﺗ ﺪﻌﺑ ﺔﺴﻠﺠﻟﺍ ﻞﻴﻐﺸﺗ ﺪﻋﺃ .ﺔﺴﻠﺠﻟﺍ ءﺪﺑ ﺪﻨﻋ ﺮﻄﺴﻟﺍ ﺔﺑﺎﺘﻛ ﺓﺩﺎﻋﺇ ﻢﺘﻳ
-        ﻦﻣ ﻡﺪﺨﺘﺴﻤﻟﺍ ﺔﺨﺴﻧ ﻥﺎﻛ ﺍﺫﺇ ﺎﻤﻣ ﻖﻘﺤﺗ | Rofi ﻢﺋﺍﻮﻗ ﻰﻟﺇ ﻞﺼﻳ ﻻ﻿ ﺔﻤﺴﻟﺍ ﺮﻴﻴﻐﺗ |`config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/`                                    ﻦﻣ ﻖﺴﻨﻟﺍ ﻖﺒﻃ .ﺄﺒﻌﻤﻟﺍ ﻖﺴﻨﻟﺍ ﻰﻟﺇ ﺮﻴﺸﻳ ﻝﺍﺰﻳ ﻻ﻿`argvus-appearance` again. |
 | `SUPER + O`ﻞﻴﻐﺸﺘﺑ ﻢﻗ .ﺓﺩﻮﺟﻮﻣ ﺪﻌﺗ ﻢﻟ ﻞﺋﻻ﻿ﺪﻟﺍ ﻥﺃ ﻭﺃ ،ﺭﺎﺴﻤﻟﺍ ﻭﺃ ﺭﺬﺠﻟﺍ ﻦﻳﻮﻜﺗ ﻢﺘﻳ ﻢﻟ | ﻊﻳﺭﺎﺸﻣ ﻱ`argvus projects list`. |
 | `SUPER + C` / `SUPER + .` | `argvus`, `wl-clipboard`, `wtype` |
 | .ﺓﺮﺼﺘﺨﻤﻟﺍ ﻝﻭﺍﺪﺠﻟﺍ ﻢﺴﻗ ﻲﻓ ﺔﺤﺿﻮﻤﻟﺍ ﺕﺍﺭﺎﺴﻤﻟﺍ ﻦﻣ ﻖﻘﺤﺗ .ﺩﻮﺟﻮﻣ ﺮﻴﻏ ﺔﻐﻠﻟﺍﻭ ﻢﺳﻻ﻿ﺍ ﺍﺬﻬ
@@ -467,15 +435,12 @@ Installing the package does not write into  `libnotify`  `argvus calculator`  `w
 | المكون | المسؤولية |
 | --- | --- |
 | `argvus-hyprland`                         | .ﻢﺋﺍﻮﻘﻠﻟ Hyprland ﺬﻓﺍﻮﻧ ﺪﻋﺍﻮﻗﻭ ﺕﺍﺭﺎﺼﺘﺧﻻ﻿ﺍ ﻦﻋ ﻦﻠﻌﻳ |
-| `argvus-appearance`| .Rofi ﺔﻤﺴﺑ ﺔﺻﺎﺨﻟﺍ ﻊﺟﺍﺮﻤﻟﺍ ﺔﺑﺎﺘﻛ ﺪﻴﻌﻳﻭ ،ﻂﻴﻄﺨﺘﻟﺍﻭ ،ﺔﻨﻜﻠﻟﺍﻭ ،ﺔﻄﺸﻨﻟﺍ ﺔﻤﺴﻟﺍ ﺮﻴﻐﻳ
 | `argvus` (`argvus config`                    | .ﻲﺿﺍﺮﺘﻓﻻ﻿ﺍ ﻞﻐﺸﻤﻟﺍ ﺕﺍﺩﺍﺪﻋﺇﻭ ،ﺕﺎﻔﻄﺘﻘﻤﻟﺍﻭ ،ﻊﻳﺭﺎﺸﻤﻟﺍ ﻥﺰﺨﻳ | (
-| `argvus-session`                           | .ﺔﺴﻠﺠﻟﺍ ءﺪﺑ ﺪﻨﻋ ﻪﻄﺧ ﻂﺒﻀﻳﻭ ﻲﻟﻭﻷ﻿ﺍ Rofi ﻦﻳﻮﻜﺗ ﺦﺴﻨﻳ |
 | `argvus` (`argvus terminal`             ـﺑ ﺔﺻﺎﺨﻟﺍ ﺭﻭﺮﻤﻟﺍ ﺓﺭﺎﺒﻋ ﺕﺎﺒﻟﺎﻄﻣﻭ ﻉﻭﺮﺸﻤﻟﺍ ﺕﺎﻄﺤﻣﻭ SSH ﺕﺎﺴﻠﺟ ﺢﺘﻔﻳ | (`argvus keys`. |
 | `argvus` (`argvus widget-telemetry`) | يقرأ المشروع النشط الذي كتبه `argvus projects`. |
 | `argvus` (`argvus i18n`                    | .ﻞﻐﺸﻤﻟﺍ ﺕﺎﺘﺒﻳﺮﻜﺳ ﺎﻬﻣﺪﺨﺘﺴﺗ ﻲﺘﻟﺍ ﺔﻤﺟﺮﺘﻤﻟﺍ ﻞﺋﺎﺳﺮﻟﺍ ﺮﻓﻮﻳ | (
 | `argvus` (`argvus control-center`) | يقوم بتحرير قائمة المشاريع من خلال `argvus projects`. |
 
-يغطي تمويه Rofi كامل شاشة القائمة بما فيها الأشرطة والهوامش في Sticky وSpaced. تبقى القائمة في الوسط وتتبع إعداد التمويه العام.
 
 
 `/launcher/show_icons`: `true` / `false`.

@@ -2,10 +2,8 @@
 title: 실행기 및 검색
 description: 실행기 및 검색 — Quickshell/QML + Rust.
 ---
-기본 실행기는 Quickshell/QML과 로컬 Rust 검색 엔진으로 앱, 창, 설정, 작업, 프로젝트, SSH 호스트, 파일, 단축키를 검색합니다. 색인은 기본적으로 꺼져 있으며 폴더를 명시적으로 선택해야 합니다. 이름과 경로만 색인하고 문서 내용은 읽지 않습니다. 최근 파일은 XDG 기록에 따릅니다. 숨김 파일은 기본적으로 제외하며 디렉터리 심볼릭 링크를 따라가지 않습니다. 전용 Rofi 메뉴도 계속 사용할 수 있습니다. Launcher and Search에서 A–Z 또는 최근 열림 순서를 선택할 수 있으며, 기본값은 최근 열림입니다. 저장된 범주는 나머지 결과를 계속 필터링합니다. 이 그룹을 숨기려면 검색 설정에서 Windows 소스를 끄세요.
 
 - 애플리케이션 실행기(`SUPER + D`);
-- 모든 ARGVUS Rofi 메뉴에서 공유되는 Rofi 설정 및 테마;
 - 프로젝트 전환기, SSH 선택기 및 스니펫 선택기(`argvus projects`, `argvus ssh`, `argvus snippets`);
 - SSH 키 관리자(`argvus keys`), 키 쌍 생성, 목록, 로드 및 삭제 기능 제공;
 - GPG 키 관리자(`argvus gpg`), 키 목록, 생성 및 내보내기 기능과 gpg-agent용 pinentry-gtk 설정;
@@ -28,11 +26,9 @@ description: 실행기 및 검색 — Quickshell/QML + Rust.
 
 ## 실행기 및 검색
 
-기본 실행기는 Quickshell/QML과 로컬 Rust 검색 엔진으로 앱, 창, 설정, 작업, 프로젝트, SSH 호스트, 파일, 단축키를 검색합니다. 색인은 기본적으로 꺼져 있으며 폴더를 명시적으로 선택해야 합니다. 이름과 경로만 색인하고 문서 내용은 읽지 않습니다. 최근 파일은 XDG 기록에 따릅니다. 숨김 파일은 기본적으로 제외하며 디렉터리 심볼릭 링크를 따라가지 않습니다. 전용 Rofi 메뉴도 계속 사용할 수 있습니다. ---
 title: 실행기 및 검색
 description: 실행기 및 검색 — Quickshell/QML + Rust.
 ---
-기본 실행기는 Quickshell/QML과 로컬 Rust 검색 엔진으로 앱, 창, 설정, 작업, 프로젝트, SSH 호스트, 파일, 단축키를 검색합니다. 색인은 기본적으로 꺼져 있으며 폴더를 명시적으로 선택해야 합니다. 이름과 경로만 색인하고 문서 내용은 읽지 않습니다. 최근 파일은 XDG 기록에 따릅니다. 숨김 파일은 기본적으로 제외하며 디렉터리 심볼릭 링크를 따라가지 않습니다. 전용 Rofi 메뉴도 계속 사용할 수 있습니다. Launcher and Search에서 A–Z 또는 최근 열림 순서를 선택할 수 있으며, 기본값은 최근 열림입니다. **현재 열림**은 기본적으로 꺼져 있습니다. 검색어가 비어 있을 때 현재 창을 표시하려면 Control Center > Preferences > Launcher and Search에서 켜세요. 같은 페이지에서 앱 사용 기록을 지울 수 있습니다.
 
 런처는 고정폭 글꼴, 정렬된 검색 및 범주, 간결한 즐겨찾기와 별도 도움말 영역으로 구성된 TUI 레이아웃을 사용합니다. 테두리 두께와 모서리는 현재 ARGVUS 설정을 따릅니다.
 
@@ -51,37 +47,9 @@ description: 실행기 및 검색 — Quickshell/QML + Rust.
 
 `$XDG_CONFIG_HOME/argvus/config/launcher.json` → `$XDG_CACHE_HOME/argvus/launcher/index.json`
 
-Quickshell: `launcher/Theme.qml` · Rofi: `launcher/theme.rasi`
+Quickshell: `launcher/Theme.qml`
 
-`--config` / Rasi: 검색 설정 → `argvus control-center launcher`.
-
-## Rofi 구성 및 테마
-
-패키지는 `/usr/share/argvus/launcher/config/`에 Rofi 구성을 설치합니다:
-
-| 파일 | 역할 |
-| --- | --- |
-| `config.rasi` | 모든 ARGVUS 메뉴에서 사용하는 진입점입니다. Rofi `configuration`(폰트, 아이콘 없음, 정렬된 목록, 대소문자 구분 없는 매칭)을 설정하고 `theme.rasi`를 가져옵니다. |
-| `theme.rasi` | 창, 입력 바 및 목록의 색상과 레이아웃을 설정합니다. 하나의 테마와 모드 파일을 가져옵니다. |
-| `mode.rasi` | 모드 재정의입니다. 패키지된 파일에는 재정의가 없으며 다크 모드를 유지합니다. |
-| `themes/<family>/theme.rasi` | 테마 패밀리의 팔레트, 예를 들어 `argvus-dark` 또는 `tokyo-night`. |
-| `themes/<family>-spaced/theme.rasi` | 동일한 패밀리의 간격 변형입니다. |
-
-패키지는 22개의 패밀리를 제공하며, 각 패밀리는 `-spaced` 변형을 가지고 있습니다. 패키지된 `theme.rasi`는 `argvus-dark`를 가져옵니다.
-
-### 활성 구성 파일 위치
-
-ARGVUS는 각 Rofi 파일을 `paths_config`을 통해 해결합니다. 사용자 오버라이드, 사용자 복사본, 레거시 위치 및 생성된 트리 중 첫 번째로 존재하는 파일이 선택됩니다. 그렇지 않으면 `/usr/share/argvus/launcher/config/`에 있는 패키지 파일이 사용됩니다. 파일의 사용자 복사본은 `$XDG_CONFIG_HOME/argvus/data/rofi/<file>`이며, `launcher/config/` 접두사는 `rofi/`에 저장됩니다.
-
-ARGVUS는 ARGVUS 스크립트가 해당 파일을 처음 변경할 때 사용자 복사본을 생성합니다. `argvus-appearance`은 테마, 강조 및 모드 변경에 대해 이를 수행합니다. 한 번도 변경되지 않은 파일은 계속해서 패키지에서 읽히며, 사용자 복사본이 패키지 파일보다 우선합니다.
-
-`argvus-session`가 세션 시작 시 폰트를 적용하면, ARGVUS 폰트 설정에서 config.rasi의 `font:` 줄을 다시 씁니다. 그 편집은 사용자 사본에만 적용됩니다. 사본이 존재할 때까지는 패키지된 파일이 사용되며, 사용자는 해당 파일에 쓸 수 없기 때문에, 첫 번째 외관 변경이 사본을 생성한 후에야 폰트 변경이 적용됩니다.
-
-### 테마 변경
-
- `config.rasi` `argvus-appearance`는 테마 변경을 소유합니다. 테마가 변경되면, 사용자 복사본을 다시 작성하여 `config.rasi`가 새로운 `theme.rasi`를 가리키도록 하고, `theme.rasi`는 테마 빌드(`~/.config/argvus/data/generated/theme/current/launcher/theme.rasi`)의 런처 팔레트를 가져오며, 여기에는 활성 패밀리, 레이아웃 및 하이라이트 색상이 포함됩니다. 테마 빌드가 없으면 패밀리 복사본을 가져오고, Spaced 레이아웃은 활성 패밀리의 `-spaced` 변형을 선택합니다. 테마 메뉴와 레이아웃 메뉴와 같은 테마 선택기는 동일한 `config.rasi`를 읽으므로 활성 스타일도 사용합니다.
-
-`/usr/share/argvus/launcher/` 아래의 파일은 편집하지 마십시오; 이는 패키지 업그레이드 시 교체됩니다. 변경 사항은 `$XDG_CONFIG_HOME/argvus/data/rofi/` 아래의 사용자 복사본에서 하십시오.
+검색 설정 → `argvus control-center launcher`.
 
 ## 프로젝트 전환기 (`SUPER + O`)
 
@@ -370,23 +338,14 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 `SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
-## Rofi 구성을 사용하는 다른 메뉴들
-
-런처 구성은 다른 패키지가 소유한 구성 요소와 공유됩니다:
-
-- `argvus-appearance`의 테마, 강조 색상 및 레이아웃 선택기는 `config.rasi`와 함께 Rofi를 엽니다.
-- Hyprland 창 규칙은 `argvus-launcher` 및 `rofi` 네임스페이스를 인식하므로 메뉴는 실행기 표면 처리를 받습니다.
-
 ## 패키징 및 의존성
 
 패키지 `argvus-launcher`는 아키텍처 독립적이며 다음을 설치합니다:
 
 - 동일한 디렉토리 아래의 `argvus launcher`, `argvus-snippets`, `argvus-ssh` 및 `argvus-git`;
-- Rofi 구성과 테마가 포함된 `/usr/share/argvus/launcher/config/`;
 
 필수 종속성: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `wl-clipboard`, `wtype`, `gnupg` 및 `pinentry` (이것은 `pinentry-gtk`를 제공합니다). 선택적 종속성: `openssh`, SSH 선택기 및 SSH 키 관리자를 위해; `lazygit` 및 `gitui`, git TUI용.
 
-패키지를 설치해도 `$HOME`에 쓰지 않습니다. 사용자 구성은 세션 시작 시 생성되며, [Rofi 구성 및 테마](#where-the-active-configuration-lives)에 설명되어 있습니다.
 
 ## 문제 해결
 
@@ -395,7 +354,6 @@ ARGVUS_GIT_TUI=gitui argvus git
 | `SUPER + D`이 아무 것도 열지 않음 | `argvus launcher` · `argvus control-center launcher` · `quickshell` · `argvus` |
 | `SUPER + D`이 애플리케이션을 표시하지 않음 | 애플리케이션에 데스크탑 항목이 없습니다. `.desktop` 파일이 있는 애플리케이션만 표시됩니다. |
 | 메뉴에서 오래된 폰트를 사용함 | 세션 시작 시 `font:` 줄이 다시 작성됩니다. 폰트를 변경한 후 세션을 재시작하세요. |
-| 테마 변경이 Rofi 메뉴에 적용되지 않음 | $XDG_CONFIG_HOME/argvus/data/rofi/에 있는 사용자 복사본 `config.rasi`가 여전히 패키지된 테마를 가리키는지 확인하세요.  `$XDG_CONFIG_HOME/argvus/data/rofi/` `argvus-appearance`에서 테마를 다시 적용하세요. |
 | `SUPER + O`이 프로젝트를 찾지 못함 | 루트 또는 경로가 설정되지 않았거나, 디렉터리가 더 이상 존재하지 않습니다. `argvus projects list`를 실행하세요. |
 | `SUPER + C` / `SUPER + .` | `argvus`, `wl-clipboard`, `wtype` |
 | `SUPER + H`이 아무것도 표시하지 않음 | 기록이 비어 있거나 `argvus-session`의 클립보드 기록기가 아직 아무것도 저장하지 않았습니다. |
@@ -405,15 +363,12 @@ ARGVUS_GIT_TUI=gitui argvus git
 | 구성 요소 | 책임 |
 | --- | --- |
 | `argvus-hyprland` | 메뉴용 단축키와 Hyprland 창 규칙을 선언합니다. |
-| `argvus-appearance` | 활성 테마, 강조 색상 및 레이아웃을 변경하고 Rofi 테마 참조를 다시 작성합니다. |
 | `argvus` (`argvus config`) | 프로젝트, 스니펫 및 기본 런처 설정을 저장합니다. |
-| `argvus-session` | 초기 Rofi 구성을 복사하고 세션 시작 시 글꼴을 설정합니다. |
 | `argvus` (`argvus terminal`) | SSH 세션, 프로젝트 터미널 및 `argvus keys`의 암호 입력창을 엽니다. |
 | `argvus` (`argvus widget-telemetry`) | `argvus projects`에서 작성한 활성 프로젝트를 읽습니다. |
 | `argvus` (`argvus i18n`) | 런처 스크립트에서 사용되는 번역된 메시지를 제공합니다. |
 | `argvus` (`argvus control-center`) | `argvus projects`를 통해 프로젝트 목록을 편집합니다. |
 
-Sticky와 Spaced에서 Rofi 흐림 효과는 표시줄과 여백을 포함한 메뉴 모니터 전체를 덮습니다. 메뉴는 중앙에 유지되며 전역 흐림 설정을 따릅니다.
 
 
 `/launcher/show_icons`: `true` / `false`.

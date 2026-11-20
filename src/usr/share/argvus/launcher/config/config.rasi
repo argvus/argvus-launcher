@@ -1,8 +1,0 @@
-@theme "/usr/share/argvus/launcher/config/theme.rasi"
-
-configuration {
-    font: "IBM Plex Mono 12";
-    show-icons: false;
-    sort: true;
-    case-sensitive: false;
-}

@@ -3,10 +3,8 @@ title: Başlatıcı ve Arama
 description: Başlatıcı ve Arama — Quickshell/QML + Rust.
 ---
 
-Ana başlatıcı Quickshell/QML ve yerel Rust arama motoruyla uygulama, pencere, ayar, eylem, proje, SSH sunucusu, dosya ve kısayol arar. Dizinleme başlangıçta kapalıdır; klasörleri açıkça seçin. Yalnızca adlar ve yollar dizinlenir, belge içerikleri okunmaz. Son dosyalar XDG kaydına bağlıdır. Gizli dosyalar varsayılan olarak dışlanır ve dizin sembolik bağlantıları izlenmez. Özel Rofi menüleri kullanılabilir. Launcher and Search bölümünde A–Z veya Son açılanlar sıralamasını seçin; varsayılan Son açılanlardır. Kaydedilen kategori diğer sonuçları filtrelemeye devam eder; bu grubu gizlemek için arama ayarlarında Windows kaynağını kapatın.
 
 - uygulama başlatıcıyı (`SUPER + D`);
-- her ARGVUS Rofi menüsü tarafından paylaşılan Rofi yapılandırması ve temaları;
 - proje değiştirici, SSH seçici ve snippet seçici (`argvus projects`, `argvus ssh`, `argvus snippets`);
 - SSH anahtar yöneticisi (`argvus keys`), anahtar çiftlerini oluşturur, listeler, yükler ve siler;
 - GPG anahtar yöneticisi (`argvus gpg`), anahtarları listeler, oluşturur ve dışa aktarır ve gpg-agent için pinentry-gtk ayarlar;
@@ -29,7 +27,6 @@ Kısayollar `argvus-hyprland` tarafından beyan edilmiştir. Bu paket, komutlar�
 
 ## Başlatıcı ve Arama
 
-Ana başlatıcı Quickshell/QML ve yerel Rust arama motoruyla uygulama, pencere, ayar, eylem, proje, SSH sunucusu, dosya ve kısayol arar. Dizinleme başlangıçta kapalıdır; klasörleri açıkça seçin. Yalnızca adlar ve yollar dizinlenir, belge içerikleri okunmaz. Son dosyalar XDG kaydına bağlıdır. Gizli dosyalar varsayılan olarak dışlanır ve dizin sembolik bağlantıları izlenmez. Özel Rofi menüleri kullanılabilir. Launcher and Search bölümünde A–Z veya Son açılanlar sıralamasını seçin; varsayılan Son açılanlardır. **Şu anda açık** varsayılan olarak kapalıdır. Arama boşken mevcut pencereleri göstermek için Control Center > Preferences > Launcher and Search bölümünden açın. Uygulama kullanım geçmişini aynı sayfadan temizleyebilirsiniz.
 
 Başlatıcı; eş aralıklı metin, hizalanmış arama ve kategoriler, kompakt favoriler ve ayrı yardım altbilgisiyle kompakt TUI düzenini kullanır. Kenarlık kalınlığı ve yuvarlama etkin ARGVUS ayarlarını izler.
 
@@ -48,37 +45,9 @@ Başlatıcı, Denetim Merkezi’nde seçilen ARGVUS arayüz dilini kullanır.
 
 `$XDG_CONFIG_HOME/argvus/config/launcher.json` → `$XDG_CACHE_HOME/argvus/launcher/index.json`
 
-Quickshell: `launcher/Theme.qml` · Rofi: `launcher/theme.rasi`
+Quickshell: `launcher/Theme.qml`
 
-`--config` / Rasi: Aramayı yapılandır → `argvus control-center launcher`.
-
-## Rofi yapılandırması ve temalar
-
-Paket, Rofi yapılandırmasını `/usr/share/argvus/launcher/config/` altında yükler:
-
-| Dosya | Rol |
-| --- | --- |
-| `config.rasi` | Her ARGVUS menüsü tarafından kullanılan giriş noktası. Rofi `configuration`'yi (yazı tipi, simge yok, sıralı liste, büyük/küçük harfe duyarlı olmayan eşleştirme) ayarlar ve `theme.rasi`'yi içe aktarır. |
-| `theme.rasi` | Pencerenin, giriş çubuğunun ve listenin renkleri ve düzeni. Bir temayı ve mod dosyasını içe aktarır. |
-| `mode.rasi` | Mod geçersiz kılma. Paketlenmiş dosyanın geçersiz kılmaları yoktur ve Karanlık modu korur. |
-| `themes/<family>/theme.rasi` | Bir tema ailesinin paleti, örneğin `argvus-dark` veya `tokyo-night`. |
-| `themes/<family>-spaced/theme.rasi` | Aynı ailenin aralıklı versiyonu. |
-
-Paket 22 aile sağlar ve her birinin bir `-spaced` varyantı vardır. Paketlenmiş `theme.rasi`, `argvus-dark`'yi içe aktarır.
-
-### Aktif yapılandırmanın bulunduğu yer
-
-ARGVUS, her Rofi dosyasını `paths_config` üzerinden çözer. Kullanıcı geçersiz kılmaları, kullanıcı kopyası, eski konumlar ve oluşturulmuş ağaç arasında mevcut olan ilk dosya kazanır; aksi takdirde `/usr/share/argvus/launcher/config/` altındaki paketlenmiş dosya kullanılır. Bir dosyanın kullanıcı kopyası `$XDG_CONFIG_HOME/argvus/data/rofi/<file>`'dir: `launcher/config/` öneki `rofi/` altında saklanır.
-
-ARGVUS, bir ARGVUS betiği o dosyayı ilk kez değiştirdiğinde bir kullanıcı kopyası oluşturur; `argvus-appearance` bu işlemi tema, vurgu ve mod değişiklikleri için yapar. Hiç değiştirilmeyen dosyalar paketten okunmaya devam eder ve bir kullanıcı kopyası paketlenmiş dosyanın önceliğine sahiptir.
-
-`argvus-session` oturum başlatıldığında yazı tipini uyguladığında, config.rasi'nin `font:` satırını ARGVUS yazı tipi ayarından yeniden yazar. Bu düzenleme yalnızca kullanıcı kopyasına ulaşır. Kopya var olana kadar, paketlenmiş dosya bulunan dosyadır ve kullanıcılar buna yazamaz, bu nedenle yazı tipi değişikliği, ilk görünüm değişikliği kopyayı oluşturduktan sonra etkili olur.
-
-### Temayı değiştirme
-
- `config.rasi` `argvus-appearance` tema değişikliklerine sahiptir. Tema değiştiğinde, kullanıcı kopyalarını yeniden yazar, böylece `config.rasi` yeni `theme.rasi`'yi gösterir ve `theme.rasi`, aktif aile, düzen ve vurgulama rengini içeren tema yapısının başlatıcı paletini (`~/.config/argvus/data/generated/theme/current/launcher/theme.rasi`) içe aktarır. Tema yapısı olmadan, aile kopyasını içe aktarır ve Spaced düzeni, aktif ailenin `-spaced` varyantını seçer. Tema seçim araçları, tema menüsü ve düzen menüsü gibi, aynı `config.rasi`'yi okur, böylece aktif stili de kullanırlar.
-
-`/usr/share/argvus/launcher/` altındaki dosyaları düzenlemeyin; paket yükseltmesi sırasında bunlar değiştirilir. Değişiklikleri kullanıcı kopyasında, `$XDG_CONFIG_HOME/argvus/data/rofi/` altında yapın.
+Aramayı yapılandır → `argvus control-center launcher`.
 
 ## Proje değiştirici (`SUPER + O`)
 
@@ -386,23 +355,14 @@ Seçici Tümü sekmesinde açılır. Tab kategoriler arasında geçiş yapar, ok
 
 `SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
-## Diğer menüler Rofi yapılandırmasını kullanır
-
-Başlatıcı yapılandırması diğer paketlere ait bileşenlerle paylaşılır:
-
-- `argvus-appearance`'deki tema, vurgu ve düzen seçicileri, `config.rasi` ile Rofi'yi açar.
-- Hyprland pencere kuralları, `argvus-launcher` ve `rofi` ad alanlarını tanır, bu nedenle menüler başlatıcı yüzey muamelesi alır.
-
 ## Paketleme ve bağımlılıklar
 
 `argvus-launcher` paketi mimariden bağımsızdır ve şunları yükler:
 
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` ve `argvus-git`, aynı dizin altında;
-- `/usr/share/argvus/launcher/config/`, Rofi yapılandırması ve temaları ile;
 
 Gerekli bağımlılıklar: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `wl-clipboard`, `wtype`, `gnupg` ve `pinentry` (`pinentry-gtk` sağlar). İsteğe bağlı bağımlılıklar: `openssh`, SSH seçici ve SSH anahtar yöneticisi için; `lazygit` ve `gitui`, git TUI için.
 
-Paketin kurulumu `$HOME` içerisine yazmaz. Kullanıcı yapılandırması, [Rofi configuration and themes](#where-the-active-configuration-lives) bölümünde açıklandığı gibi oturum başında oluşturulur.
 
 ## Sorun giderme
 
@@ -411,7 +371,6 @@ Paketin kurulumu `$HOME` içerisine yazmaz. Kullanıcı yapılandırması, [Rofi
 | `SUPER + D`hiçbir şey açmıyor | `argvus launcher` · `argvus control-center launcher` · `quickshell` · `argvus` |
 | `SUPER + D` hiç uygulama listelemiyor | Uygulamaların masaüstü girdisi yok. Sadece ile başlayan uygulamalar `.desktop` file are shown. |
 | Menüler eski bir yazı tipini kullanıyor | `font:` satırı oturum başlangıcında yeniden yazılır. Yazı tipini değiştirdikten sonra oturumu yeniden başlatın. |
-| Tema değişikliği Rofi menülerine ulaşmıyor | `$XDG_CONFIG_HOME/argvus/data/rofi/`'daki `config.rasi` kullanıcı kopyasının hala paketlenmiş temayı gösterip göstermediğini kontrol edin. Temayı `argvus-appearance`'dan tekrar uygulayın. |
 | `SUPER + O` hiçbir proje bulunamadığını bildiriyor | Hiçbir kök veya yol yapılandırılmamış veya dizinler artık mevcut değil. `argvus projects list`'yu çalıştırın. |
 | `SUPER + C` / `SUPER + .` | `argvus`, `wl-clipboard`, `wtype` |
 | Hile sayfası açılmıyor | Bu ismin ve dilin dosyası mevcut değil. Hile Sayfaları bölümünde açıklanan yolları kontrol edin. |
@@ -422,15 +381,12 @@ Paketin kurulumu `$HOME` içerisine yazmaz. Kullanıcı yapılandırması, [Rofi
 | Bileşen | Sorumluluk |
 | --- | --- |
 | `argvus-hyprland` | Menülere ilişkin kısayolları ve Hyprland pencere kurallarını bildirir. |
-| `argvus-appearance` | Etkin temayı, vurguyu ve düzeni değiştirir ve Rofi tema referanslarını yeniden yazar. |
 | `argvus` (`argvus config`) | Projeleri, kod parçacıklarını ve varsayılan başlatıcı ayarını saklar. |
-| `argvus-session` | Başlangıç ​​Rofi yapılandırmasını kopyalar ve oturum başlangıcında yazı tipini ayarlar. |
 | `argvus` (`argvus terminal`) | SSH oturumlarını, proje terminallerini ve `argvus keys` parola istemlerini açar. |
 | `argvus` (`argvus widget-telemetry`) | `argvus projects` tarafından yazılan aktif projeyi okur. |
 | `argvus` (`argvus i18n`) | Başlatıcı komut dosyaları tarafından kullanılan çevrilmiş mesajları sağlar. |
 | `argvus` (`argvus control-center`) | Proje listesini `argvus projects` aracılığıyla düzenler. |
 
-Sticky ve Spaced modlarında Rofi bulanıklığı çubuklar ve kenarlar dahil menü monitörünün tamamını kaplar. Menü ortada kalır ve genel bulanıklık ayarına uyar.
 
 
 `/launcher/show_icons`: `true` / `false`.

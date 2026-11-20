@@ -7,7 +7,6 @@ slug: de/argvus-launcher/docs/pt-br/index.md
 O launcher principal usa Quickshell/QML com um motor local de busca em Rust. Pesquisa aplicativos, janelas abertas, configurações, ações, projetos, hosts SSH, arquivos e atalhos. A indexação começa desativada; escolha as pastas explicitamente. Somente nomes e caminhos são indexados, nunca o conteúdo dos documentos. Arquivos recentes dependem do registro XDG. Arquivos ocultos são excluídos por padrão e links simbólicos de diretórios não são seguidos. SSH e Snippets usam GTK 4. Em Launcher and Search, escolha a ordem A–Z ou Abertos recentemente; Abertos recentemente é o padrão. A categoria salva continua filtrando os demais resultados; desative a fonte Windows nas configurações de pesquisa para ocultar esse grupo.
 
 - o lançador de aplicativos (`SUPER + D`);
-- a configuração e os temas do Rofi, compartilhados por todos os menus Rofi do ARGVUS;
 - o seletor de projetos, o seletor de hosts SSH e o seletor de snippets (`argvus projects`, `argvus ssh`, `argvus snippets`);
 - o gerenciador de chaves SSH (`argvus keys`), que cria, lista, carrega e apaga pares de chaves;
 - o gerenciador de chaves GPG (`argvus gpg`), que lista, cria e exporta chaves e configura o pinentry-gtk para o gpg-agent;
@@ -49,37 +48,9 @@ O launcher segue o idioma da interface do ARGVUS escolhido no Control Center.
 
 `$XDG_CONFIG_HOME/argvus/config/launcher.json` → `$XDG_CACHE_HOME/argvus/launcher/index.json`
 
-Quickshell: `launcher/Theme.qml` · Rofi: `launcher/theme.rasi`
+Quickshell: `launcher/Theme.qml`
 
-`--config` / Rasi: Configurar pesquisa → `argvus control-center launcher`.
-
-## Configuração e temas do Rofi
-
-O pacote instala a configuração do Rofi em `/usr/share/argvus/launcher/config/`:
-
-| Arquivo | Função |
-| --- | --- |
-| `config.rasi` | Ponto de entrada usado por todos os menus do ARGVUS. Define o `configuration` do Rofi (fonte, sem ícones, lista ordenada, correspondência sem diferenciar maiúsculas) e importa o `theme.rasi`. |
-| `theme.rasi` | Cores e layout da janela, da barra de entrada e da lista. Importa um tema e o arquivo de modo. |
-| `mode.rasi` | Ajuste de modo. O arquivo empacotado não tem ajustes e mantém o modo Dark. |
-| `themes/<família>/theme.rasi` | Paleta de uma família de temas, por exemplo `argvus-dark` ou `tokyo-night`. |
-| `themes/<família>-spaced/theme.rasi` | Variante Spaced da mesma família. |
-
-O pacote traz 22 famílias, e cada uma tem uma variante `-spaced`. O `theme.rasi` empacotado importa `argvus-dark`.
-
-### Onde fica a configuração ativa
-
-O ARGVUS resolve cada arquivo do Rofi por meio de `paths_config`. Vale o primeiro arquivo existente entre os overrides do usuário, a cópia do usuário, os locais legados e a árvore gerada; caso contrário, usa-se o arquivo empacotado em `/usr/share/argvus/launcher/config/`. A cópia do usuário de um arquivo é `$XDG_CONFIG_HOME/argvus/data/rofi/<arquivo>`: o prefixo `launcher/config/` é guardado em `rofi/`.
-
-O ARGVUS cria uma cópia do usuário na primeira vez que um script do ARGVUS altera o arquivo; o `argvus-appearance` faz isso nas mudanças de tema, accent e modo. Arquivos nunca alterados continuam sendo lidos do pacote, e a cópia do usuário tem precedência sobre o arquivo empacotado.
-
-Quando o `argvus-session` aplica a fonte na inicialização da sessão, ele reescreve a linha `font:` do `config.rasi` com a fonte definida nas configurações do ARGVUS. Essa edição só chega à cópia do usuário. Enquanto a cópia não existir, o arquivo encontrado é o empacotado, que o usuário não pode alterar; assim, a mudança de fonte passa a valer depois que a primeira mudança de aparência criar a cópia.
-
-### Trocando o tema
-
-O `argvus-appearance` é quem muda o tema. Ao trocar, ele reescreve as cópias do usuário para que o `config.rasi` aponte para o novo `theme.rasi`, e o `theme.rasi` importe a paleta do lançador do build de tema (`~/.config/argvus/data/generated/theme/current/launcher/theme.rasi`), que tem a família, o layout e a cor de destaque ativos. Sem build de tema, ele importa a cópia da família, e o layout Spaced seleciona a variante `-spaced` da família ativa. Os seletores de tema e de layout leem o mesmo `config.rasi`, então também usam o estilo ativo.
-
-Não edite os arquivos em `/usr/share/argvus/launcher/`: eles são substituídos na atualização do pacote. Faça as alterações na cópia do usuário, em `$XDG_CONFIG_HOME/argvus/data/rofi/`.
+Configurar pesquisa → `argvus control-center launcher`.
 
 ## Seletor de projetos (`SUPER + O`)
 
@@ -379,23 +350,14 @@ O seletor abre na aba Todos. Tab percorre as categorias e as setas percorrem a g
 
 `SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
-## Outros menus que usam a configuração Rofi
-
-A configuração do launcher é compartilhada com componentes de outros pacotes:
-
-- Os seletores de tema, de accent e de layout do `argvus-appearance` abrem o Rofi com o `config.rasi`.
-- As regras de janela do Hyprland reconhecem os namespaces `argvus-launcher` e `rofi`, então os menus recebem o tratamento de superfície do launcher.
-
 ## Empacotamento e dependências
 
 O pacote `argvus-launcher` é independente de arquitetura e instala:
 
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` e `argvus-git`, no mesmo diretório;
-- `/usr/share/argvus/launcher/config/`, com a configuração e os temas do Rofi;
 
 Dependências obrigatórias: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `wl-clipboard`, `wtype`, `gnupg` e `pinentry` (que fornece o `pinentry-gtk`). Dependências opcionais: `openssh`, para o seletor SSH e o gerenciador de chaves; `lazygit` e `gitui`, para a TUI de git.
 
-A instalação do pacote não grava nada em `$HOME`. A configuração do usuário é criada no início da sessão, como descrito em [Configuração e temas do Rofi](#onde-fica-a-configuração-ativa).
 
 ## Solução de problemas
 
@@ -404,7 +366,6 @@ A instalação do pacote não grava nada em `$HOME`. A configuração do usuári
 | `SUPER + D` não abre nada | `argvus launcher` · `argvus control-center launcher` · `quickshell` · `argvus` |
 | `SUPER + D` não lista aplicativos | Os aplicativos não têm entrada de desktop. Só aparecem aplicativos com um arquivo `.desktop`. |
 | Os menus usam uma fonte antiga | A linha `font:` é reescrita no início da sessão. Reinicie a sessão depois de mudar a fonte. |
-| Uma troca de tema não chega aos menus Rofi | Verifique se a cópia do usuário do `config.rasi`, em `$XDG_CONFIG_HOME/argvus/data/rofi/`, ainda aponta para o tema empacotado. Aplique o tema de novo pelo `argvus-appearance`. |
 | `SUPER + O` informa que nenhum projeto foi encontrado | Nenhuma raiz ou caminho está configurado, ou os diretórios não existem mais. Rode `argvus projects list`. |
 | `SUPER + C` / `SUPER + .` | `argvus`, `wl-clipboard`, `wtype` |
 | `SUPER + H` não mostra nada | O histórico está vazio, ou o gravador da área de transferência do `argvus-session` ainda não guardou nada. |
@@ -414,15 +375,12 @@ A instalação do pacote não grava nada em `$HOME`. A configuração do usuári
 | Componente | Responsabilidade |
 | --- | --- |
 | `argvus-hyprland` | Declara os atalhos e as regras de janela dos menus. |
-| `argvus-appearance` | Troca o tema, o accent e o layout ativos, e reescreve as referências de tema do Rofi. |
 | `argvus` (`argvus config`) | Guarda os projetos, os snippets e a preferência de lançador padrão. |
-| `argvus-session` | Copia a configuração inicial do Rofi e define a fonte no início da sessão. |
 | `argvus` (`argvus terminal`) | Abre as sessões SSH, os terminais dos projetos e os pedidos de senha do `argvus keys`. |
 | `argvus` (`argvus widget-telemetry`) | Lê o projeto ativo gravado pelo `argvus projects`. |
 | `argvus` (`argvus i18n`) | Fornece as mensagens traduzidas usadas pelos scripts do launcher. |
 | `argvus` (`argvus control-center`) | Edita a lista de projetos por meio do `argvus projects`. |
 
-O Rofi usa uma superfície transparente em tela cheia: o blur cobre todo o monitor do menu, incluindo barras e margens, em Sticky e Spaced. O menu permanece centralizado e respeita o controle global de blur.
 
 
 `/launcher/show_icons`: `true` / `false`.

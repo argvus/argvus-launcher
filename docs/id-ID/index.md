@@ -3,10 +3,8 @@ title: Peluncur dan Pencarian
 description: Peluncur dan Pencarian — Quickshell/QML + Rust.
 ---
 
-Peluncur utama memakai Quickshell/QML dan mesin Rust lokal untuk aplikasi, jendela, pengaturan, tindakan, proyek, host SSH, berkas, dan pintasan. Pengindeksan awalnya nonaktif; pilih folder secara eksplisit. Hanya nama dan jalur yang diindeks, bukan isi dokumen. Berkas terbaru bergantung pada catatan XDG. Berkas tersembunyi dikecualikan secara bawaan dan symlink direktori tidak diikuti. Menu khusus Rofi tetap tersedia. Di Launcher and Search, pilih urutan A–Z atau Baru dibuka; Baru dibuka menjadi pilihan bawaan. Kategori tersimpan tetap memfilter hasil lainnya; nonaktifkan sumber Windows di pengaturan pencarian untuk menyembunyikan grup ini.
 
 - peluncur aplikasi (`SUPER + D`);
-- konfigurasi dan tema Rofi yang dibagikan oleh setiap menu Rofi ARGVUS;
 - pengalih proyek, pemilih SSH dan pemilih snippet (`argvus projects`, `argvus ssh`, `argvus snippets`);
 - pengelola kunci SSH (`argvus keys`), yang membuat, mencantumkan, memuat dan menghapus pasangan kunci;
 - pengelola kunci GPG (`argvus gpg`), yang mencantumkan, membuat dan mengekspor kunci serta mengatur pinentry-gtk untuk gpg-agent;
@@ -29,7 +27,6 @@ Pintasan dideklarasikan oleh `argvus-hyprland`. Paket ini menyediakan perintah-p
 
 ## Peluncur dan Pencarian
 
-Peluncur utama memakai Quickshell/QML dan mesin Rust lokal untuk aplikasi, jendela, pengaturan, tindakan, proyek, host SSH, berkas, dan pintasan. Pengindeksan awalnya nonaktif; pilih folder secara eksplisit. Hanya nama dan jalur yang diindeks, bukan isi dokumen. Berkas terbaru bergantung pada catatan XDG. Berkas tersembunyi dikecualikan secara bawaan dan symlink direktori tidak diikuti. Menu khusus Rofi tetap tersedia. Di Launcher and Search, pilih urutan A–Z atau Baru dibuka; Baru dibuka menjadi pilihan bawaan. **Sedang dibuka** nonaktif secara default; aktifkan di Control Center > Preferences > Launcher and Search untuk menampilkan jendela saat ini ketika kueri kosong. Riwayat penggunaan aplikasi dapat dihapus dari halaman yang sama.
 
 Launcher memakai tata letak TUI ringkas: teks monospace, pencarian dan kategori sejajar, favorit ringkas serta bantuan terpisah di bawah. Ketebalan dan lengkungan bingkai mengikuti pengaturan ARGVUS aktif.
 
@@ -48,37 +45,9 @@ Peluncur menggunakan bahasa antarmuka ARGVUS yang dipilih di Pusat Kontrol.
 
 `$XDG_CONFIG_HOME/argvus/config/launcher.json` → `$XDG_CACHE_HOME/argvus/launcher/index.json`
 
-Quickshell: `launcher/Theme.qml` · Rofi: `launcher/theme.rasi`
+Quickshell: `launcher/Theme.qml`
 
-`--config` / Rasi: Atur pencarian → `argvus control-center launcher`.
-
-## Konfigurasi dan tema Rofi
-
-Paket menginstal konfigurasi Rofi di bawah `/usr/share/argvus/launcher/config/`:
-
-| Berkas | Peran |
-| --- | --- |
-| `config.rasi` | Titik masuk yang digunakan oleh setiap menu ARGVUS. Mengatur Rofi `configuration`(font, tanpa ikon, daftar yang diurutkan, pencocokan tanpa memperhatikan huruf besar/kecil) dan impor`theme.rasi`. |
-| `theme.rasi`| Warna dan tata letak jendela, bilah input, dan daftar. Mengimpor satu tema dan file mode. |
-| `mode.rasi` | Penggantian mode. File paket tidak memiliki penggantian dan tetap menggunakan mode Gelap. |
-| `themes/<family>/theme.rasi` | Palet rangkaian tema, misalnya `argvus-dark` atau `tokyo-night`. |
-| `themes/<family>-spaced/theme.rasi` | Varian spasi dari keluarga yang sama. |
-
-Paket ini menyediakan 22 keluarga, dan masing-masing memiliki varian `-spaced`. `theme.rasi` yang dikemas mengimpor `argvus-dark`.
-
-### Tempat konfigurasi aktif berada
-
-ARGVUS menyelesaikan setiap file Rofi melalui `paths_config`. File pertama yang ada di antara penggantian pengguna, salinan pengguna, lokasi warisan, dan pohon yang dihasilkan yang menang; jika tidak, file yang dikemas di bawah `/usr/share/argvus/launcher/config/` digunakan. Salinan pengguna dari sebuah file adalah `$XDG_CONFIG_HOME/argvus/data/rofi/<file>`: prefix `launcher/config/` disimpan di bawah `rofi/`.
-
-ARGVUS membuat salinan pengguna pertama kali sebuah skrip ARGVUS mengubah file itu; `argvus-appearance` melakukan ini untuk perubahan tema, aksen, dan mode. File yang tidak pernah diubah terus dibaca dari paket, dan salinan pengguna mendapatkan prioritas atas file yang dikemas.
-
-Ketika `argvus-session` menerapkan font saat sesi dimulai, itu menulis ulang baris `font:` dari `config.rasi` dari pengaturan font ARGVUS. Suntingan itu hanya mencapai salinan pengguna. Sampai salinan itu ada, file yang dikemas adalah yang ditemukan, dan pengguna tidak dapat menulis ke file tersebut, jadi perubahan font berlaku setelah perubahan tampilan pertama membuat salinan.
-
-### Mengubah tema
-
-`argvus-appearance` memiliki perubahan tema. Ketika tema berubah, itu menulis ulang salinan pengguna sehingga `config.rasi` menunjuk ke `theme.rasi` yang baru, dan `theme.rasi` mengimpor palet peluncur dari build tema (`~/.config/argvus/data/generated/theme/current/launcher/theme.rasi`), yang memiliki keluarga aktif, tata letak dan warna sorot. Tanpa build tema, itu mengimpor salinan keluarga, dan tata letak Spaced memilih varian `-spaced` dari keluarga aktif. Pemilih tema seperti menu tema dan menu tata letak membaca `config.rasi` yang sama, jadi mereka juga menggunakan gaya aktif.
-
-Jangan mengedit file di bawah `/usr/share/argvus/launcher/`; file tersebut akan diganti saat peningkatan paket. Lakukan perubahan pada salinan pengguna, di bawah `$XDG_CONFIG_HOME/argvus/data/rofi/`.
+Atur pencarian → `argvus control-center launcher`.
 
 ## Pengalih proyek (`SUPER + O`)
 
@@ -400,32 +369,21 @@ Pemilih dibuka pada tab Semua. Tab berpindah kategori dan tombol panah menavigas
 
 `SUPER + C` → `argvus calculator` (ARGVUS / GTK4).
 
-## Menu lain yang menggunakan konfigurasi Rofi
-
-Konfigurasi peluncur dibagikan dengan komponen yang dimiliki oleh paket lain:
-
-- Tema, aksen, dan pemilih tata letak di `argvus-appearance` membuka Rofi dengan `config.rasi`.
-- Aturan jendela Hyprland mengenali namespace `argvus-launcher` dan `rofi`, sehingga menu menerima perlakuan permukaan peluncur.
-
 ## Pengemasan dan dependensi
 
 Paket `argvus-launcher` bersifat independen terhadap arsitektur dan menginstal:
 
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` dan `argvus-git`, di bawah direktori yang sama;
-- `/usr/share/argvus/launcher/config/`, dengan konfigurasi dan tema Rofi;
 
 Dependensi yang dibutuhkan: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `wl-clipboard`, `wtype`, `gnupg` dan `pinentry` (yang menyediakan `pinentry-gtk`). Dependensi opsional: `openssh`, untuk pemilih SSH dan manajer kunci SSH; `lazygit` dan `gitui`, untuk TUI git.
 
-Menginstal paket tidak menulis ke `$HOME`. Konfigurasi pengguna dibuat saat sesi dimulai, seperti yang dijelaskan dalam [Konfigurasi dan tema Rofi](#where-the-active-configuration-lives).
 
 ## Pemecahan masalah
 
 | Gejala | Penyebab dan perbaikan |
 | --- | --- |
-| `SUPER + D`tidak membuka apa pun | Periksa`argvus launcher`di terminal. Konfirmasikan bahwa`rofi`telah terpasang dan konfigurasi Rofi ada.
 | `SUPER + D`menampilkan tidak ada aplikasi | Aplikasi tidak memiliki entri desktop. Hanya aplikasi dengan`.desktop`file ditampilkan. |
 | Menu menggunakan font lama | The `font:`baris ditulis ulang saat sesi dimulai. Mulai ulang sesi setelah mengganti font. |
-| Perubahan tema tidak mencapai menu Rofi | Periksa apakah salinan pengguna dari `config.rasi` in `$XDG_CONFIG_HOME/argvus/data/rofi/`masih mengarah ke tema yang dikemas. Terapkan tema dari`argvus-appearance` again. |
 | `SUPER + O`melaporkan bahwa tidak ada proyek yang ditemukan | Tidak ada root atau jalur yang dikonfigurasi, atau direktori sudah tidak ada. Jalankan `argvus projects list`. |
 | `SUPER + C` / `SUPER + .` | `argvus`, `wl-clipboard`, `wtype` |
 | Panduan cepat tidak terbuka | File dengan nama dan bahasa tersebut tidak ada. Periksa jalur yang dijelaskan di bagian Panduan Cepat. |
@@ -436,15 +394,12 @@ Menginstal paket tidak menulis ke `$HOME`. Konfigurasi pengguna dibuat saat sesi
 | Komponen | Tanggung jawab |
 | --- | --- |
 | `argvus-hyprland`| Menyatakan pintasan dan aturan jendela Hyprland untuk menu. |
-| `argvus-appearance` | Mengubah tema aktif, aksen, dan tata letak, serta menulis ulang referensi tema Rofi. |
 | `argvus` (`argvus config`) | Menyimpan proyek, potongan kode, dan pengaturan peluncur default. |
-| `argvus-session` | Menyalin konfigurasi Rofi awal dan mengatur fontnya saat memulai sesi. |
 | `argvus` (`argvus terminal`) | Membuka sesi SSH, terminal proyek, dan prompt passphrase dari `argvus keys`. |
 | `argvus` (`argvus widget-telemetry`) | Membaca proyek aktif yang ditulis oleh `argvus projects`. |
 | `argvus` (`argvus i18n`) | Menyediakan pesan yang diterjemahkan yang digunakan oleh skrip peluncur. |
 | `argvus` (`argvus control-center`) | Mengedit daftar proyek melalui `argvus projects`. |
 
-Dalam Sticky dan Spaced, blur Rofi mencakup seluruh monitor menu, termasuk bilah dan margin. Menu tetap di tengah dan mengikuti pengaturan blur global.
 
 
 `/launcher/show_icons`: `true` / `false`.
