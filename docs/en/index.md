@@ -382,7 +382,6 @@ All is selected on open. Tab cycles through categories and the arrow keys move t
 
 The launcher configuration is shared with components owned by other packages:
 
-- Clipboard history (`SUPER + H`) and its clear shortcut (`SUPER + SHIFT + H`) are declared by `argvus-hyprland`. They pipe `cliphist` into Rofi with this configuration. `cliphist` comes from `argvus-session`, which runs the clipboard recorder that fills the history; the `argvus` meta-package depends on it too.
 - Theme, accent and layout pickers in `argvus-appearance` open Rofi with `config.rasi`.
 - The Hyprland window rules recognize the `argvus-launcher` and `rofi` namespaces, so the menus receive the launcher surface treatment.
 
@@ -432,3 +431,5 @@ Rofi uses a fullscreen transparent surface: blur covers the entire menu monitor,
 `/launcher/application_sort`: `recent` (Recently opened, default) or `alphabetical` (A–Z).
 
 Application text follows Applications Font in Control Center → Appearance → Desktop Style → Fonts. GTK applications inherit gtk-font-name; local sizes for numbers and headings remain. The launcher reads the generated apps_family and watches for changes.
+
+**ARGVUS Clipboard** · `argvus clipboard` · `Super + H` · `↑` `↓` (Navigate) · `/` (Search) · `Enter` (Copy) · `Delete` (Clear history) · `Esc` (Close)

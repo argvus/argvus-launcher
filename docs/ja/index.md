@@ -374,7 +374,6 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 ランチャー設定は、他のパッケージが所有するコンポーネントと共有されています：
 
-- クリップボード履歴（`SUPER + H`）とそのクリアショートカット（`SUPER + SHIFT + H`）は、`argvus-hyprland`によって宣言されています。これらは`cliphist`をこの設定でRofiにパイプします。`cliphist`は`argvus-session`から来ており、これは履歴を埋めるクリップボードレコーダーを実行します。`argvus`メタパッケージもこれに依存しています。
 - `argvus-appearance`のテーマ、アクセント、レイアウトピッカーは、`config.rasi`でRofiを開きます。
 - Hyprlandのウィンドウルールは`argvus-launcher`と`rofi`の名前空間を認識するため、メニューはランチャーサーフェスの処理を受けます。
 
@@ -425,3 +424,5 @@ Sticky と Spaced では、Rofi のぼかしがバーや余白を含むメニュ
 `/launcher/application_sort`: `recent`（最近開いた順、既定）または `alphabetical`（A–Z）。
 
 アプリの文字は Control Center → Appearance → Desktop Style → Fonts の Applications Font に従います。GTK は gtk-font-name を継承し、数字や見出しのサイズは保持します。ランチャーは生成された apps_family を読み変更を監視します。
+
+**ARGVUS クリップボード** · `argvus clipboard` · `Super + H` · `↑` `↓` (移動) · `/` (検索) · `Enter` (コピー) · `Delete` (履歴を消去) · `Esc` (閉じる)

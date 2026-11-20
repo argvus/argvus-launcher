@@ -383,7 +383,6 @@ O seletor abre no separador Todos. Tab percorre as categorias e as setas percorr
 
 A configuração do launcher é compartilhada com componentes de outros pacotes:
 
-- O histórico da área de transferência (`SUPER + H`) e o atalho para limpá-lo (`SUPER + SHIFT + H`) são declarados pelo `argvus-hyprland`. Eles enviam a saída do `cliphist` para o Rofi com esta configuração. O `cliphist` vem do `argvus-session`, que executa o gravador da área de transferência que alimenta o histórico; o meta-pacote `argvus` também depende dele.
 - Os seletores de tema, de accent e de layout do `argvus-appearance` abrem o Rofi com o `config.rasi`.
 - As regras de janela do Hyprland reconhecem os namespaces `argvus-launcher` e `rofi`, então os menus recebem o tratamento de superfície do launcher.
 
@@ -433,3 +432,5 @@ O Rofi usa uma superfície transparente em ecrã inteiro: o desfoque cobre todo 
 `/launcher/application_sort`: `recent` (Abertas recentemente, predefinição) ou `alphabetical` (A–Z).
 
 Os textos das aplicações seguem Applications Font em Control Center → Appearance → Desktop Style → Fonts. As aplicações GTK herdam gtk-font-name; os tamanhos específicos de números e títulos são mantidos. O lançador lê apps_family gerado e acompanha alterações.
+
+**ARGVUS Área de transferência** · `argvus clipboard` · `Super + H` · `↑` `↓` (Navegar) · `/` (Pesquisar) · `Enter` (Copiar) · `Delete` (Limpar histórico) · `Esc` (Fechar)

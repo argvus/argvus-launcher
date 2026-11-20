@@ -375,7 +375,6 @@ El selector se abre en Todos. Tab recorre las categorías y las flechas recorren
 
 La configuración del lanzador se comparte con componentes propiedad de otros paquetes:
 
-- El historial del portapapeles (`SUPER + H`) y su atajo para limpiar (`SUPER + SHIFT + H`) son declarados por `argvus-hyprland`. Ellos canalizan `cliphist` en Rofi con esta configuración. `cliphist` proviene de `argvus-session`, que ejecuta el grabador del portapapeles que llena el historial; el meta-paquete `argvus` también depende de él.
 - Los selectores de tema, acento y diseño en `argvus-appearance` abren Rofi con `config.rasi`.
 - Las reglas de ventanas de Hyprland reconocen los espacios de nombres `argvus-launcher` y `rofi`, por lo que los menús reciben el tratamiento de superficie de lanzador.
 
@@ -426,3 +425,5 @@ Rofi desenfoca todo el monitor del menú, incluidas barras y márgenes, en Stick
 `/launcher/application_sort`: `recent` (Abiertas recientemente, predeterminado) o `alphabetical` (A–Z).
 
 Los textos siguen Applications Font en Control Center → Appearance → Desktop Style → Fonts. Las aplicaciones GTK heredan gtk-font-name; se mantienen los tamaños de números y títulos. El lanzador lee apps_family generado y observa los cambios.
+
+**ARGVUS Portapapeles** · `argvus clipboard` · `Super + H` · `↑` `↓` (Navegar) · `/` (Buscar) · `Enter` (Copiar) · `Delete` (Borrar historial) · `Esc` (Cerrar)

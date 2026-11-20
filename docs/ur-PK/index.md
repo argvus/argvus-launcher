@@ -405,7 +405,6 @@ ARGVUS_GIT_TUI=gitui argvus git
           :ﮯﮨ ﯽﺗﺎﺟ ﯽﮐ ﺮﺌﯿﺷ ﮫﺗﺎﺳ ﮯﮐ ءﺍﺰﺟﺍ ﺖﯿﮑﻠﻣ ﺮﯾﺯ ﮯﮐ ﺰﺠﮑﯿﭘ ﺮﮕﯾﺩ ﺐﯿﺗﺮﺗ ﯽﮐ ﺮﭽﻧﻻ﻿
 
 -
-- Theme, accent and layout pickers in  `SUPER + H`  `SUPER + SHIFT + H` `argvus-hyprland`   `cliphist`  `cliphist`  `argvus-session`  `argvus`  SUPER + H `argvus-appearance` open Rofi with `config.rasi`.
 -                                          ﮟﯿﮨ ﮯﺗﺮﮐ ﻢﯿﻠﺴﺗ ﻮﮐ ﺰﻟﻭﺭ ﻭﮉﻧﻭ ﮉﻨﯿﻟﺮﭙﺋﺎﮨ`argvus-launcher` and `rofi`                     ۔ﮟﯾﺮﮐ ﻞﺻﺎﺣ ﻮﮐ ﺝﻼ﻿ﻋ ﮯﮐ ﺢﻄﺳ ﯽﮐ ﺮﭽﻧﻻ﻿ ﺯﻮﯿﻨﯿﻣ ﮧﮐﺎﺗ ،ﺰﺴﯿﭙﺳﺍ ﻢﯿﯿﻧ
 
 ##                                                            ﺕﺍﺭﺎﺼﺤﻧﺍ ﺭﻭﺍ ﮓﻨﺠﮑﯿﭘ
@@ -455,3 +454,5 @@ Sticky اور Spaced میں Rofi کا دھندلاپن بار اور حاشیو�
 `/launcher/application_sort`: `recent` (حال ہی میں کھولی گئی، طے شدہ) یا `alphabetical` (A–Z)۔
 
 ایپ کا متن Control Center → Appearance → Desktop Style → Fonts کے Applications Font کی پیروی کرتا ہے۔ GTK ایپس gtk-font-name لیتی ہیں؛ اعداد اور عنوان کے سائز برقرار رہتے ہیں۔ لانچر تیار شدہ apps_family پڑھتا اور تبدیلیاں دیکھتا ہے۔
+
+**ARGVUS کلپ بورڈ** · `argvus clipboard` · `Super + H` · `↑` `↓` (نیویگیٹ کریں) · `/` (تلاش کریں) · `Enter` (کاپی کریں) · `Delete` (تاریخ صاف کریں) · `Esc` (بند کریں)

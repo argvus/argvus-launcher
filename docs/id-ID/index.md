@@ -404,7 +404,6 @@ Pemilih dibuka pada tab Semua. Tab berpindah kategori dan tombol panah menavigas
 
 Konfigurasi peluncur dibagikan dengan komponen yang dimiliki oleh paket lain:
 
-- Riwayat papan klip (`SUPER + H`) dan pintasan bersihnya (`SUPER + SHIFT + H`) dinyatakan oleh `argvus-hyprland`. Mereka mengalirkan `cliphist` ke Rofi dengan konfigurasi ini. `cliphist` berasal dari `argvus-session`, yang menjalankan perekam papan klip yang mengisi riwayat; paket meta `argvus` juga bergantung padanya.
 - Tema, aksen, dan pemilih tata letak di `argvus-appearance` membuka Rofi dengan `config.rasi`.
 - Aturan jendela Hyprland mengenali namespace `argvus-launcher` dan `rofi`, sehingga menu menerima perlakuan permukaan peluncur.
 
@@ -455,3 +454,5 @@ Dalam Sticky dan Spaced, blur Rofi mencakup seluruh monitor menu, termasuk bilah
 `/launcher/application_sort`: `recent` (Baru dibuka, bawaan) atau `alphabetical` (A–Z).
 
 Teks aplikasi mengikuti Applications Font di Control Center → Appearance → Desktop Style → Fonts. GTK mewarisi gtk-font-name; ukuran angka dan judul dipertahankan. Peluncur membaca apps_family yang dihasilkan dan memantau perubahan.
+
+**ARGVUS Papan klip** · `argvus clipboard` · `Super + H` · `↑` `↓` (Navigasi) · `/` (Cari) · `Enter` (Salin) · `Delete` (Hapus riwayat) · `Esc` (Tutup)

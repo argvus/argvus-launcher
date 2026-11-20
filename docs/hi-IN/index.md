@@ -380,7 +380,6 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 लॉन्चर कॉन्फ़िगरेशन अन्य पैकेजों के स्वामित्व वाले घटकों के साथ साझा किया गया है:
 
-- क्लिपबोर्ड इतिहास (`SUPER + H`) और इसका साफ़ शॉर्टकट (`SUPER + SHIFT + H`) को `argvus-hyprland` द्वारा घोषित किया गया है। वे `cliphist` को इस कॉन्फ़िगरेशन के साथ Rofi में भेजते हैं। `cliphist`, `argvus-session` से आता है, जो क्लिपबोर्ड रिकॉर्डर चलाता है जो इतिहास को भरता है; `argvus` मेटा-पैकेज भी इस पर निर्भर करता है।
 - `argvus-appearance` में थीम, एक्सेंट और लेआउट पिकर `config.rasi` के साथ Rofi खोलते हैं।
 - Hyprland विंडो नियम `argvus-launcher` और `rofi` नामस्थान को पहचानते हैं, इसलिए मेन्यू लांचर सरफेस ट्रीटमेंट प्राप्त करते हैं।
 
@@ -431,3 +430,5 @@ Sticky और Spaced में Rofi का धुंधलापन बार �
 `/launcher/application_sort`: `recent` (हाल ही में खोले गए, डिफ़ॉल्ट) या `alphabetical` (A–Z)।
 
 ऐप का पाठ Control Center → Appearance → Desktop Style → Fonts के Applications Font का उपयोग करता है। GTK ऐप gtk-font-name लेते हैं; संख्या और शीर्षक के आकार बने रहते हैं। लॉन्चर जनित apps_family पढ़ता है और बदलाव देखता है।
+
+**ARGVUS क्लिपबोर्ड** · `argvus clipboard` · `Super + H` · `↑` `↓` (नेविगेट करें) · `/` (खोजें) · `Enter` (कॉपी करें) · `Delete` (इतिहास मिटाएँ) · `Esc` (बंद करें)

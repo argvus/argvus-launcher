@@ -418,7 +418,6 @@ The package
 
  is architecture-independent and installs:
 
--   `SUPER + H`  `SUPER + SHIFT + H`  `argvus-hyprland`  `cliphist`  `cliphist`  `argvus-session`  `argvus`  `argvus-appearance`  `config.rasi` `argvus-launcher`  `rofi`  `argvus-launcher`  config.rasi  argvus-appearance  argvus  argvus-session  cliphist  cliphist  argvus-hyprland  SUPER + SHIFT + H  SUPER + H `argvus launcher` ﻭ `argvus-snippets` ﻭ `argvus-ssh` ﻭ `argvus-git`،
 - `/usr/share/argvus/launcher/config/`، ﺕﺎﻤﺳﻭ ﺕﺍﺩﺍﺪﻋﺇ ﻊﻣ Rofi؛
 
 Required dependencies:
@@ -486,3 +485,5 @@ Installing the package does not write into  `libnotify`  `argvus calculator`  `w
 `/launcher/application_sort`: `recent` (الأحدث فتحًا، افتراضيًا) أو `alphabetical` (أبجديًا).
 
 يتبع نص التطبيقات Applications Font في Control Center → Appearance → Desktop Style → Fonts. ترث تطبيقات GTK قيمة gtk-font-name مع الحفاظ على أحجام الأرقام والعناوين. يقرأ المشغّل apps_family المولّد ويتابع التغييرات.
+
+**ARGVUS الحافظة** · `argvus clipboard` · `Super + H` · `↑` `↓` (التنقل) · `/` (بحث) · `Enter` (نسخ) · `Delete` (مسح السجل) · `Esc` (إغلاق)

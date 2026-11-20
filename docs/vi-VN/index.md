@@ -394,7 +394,6 @@ Trình chọn mở ở mục Tất cả. Tab chuyển danh mục và các phím 
 
 Cấu hình khởi chạy được chia sẻ với các thành phần thuộc sở hữu của các gói khác:
 
-- Lịch sử bảng tạm (`SUPER + H`) và phím tắt xóa của nó (`SUPER + SHIFT + H`) được khai báo bởi `argvus-hyprland`. Chúng đưa `cliphist` vào Rofi với cấu hình này. `cliphist` xuất phát từ `argvus-session`, chạy trình ghi bảng tạm để điền vào lịch sử; gói siêu `argvus` cũng phụ thuộc vào nó.
 - Trình chọn chủ đề, giọng điệu và bố cục trong `argvus-appearance` mở Rofi với `config.rasi`.
 - Các quy tắc cửa sổ của Hyprland nhận diện các không gian tên `argvus-launcher` và `rofi`, vì vậy các menu nhận được xử lý bề mặt trình khởi chạy.
 
@@ -444,3 +443,5 @@ Trong Sticky và Spaced, hiệu ứng mờ Rofi phủ toàn bộ màn hình ch�
 `/launcher/application_sort`: `recent` (Mở gần đây, mặc định) hoặc `alphabetical` (A–Z).
 
 Văn bản ứng dụng theo Applications Font trong Control Center → Appearance → Desktop Style → Fonts. GTK kế thừa gtk-font-name, giữ kích thước số và tiêu đề. Trình khởi chạy đọc apps_family được tạo và theo dõi thay đổi.
+
+**ARGVUS Bảng tạm** · `argvus clipboard` · `Super + H` · `↑` `↓` (Điều hướng) · `/` (Tìm kiếm) · `Enter` (Sao chép) · `Delete` (Xóa lịch sử) · `Esc` (Đóng)

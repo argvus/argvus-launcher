@@ -374,7 +374,6 @@ Le sélecteur s’ouvre sur Tous. Tab parcourt les catégories et les flèches p
 
 La configuration du lanceur est partagée avec des composants appartenant à d'autres paquets :
 
-- L'historique du presse-papiers (`SUPER + H`) et son raccourci de vidage (`SUPER + SHIFT + H`) sont déclarés par `argvus-hyprland`. Ils dirigent `cliphist` vers Rofi avec cette configuration. `cliphist` provient de `argvus-session`, qui exécute l'enregistreur de presse-papiers qui remplit l'historique ; le méta-paquet `argvus` en dépend également.  
 - Les sélectionneurs de thème, d'accent et de disposition dans `argvus-appearance` ouvrent Rofi avec `config.rasi`.  
 - Les règles de fenêtres Hyprland reconnaissent les espaces de noms `argvus-launcher` et `rofi`, de sorte que les menus reçoivent le traitement de surface du lanceur.  
 
@@ -425,3 +424,5 @@ Rofi floute tout le moniteur du menu, barres et marges comprises, en Sticky et S
 `/launcher/application_sort` : `recent` (Récemment ouvertes, par défaut) ou `alphabetical` (A–Z).
 
 Le texte suit Applications Font dans Control Center → Appearance → Desktop Style → Fonts. Les applications GTK héritent de gtk-font-name ; les tailles des nombres et titres sont conservées. Le lanceur lit apps_family généré et suit les modifications.
+
+**ARGVUS Presse-papiers** · `argvus clipboard` · `Super + H` · `↑` `↓` (Naviguer) · `/` (Rechercher) · `Enter` (Copier) · `Delete` (Effacer l’historique) · `Esc` (Fermer)

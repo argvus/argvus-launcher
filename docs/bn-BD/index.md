@@ -382,7 +382,6 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 লঞ্চার কনফিগারেশনটি অন্যান্য প্যাকেজের মালিকানাধীন উপাদানের সাথে ভাগ করা হয়:
 
-- ক্লিপবোর্ড ইতিহাস (`SUPER + H`) এবং তার ক্লিয়ার শর্টকাট (`SUPER + SHIFT + H`) `argvus-hyprland` দ্বারা ঘোষণা করা হয়েছে। তারা `cliphist` এই কনফিগারেশনের সাথে Rofi-তে পাঠায়। `cliphist` আসে `argvus-session` থেকে, যা ক্লিপবোর্ড রেকর্ডার চালায় যা ইতিহাস পূরণ করে; `argvus` মেটা-প্যাকেজও এর উপর নির্ভরশীল।
 - `argvus-appearance`-এ থিম, অ্যাকসেন্ট এবং লেআউট পিকারের মাধ্যমে `config.rasi` সহ Rofi খোলা হয়।
 - Hyprland উইন্ডো নিয়মগুলি `argvus-launcher` এবং `rofi` নেমস্পেসগুলোকে চিনতে পারে, তাই মেনুগুলো লঞ্চার সারফেস ট্রিটমেন্ট পায়।
 
@@ -433,3 +432,5 @@ Sticky ও Spaced মোডে Rofi মেনুর পুরো মনিটর
 `/launcher/application_sort`: `recent` (সম্প্রতি খোলা, ডিফল্ট) বা `alphabetical` (A–Z)।
 
 অ্যাপের লেখা Control Center → Appearance → Desktop Style → Fonts-এর Applications Font অনুসরণ করে। GTK অ্যাপ gtk-font-name ব্যবহার করে; সংখ্যা ও শিরোনামের আকার অপরিবর্তিত থাকে। লঞ্চার তৈরি apps_family পড়ে ও পরিবর্তন দেখে।
+
+**ARGVUS ক্লিপবোর্ড** · `argvus clipboard` · `Super + H` · `↑` `↓` (নেভিগেট করুন) · `/` (খুঁজুন) · `Enter` (কপি করুন) · `Delete` (ইতিহাস মুছুন) · `Esc` (বন্ধ করুন)

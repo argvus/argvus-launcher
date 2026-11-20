@@ -374,7 +374,6 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 런처 구성은 다른 패키지가 소유한 구성 요소와 공유됩니다:
 
-- 클립보드 기록(`SUPER + H`)과 그 지우기 단축키(`SUPER + SHIFT + H`)는 `argvus-hyprland`에 의해 선언됩니다. 이들은 이 설정과 함께 `cliphist`를 Rofi로 전달합니다. `cliphist`는 `argvus-session`에서 나오며, 이 프로그램은 기록을 채우는 클립보드 기록기를 실행합니다; `argvus` 메타 패키지도 이에 의존합니다.
 - `argvus-appearance`의 테마, 강조 색상 및 레이아웃 선택기는 `config.rasi`와 함께 Rofi를 엽니다.
 - Hyprland 창 규칙은 `argvus-launcher` 및 `rofi` 네임스페이스를 인식하므로 메뉴는 실행기 표면 처리를 받습니다.
 
@@ -424,3 +423,5 @@ Sticky와 Spaced에서 Rofi 흐림 효과는 표시줄과 여백을 포함한 �
 `/launcher/application_sort`: `recent`(최근 열림, 기본값) 또는 `alphabetical`(A–Z).
 
 앱 텍스트는 Control Center → Appearance → Desktop Style → Fonts의 Applications Font를 따릅니다. GTK는 gtk-font-name을 상속하며 숫자와 제목 크기는 유지합니다. 런처는 생성된 apps_family를 읽고 변경을 감시합니다.
+
+**ARGVUS 클립보드** · `argvus clipboard` · `Super + H` · `↑` `↓` (이동) · `/` (검색) · `Enter` (복사) · `Delete` (기록 지우기) · `Esc` (닫기)

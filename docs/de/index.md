@@ -374,7 +374,6 @@ Beim Öffnen ist „Alle“ ausgewählt. Tab wechselt die Kategorie, die Pfeilta
 
 Die Launcher-Konfiguration wird mit Komponenten geteilt, die anderen Paketen gehören:
 
-- Zwischenablage-Verlauf (`SUPER + H`) und seine Shortcut-Löschung (`SUPER + SHIFT + H`) werden von `argvus-hyprland` deklariert. Sie leiten `cliphist` mit dieser Konfiguration in Rofi ein. `cliphist` stammt von `argvus-session`, das den Zwischenablage-Rekorder ausführt, der den Verlauf füllt; das Meta-Paket `argvus` ist ebenfalls davon abhängig.
 - Theme-, Akzent- und Layout-Auswahlen in `argvus-appearance` öffnen Rofi mit `config.rasi`.
 - Die Hyprland-Fensterregeln erkennen die Namespaces `argvus-launcher` und `rofi`, sodass die Menüs die Launcher-Oberflächenbehandlung erhalten.
 
@@ -424,3 +423,5 @@ Rofi verwischt im Sticky- und Spaced-Modus den gesamten Menümonitor einschließ
 `/launcher/application_sort`: `recent` (zuletzt geöffnet, Standard) oder `alphabetical` (A–Z).
 
 Anwendungstexte folgen Applications Font unter Control Center → Appearance → Desktop Style → Fonts. GTK-Anwendungen erben gtk-font-name; Größen für Zahlen und Überschriften bleiben erhalten. Der Launcher liest das erzeugte apps_family und verfolgt Änderungen.
+
+**ARGVUS Zwischenablage** · `argvus clipboard` · `Super + H` · `↑` `↓` (Navigieren) · `/` (Suchen) · `Enter` (Kopieren) · `Delete` (Verlauf löschen) · `Esc` (Schließen)

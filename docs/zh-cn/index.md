@@ -374,7 +374,6 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 启动器配置与其他软件包拥有的组件共享：
 
-- 剪贴板历史记录 (`SUPER + H`) 及其清除快捷键 (`SUPER + SHIFT + H`) 由 `argvus-hyprland` 声明。它们将 `cliphist` 通过此配置传递给 Rofi。`cliphist` 来源于 `argvus-session`，该程序运行剪贴板记录器以填充历史记录；`argvus` 元包也依赖它。
 - `argvus-appearance` 中的主题、强调色和布局选择器会使用 `config.rasi` 打开 Rofi。
 - Hyprland 窗口规则识别 `argvus-launcher` 和 `rofi` 命名空间，因此菜单会获得启动器表面处理。
 
@@ -424,3 +423,5 @@ ARGVUS_GIT_TUI=gitui argvus git
 `/launcher/application_sort`：`recent`（最近打开，默认）或 `alphabetical`（A–Z）。
 
 应用文本使用 Control Center → Appearance → Desktop Style → Fonts 中的 Applications Font。GTK 应用继承 gtk-font-name，保留数字和标题的独立字号。启动器读取生成的 apps_family 并监听更改。
+
+**ARGVUS 剪贴板** · `argvus clipboard` · `Super + H` · `↑` `↓` (导航) · `/` (搜索) · `Enter` (复制) · `Delete` (清除历史记录) · `Esc` (关闭)

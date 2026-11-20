@@ -390,7 +390,6 @@ Seçici Tümü sekmesinde açılır. Tab kategoriler arasında geçiş yapar, ok
 
 Başlatıcı yapılandırması diğer paketlere ait bileşenlerle paylaşılır:
 
-- Pano geçmişi (`SUPER + H`) ve temizleme kısayolu (`SUPER + SHIFT + H`) `argvus-hyprland` tarafından bildirilir. Bu yapılandırmayla `cliphist`'yi Rofi'ye aktarırlar. `cliphist`, geçmişi dolduran pano kaydediciyi çalıştıran `argvus-session`'den gelir; `argvus` meta-paketi de buna bağımlıdır.
 - `argvus-appearance`'deki tema, vurgu ve düzen seçicileri, `config.rasi` ile Rofi'yi açar.
 - Hyprland pencere kuralları, `argvus-launcher` ve `rofi` ad alanlarını tanır, bu nedenle menüler başlatıcı yüzey muamelesi alır.
 
@@ -441,3 +440,5 @@ Sticky ve Spaced modlarında Rofi bulanıklığı çubuklar ve kenarlar dahil me
 `/launcher/application_sort`: `recent` (Son açılanlar, varsayılan) veya `alphabetical` (A–Z).
 
 Uygulama metni Control Center → Appearance → Desktop Style → Fonts içindeki Applications Font ayarını izler. GTK gtk-font-name değerini devralır; sayı ve başlık boyutları korunur. Başlatıcı üretilen apps_family değerini okur ve değişiklikleri izler.
+
+**ARGVUS Pano** · `argvus clipboard` · `Super + H` · `↑` `↓` (Gezin) · `/` (Ara) · `Enter` (Kopyala) · `Delete` (Geçmişi temizle) · `Esc` (Kapat)

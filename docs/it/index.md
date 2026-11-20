@@ -374,7 +374,6 @@ Il selettore si apre su Tutti. Tab cambia categoria e le frecce si spostano nell
 
 La configurazione del launcher è condivisa con componenti appartenenti ad altri pacchetti:
 
-- La cronologia degli appunti (`SUPER + H`) e la sua scorciatoia per cancellarla (`SUPER + SHIFT + H`) sono dichiarate da `argvus-hyprland`. Esse indirizzano `cliphist` in Rofi con questa configurazione. `cliphist` proviene da `argvus-session`, che esegue il registratore degli appunti che riempie la cronologia; anche il meta-pacchetto `argvus` dipende da esso.
 - I selettori di tema, accento e layout in `argvus-appearance` aprono Rofi con `config.rasi`.
 - Le regole delle finestre di Hyprland riconoscono gli spazi dei nomi `argvus-launcher` e `rofi`, quindi i menu ricevono il trattamento della superficie del launcher.
 
@@ -424,3 +423,5 @@ Rofi sfoca tutto il monitor del menu, incluse barre e margini, in Sticky e Space
 `/launcher/application_sort`: `recent` (Aperte di recente, predefinito) oppure `alphabetical` (A–Z).
 
 Il testo segue Applications Font in Control Center → Appearance → Desktop Style → Fonts. Le applicazioni GTK ereditano gtk-font-name; le dimensioni di numeri e titoli restano. Il launcher legge apps_family generato e segue le modifiche.
+
+**ARGVUS Appunti** · `argvus clipboard` · `Super + H` · `↑` `↓` (Naviga) · `/` (Cerca) · `Enter` (Copia) · `Delete` (Cancella cronologia) · `Esc` (Chiudi)
