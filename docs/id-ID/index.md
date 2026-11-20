@@ -114,6 +114,8 @@ Membuka sebuah proyek juga mencatat jalurnya sebagai proyek aktif untuk sesi ter
 
 ## SSH(`SUPER+ALT+S`)
 
+**ARGVUS SSH** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
 `SUPER + ALT + S` membuka pemilih dengan host yang ditentukan dalam `~/.ssh/config`. Host yang dipilih terbuka di terminal ARGVUS baru yang menjalankan `ssh <host>`, di ruang kerja saat ini.
 
 ### Pengaturan
@@ -289,6 +291,8 @@ Aturan yang berlaku untuk setiap perintah:
 
 ## Potongan kode (`SUPER + ALT + N`)
 
+**ARGVUS Cuplikan** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
 `SUPER + ALT + N` membuka pemilih dengan potongan kode Anda. Potongan kode yang dipilih diketik ke dalam jendela yang sedang difokuskan, di posisi kursor, alih-alih melalui papan klip.
 
 ### Pengaturan
@@ -340,7 +344,7 @@ argvus snippets --help                 # shows the options and an example
 | `open`melaporkan cuplikan tidak ditemukan | Nama tidak cocok persis. Bandingkan dengan `argvus snippets list`. |
 | Tidak ada yang muncul di aplikasi | Jendela yang difokuskan bukan merupakan bidang teks, atau itu adalah aplikasi X11 yang berjalan di bawah XWayland, yang mungkin mengabaikan jenis input ini. Coba dengan aplikasi Wayland asli. |
 
-Memerlukan `wtype`, `rofi`, `jq` dan `argvus` (perintah `argvus config`).
+Memerlukan `wtype`, `jq` dan `argvus` (perintah `argvus config`).
 
 `wtype` mensimulasikan penekanan tombol pada tingkat input Wayland. Beberapa aplikasi X11 yang berjalan di bawah XWayland mengabaikan peristiwa ini, jadi teks mungkin tidak muncul di sana meskipun cuplikan tersebut ditemukan.
 
@@ -411,7 +415,7 @@ Paket `argvus-launcher` bersifat independen terhadap arsitektur dan menginstal:
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` dan `argvus-git`, di bawah direktori yang sama;
 - `/usr/share/argvus/launcher/config/`, dengan konfigurasi dan tema Rofi;
 
-Dependensi yang dibutuhkan: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `wl-clipboard`, `wtype`, `gnupg` dan `pinentry` (yang menyediakan `pinentry-gtk`). Dependensi opsional: `openssh`, untuk pemilih SSH dan manajer kunci SSH; `lazygit` dan `gitui`, untuk TUI git.
+Dependensi yang dibutuhkan: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `wl-clipboard`, `wtype`, `gnupg` dan `pinentry` (yang menyediakan `pinentry-gtk`). Dependensi opsional: `openssh`, untuk pemilih SSH dan manajer kunci SSH; `lazygit` dan `gitui`, untuk TUI git.
 
 Menginstal paket tidak menulis ke `$HOME`. Konfigurasi pengguna dibuat saat sesi dimulai, seperti yang dijelaskan dalam [Konfigurasi dan tema Rofi](#where-the-active-configuration-lives).
 

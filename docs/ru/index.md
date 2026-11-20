@@ -116,6 +116,8 @@ argvus projects list                    # prints the roots and paths
 
 ## SSH (`СУПЕР + ALT + S`)
 
+**ARGVUS SSH** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
 `SUPER + ALT + S` открывает выбор с хостами, определёнными в `~/.ssh/config`. Выбранный хост открывается в новом терминале ARGVUS, запущенном `ssh <host>`, в текущем рабочем пространстве.
 
 ### Настройка
@@ -265,6 +267,8 @@ argvus gpg keyserver recv FINGERPRINT             # fetches the key from that ke
 
 ## Фрагменты (`SUPER + ALT + N`)
 
+**ARGVUS Фрагменты** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
 `SUPER + ALT + N` открывает выборщик с вашими фрагментами. Выбранный фрагмент вводится в фокусное окно на позиции курсора, без использования буфера обмена.
 
 ### Настройка
@@ -313,7 +317,7 @@ argvus snippets --help                 # shows the options and an example
 | `open` сообщает, что сниппет не найден | Имя не совпадает точно. Сравните с `argvus snippets list`. |
 | В приложении ничего не отображается | Активное окно не является текстовым полем, или это приложение X11, работающее под XWayland, которое может игнорировать такой ввод. Проверьте с применением нативного приложения Wayland. |
 
-Требуются `wtype`, `rofi`, `jq` и `argvus` (команда `argvus config`).
+Требуются `wtype`, `jq` и `argvus` (команда `argvus config`).
 
 `wtype` имитирует нажатия клавиш на уровне ввода Wayland. Некоторые приложения X11, работающие через XWayland, игнорируют эти события, поэтому текст может там не появляться, даже если фрагмент был найден.
 
@@ -381,7 +385,7 @@ ARGVUS_GIT_TUI=gitui argvus git
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` и `argvus-git` в одной и той же директории;
 - `/usr/share/argvus/launcher/config/` с конфигурацией Rofi и темами;
 
-Необходимые зависимости: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `wl-clipboard`, `wtype`, `gnupg` и `pinentry` (который предоставляет `pinentry-gtk`). Необязательные зависимости: `openssh` для SSH-пикера и менеджера SSH-ключей; `lazygit` и `gitui` для git TUI.
+Необходимые зависимости: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `wl-clipboard`, `wtype`, `gnupg` и `pinentry` (который предоставляет `pinentry-gtk`). Необязательные зависимости: `openssh` для SSH-пикера и менеджера SSH-ключей; `lazygit` и `gitui` для git TUI.
 
 Установка пакета не пишет в `$HOME`. Конфигурация пользователя создается при запуске сессии, как описано в [Конфигурация и темы Rofi](#where-the-active-configuration-lives).
 

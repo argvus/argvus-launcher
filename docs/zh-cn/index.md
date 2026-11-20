@@ -116,6 +116,8 @@ argvus projects list                    # prints the roots and paths
 
 ## SSH（`超级 + ALT + S`）
 
+**ARGVUS SSH** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
 `SUPER + ALT + S` 会打开一个选择器，显示在 `~/.ssh/config` 中定义的主机。所选主机会在当前工作区中以运行 `ssh <host>` 的新 ARGVUS 终端中打开。
 
 ### 设置
@@ -265,6 +267,8 @@ argvus gpg keyserver recv FINGERPRINT             # fetches the key from that ke
 
 ## 片段 (`SUPER + ALT + N`)
 
+**ARGVUS 片段** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
 `SUPER + ALT + N` 打开一个带有你的片段的选择器。选中的片段会在光标处输入到聚焦的窗口中，而不是通过剪贴板。
 
 ### 设置
@@ -313,7 +317,7 @@ argvus snippets --help                 # shows the options and an example
 | `open` 报告未找到代码片段 | 名称不完全匹配。与 `argvus snippets list` 比对。 |
 | 应用中没有显示任何内容 | 当前焦点窗口不是文本字段，或是在 XWayland 下运行的 X11 应用程序，它可能会忽略此类输入。请在原生 Wayland 应用中测试。 |
 
-需要 `wtype`、`rofi`、`jq` 和 `argvus`（`argvus config` 命令）。
+需要 `wtype`、`jq` 和 `argvus`（`argvus config` 命令）。
 
 `wtype` 在 Wayland 输入级别模拟按键。一些在 XWayland 下运行的 X11 应用可能会忽略这些事件，因此即使找到了代码段，文本也可能不会显示在那里。
 

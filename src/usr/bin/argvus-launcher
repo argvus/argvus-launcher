@@ -1,5 +1,5 @@
 #!/bin/sh
-# The universal panel owns one Quickshell instance. Specialized pickers keep Rofi.
+# The universal panel owns one Quickshell instance.
 set -eu
 
 ARGVUS_SYSTEM_CONFIG=${ARGVUS_SYSTEM_CONFIG:-/usr/share/argvus}

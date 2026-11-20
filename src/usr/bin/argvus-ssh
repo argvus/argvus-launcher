@@ -16,13 +16,11 @@ ARGVUS_BOOTSTRAP="${ARGVUS_BOOTSTRAP:-$ARGVUS_SYSTEM_CONFIG/session/sh/bootstrap
 if [ -r "$ARGVUS_BOOTSTRAP" ]; then
   # shellcheck disable=SC1090,SC1091
   . "$ARGVUS_BOOTSTRAP"
-  ROFI_CONFIG="$(paths_config launcher/config/config.rasi)"
 else
   if [ -r "$ARGVUS_SYSTEM_CONFIG/lib/i18n.sh" ]; then
     # shellcheck disable=SC1090,SC1091
     . "$ARGVUS_SYSTEM_CONFIG/lib/i18n.sh"
   fi
-  ROFI_CONFIG="$ARGVUS_SYSTEM_CONFIG/launcher/config/config.rasi"
 fi
 
 SSH_CONFIG="${ARGVUS_SSH_CONFIG:-$HOME/.ssh/config}"
@@ -38,7 +36,7 @@ SSH_CONFIG="${ARGVUS_SSH_CONFIG:-$HOME/.ssh/config}"
 # string", even though the Lua itself is well-formed.
 host_is_safe() {
   case "$1" in
-    '') return 1 ;;
+    ''|-*) return 1 ;;
     *[!A-Za-z0-9._-]*) return 1 ;;
     *) return 0 ;;
   esac
@@ -78,7 +76,8 @@ list_hosts() {
     { sub(/\r$/, "") }
     tolower($1) == "host" {
       for (i = 2; i <= NF; i++) {
-        if ($i !~ /[*?]/) print $i
+        if ($i ~ /^#/) break
+        if ($i ~ /^[A-Za-z0-9._][A-Za-z0-9._-]*$/) print $i
       }
     }
   ' "$SSH_CONFIG" | awk '!seen[$0]++'
@@ -103,7 +102,7 @@ run_session() {
   host=$1
   host_is_safe "$host" || exit 1
   status=0
-  ssh "$host" || status=$?
+  ssh -- "$host" || status=$?
   printf '\n%s\n' "$(argvus_tr launcher message.ssh_session_ended status="$status")"
   read -r _ || true
   exit "$status"
@@ -140,15 +139,12 @@ case "${1:-}" in
 esac
 
 hosts=$(list_hosts)
-
-if [ -z "$hosts" ]; then
-  report_error "$(argvus_tr launcher error.no_ssh_hosts)"
+rows=$(printf '%s' "$hosts" | jq -Rsc 'if length == 0 then [] else split("\n") end')
+if ! selected=$(printf '%s' "$rows" | argvus launcher-picker ssh); then
+  report_error "$(argvus_tr launcher error.picker_open)"
   exit 1
 fi
-
-PROMPT="$(argvus_tr launcher search.ssh)"
-
-selected=$(printf '%s\n' "$hosts" | rofi -config "$ROFI_CONFIG" -dmenu -i -p "$PROMPT") || exit 0
 [ -n "$selected" ] || exit 0
 
-open_host "$selected"
+host=$(printf '%s' "$rows" | jq -er --argjson index "$selected" '.[$index]')
+open_host "$host"

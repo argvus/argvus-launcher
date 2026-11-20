@@ -1,6 +1,6 @@
 # argvus-launcher
 
-**ARGVUS Launcher** is a universal Quickshell launcher with a local Rust search engine, themes and specialized Rofi menus for the ARGVUS desktop.
+**ARGVUS Launcher** is a universal Quickshell launcher with a local Rust search engine, themes and specialized GTK pickers for the ARGVUS desktop.
 
 [![CI](https://github.com/argvus/argvus-launcher/actions/workflows/ci.yml/badge.svg)](https://github.com/argvus/argvus-launcher/actions/workflows/ci.yml)
 [![Release](https://github.com/argvus/argvus-launcher/actions/workflows/release.yml/badge.svg)](https://github.com/argvus/argvus-launcher/actions/workflows/release.yml)
@@ -30,7 +30,7 @@ Windows source hides this group. Application usage history is local and can be
 cleared from the same settings page.
 Preferences belong to `argvus config`, while the index is rebuildable cache.
 The engine ships in the `argvus` master package; this package supplies QML,
-the launcher entry point, theme templates and the existing specialized Rofi menus.
+the launcher entry point, theme templates and the existing specialized GTK pickers.
 Rasi `--config` overrides are no longer accepted by the main launcher.
 
 The launcher uses a compact TUI layout: monospaced text, aligned search and category controls, compact favorites and a separate help footer. Border thickness and rounding follow the active ARGVUS layout settings.

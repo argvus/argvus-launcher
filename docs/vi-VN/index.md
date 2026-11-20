@@ -114,6 +114,8 @@ Mở một dự án cũng ghi lại đường dẫn của nó như dự án ho�
 
 ## SSH (`SIÊU + ALT + S`)
 
+**ARGVUS SSH** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
 `SUPER + ALT + S` mở một trình chọn với các máy chủ được định nghĩa trong `~/.ssh/config`. Máy chủ được chọn sẽ mở trong một terminal ARGVUS mới chạy `ssh <host>`, trong không gian làm việc hiện tại.
 
 ### thiết lập
@@ -279,6 +281,8 @@ Quy tắc áp dụng cho mọi lệnh:
 
 ## Đoạn trích (`SUPER + ALT + N`)
 
+**ARGVUS Đoạn văn bản** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
 `SUPER + ALT + N` mở một trình chọn với các đoạn trích của bạn. Đoạn trích đã chọn sẽ được nhập vào cửa sổ đang được tập trung, tại con trỏ, thay vì đi qua khay nhớ tạm.
 
 ### thiết lập
@@ -330,7 +334,7 @@ argvus snippets --help                 # shows the options and an example
 | `open` báo cáo không tìm thấy đoạn trích | Tên không khớp chính xác. So sánh với `argvus snippets list`. |
 | Không có gì xuất hiện trong ứng dụng | Cửa sổ tập trung không phải là trường văn bản hoặc là ứng dụng X11 chạy trong XWayland, có thể bỏ qua loại đầu vào này. Kiểm tra bằng ứng dụng Wayland gốc. |
 
-Yêu cầu `wtype`, `rofi`, `jq` và `argvus` (lệnh `argvus config`).
+Yêu cầu `wtype`, `jq` và `argvus` (lệnh `argvus config`).
 
 `wtype` mô phỏng nhấn phím ở cấp độ đầu vào Wayland. Một số ứng dụng X11 chạy dưới XWayland bỏ qua các sự kiện này, vì vậy văn bản có thể không xuất hiện ở đó mặc dù đoạn mã đã được tìm thấy.
 
@@ -401,7 +405,7 @@ Gói `argvus-launcher` là không phụ thuộc kiến trúc và cài đặt:
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` và `argvus-git`, trong cùng một thư mục;
 - `/usr/share/argvus/launcher/config/`, với cấu hình và chủ đề Rofi;
 
-Các phụ thuộc bắt buộc: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `wl-clipboard`, `wtype`, `gnupg` và `pinentry` (cung cấp `pinentry-gtk`). Các phụ thuộc tùy chọn: `openssh`, cho trình chọn SSH và trình quản lý khóa SSH; `lazygit` và `gitui`, cho giao diện TUI của git.
+Các phụ thuộc bắt buộc: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `wl-clipboard`, `wtype`, `gnupg` và `pinentry` (cung cấp `pinentry-gtk`). Các phụ thuộc tùy chọn: `openssh`, cho trình chọn SSH và trình quản lý khóa SSH; `lazygit` và `gitui`, cho giao diện TUI của git.
 
 Cài đặt gói không ghi vào `$HOME`. Cấu hình người dùng được tạo khi bắt đầu phiên, như được mô tả trong [Cấu hình và chủ đề Rofi](#where-the-active-configuration-lives).
 

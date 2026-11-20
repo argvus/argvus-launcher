@@ -3,7 +3,7 @@ title: Launcher and Search
 description: Launcher and Search — Quickshell/QML + Rust.
 ---
 
-The main launcher uses Quickshell/QML with a local Rust search engine. It searches applications, open windows, settings, actions, projects, SSH hosts, files and shortcuts. File indexing starts disabled; select folders explicitly. Only names and paths are indexed, never document contents. Recent files depend on the XDG recent-file registry. Hidden files are excluded by default, and directory symlinks are not followed. Specialized Rofi menus remain available. In Launcher and Search, choose A–Z or Recently opened; Recently opened is the default. The saved category continues to filter other results; disable the Windows source in search settings to hide this group.
+The main launcher uses Quickshell/QML with a local Rust search engine. It searches applications, open windows, settings, actions, projects, SSH hosts, files and shortcuts. File indexing starts disabled; select folders explicitly. Only names and paths are indexed, never document contents. Recent files depend on the XDG recent-file registry. Hidden files are excluded by default, and directory symlinks are not followed. SSH and Snippets use GTK 4. In Launcher and Search, choose A–Z or Recently opened; Recently opened is the default. The saved category continues to filter other results; disable the Windows source in search settings to hide this group.
 
 - the application launcher (`SUPER + D`);
 - the Rofi configuration and themes shared by every ARGVUS Rofi menu;
@@ -29,7 +29,7 @@ The shortcuts are declared by `argvus-hyprland`. This package provides the comma
 
 ## Launcher and Search
 
-The main launcher uses Quickshell/QML with a local Rust search engine. It searches applications, open windows, settings, actions, projects, SSH hosts, files and shortcuts. File indexing starts disabled; select folders explicitly. Only names and paths are indexed, never document contents. Recent files depend on the XDG recent-file registry. Hidden files are excluded by default, and directory symlinks are not followed. Specialized Rofi menus remain available. In Launcher and Search, choose A–Z or Recently opened; Recently opened is the default. **Open now** is off by default; enable it in Control Center > Preferences > Launcher and Search to show current windows when the query is empty. Clear application usage history from the same page.
+The main launcher uses Quickshell/QML with a local Rust search engine. It searches applications, open windows, settings, actions, projects, SSH hosts, files and shortcuts. File indexing starts disabled; select folders explicitly. Only names and paths are indexed, never document contents. Recent files depend on the XDG recent-file registry. Hidden files are excluded by default, and directory symlinks are not followed. SSH and Snippets use GTK 4. In Launcher and Search, choose A–Z or Recently opened; Recently opened is the default. **Open now** is off by default; enable it in Control Center > Preferences > Launcher and Search to show current windows when the query is empty. Clear application usage history from the same page.
 
 The launcher uses a compact TUI layout: monospaced text, aligned search and category controls, compact favorites and a separate help footer. Border thickness and rounding follow the active ARGVUS layout settings.
 
@@ -113,6 +113,8 @@ The entries are read from the effective configuration; the launcher keeps no cop
 Opening a project also records its path as the active project for the session, which the Dev Dashboard telemetry block (`argvus widget-telemetry`) reads to report that project's git, listening ports and containers.
 
 ## SSH (`SUPER + ALT + S`)
+
+**ARGVUS SSH** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
 
 `SUPER + ALT + S` opens a picker with the hosts defined in `~/.ssh/config`. The selected host opens in a new ARGVUS terminal running `ssh <host>`, in the current workspace.
 
@@ -267,7 +269,9 @@ Rules that apply to every command:
 
 ## Snippets (`SUPER + ALT + N`)
 
-`SUPER + ALT + N` opens a picker with your snippets. The selected snippet is typed into the focused window, at the cursor, instead of going through the clipboard.
+**ARGVUS Snippets** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
+`SUPER + ALT + N` opens a picker with your snippets. The selected snippet is typed into the original window once it regains focus, at the cursor, instead of going through the clipboard.
 
 ### Setup
 
@@ -318,7 +322,7 @@ argvus snippets --help                 # shows the options and an example
 | `open` reports the snippet was not found | The name does not match exactly. Compare with `argvus snippets list`. |
 | Nothing appears in the application | The focused window is not a text field, or it is an X11 application running under XWayland, which may ignore this kind of input. Test with a native Wayland application. |
 
-Requires `wtype`, `rofi`, `jq` and `argvus` (the `argvus config` command).
+Requires `wtype`, `jq` and `argvus` (the `argvus config` command).
 
 `wtype` simulates key presses at the Wayland input level. Some X11 applications running under XWayland ignore these events, so the text may not appear there even though the snippet was found.
 
@@ -389,7 +393,7 @@ The package `argvus-launcher` is architecture-independent and installs:
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` and `argvus-git`, under the same directory;
 - `/usr/share/argvus/launcher/config/`, with the Rofi configuration and themes;
 
-Required dependencies: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `wl-clipboard`, `wtype`, `gnupg` and `pinentry` (which provides `pinentry-gtk`). Optional dependencies: `openssh`, for the SSH picker and the SSH key manager; `lazygit` and `gitui`, for the git TUI.
+Required dependencies: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `wl-clipboard`, `wtype`, `gnupg` and `pinentry` (which provides `pinentry-gtk`). Optional dependencies: `openssh`, for the SSH picker and the SSH key manager; `lazygit` and `gitui`, for the git TUI.
 
 Installing the package does not write into `$HOME`. User configuration is created at session start, as described in [Rofi configuration and themes](#where-the-active-configuration-lives).
 

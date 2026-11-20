@@ -116,6 +116,8 @@ argvus projects list                    # prints the roots and paths
 
 ## SSH(`SUPER + ALT + S`)
 
+**ARGVUS SSH** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
 `SUPER + ALT + S`은 `~/.ssh/config`에 정의된 호스트와 함께 선택기를 엽니다. 선택된 호스트는 현재 워크스페이스에서 `ssh <host>`을 실행하는 새로운 ARGVUS 터미널에서 열립니다.
 
 ### 설정
@@ -265,6 +267,8 @@ argvus gpg keyserver recv FINGERPRINT             # fetches the key from that ke
 
 ## 스니펫 (`SUPER + ALT + N`)
 
+**ARGVUS 스니펫** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
 `SUPER + ALT + N`는 스니펫 선택기를 엽니다. 선택한 스니펫은 클립보드를 거치지 않고 커서 위치가 있는 포커스된 창에 입력됩니다.
 
 ### 설정
@@ -313,7 +317,7 @@ argvus snippets --help                 # shows the options and an example
 | `open`가 스니펫을 찾을 수 없다고 보고 | 이름이 정확히 일치하지 않습니다. `argvus snippets list`와 비교하세요. |
 | 애플리케이션에 아무것도 나타나지 않음 | 포커스된 창이 텍스트 필드가 아니거나, XWayland 하에서 실행 중인 X11 애플리케이션일 수 있으며, 이러한 입력을 무시할 수 있습니다. 네이티브 Wayland 애플리케이션에서 테스트하세요. |
 
-`wtype`, `rofi`, `jq` 및 `argvus`(`argvus config` 명령어)를 요구합니다.
+`wtype`, `jq` 및 `argvus`(`argvus config` 명령어)를 요구합니다.
 
 `wtype`는 Wayland 입력 수준에서 키 입력을 시뮬레이션합니다. XWayland 하에서 실행되는 일부 X11 응용 프로그램은 이러한 이벤트를 무시할 수 있으므로, 스니펫이 발견되었더라도 해당 위치에 텍스트가 나타나지 않을 수 있습니다.
 
@@ -381,7 +385,7 @@ ARGVUS_GIT_TUI=gitui argvus git
 - 동일한 디렉토리 아래의 `argvus launcher`, `argvus-snippets`, `argvus-ssh` 및 `argvus-git`;
 - Rofi 구성과 테마가 포함된 `/usr/share/argvus/launcher/config/`;
 
-필수 종속성: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `wl-clipboard`, `wtype`, `gnupg` 및 `pinentry` (이것은 `pinentry-gtk`를 제공합니다). 선택적 종속성: `openssh`, SSH 선택기 및 SSH 키 관리자를 위해; `lazygit` 및 `gitui`, git TUI용.
+필수 종속성: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `wl-clipboard`, `wtype`, `gnupg` 및 `pinentry` (이것은 `pinentry-gtk`를 제공합니다). 선택적 종속성: `openssh`, SSH 선택기 및 SSH 키 관리자를 위해; `lazygit` 및 `gitui`, git TUI용.
 
 패키지를 설치해도 `$HOME`에 쓰지 않습니다. 사용자 구성은 세션 시작 시 생성되며, [Rofi 구성 및 테마](#where-the-active-configuration-lives)에 설명되어 있습니다.
 

@@ -114,6 +114,8 @@ argvus projects list                    # prints the roots and paths
 
 ##                                                  (`SUPER + ALT + S`) ﺶﺗﺇ ﺱﺇ ﺱﺇ
 
+**ARGVUS SSH** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
 `SUPER + ALT + S`                                              ﻲﻓ ﻦﻳﺩﺪﺤﻤﻟﺍ ﻦﻴﻔﻴﻀﻤﻟﺎﺑ ﺍًﺩﺪﺤﻣ ﺢﺘﻔﻳ`~/.ssh/config`                               ﻞﻤﻌﺗ ﺓﺪﻳﺪﺟ ARGVUS ﺔﻴﻓﺮﻃ ﻲﻓ ﺢﺘﻔﻳ ﺩﺪﺤﻤﻟﺍ ﻒﻴﻀﻤﻟﺍ .`ssh <host>`                                                     .ﺔﻴﻟﺎﺤﻟﺍ ﻞﻤﻌﻟﺍ ﺔﺣﺎﺴﻣ ﻲﻓ ،
 
 ### الإعداد
@@ -285,6 +287,8 @@ DSA.
 
 ##                                                    (`SUPER + ALT + N`) ﺕﺎﻔﻄﺘﻘﻣ
 
+**ARGVUS المقتطفات** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
 `SUPER + ALT + N` ﺔﻈﻓﺎﺤﻟﺍ ﺮﺒﻋ ﺭﻭﺮﻤﻟﺍ ﻦﻣ ًﻻ﻿ﺪﺑ ،ﺮﺷﺆﻤﻟﺍ ﺪﻨﻋ ،ﺔﻄﺸﻨﻟﺍ ﺓﺬﻓﺎﻨﻟﺍ ﻲﻓ ﺩﺪﺤ
 
 ### الإعداد
@@ -336,7 +340,7 @@ argvus snippets --help                 # shows the options and an example
 | `open`             ﻊﻣ ﻥﺭﺎﻗ .ﻂﺒﻀﻟﺎﺑ ﻖﺑﺎﻄﻳ ﻻ﻿ ﻢﺳﻻ﻿ﺍ | ﻪﻴﻠﻋ ﺭﻮﺜﻌﻟﺍ ﻢﺘﻳ ﻢﻟ ﻒﻄﺘﻘﻤﻟﺍ ﻥﺃ ﻎﻠﺒﻳ`argvus snippets list`. |
 | .ﻲﻠﺻﺃ Wayland ﻖﻴﺒﻄﺗ ﻊﻣ ﺏﺮﺟ .ﻝﺎﺧﺩﻹ﻿ﺍ ﻦﻣ ﻉﻮﻨﻟﺍ ﺍﺬﻫ ﻞﻫﺎﺠﺘﻳ ﺪﻗ ﻱﺬﻟﺍﻭ ،XWayland ﺖﺤ
 
-.(`wtype` argvus  jq  `rofi`  ﺮﻣﺃ)  `jq`  `argvus` `argvus config` ﻭ
+.(`wtype` argvus  jq  ﺮﻣﺃ)  `jq`  `argvus` `argvus config` ﻭ
 
 `wtype`.ﻊﻄﻘﻤﻟﺍ ﻰﻠﻋ ﺭﻮﺜﻌﻟﺍ ﻢﺗ ﻮﻟ ﻰﺘﺣ ﻙﺎﻨﻫ ﺺﻨﻟﺍ ﺮﻬﻈﻳ ﻻ﻿ ﺪﻗ ﺍﺬﻟ ،ﺙﺍﺪﺣﻷ﻿ﺍ ﻩﺬﻫ ﻞﻫﺎﺠﺘﺗ XWayla
 
@@ -444,7 +448,7 @@ Required dependencies:
 ,
 
 
-Installing the package does not write into  `libnotify`  `rofi`  `argvus calculator`  `wl-clipboard`  `wtype`  `gnupg`  `pinentry`  `pinentry-gtk`  `openssh`  `lazygit`  `gitui` `$HOME`. User configuration is created at session start, as described in [Rofi configuration and themes](#where-the-active-configuration-lives).
+Installing the package does not write into  `libnotify`  `argvus calculator`  `wl-clipboard`  `wtype`  `gnupg`  `pinentry`  `pinentry-gtk`  `openssh`  `lazygit`  `gitui` `$HOME`. User configuration is created at session start, as described in [Rofi configuration and themes](#where-the-active-configuration-lives).
 
 ## استكشاف الأخطاء وإصلاحها
 

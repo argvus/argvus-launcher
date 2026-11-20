@@ -114,6 +114,8 @@ argvus projects list                    # prints the roots and paths
 
 ##                                                (`SUPER + ALT + S`) ﭻﯾﺍ ﺲﯾﺍ ﺲﯾﺍ
 
+**ARGVUS SSH** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
 `SUPER + ALT + S`               ﮟﯿﮨ ﮯﺌﮔ ﮯﯿﮐ ﻒﯾﺮﻌﺗ ﮟﯿﻣ ﺱﺍ ﻮﺟ ﮯﮨ ﺎﺘﻟﻮﮭﮐ ﺮّﮑﭘ ﮏﯾﺍ ﮫﺗﺎﺳ ﮯﮐ ﮞﻮﻧﺎﺑﺰﯿﻣ `~/.ssh/config`              ﮯﮨ ﺎﮨﺭ ﻞﭼ ﻮﺟ ﮯﮨ ﺎﺘﻠﮭﮐ ﮟﯿﻣ ﻞﻨﯿﻣﺮﭨ ARGVUS ﮯﺌﻧ ﮏﯾﺍ ﭧﺳﻮﮨ ﮦﺪﺷ ﺐﺨﺘﻨﻣ .`ssh <host>`                                                      ۔ﮟﯿﻣ ﮧﮕﺟ ﯽﮐ ﻡﺎﮐ ﮦﺩﻮﺟﻮﻣ ،
 
 ### سیٹ اپ
@@ -289,6 +291,8 @@ argvus gpg keyserver recv FINGERPRINT             # fetches the key from that ke
 
 ##                                                       (`SUPER + ALT + N`) ﮮﮍﮑﭨ
 
+**ARGVUS متنی ٹکڑے** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
 `SUPER + ALT + N` ۔ﮯﺋﺎﺟ ﮯﻌﯾﺭﺫ ﮯﮐ ﮈﺭﻮﺑ ﭗﻠﮐ ﮧﮐ ﮯﮐ ﺱﺍ ﮯﺋﺎﺠﺑ ،ﮯﮨ ﺎﺗﻮﮨ ﭗﺋﺎﭨ ﮟﯿﻣ ﻭﮉﻧ
 
 ### سیٹ اپ
@@ -340,7 +344,7 @@ argvus snippets --help                 # shows the options and an example
 | `open` ﮫﺗﺎﺳ ﮯﮐ ﮟﯾﺮﮐ ﮧﻧﺯﺍﻮﻣ ۔ﺎﺗﺎﮭﮐ ﮟﯿﮩﻧ ﻞﯿﻣ ﻞﮑﻟﺎﺑ ﻡﺎﻧ | ﻼ﻿ﻣ ﮟﯿﮩﻧ ﻮﮐ ﮯﺼﺣ ﮯﭨﻮﮭﭼ ﺱﺍ ﮧﮐ ﮯﮨ`argvus snippets list`. |
 | ۔ﮟﯾﺮﮐ ﭧﺴﯿﭨ ﮫﺗﺎﺳ ﮯﮐ ﻦﺸﯿﮑﯿﻠﭙﯾﺍ Wayland ﯽﻣﺎﻘﻣ ﯽﺴﮐ ۔ﮯﮨ ﯽﺘﮑﺳ ﺮﮐ ﺯﺍﺪﻧﺍ ﺮﻈﻧ ﻮﮐ ﭧﭘ ﻥ
 
-`wtype`، `rofi`، `jq` اور `argvus` (`argvus config` کمانڈ) کی ضرورت ہے۔
+`wtype`، `jq` اور `argvus` (`argvus config` کمانڈ) کی ضرورت ہے۔
 
 `wtype` ﮫﭽﮐ ۔ﮯﮨ ﺎﺗﺮﮐ ﻞﻘﻧ ﯽﮐ ﺰﺴﯾﺮﭘ ﯽﮐ ﺮﭘ ﺢﻄﺳ ﭧﭘ ﻥﺍ ﮉﻨﯿﻠﯾﺍﻭ X11 ﻮﺟ ﺰﻨﺸ
 
@@ -413,7 +417,7 @@ ARGVUS_GIT_TUI=gitui argvus git
 
 
 
-Installing the package does not write into  gitui  lazygit  openssh  pinentry-gtk  pinentry  gnupg  wtype  wl-clipboard     rofi  libnotify  hyprland  jq  bash  argvus  argvus-appearance  `argvus-session`  `argvus-appearance`  `argvus`  `bash`  `jq`  `hyprland`  `libnotify`  `rofi`  `argvus calculator`  `wl-clipboard`  `wtype`  `gnupg`  `pinentry`  `pinentry-gtk`  `openssh`  `lazygit`  `gitui` `$HOME`. User configuration is created at session start, as described in [Rofi configuration and themes](#where-the-active-configuration-lives).
+Installing the package does not write into  gitui  lazygit  openssh  pinentry-gtk  pinentry  gnupg  wtype  wl-clipboard     rofi  libnotify  hyprland  jq  bash  argvus  argvus-appearance  `argvus-session`  `argvus-appearance`  `argvus`  `bash`  `jq`  `hyprland`  `libnotify`  `argvus calculator`  `wl-clipboard`  `wtype`  `gnupg`  `pinentry`  `pinentry-gtk`  `openssh`  `lazygit`  `gitui` `$HOME`. User configuration is created at session start, as described in [Rofi configuration and themes](#where-the-active-configuration-lives).
 
 ## خرابی کا سراغ لگانا
 

@@ -114,6 +114,8 @@ argvus projects list                    # prints the roots and paths
 
 ## এসএসএইচ (`SUPER + ALT + S`)
 
+**ARGVUS SSH** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
 `SUPER + ALT + S` `~/.ssh/config`-এ সংজ্ঞায়িত হোস্টগুলির সাথে একটি পিকার খুলে। নির্বাচিত হোস্টটি বর্তমান ওয়ার্কস্পেসে `ssh <host>` চালানো একটি নতুন ARGVUS টার্মিনালে খোলে।
 
 ### সেটআপ
@@ -267,6 +269,8 @@ argvus gpg keyserver recv FINGERPRINT             # fetches the key from that ke
 
 ## স্নিপেটস (`SUPER + ALT + N`)
 
+**ARGVUS স্নিপেট** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
 `SUPER + ALT + N` আপনার স্নিপেটসের সাথে একটি পিকার খুলে। নির্বাচিত স্নিপেটটি ক্লিপবোর্ডের মাধ্যমে না গিয়ে কার্সরের স্থানে ফোকাস করা উইন্ডোতে টাইপ করা হয়।
 
 ### সেটআপ
@@ -318,7 +322,7 @@ argvus snippets --help                 # shows the options and an example
 | `open`প্রতিবেদন অনুসন্ধান করা অংশটি পাওয়া যায়নি | নামটি সম্পূর্ণ মিলছে না। তুলনা করুন `argvus snippets list`. |
 | অ্যাপ্লিকেশনে কিছুই প্রদর্শিত হচ্ছে না | ফোকাস করা উইন্ডোটি একটি টেক্সট ফিল্ড নয়, অথবা এটি একটি X11 অ্যাপ্লিকেশন যা XWayland-এর অধীনে চলছে, যা এই ধরনের ইনপুট উপেক্ষা করতে পারে। একটি নেটিভ ওয়েইল্যান্ড অ্যাপ্লিকেশনের সাথে পরীক্ষা করুন। |
 
-প্রয়োজন `wtype`, `rofi`, `jq` এবং `argvus` (`argvus config` কমান্ড)।
+প্রয়োজন `wtype`, `jq` এবং `argvus` (`argvus config` কমান্ড)।
 
 `wtype` ওয়াইল্যান্ড ইনপুট স্তরে কি প্রেস সিমুলেট করে। কিছু X11 অ্যাপ্লিকেশন যেগুলো XWayland-এর অধীনে চলে, এই ইভেন্টগুলো উপেক্ষা করে, তাই টেক্সট সেখানে প্রদর্শিত নাও হতে পারে যদিও স্নিপেটটি পাওয়া গিয়েছে।
 
@@ -389,7 +393,7 @@ ARGVUS_GIT_TUI=gitui argvus git
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` এবং `argvus-git`, একই ডিরেক্টরির অধীনে;
 - `/usr/share/argvus/launcher/config/`, Rofi কনফিগারেশন এবং থিমসহ;
 
-প্রয়োজনীয় নির্ভরতা: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `wl-clipboard`, `wtype`, `gnupg` এবং `pinentry` (যা `pinentry-gtk` প্রদান করে)। ঐচ্ছিক নির্ভরতা: `openssh`, SSH পিকার এবং SSH কী ম্যানেজারের জন্য; `lazygit` এবং `gitui`, git TUI-এর জন্য।
+প্রয়োজনীয় নির্ভরতা: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `wl-clipboard`, `wtype`, `gnupg` এবং `pinentry` (যা `pinentry-gtk` প্রদান করে)। ঐচ্ছিক নির্ভরতা: `openssh`, SSH পিকার এবং SSH কী ম্যানেজারের জন্য; `lazygit` এবং `gitui`, git TUI-এর জন্য।
 
 প্যাকেজ ইনস্টল করা `$HOME`-এ লেখা হয় না। ব্যবহারকারীর কনফিগারেশন সেশন শুরুতে তৈরি হয়, যেমনটি [Rofi configuration and themes](#where-the-active-configuration-lives) তে বর্ণনা করা হয়েছে।
 

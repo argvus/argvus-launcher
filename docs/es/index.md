@@ -116,6 +116,8 @@ Abrir un proyecto también registra su ruta como el proyecto activo para la sesi
 
 ## SSH (`SUPER + ALT + S`)
 
+**ARGVUS SSH** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
 `SUPER + ALT + S` abre un selector con los hosts definidos en `~/.ssh/config`. El host seleccionado se abre en un nuevo terminal ARGVUS ejecutando `ssh <host>`, en el espacio de trabajo actual.
 
 ### Configuración
@@ -265,6 +267,8 @@ Reglas que se aplican a cada comando:
 
 ## Fragmentos (`SUPER + ALT + N`)
 
+**ARGVUS Fragmentos** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
 `SUPER + ALT + N` abre un selector con sus fragmentos. El fragmento seleccionado se escribe en la ventana enfocada, en el cursor, en lugar de pasar por el portapapeles.
 
 ### Configuración
@@ -313,7 +317,7 @@ argvus snippets --help                 # shows the options and an example
 | `open` informa que el fragmento no se encontró | El nombre no coincide exactamente. Compárelo con `argvus snippets list`. |
 | No aparece nada en la aplicación | La ventana enfocada no es un campo de texto, o es una aplicación X11 ejecutándose bajo XWayland, que puede ignorar este tipo de entrada. Pruebe con una aplicación nativa de Wayland. |
 
-Requiere `wtype`, `rofi`, `jq` y `argvus` (el comando `argvus config`).
+Requiere `wtype`, `jq` y `argvus` (el comando `argvus config`).
 
 `wtype` simula pulsaciones de teclas a nivel de entrada de Wayland. Algunas aplicaciones X11 que se ejecutan bajo XWayland ignoran estos eventos, por lo que el texto puede no aparecer allí aunque se haya encontrado el fragmento.
 
@@ -382,7 +386,7 @@ El paquete `argvus-launcher` es independiente de la arquitectura e instala:
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` y `argvus-git`, bajo el mismo directorio;
 - `/usr/share/argvus/launcher/config/`, con la configuración de Rofi y los temas;
 
-Dependencias requeridas: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `wl-clipboard`, `wtype`, `gnupg` y `pinentry` (que proporciona `pinentry-gtk`). Dependencias opcionales: `openssh`, para el selector SSH y el gestor de claves SSH; `lazygit` y `gitui`, para la interfaz TUI de git.
+Dependencias requeridas: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `wl-clipboard`, `wtype`, `gnupg` y `pinentry` (que proporciona `pinentry-gtk`). Dependencias opcionales: `openssh`, para el selector SSH y el gestor de claves SSH; `lazygit` y `gitui`, para la interfaz TUI de git.
 
 La instalación del paquete no escribe en `$HOME`. La configuración del usuario se crea al iniciar la sesión, como se describe en [Configuración y temas de Rofi](#where-the-active-configuration-lives).
 

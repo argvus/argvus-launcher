@@ -116,6 +116,8 @@ argvus projects list                    # prints the roots and paths
 
 ## SSH (`SUPER + ALT + S`)
 
+**ARGVUS SSH** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
 `SUPER + ALT + S` は、`~/.ssh/config` で定義されたホストを持つピッカーを開きます。選択されたホストは、現在のワークスペースで `ssh <host>` を実行する新しい ARGVUS ターミナルで開きます。
 
 ### 設定
@@ -265,6 +267,8 @@ argvus gpg keyserver recv FINGERPRINT             # fetches the key from that ke
 
 ## スニペット (`SUPER + ALT + N`)
 
+**ARGVUS スニペット** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
 `SUPER + ALT + N` は、スニペットを選択できるピッカーを開きます。選択したスニペットはクリップボードを経由せず、カーソル位置のフォーカスされたウィンドウに直接入力されます。
 
 ### 設定
@@ -313,7 +317,7 @@ argvus snippets --help                 # shows the options and an example
 | `open` がスニペットが見つからないと報告する | 名前が正確に一致していません。`argvus snippets list` と比較してください。 |
 | アプリケーションに何も表示されない | フォーカスされているウィンドウがテキストフィールドでないか、XWayland 上で動作している X11 アプリケーションの可能性があり、この種の入力を無視することがあります。ネイティブな Wayland アプリケーションでテストしてください。 |
 
-`wtype`、`rofi`、`jq`、および`argvus`（`argvus config`コマンド）が必要です。
+`wtype`、`jq`、および`argvus`（`argvus config`コマンド）が必要です。
 
 `wtype`はWayland入力レベルでキー入力をシミュレートします。一部のXWayland上で動作するX11アプリケーションはこれらのイベントを無視するため、スニペットが見つかってもテキストが表示されない場合があります。
 
@@ -381,7 +385,7 @@ ARGVUS_GIT_TUI=gitui argvus git
 - 同じディレクトリに`argvus launcher`、`argvus-snippets`、`argvus-ssh`、`argvus-git`
 - Rofiの設定とテーマを含む`/usr/share/argvus/launcher/config/`
 
-必要な依存関係: `argvus-session`、`argvus-appearance`、`argvus`、`bash`、`jq`、`hyprland`、`libnotify`、`rofi`、`wl-clipboard`、`wtype`、`gnupg`、および`pinentry`（`pinentry-gtk`を提供）。オプションの依存関係: SSHピッカーおよびSSHキー管理用の`openssh`; git TUI用の`lazygit`および`gitui`。
+必要な依存関係: `argvus-session`、`argvus-appearance`、`argvus`、`bash`、`jq`、`hyprland`、`libnotify`、`wl-clipboard`、`wtype`、`gnupg`、および`pinentry`（`pinentry-gtk`を提供）。オプションの依存関係: SSHピッカーおよびSSHキー管理用の`openssh`; git TUI用の`lazygit`および`gitui`。
 
 パッケージをインストールしても`$HOME`には書き込まれません。ユーザー設定は[Rofi configuration and themes](#where-the-active-configuration-lives)に記載されているように、セッション開始時に作成されます。
 

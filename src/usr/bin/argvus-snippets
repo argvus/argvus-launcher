@@ -12,7 +12,6 @@
 
 set -eu
 
-ARGVUS_COMMANDS_DIR=${ARGVUS_COMMANDS_DIR:-/usr/lib/argvus/commands}
 ARGVUS_CONFIG_BIN=${ARGVUS_CONFIG_BIN:-argvus}
 ARGVUS_SYSTEM_CONFIG=${ARGVUS_SYSTEM_CONFIG:-/usr/share/argvus}
 ARGVUS_BOOTSTRAP="${ARGVUS_BOOTSTRAP:-$ARGVUS_SYSTEM_CONFIG/session/sh/bootstrap.sh}"
@@ -20,13 +19,11 @@ ARGVUS_BOOTSTRAP="${ARGVUS_BOOTSTRAP:-$ARGVUS_SYSTEM_CONFIG/session/sh/bootstrap
 if [ -r "$ARGVUS_BOOTSTRAP" ]; then
   # shellcheck disable=SC1090,SC1091
   . "$ARGVUS_BOOTSTRAP"
-  ROFI_CONFIG="$(paths_config launcher/config/config.rasi)"
 else
   if [ -r "$ARGVUS_SYSTEM_CONFIG/lib/i18n.sh" ]; then
     # shellcheck disable=SC1090,SC1091
     . "$ARGVUS_SYSTEM_CONFIG/lib/i18n.sh"
   fi
-  ROFI_CONFIG="$ARGVUS_SYSTEM_CONFIG/launcher/config/config.rasi"
 fi
 
 # Reads the effective /snippets/items array, defaulting to an empty array.
@@ -91,6 +88,10 @@ type_content() {
   mkdir -p "$suppress_dir"
   date +%s > "$suppress_file"
   trap 'rm -f "$suppress_file"' EXIT HUP INT TERM
+  if [ "$#" -gt 1 ] && [ "$(active_window)" != "$2" ]; then
+    report_error "$(argvus_tr launcher error.snippet_focus)"
+    return 1
+  fi
   wtype -- "$1"
   sleep 1
 }
@@ -150,21 +151,37 @@ case "${1:-}" in
     ;;
 esac
 
-items=$(read_items)
+active_window() {
+  hyprctl -j activewindow 2>/dev/null | jq -r '.address // empty'
+}
 
-if [ "$(printf '%s' "$items" | jq 'length')" -eq 0 ]; then
-  report_error "$(argvus_tr launcher error.no_snippets)"
+# Layer-shell releases the keyboard asynchronously when the picker closes.
+wait_for_target() {
+  [ -n "$1" ] && [ "$1" != "0x0" ] || return 1
+  attempts=0
+  while [ "$attempts" -lt 12 ]; do
+    [ "$(active_window)" != "$1" ] || return 0
+    sleep 0.025
+    attempts=$((attempts + 1))
+  done
+  return 1
+}
+
+items=$(read_items)
+rows=$(printf '%s' "$items" | jq -c 'map(.name)')
+target=$(active_window) || target=
+if ! selected=$(printf '%s' "$rows" | argvus launcher-picker snippets); then
+  report_error "$(argvus_tr launcher error.picker_open)"
   exit 1
 fi
-
-labels=$(printf '%s' "$items" | jq -r '.[] | .name')
-
-PROMPT="$(argvus_tr launcher search.snippet)"
-
-selected=$(printf '%s\n' "$labels" | rofi -config "$ROFI_CONFIG" -dmenu -i -p "$PROMPT") || exit 0
 [ -n "$selected" ] || exit 0
 
-content=$(resolve_content "$items" "$selected")
+# The sentinel preserves trailing newlines through shell command substitution.
+content=$(printf '%s' "$items" | jq -j --argjson index "$selected" '(.[$index].content // ""), "."')
+content=${content%.}
 [ -n "$content" ] || exit 0
-
-type_content "$content"
+if ! wait_for_target "$target"; then
+  report_error "$(argvus_tr launcher error.snippet_focus)"
+  exit 1
+fi
+type_content "$content" "$target"

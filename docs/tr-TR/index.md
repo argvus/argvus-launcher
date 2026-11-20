@@ -114,6 +114,8 @@ Bir projeyi açmak aynı zamanda oturum için etkin proje olarak yolunu kaydeder
 
 ## SSH ('SÜPER + ALT + S')
 
+**ARGVUS SSH** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
  opens a picker with the hosts defined in
 
 . The selected host opens in a new ARGVUS terminal running
@@ -275,6 +277,8 @@ Her komuta uygulanan kurallar:
 
 ## Parçacıklar (`SUPER + ALT + N`)
 
+**ARGVUS Metin parçaları** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
 `SUPER + ALT + N` parçacıklarınızla bir seçim aracı açar. Seçilen parçacık, pano aracılığıyla gitmek yerine, odaklı pencereye ve imlecin bulunduğu konuma yazılır.
 
 ### Kurulum
@@ -326,7 +330,7 @@ argvus snippets --help                 # shows the options and an example
 | `open`parçacığın bulunamadığını bildiriyor | İsim tam olarak eşleşmiyor. İle karşılaştırın`argvus snippets list`. |
 | Uygulamada hiçbir şey görünmüyor | Odaklanılan pencere bir metin alanı değildir veya XWayland altında çalışan ve bu tür girdileri göz ardı edebilecek bir X11 uygulamasıdır. Yerel bir Wayland uygulamasıyla test edin. |
 
-Şunu gerektirir: `wtype`, `rofi`, `jq` ve `argvus` (`argvus config` komutu).
+Şunu gerektirir: `wtype`, `jq` ve `argvus` (`argvus config` komutu).
 
 `wtype`, Wayland giriş seviyesinde tuş basımlarını simüle eder. XWayland altında çalışan bazı X11 uygulamaları bu olayları göz ardı eder, bu yüzden parça bulunduğu halde metin orada görünmeyebilir.
 
@@ -397,7 +401,7 @@ Başlatıcı yapılandırması diğer paketlere ait bileşenlerle paylaşılır:
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` ve `argvus-git`, aynı dizin altında;
 - `/usr/share/argvus/launcher/config/`, Rofi yapılandırması ve temaları ile;
 
-Gerekli bağımlılıklar: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `wl-clipboard`, `wtype`, `gnupg` ve `pinentry` (`pinentry-gtk` sağlar). İsteğe bağlı bağımlılıklar: `openssh`, SSH seçici ve SSH anahtar yöneticisi için; `lazygit` ve `gitui`, git TUI için.
+Gerekli bağımlılıklar: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `wl-clipboard`, `wtype`, `gnupg` ve `pinentry` (`pinentry-gtk` sağlar). İsteğe bağlı bağımlılıklar: `openssh`, SSH seçici ve SSH anahtar yöneticisi için; `lazygit` ve `gitui`, git TUI için.
 
 Paketin kurulumu `$HOME` içerisine yazmaz. Kullanıcı yapılandırması, [Rofi configuration and themes](#where-the-active-configuration-lives) bölümünde açıklandığı gibi oturum başında oluşturulur.
 

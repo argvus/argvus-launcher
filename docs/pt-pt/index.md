@@ -4,7 +4,7 @@ description: Launcher e Pesquisa — Quickshell/QML + Rust.
 slug: de/argvus-launcher/docs/pt-pt/index.md
 ---
 
-O launcher principal usa Quickshell/QML com um motor local de pesquisa em Rust. Pesquisa aplicações, janelas abertas, definições, ações, projetos, hosts SSH, ficheiros e atalhos. A indexação começa desativada; escolha as pastas explicitamente. Apenas nomes e caminhos são indexados, nunca o conteúdo dos documentos. Ficheiros recentes dependem do registo XDG. Ficheiros ocultos são excluídos por predefinição e ligações simbólicas de diretórios não são seguidas. Os menus especializados do Rofi continuam disponíveis. Em Launcher and Search, escolha a ordem A–Z ou Abertas recentemente; Abertas recentemente é a predefinição. A categoria guardada continua a filtrar os restantes resultados; desative a origem Windows nas definições de pesquisa para ocultar este grupo.
+O launcher principal usa Quickshell/QML com um motor local de pesquisa em Rust. Pesquisa aplicações, janelas abertas, definições, ações, projetos, hosts SSH, ficheiros e atalhos. A indexação começa desativada; escolha as pastas explicitamente. Apenas nomes e caminhos são indexados, nunca o conteúdo dos documentos. Ficheiros recentes dependem do registo XDG. Ficheiros ocultos são excluídos por predefinição e ligações simbólicas de diretórios não são seguidas. SSH e Snippets usam GTK 4. Em Launcher and Search, escolha a ordem A–Z ou Abertas recentemente; Abertas recentemente é a predefinição. A categoria guardada continua a filtrar os restantes resultados; desative a origem Windows nas definições de pesquisa para ocultar este grupo.
 
 - o lançador de aplicações (`SUPER + D`);
 - a configuração e os temas do Rofi, compartilhados por todos os menus Rofi do ARGVUS;
@@ -30,7 +30,7 @@ Os atalhos são declarados pelo `argvus-hyprland`. Este pacote fornece os comand
 
 ## Launcher e Pesquisa
 
-O launcher principal usa Quickshell/QML com um motor local de pesquisa em Rust. Pesquisa aplicações, janelas abertas, definições, ações, projetos, hosts SSH, ficheiros e atalhos. A indexação começa desativada; escolha as pastas explicitamente. Apenas nomes e caminhos são indexados, nunca o conteúdo dos documentos. Ficheiros recentes dependem do registo XDG. Ficheiros ocultos são excluídos por predefinição e ligações simbólicas de diretórios não são seguidas. Os menus especializados do Rofi continuam disponíveis. Em Launcher and Search, escolha a ordem A–Z ou Abertas recentemente; Abertas recentemente é a predefinição. **Abertas agora** está desativado por predefinição; ative em Control Center > Preferences > Launcher and Search para mostrar as janelas atuais quando a pesquisa estiver vazia. O histórico de utilização pode ser limpo nessa mesma página.
+O launcher principal usa Quickshell/QML com um motor local de pesquisa em Rust. Pesquisa aplicações, janelas abertas, definições, ações, projetos, hosts SSH, ficheiros e atalhos. A indexação começa desativada; escolha as pastas explicitamente. Apenas nomes e caminhos são indexados, nunca o conteúdo dos documentos. Ficheiros recentes dependem do registo XDG. Ficheiros ocultos são excluídos por predefinição e ligações simbólicas de diretórios não são seguidas. SSH e Snippets usam GTK 4. Em Launcher and Search, escolha a ordem A–Z ou Abertas recentemente; Abertas recentemente é a predefinição. **Abertas agora** está desativado por predefinição; ative em Control Center > Preferences > Launcher and Search para mostrar as janelas atuais quando a pesquisa estiver vazia. O histórico de utilização pode ser limpo nessa mesma página.
 
 O lançador usa um layout TUI compacto: texto monoespaçado, pesquisa e categorias alinhadas, favoritos compactos e rodapé de ajuda separado. A espessura e o arredondamento das margens seguem as definições de layout ativas do ARGVUS.
 
@@ -114,6 +114,8 @@ As entradas são lidas da configuração efetiva; o launcher não mantém cópia
 Abrir um projeto também registra o caminho dele como o projeto ativo da sessão, que o bloco de telemetria Dev Dashboard (`argvus widget-telemetry`) lê para relatar o git, as portas em escuta e os containers desse projeto.
 
 ## SSH (`SUPER + ALT + S`)
+
+**ARGVUS SSH** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
 
 `SUPER + ALT + S` abre um seletor com os hosts definidos em `~/.ssh/config`. O host escolhido abre em um novo terminal ARGVUS executando `ssh <host>`, no workspace atual.
 
@@ -268,6 +270,8 @@ Regras que valem para todos os comandos:
 
 ## Excertos (`SUPER + ALT + N`)
 
+**ARGVUS Trechos** · GTK 4 / Wayland · `↑` `↓` `Enter` `Esc`
+
 `SUPER + ALT + N` abre um seletor com seus snippets. O snippet escolhido é digitado na janela em foco, na posição do cursor, em vez de passar pela área de transferência.
 
 ### Configuração
@@ -319,7 +323,7 @@ argvus snippets --help                 # mostra as opções e um exemplo
 | `open` informa que o snippet não foi encontrado | O nome não confere exatamente. Compare com `argvus snippets list`. |
 | Nada aparece na aplicação | A janela em foco não é um campo de texto, ou é uma aplicação X11 a executar sob XWayland, que pode ignorar esse tipo de entrada. Teste com uma aplicação Wayland nativa. |
 
-Requer `wtype`, `rofi`, `jq` e `argvus` (o comando `argvus config`).
+Requer `wtype`, `jq` e `argvus` (o comando `argvus config`).
 
 O `wtype` simula pressionamentos de tecla no nível de entrada do Wayland. Alguns aplicações X11 a executar sob XWayland ignoram esses eventos, então o texto pode não aparecer neles mesmo com o snippet encontrado.
 
@@ -390,7 +394,7 @@ O pacote `argvus-launcher` é independente de arquitetura e instala:
 - `argvus launcher`, `argvus-snippets`, `argvus-ssh` e `argvus-git`, no mesmo diretório;
 - `/usr/share/argvus/launcher/config/`, com a configuração e os temas do Rofi;
 
-Dependências obrigatórias: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `rofi`, `wl-clipboard`, `wtype`, `gnupg` e `pinentry` (que fornece o `pinentry-gtk`). Dependências opcionais: `openssh`, para o seletor SSH e o gestor de chaves; `lazygit` e `gitui`, para a TUI de git.
+Dependências obrigatórias: `argvus-session`, `argvus-appearance`, `argvus`, `bash`, `jq`, `hyprland`, `libnotify`, `quickshell`, `qt6-declarative`, `wl-clipboard`, `wtype`, `gnupg` e `pinentry` (que fornece o `pinentry-gtk`). Dependências opcionais: `openssh`, para o seletor SSH e o gestor de chaves; `lazygit` e `gitui`, para a TUI de git.
 
 A instalação do pacote não grava nada em `$HOME`. A configuração do utilizador é criada no início da sessão, como descrito em [Configuração e temas do Rofi](#onde-fica-a-configuração-ativa).
 
